@@ -1,0 +1,13 @@
+@relation titanic-weka.filters.AllFilter-weka.filters.MultiFilter-Fweka.filters.AllFilter-S1-weka.filters.unsupervised.attribute.Remove-R11-weka.filters.unsupervised.attribute.Remove-R12-weka.filters.unsupervised.attribute.Remove-R6-weka.filters.unsupervised.attribute.Remove-R7-weka.filters.unsupervised.attribute.Remove-R8-weka.filters.unsupervised.attribute.Remove-R8-weka.filters.unsupervised.attribute.Remove-R9-weka.filters.supervised.attribute.NominalToBinary-weka.filters.supervised.attribute.NominalToBinary-weka.filters.unsupervised.attribute.Remove-R1-2
+
+@attribute sex=female numeric
+@attribute age numeric
+@attribute sibsp numeric
+@attribute fare numeric
+@attribute class=Third numeric
+@attribute class=First numeric
+@attribute class=Second numeric
+@attribute alive {no,yes}
+
+@data
+0,22,1,7.25,1,0,0,no

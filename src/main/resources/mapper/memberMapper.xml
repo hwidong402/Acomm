@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+
+	<insert id="create" parameterType="memberVO">
+		insert into apt_member values (#{id}, #{pw}, #{name}, #{code}, #{sub_addr})
+	</insert>
+	
+	<update id="up" parameterType="memberVO">
+		update apt_member set sub_addr = #{sub_addr} where id = #{id}
+	</update>
+	
+	<delete id="del"  parameterType="memberVO">
+		delete from apt_member where id = #{id}
+	</delete>
+	
+	<select id="one" parameterType="memberVO" resultType="memberVO">
+		select * from apt_member where id = #{id} 
+	</select>
+	
+	<select id="all" resultType="memberVO">
+		select * from apt_member
+	</select>
+	
+	<select id="login" parameterType="memberVO" resultType="memberVO">
+		select * from apt_member where id = #{id} and pw = #{pw}
+	</select>
+	
+	<select id="code2name" parameterType="memberVO" resultType="aptVO">
+        select a.name
+        from apt a, apt_member an
+        where a.code = an.code and an.id = #{id}
+    </select>
+	
+	<select id="idck" parameterType="memberVO" resultType="memberVO">
+		select * from apt_member where id = #{id}
+	</select>
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+

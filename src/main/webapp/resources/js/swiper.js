@@ -1,0 +1,4 @@
+/**
+ * 
+ */
+new Swiper('.swiper-container');
