@@ -10,6 +10,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
+<!-- 이그노어 적용 후 푸쉬 실험 주석 -->
 <div id="div">
 	<div id="acomm">
 		<h1>A-Comm</h1> <br>
