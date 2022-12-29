@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
@@ -11,16 +11,16 @@
 var key="0QABlWOjjNUTH6AflytlfpxXTM2vig%2FbrTph8sbBtvWn80oDTHnmpv%2FzKgQOReCP6x%2BEWLnHq%2B6Pg4SsOYhopQ%3D%3D";
 
 $(function() {
-	//ajax·Î ½Ç½Ã°£ ¹ö½º µµÂøÁ¤º¸ ºÒ·¯¿À±â ¿¹½Ã
+	//ajaxë¡œ ì‹¤ì‹œê°„ ë²„ìŠ¤ ë„ì°©ì •ë³´ ë¶ˆëŸ¬ì˜¤ê¸° ì˜ˆì‹œ
 $.ajax({
 			url : "http://apis.data.go.kr/6260000/BusanBIMS/stopArrByBstopid?serviceKey="+key+"&bstopid=505780000",
 					success : function(x) {
-						//°Ë»ö °á°ú·Î ¿Â xml µ¥ÀÌÅÍ¿¡¼­ itemÅÂ±×¸¦ Ã£°í °¢°¢ÀÇ item ÅÂ±×¸¶´Ù Çàµ¿ ³Ö±â
+						//ê²€ìƒ‰ ê²°ê³¼ë¡œ ì˜¨ xml ë°ì´í„°ì—ì„œ itemíƒœê·¸ë¥¼ ì°¾ê³  ê°ê°ì˜ item íƒœê·¸ë§ˆë‹¤ í–‰ë™ ë„£ê¸°
 				$(x).find("item").each(function () {
-					var no=$(this).find("lineno").text();	 //µµÂøÁ¤º¸ °ªÁß ³ë¼±¹øÈ£
-					var min=$(this).find("min1").text(); 	//µµÂøÁ¤º¸ °ªÁß ³²Àº ½Ã°£(ºĞ)
-					var station=$(this).find("station1").text();	//µµÂøÁ¤º¸ °ª Áß ³²Àº Á¤°ÅÀå °ª
-					var info = "³ë¼±¹øÈ£ > "+no+" ³²Àº ½Ã°£ > "+min+" ³²Àº Á¤°¡Àå > "+station; 
+					var no=$(this).find("lineno").text();	 //ë„ì°©ì •ë³´ ê°’ì¤‘ ë…¸ì„ ë²ˆí˜¸
+					var min=$(this).find("min1").text(); 	//ë„ì°©ì •ë³´ ê°’ì¤‘ ë‚¨ì€ ì‹œê°„(ë¶„)
+					var station=$(this).find("station1").text();	//ë„ì°©ì •ë³´ ê°’ ì¤‘ ë‚¨ì€ ì •ê±°ì¥ ê°’
+					var info = "ë…¸ì„ ë²ˆí˜¸ > "+no+" ë‚¨ì€ ì‹œê°„ > "+min+" ë‚¨ì€ ì •ê°€ì¥ > "+station; 
 					$('#result').append(info+"<br>");
 				})
 				

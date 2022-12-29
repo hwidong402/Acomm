@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
@@ -11,26 +11,26 @@
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4611b2688b283a9862933471078a1361"></script>
 <script>
-var mapContainer = document.getElementById('map'), // Áöµµ¸¦ Ç¥½ÃÇÒ div 
+var mapContainer = document.getElementById('map'), // ì§€ë„ë¥¼ í‘œì‹œí•  div 
     mapOption = { 
-        center: new kakao.maps.LatLng(<%=session.getAttribute("lat")%>, <%=session.getAttribute("lon")%>), // ÁöµµÀÇ Áß½ÉÁÂÇ¥
-        level: 3 // ÁöµµÀÇ È®´ë ·¹º§
+        center: new kakao.maps.LatLng(<%=session.getAttribute("lat")%>, <%=session.getAttribute("lon")%>), // ì§€ë„ì˜ ì¤‘ì‹¬ì¢Œí‘œ
+        level: 3 // ì§€ë„ì˜ í™•ëŒ€ ë ˆë²¨
     };
 
-var map = new kakao.maps.Map(mapContainer, mapOption); // Áöµµ¸¦ »ı¼ºÇÕ´Ï´Ù
+var map = new kakao.maps.Map(mapContainer, mapOption); // ì§€ë„ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
 
-// ¸¶Ä¿°¡ Ç¥½ÃµÉ À§Ä¡ÀÔ´Ï´Ù 
+// ë§ˆì»¤ê°€ í‘œì‹œë  ìœ„ì¹˜ì…ë‹ˆë‹¤ 
 var markerPosition  = new kakao.maps.LatLng(<%=session.getAttribute("lat")%>, <%=session.getAttribute("lon")%>); 
 
-// ¸¶Ä¿¸¦ »ı¼ºÇÕ´Ï´Ù
+// ë§ˆì»¤ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
 var marker = new kakao.maps.Marker({
     position: markerPosition
 });
 
-// ¸¶Ä¿°¡ Áöµµ À§¿¡ Ç¥½ÃµÇµµ·Ï ¼³Á¤ÇÕ´Ï´Ù
+// ë§ˆì»¤ê°€ ì§€ë„ ìœ„ì— í‘œì‹œë˜ë„ë¡ ì„¤ì •í•©ë‹ˆë‹¤
 marker.setMap(map);
 
-// ¾Æ·¡ ÄÚµå´Â Áöµµ À§ÀÇ ¸¶Ä¿¸¦ Á¦°ÅÇÏ´Â ÄÚµåÀÔ´Ï´Ù
+// ì•„ë˜ ì½”ë“œëŠ” ì§€ë„ ìœ„ì˜ ë§ˆì»¤ë¥¼ ì œê±°í•˜ëŠ” ì½”ë“œì…ë‹ˆë‹¤
 // marker.setMap(null);    
 </script>
 </body>

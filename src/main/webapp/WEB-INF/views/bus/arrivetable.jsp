@@ -1,7 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%-- <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<h3>ÀüÃ¼ °Ô½Ã±Û °¹¼ö : ${count}°³</h3>
+<h3>ì „ì²´ ê²Œì‹œê¸€ ê°¯ìˆ˜ : ${count}ê°œ</h3>
 <hr color="blue">
 <%int pages= (int)request.getAttribute("pages");
 	for(int p=1; p<= pages; p++){
@@ -12,9 +12,9 @@
 <%} %>
 <table class="table">
 <tr>
-<th>³ë¼±¹øÈ£</th>
-<th>³²Àº ½Ã°£</th>
-<th>³²Àº Á¤°ÅÀå</th>
+<th>ë…¸ì„ ë²ˆí˜¸</th>
+<th>ë‚¨ì€ ì‹œê°„</th>
+<th>ë‚¨ì€ ì •ê±°ìž¥</th>
 </tr>
 <c:forEach var="dto" items="${list}">
 <tr>

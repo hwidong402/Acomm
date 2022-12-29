@@ -1,40 +1,40 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript">
-var key="0QABlWOjjNUTH6AflytlfpxXTM2vig%2FbrTph8sbBtvWn80oDTHnmpv%2FzKgQOReCP6x%2BEWLnHq%2B6Pg4SsOYhopQ%3D%3D";//ÀÎÁõÅ°
+var key="0QABlWOjjNUTH6AflytlfpxXTM2vig%2FbrTph8sbBtvWn80oDTHnmpv%2FzKgQOReCP6x%2BEWLnHq%2B6Pg4SsOYhopQ%3D%3D";//ì¸ì¦í‚¤
 
 $(function() {
 	
 $.ajax({
 			url : "http://apis.data.go.kr/6260000/BusanBIMS/stopArrByBstopid?serviceKey="+key+"&bstopid=505780000",
 					success : function(x) {
-				var table = "<table class="+"table table-dark table-striped"+"><tr><td>¹ö½º¹øÈ£</td><td>³²Àº ½Ã°£</td><td>³²Àº Á¤·ùÀå</td></tr>"; // table ¸¸µå´Â ±â´É
+				var table = "<table class="+"table table-dark table-striped"+"><tr><td>ë²„ìŠ¤ë²ˆí˜¸</td><td>ë‚¨ì€ ì‹œê°„</td><td>ë‚¨ì€ ì •ë¥˜ì¥</td></tr>"; // table ë§Œë“œëŠ” ê¸°ëŠ¥
 				$(x).find("item").each(function () {
 					var no=$(this).find("lineno").text();
 					var min=$(this).find("min1").text();
 					var station=$(this).find("station1").text();
-					var info = "<tr><td>"+no+"</td><td>"+min+"</td><td>"+station+"</td></tr>"; //table Ç×¸ñ Ãß°¡ÇÏ±â
+					var info = "<tr><td>"+no+"</td><td>"+min+"</td><td>"+station+"</td></tr>"; //table í•­ëª© ì¶”ê°€í•˜ê¸°
 					table+=info;
 				})
 				
-					$('#result').append(table+"</table>");//Å×ÀÌºí ÀÔ·Â
+					$('#result').append(table+"</table>");//í…Œì´ë¸” ì…ë ¥
 			}
 		  })
 })
 </script>
 </head>
 <body>
-<a href=bus/busstopmap.bus><button>´Ù¸¥ Á¤·ùÀå º¸±â</button></a>
-<div id="result" ></div> <!-- µµÂøÁ¤º¸ °á°ú --> 
+<a href=bus/busstopmap.bus><button>ë‹¤ë¥¸ ì •ë¥˜ì¥ ë³´ê¸°</button></a>
+<div id="result" ></div> <!-- ë„ì°©ì •ë³´ ê²°ê³¼ --> 
 <table class="table table-dark table-striped">
 <tr>
 <td>1</td>
