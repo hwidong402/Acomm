@@ -3,7 +3,8 @@ package com.jav4.acomm.bbs;
 import java.util.Date;
 
 public class BbsVO {
-	private String bbs_id;
+
+	private int bbs_id;
 	private String bbs_title;
 	private Date bbs_date;
 	private String bbs_writer;
@@ -13,10 +14,10 @@ public class BbsVO {
 	private String bbs_notice;
 	private String bbs_cate;
 	
-	public String getBbs_id() {
+	public int getBbs_id() {
 		return bbs_id;
 	}
-	public void setBbs_id(String bbs_id) {
+	public void setBbs_id(int bbs_id) {
 		this.bbs_id = bbs_id;
 	}
 	public String getBbs_title() {
@@ -74,4 +75,6 @@ public class BbsVO {
 				+ bbs_writer + ", bbs_content=" + bbs_content + ", bbs_file=" + bbs_file + ", apt_code=" + apt_code
 				+ ", bbs_notice=" + bbs_notice + ", bbs_cate=" + bbs_cate + "]";
 	}
+	
+	
 }
