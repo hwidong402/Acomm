@@ -19,7 +19,7 @@
 		<span style="color: red;">A-Comm</span> <span>의 회원이 되신 것을 진심으로
 			축하드립니다.</span> <br> <br>
 		<div style="display: inline-block; float: left; " >
-			<a href="main.jsp">
+			<a href="index.jsp">
 				<button class="btn btn-danger" style="width: 200px;">메인화면으로</button>
 			</a>
 		</div>
