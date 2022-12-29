@@ -12,16 +12,10 @@ public class AptController {
 	@Autowired
 	AptDAO dao;	
 	
-	
-//	@RequestMapping("apt_all")
-//	public void all(Model model) {
-//		List<AptVO> list = dao.readAll();
-//		System.out.println(list.size());
-//		model.addAttribute("list", list);
-//	}
-//	@RequestMapping("apt_one")
-//	public void one(AptVO vo, Model model) {
-//		AptVO one = dao.readOne(vo);
-//		model.addAttribute("one", one);
-//	}
+	// index파일에서 RDB에 있는 아파트 검색을 처리하기 위한 컨트롤러
+	@RequestMapping("apt/apt_name") //view아래에 apt/apt_name이라는 파일이 있음!
+	public void all(AptVO vo, Model model) { //AptVO에 아파트 이름값만 들어감.. 이대로 하던가 수정하던가 둘 중 하나! model은 view에 보여주기 위한 용도!
+		List<AptVO> list = dao.readall(vo); // 데이터베이스로 gogo
+		model.addAttribute("list", list);
+	}
 }

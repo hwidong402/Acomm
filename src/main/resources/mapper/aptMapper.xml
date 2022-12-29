@@ -3,10 +3,10 @@
 <mapper namespace="apt">
 	<!-- <select id="all"  resultType="aptVO" >
 		select * from apt
-	</select>
-		<select id="one" parameterType="aptVO" resultType="aptVO">
-		select * from apt where name like CONCAT('%',#{name},'%')
-	</select> -->
+	</select>-->
+	<select id="all" parameterType="aptVO" resultType="aptVO">
+		select apt_name from apt where apt_name like CONCAT('%',#{apt_name},'%')
+	</select> 
 </mapper>
 
 
