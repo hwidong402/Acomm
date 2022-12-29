@@ -13,7 +13,7 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <%
 	BbsVO vo = (BbsVO) request.getAttribute("dto");
-String writer = vo.getWriter();
+// String writer = vo.getWriter(); 
 String id = (String) session.getAttribute("id");
 %>
 <style type="text/css">
@@ -34,13 +34,13 @@ String id = (String) session.getAttribute("id");
 			<div class="col-sm-4"></div>
 			<div id="up" class="col-sm-4">
 				<%
-					if (id.equals(writer)) {
+					// if (id.equals(writer)) {
 				%>
 				<a href="bbsup.bbs?id=${dto.id}"><button class="btn btn-info">수정</button></a>
 				<a href="delete.bbs?id=${dto.id}"><button
 						class="btn btn-warning">삭제</button></a>
 				<%
-					}
+					// }
 				%>
 			</div>
 		</div>

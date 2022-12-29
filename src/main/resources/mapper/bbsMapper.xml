@@ -13,7 +13,7 @@
 	</update>
 	<!-- 해당 아파트의 게시글  검색 -->
 	<select id="all" parameterType="bbsVO" resultType="bbsVO">
-	select * from bbs where code=#{code}
+		select * from bbs where code=#{code}
 	</select>
 	<!-- 입력한 제목으로 해당 아파트 코드 내 검색 --> 
 	<select id="search" parameterType="bbsVO" resultType="bbsVO">
@@ -21,7 +21,11 @@
 	</select>
 	<!-- 상세보기 하기위한 id로 하나검색하는 sql  -->
 	<select id="one" parameterType="bbsVO" resultType="bbsVO">
-	select * from bbs where id=#{id}
+		select * from bbs where id=#{id}
+	</select>
+	
+	<select id="bbshotall" resultType="bbsVO">
+		select * from bbs
 	</select>
 </mapper>
 

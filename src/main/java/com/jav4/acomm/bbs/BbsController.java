@@ -19,7 +19,7 @@ public class BbsController {
 		@RequestMapping("bbs/create.bbs")
 	public String insert(BbsVO vo,Model model,HttpSession session) {
 		//인설트시 넣을 code값을 세션에서 가져오기
-		vo.setCode((String)session.getAttribute("code"));
+//		vo.setCode((String)session.getAttribute("code"));
 		System.out.println(vo);
 		//dao의 insert실행하여 vo로 묶인 입력값들 집어 넣기
 		dao.insert(vo);
@@ -33,7 +33,7 @@ public class BbsController {
 	// 게시글 삭제 버튼 클릭시 동작 맵핑
 	@RequestMapping("delete.bbs")
 	public String delete(BbsVO vo,Model model,HttpSession session) {
-		vo.setCode((String)session.getAttribute("code"));
+//		vo.setCode((String)session.getAttribute("code"));
 		//입력된 id값으로 delete 실행
 		dao.delete(vo);
 		//insert후 게시글 목록을 불러오기 위한 리스트 검색
@@ -47,7 +47,7 @@ public class BbsController {
 	@RequestMapping("back.bbs")
 	public String back(BbsVO vo,Model model,HttpSession session) {
 		//뒤로가기 부를 때 vo에 코드 값넣어 검색 값 주기
-		vo.setCode((String)session.getAttribute("code"));
+//		vo.setCode((String)session.getAttribute("code"));
 		//code에 따른 게시판 내용 불러오기
 		List<BbsVO> list =dao.list(vo);
 		//게시판 리스트 값 보내기
@@ -82,7 +82,7 @@ public class BbsController {
 	@RequestMapping("open.bbs")
 	public String open(BbsVO vo,Model model,HttpSession session) {
 		//검색할 게시판 목록의 검색 코드 값을 세션값에서 가져오기 
-		vo.setCode((String)session.getAttribute("code"));
+//		vo.setCode((String)session.getAttribute("code"));
 		//코드를 통한 게시판 검색 목록 
 		List<BbsVO> list =dao.list(vo);
 		//코드를 통한 게시판 검색 목록 보내기
@@ -105,7 +105,7 @@ public class BbsController {
 	@RequestMapping("search.bbs")
 	public String search(BbsVO vo,Model model,HttpSession session) {
 		//뒤로가기 부를 때 vo에 코드 값넣어 검색 값 주기
-		vo.setCode((String)session.getAttribute("code"));
+//		vo.setCode((String)session.getAttribute("code"));
 		List<BbsVO> list =dao.serch(vo);
 		model.addAttribute("list", list);
 		//게시판 홈으로 돌려보내기
@@ -116,7 +116,7 @@ public class BbsController {
 	@RequestMapping("bbs/jspwrite.bbs")
 	public void write(BbsVO vo,Model model,HttpSession session) {
 		//뒤로가기 부를 때 vo에 코드 값넣어 검색 값 주기
-		vo.setCode((String)session.getAttribute("code"));
+//		vo.setCode((String)session.getAttribute("code"));
 		BbsVO one =dao.one(vo);
 		model.addAttribute("dto", one);
 		
