@@ -9,7 +9,7 @@ import com.jav4.acomm.apt.AptVO;
 @Controller
 public class MemberController {
     @Autowired
-    MemberDAO dao; // di (������ ����)
+    MemberDAO dao; // di (의존성 주입)
     @RequestMapping("m_create")
     public void insert(MemberVO vo) {
         dao.insert(vo);
