@@ -3,12 +3,14 @@
 <mapper namespace="member">
 
 	<insert id="create" parameterType="memberVO">
-		insert into apt_member values (#{id}, #{pw}, #{name}, #{code}, #{sub_addr})
+		insert into member(member_id, member_pw, member_name, member_tel, apt_code, sub_addr, member_date) values (#{member_id}, #{member_pw}, #{member_name},  #{member_tel}, #{apt_code}, #{sub_addr},now())
 	</insert>
 	
 	<update id="up" parameterType="memberVO">
-		update apt_member set sub_addr = #{sub_addr} where id = #{id}
+		update member set member_pw = #{member_pw}, member_tel = #{member_tel} where member_id = #{member_id}
+		<!-- update apt_member set sub_addr = #{sub_addr} where id = #{id} -->
 	</update>
+
 	
 	<delete id="del"  parameterType="memberVO">
 		delete from apt_member where id = #{id}
@@ -23,17 +25,16 @@
 	</select>
 	
 	<select id="login" parameterType="memberVO" resultType="memberVO">
-		select * from apt_member where id = #{id} and pw = #{pw}
+		select * from member where member_id = #{member_id} and member_pw = #{member_pw}
 	</select>
 	
 	<select id="code2name" parameterType="memberVO" resultType="aptVO">
-        select a.name
-        from apt a, apt_member an
-        where a.code = an.code and an.id = #{id}
+		select member_name from apt a, `member` m where a.apt_code = m.apt_code and m.member_id = #{member_id}
+        <!-- select a.name from apt a, apt_member an where a.code = an.code and an.id = #{id} -->
     </select>
 	
 	<select id="idck" parameterType="memberVO" resultType="memberVO">
-		select * from apt_member where id = #{id}
+		select * from member where member_id = #{member_id}
 	</select>
 	
 	
