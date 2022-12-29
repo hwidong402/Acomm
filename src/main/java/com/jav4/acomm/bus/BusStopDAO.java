@@ -9,9 +9,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class BusStopDAO {
 
-//	@Autowired
-//	SqlSessionTemplate my;
+	@Autowired
+	SqlSessionTemplate my;
 
-
-
+	public List<BusStopVO> all() {
+		return my.selectList("busstop.all");
+	}
+	
 }
