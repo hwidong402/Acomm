@@ -18,26 +18,24 @@
 				<td>번호</td>	
 				<td>제목</td>
 				<td>날짜</td>	
-				<!-- <td>글쓴이</td> -->
-				<!-- <td>내용</td> -->
-				<!-- <td>파일</td>	
-				<td>코드</td>	 -->
-				<!-- <td>공지사항여부</td> -->
-				<!-- <td>카테고리</td> -->
+				<td>글쓴이</td>
+				<td>내용</td>
+				<td>파일</td>	
+				<td>코드</td>	
+				<td>공지사항여부</td>
+				<td>카테고리</td>
 				</tr>
-			<c:forEach var="vo" items="${list}">
 				<tr>
 				<td>${vo.bbs_id}</td>
-				<td><a href="bbs/bbshotone?bbs_id=${vo.bbs_id}">${vo.bbs_title}</a></td>
+				<td>${vo.bbs_title}</td>
 				<td>${vo.bbs_date}</td>
-				<%-- <td>${vo.bbs_writer}</td> --%>
-				<%-- <td>${vo.bbs_content}</td> --%>
-				<%-- <td>${vo.bbs_file}</td>
-				<td>${vo.apt_code}</td> --%>
-				<%-- <td>${vo.bbs_notice}</td> --%>
-				<%-- <td>${vo.bbs_cate}</td> --%>
+				<td>${vo.bbs_writer}</td>
+				<td>${vo.bbs_content}</td>
+				<td>${vo.bbs_file}</td>
+				<td>${vo.apt_code}</td>
+				<td>${vo.bbs_notice}</td>
+				<td>${vo.bbs_cate}</td>
 				</tr>
-			</c:forEach>
 		</table>
 	</div>
 </body>

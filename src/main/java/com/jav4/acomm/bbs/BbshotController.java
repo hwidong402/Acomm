@@ -23,13 +23,11 @@ public class BbshotController {
 	}
 	
 	// 게시판 상세 보기
-//	@RequestMapping("bbshotone")
-//	public String info(BbsVO vo,Model model) {
-//		// bbs 테이블에서 id와 code로 게시판 내용 검색하기
-//		BbsVO one =dao.one(vo);
-//		model.addAttribute("dto", one);
-//		// 게시판 상세보기 뷰 이름으로 연결
-//		return "bbs/bbsinfo";
-//	}
+	@RequestMapping("bbs/bbshotone")
+	public void info(BbsVO vo,Model model) {
+		// bbs 테이블에서 bbs_id로 게시판 내용 검색하기
+		BbsVO one =dao.one(vo);
+		model.addAttribute("vo", one);
+	}
 	
 }

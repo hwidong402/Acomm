@@ -24,9 +24,49 @@
 		select * from bbs where id=#{id}
 	</select>
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- 휘동 작업 영역  -->
 	<select id="bbshotall" resultType="bbsVO">
 		select * from bbs
 	</select>
+	
+	<select id="bbshotone" parameterType="bbsVO" resultType="bbsVO">
+		select * from bbs where bbs_id=#{bbs_id}
+	</select>
+	
 </mapper>
 
 

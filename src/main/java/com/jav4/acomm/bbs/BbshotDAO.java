@@ -18,5 +18,10 @@ public class BbshotDAO {
 		List<BbsVO> list = my.selectList("bbs.bbshotall",vo);
 		return list;
 	}
+	
+	public BbsVO one(BbsVO vo) {
+		BbsVO one = my.selectOne("bbs.bbshotone", vo);
+		return one;
+	}
 
 }
