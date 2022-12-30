@@ -23,7 +23,7 @@
     <div id="enrollform">
         <form action="m_create" method="post" onsubmit="return submitf();">
             <h2>아이디</h2>
-            <input type="text" name="member_id" class="member_id" placeholder="아이디는 4~20자의 영어와 숫자조합으로 사용해주세요" maxlength="20" onkeyup="chkCharCode(event)"> <br>
+            <input type="text" name="member_id" class="member_id" placeholder="아이디는 4~20자의 영어와 숫자조합" maxlength="20" onkeyup="chkCharCode(event)"> <br>
             <!-- <span id="idck1"></span>  -->
             <span class="must1">필수정보입니다.</span> 
             <span class="length" style="color: red; display: none">아이디는 최소 4자입니다.</span>
@@ -32,6 +32,7 @@
             <h2>비밀번호</h2>
             <input type="password" name="member_pw" class="member_pw"> <br>
             <span class="must2">필수정보입니다.</span>
+            <span class="length2" style="color: red; display: none">비밀번호는 최소 4자입니다.</span>
             <h2>비밀번호 재확인</h2>
             <input type="password" name="pwc" class="pwc"> <br> 
             <span class="final_pwck_ck">비밀번호 확인을 입력해주세요.</span> 
@@ -39,28 +40,59 @@
             <span class="pwck_input_re_2">비밀번호가 일치하지 않습니다.</span> 
             <span class="must3">필수정보입니다.</span>
             <h2>이름</h2>
-            <input type="text" name="member_name" class="member_name"> <br>
+            <input type="text" name="member_name" class="member_name"	> <br>
             <span class="must4">필수정보입니다.</span>
             <h2>전화번호</h2>
-            <input type="text" name="member_tel" class="member_tel"> <br>
+            <input type="text" name="member_tel" class="member_tel" maxlength="11"> <br>
             <span class="must6">필수정보입니다.</span>
-            <h2>아파트코드</h2>
-            <!-- 이 부분은 검색과 비슷하게 아파트를 검색한 뒤 그에 맞는 코드를 넣을까 생각 중 입니다. -->
-            <!-- <input type="text" name="apt_code" class="apt_code"> <br> -->
-                <select name="apt_code" style="width: 300px;">
-                <option value="A10025763">해운대동백두산위브더제니스</option>
-                <option value="A10025752">시청역 SK VIEW</option>
-                <option value="A13704104">반포자이</option>
-            </select> <br> <br> 
+            <h2>아파트이름</h2>
+            <input id ="apt_name" name="apt_name" class="apt_name"> <br>
+            <span class="must7">필수정보입니다.</span>
+			<!--결과 값 출력하는 곳 --> 
+			<div id="result" class="apt_code"></div>
             <h2>상세주소</h2>
             <input type="text" name="sub_addr" class="sub_addr"> <br>
             <span class="must5">필수정보입니다.</span>
             <hr>
+            <!-- <input type="submit" value="가입하기" > -->
             <button type="submit" class="btn btn-success" style="width: 300px;">가입하기</button>
             <br>
         </form>
     </div>
+    
     <script type="text/javascript">
+    //아파트코드
+		$('.apt_name').on("propertychange change keyup paste input", function() {
+			$.ajax({					//ajax를 이용해서 화면넘기지 않을거임
+				url : 'apt/apt_code',   //view아래 apt파일이 있음
+				data : {
+					apt_name : $('#apt_name').val(),
+					apt_code : $('#apt_code').val()
+					/* apt_city : $('#apt_city').val() */
+				},						//여기까지 컨트롤러에게 넘겨줄거야
+				success : function(x) { //성공 시 값 출력
+					$('#result').html(x)
+				}
+			})
+		})
+	
+// 검색 눌렀을 때 버전		
+//    $(function() {
+//		$('#검색').click(function() {
+//			$.ajax({					//ajax를 이용해서 화면넘기지 않을거임
+//				url : 'apt/apt_code',   //view아래 apt파일이 있음
+//				data : {
+//					apt_name : $('#apt_name').val(),
+//					apt_code : $('#apt_code').val()
+//					/* apt_city : $('#apt_city').val() */
+//				},						//여기까지 컨트롤러에게 넘겨줄거야
+//				success : function(x) { //성공 시 값 출력
+//					$('#result').html(x)
+//				}
+//			})
+//		})
+//	})
+    
         //아이디 한글 제한
             window.chkCharCode = function(event) {
         const regExp = /[^0-9a-zA-Z]/g;
@@ -82,8 +114,7 @@
                 $('.length').css('display', 'none');
             }
                 
-                    
-        
+			//아이디 중복 검사        
             $.ajax({
                 type: "get",
                 url: 'ckok',
@@ -118,11 +149,16 @@
         });
         //비밀번호
         $('.member_pw').on("propertychange change keyup paste input", function() {
-            var pw = $('.member_pw').val();
-            if (pw == "") {
+            var member_pw = $('.member_pw').val();
+            if (member_pw == "") {
                 $('.must2').css('display', 'block');
             } else {
                 $('.must2').css('display', 'none');
+            }
+            if (member_pw.length < 4 && member_pw.length >= 1) {
+                $('.length2').css('display', 'block');
+            } else {
+                $('.length2').css('display', 'none');
             }
         });
         //비밀번호확인
@@ -172,7 +208,16 @@
                 $('.must6').css('display', 'none');
             }
         });
-        
+        //아파트코드
+        $('.apt_name').on("propertychange change keyup paste input", function() {
+            var apt_name = $('.apt_name').val();
+            if (apt_name == "") {
+                $('.must7').css('display', 'block');
+            } else {
+                $('.must7').css('display', 'none');
+            }
+        });
+        //회원가입 유효성 검증
         function submitf() {
             var member_id = $('.member_id').val();
             var member_pw = $('.member_pw').val();
@@ -180,13 +225,22 @@
             var member_name = $('.member_name').val();
             var sub_addr = $('.sub_addr').val();
             var member_tel = $('.member_tel').val();
+            var apt_name = $('.apt_name').val();
+            /* var apt_code = $('.apt_code').val(); */
             
-            if(member_id == "" || member_pw == "" || pwck == "" || member_name == "" || sub_addr == "" || member_tel == ""){
+            
+            
+            if(member_id == "" || member_pw == "" || pwck == "" || member_name == "" || sub_addr == "" || member_tel == "" || apt_name == ""){
                 alert("필수정보를 입력해주세요");
                 return false;
             }
             else if(member_id.length < 4){
                 alert("아이디는 4자 이상입니다.");
+                return false;
+            }
+            
+            else if(member_pw.length < 4){
+                alert("비밀번호는 4자 이상입니다.");
                 return false;
             }
             
@@ -199,8 +253,6 @@
                 alert("비밀번호를 재확인해주세요.");
                 return false;
             }
-            
-            
             
             else{
                 return true;
