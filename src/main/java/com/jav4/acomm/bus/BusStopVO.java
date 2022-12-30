@@ -1,10 +1,10 @@
 package com.jav4.acomm.bus;
 
 public class BusStopVO {
-	private String stop_id; // Á¤·ù¼Ò¾ÆÀÌµğ
-	private String stop_name; //Á¤·ù¼Ò ÀÌ¸§
-	private double stop_lat; //À§µµ	
-	private double stop_lon; //°æµµ
+	private String stop_id; //ì •ë¥˜ì¥ id
+	private String stop_name; //ì •ë¥˜ì¥ ì´ë¦„
+	private double stop_lat; //ì •ë¥˜ì¥ ìœ„ë„
+	private double stop_lon; //ì •ë¥˜ì¥ ê²½ë„
 	public String getStop_id() {
 		return stop_id;
 	}
