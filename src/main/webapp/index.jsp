@@ -16,6 +16,7 @@
 				},						//여기까지 컨트롤러에게 넘겨줄거야
 				success : function(x) { //성공 시 값 출력
 					$('#result').html(x)
+					
 				}
 			})
 		})
@@ -29,6 +30,6 @@
 	아파트 검색 : <input id ="apt_name"><button id="b1">검색</button>
 	<!--결과 값 출력하는 곳  -->
 	<div id="result"></div>
+	
 </body>
 </html>
-

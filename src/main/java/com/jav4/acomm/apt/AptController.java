@@ -18,4 +18,10 @@ public class AptController {
 		List<AptVO> list = dao.readall(vo); // 데이터베이스로 gogo
 		model.addAttribute("list", list);
 	}
+	
+	@RequestMapping("apt/apt_code")
+	public void code(AptVO vo, Model model) {
+		List<AptVO> list = dao.readcode(vo);
+		model.addAttribute("list", list);
+	}
 }

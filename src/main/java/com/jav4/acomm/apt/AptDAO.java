@@ -20,4 +20,7 @@ public class AptDAO {
 		return my.selectList("apt.all",vo); //mapper로 가서 값을 담아오자
 	}
 
+	public List<AptVO> readcode(AptVO vo){
+		return my.selectList("apt.code",vo);
+	}
 }

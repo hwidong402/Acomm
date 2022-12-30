@@ -2,7 +2,7 @@ package com.jav4.acomm.apt;
 
 public class AptVO {
 
-	private int apt_code; 
+	private String apt_code; 
 	private String apt_name; 
 	private String apt_city;
 	private String apt_town;
@@ -12,10 +12,10 @@ public class AptVO {
 	private double apt_lat;
 	private double apt_lon;
 	
-	public int getApt_code() {
+	public String getApt_code() {
 		return apt_code;
 	}
-	public void setApt_code(int apt_code) {
+	public void setApt_code(String apt_code) {
 		this.apt_code = apt_code;
 	}
 	public String getApt_name() {

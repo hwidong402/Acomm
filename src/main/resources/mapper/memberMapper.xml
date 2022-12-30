@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member">
-
 	<insert id="create" parameterType="memberVO">
 		insert into member(member_id, member_pw, member_name, member_tel, apt_code, sub_addr, member_date) values (#{member_id}, #{member_pw}, #{member_name},  #{member_tel}, #{apt_code}, #{sub_addr},now())
 	</insert>
@@ -10,14 +9,17 @@
 		update member set member_pw = #{member_pw}, member_tel = #{member_tel} where member_id = #{member_id}
 		<!-- update apt_member set sub_addr = #{sub_addr} where id = #{id} -->
 	</update>
-
 	
 	<delete id="del"  parameterType="memberVO">
 		delete from apt_member where id = #{id}
 	</delete>
 	
 	<select id="one" parameterType="memberVO" resultType="memberVO">
-		select * from apt_member where id = #{id} 
+		select * from apt_member where id = #{id}
+	</select>
+	
+	<select id="print" parameterType="memberVO" resultType="memberVO">
+		select * from member where member_id = #{member_id}
 	</select>
 	
 	<select id="all" resultType="memberVO">
@@ -39,14 +41,3 @@
 	
 	
 </mapper>
-
-
-
-
-
-
-
-
-
-
-
