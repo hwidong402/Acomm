@@ -15,236 +15,81 @@ public class BbsController {
 	@Autowired
 	BbsDAO dao;
 	
-	// 게시글 작성 완료버튼 클릭시 동작맵핑
+	// ▽▽▽▽▽ Read Zone ▽▽▽▽▽
+	
+		// bbs (전체용) 게시판 페이지 열기 
+		@RequestMapping("open.bbs")
+		public String open(BbsVO vo,HttpSession session, Model model) {
+			//(인기제외) cate별로 list를 최신 5개씩 들고와서 넘겨줌 
+			vo.setApt_code((String)session.getAttribute("code")); // 원래는 apt_code
+			//vo.setBbs_cate("free");
+			
+			// Bbs_cate를 다르게 주면서 list5로 넘겨 List VO를 받는다
+			vo.setBbs_cate("noti");
+			List<BbsVO> list5_noti = dao.list5(vo);
+			vo.setBbs_cate("free");
+			List<BbsVO> list5_free = dao.list5(vo);
+			vo.setBbs_cate("market");
+			List<BbsVO> list5_market = dao.list5(vo);
+			vo.setBbs_cate("sugg");
+			List<BbsVO> list5_sugg = dao.list5(vo);
+			vo.setBbs_cate("worry");
+			List<BbsVO> list5_worry = dao.list5(vo);
+			
+			// List VO를 model로 넘긴다
+			model.addAttribute("list5_noti", list5_noti);
+			model.addAttribute("list5_free", list5_free);
+			model.addAttribute("list5_market", list5_market);
+			model.addAttribute("list5_sugg", list5_sugg);
+			model.addAttribute("list5_worry", list5_worry);
+			
+			return "bbs/bbs";
+		}
+		
+		// cate별로 상세 게시판 보기. fin
+		@RequestMapping("bbs_cate.bbs")
+		public String bbs_cate(BbsVO vo,HttpSession session,Model model) {
+			//세션의 apt_code 와 <a href>의 bbs_cate를 둘 다 일치하는 게시물만 들고오기
+			vo.setApt_code((String)session.getAttribute("code"));
+			// list로 받아서 bbs_cate.jsp로 넘겨줌 
+			List<BbsVO> list = dao.list(vo);
+			model.addAttribute("list", list);
+			System.out.println("들고온 list >> " + list);
+			return "bbs/bbs_cate";
+		}
+		
+		// 게시글 보기
+		@RequestMapping("article.bbs")
+		public String article(BbsVO vo,Model model) {
+			// <a href>의 bbs_id로 게시글 정보 가져오기
+			BbsVO one = dao.one(vo);
+			// one으로 받아서 article.jsp로 넘겨줌
+			model.addAttribute("one", one);
+			System.out.println("들고온 one >> " + one);
+			return "bbs/article";
+		}
+		
+		
+		// ▽▽▽▽▽ Create Zone ▽▽▽▽▽
+		
+		// 게시글 작성 페이지 이동
+		@RequestMapping("bbs/write.bbs")
+		public void write() {
+			
+		}
+		
+		// 게시글 작성 완료 > data insert + 게시판으로 이
 		@RequestMapping("bbs/create.bbs")
-	public String insert(BbsVO vo,Model model,HttpSession session) {
-		//인설트시 넣을 code값을 세션에서 가져오기
-//		vo.setCode((String)session.getAttribute("code"));
-		System.out.println(vo);
-		//dao의 insert실행하여 vo로 묶인 입력값들 집어 넣기
-		dao.insert(vo);
-		//insert후 게시글 목록을 불러오기 위한 리스트 검색
-		List<BbsVO> list =dao.list(vo);
-		//게시판 리스트 값 보내기
-		model.addAttribute("list", list);
-		return "bbs/bbs";
-	}
-		
-	// 게시글 삭제 버튼 클릭시 동작 맵핑
-	@RequestMapping("delete.bbs")
-	public String delete(BbsVO vo,Model model,HttpSession session) {
-//		vo.setCode((String)session.getAttribute("code"));
-		//입력된 id값으로 delete 실행
-		dao.delete(vo);
-		//insert후 게시글 목록을 불러오기 위한 리스트 검색
-		List<BbsVO> list =dao.list(vo);
-		//게시판 리스트 값 보내기
-		model.addAttribute("list", list);
-		return "bbs/bbs";
-	}
-	
-	//작성이나 수정후 bbs로 돌아오기
-	@RequestMapping("back.bbs")
-	public String back(BbsVO vo,Model model,HttpSession session) {
-		//뒤로가기 부를 때 vo에 코드 값넣어 검색 값 주기
-//		vo.setCode((String)session.getAttribute("code"));
-		//code에 따른 게시판 내용 불러오기
-		List<BbsVO> list =dao.list(vo);
-		//게시판 리스트 값 보내기
-		model.addAttribute("list", list);
-		//게시판 홈으로 돌려보내기
-		return "bbs/bbs";
-	}
-	
-	//수정 하기 전 게시글로 가기
-	@RequestMapping("back2.bbs")
-	public String back2(BbsVO vo,Model model) {
-		// 수정페이지에서 받은 id값을 통해 뒤로 가기
-		BbsVO one =dao.one(vo);
-		//검색된 게시글 값 보내기
-		model.addAttribute("dto", one);
-		// 게시판 상세보기 뷰 이름으로 연결
-		return "bbs/bbsinfo";
-	}
-	
-	//수정하기 후 상세정보 보기
-	@RequestMapping("up.bbs")
-	public String up(BbsVO vo,Model model) {
-		// bbs 테이블에서 id와 code로 게시판 내용 검색하기
-		dao.update(vo);
-		BbsVO one =dao.one(vo);
-		model.addAttribute("dto", one);
-		// 게시판 상세보기 뷰 이름으로 연결
-		return "bbs/bbsinfo";
-	}
-	
-	//게시판 실행 맵퍼
-	@RequestMapping("open.bbs")
-	public String open(BbsVO vo,Model model,HttpSession session) {
-		//검색할 게시판 목록의 검색 코드 값을 세션값에서 가져오기 
-//		vo.setCode((String)session.getAttribute("code"));
-		//코드를 통한 게시판 검색 목록 
-		List<BbsVO> list =dao.list(vo);
-		//코드를 통한 게시판 검색 목록 보내기
-		model.addAttribute("list", list);
-		// 게시판 jsp이름
-		return "bbs/bbs";
-	}
-	
-	// 게시판 상세 보기 맵퍼
-	@RequestMapping("info.bbs")
-	public String info(BbsVO vo,Model model) {
-		// bbs 테이블에서 id와 code로 게시판 내용 검색하기
-		BbsVO one =dao.one(vo);
-		model.addAttribute("dto", one);
-		// 게시판 상세보기 뷰 이름으로 연결
-		return "bbs/bbsinfo";
-	}
-	
-	//글 타이틀로 검색하기
-	@RequestMapping("search.bbs")
-	public String search(BbsVO vo,Model model,HttpSession session) {
-		//뒤로가기 부를 때 vo에 코드 값넣어 검색 값 주기
-//		vo.setCode((String)session.getAttribute("code"));
-		List<BbsVO> list =dao.serch(vo);
-		model.addAttribute("list", list);
-		//게시판 홈으로 돌려보내기
-		return "bbs/bbs";
-	}
-	
-	// 게시글 작성 페이지 이동
-	@RequestMapping("bbs/jspwrite.bbs")
-	public void write(BbsVO vo,Model model,HttpSession session) {
-		//뒤로가기 부를 때 vo에 코드 값넣어 검색 값 주기
-//		vo.setCode((String)session.getAttribute("code"));
-		BbsVO one =dao.one(vo);
-		model.addAttribute("dto", one);
-		
-	}
-	
-	//게시글 내용 수정하기
-	@RequestMapping("bbs/bbsup.bbs")
-	public void bbsup(BbsVO vo,Model model) {
-		//vo의id로 나머지 vo 값 다들고오기
-		BbsVO one =dao.one(vo);
-		model.addAttribute("dto", one);
-		
-	}
-	
-//	// 게시글 작성 완료버튼 클릭시 동작맵핑
-//		@RequestMapping("bbs/create.bbs")
-//	public String insert(BbsVO vo,Model model,HttpSession session) {
-//		//인설트시 넣을 code값을 세션에서 가져오기
-//		vo.setCode((String)session.getAttribute("code"));
-//		System.out.println(vo);
-//		//dao의 insert실행하여 vo로 묶인 입력값들 집어 넣기
-//		dao.insert(vo);
-//		//insert후 게시글 목록을 불러오기 위한 리스트 검색
-//		List<BbsVO> list =dao.list(vo);
-//		//게시판 리스트 값 보내기
-//		model.addAttribute("list", list);
-//		return "bbs/bbs";
-//	}
-//		
-//	// 게시글 삭제 버튼 클릭시 동작 맵핑
-//	@RequestMapping("delete.bbs")
-//	public String delete(BbsVO vo,Model model,HttpSession session) {
-//		vo.setCode((String)session.getAttribute("code"));
-//		//입력된 id값으로 delete 실행
-//		dao.delete(vo);
-//		//insert후 게시글 목록을 불러오기 위한 리스트 검색
-//		List<BbsVO> list =dao.list(vo);
-//		//게시판 리스트 값 보내기
-//		model.addAttribute("list", list);
-//		return "bbs/bbs";
-//	}
-//	
-//	//작성이나 수정후 bbs로 돌아오기
-//	@RequestMapping("back.bbs")
-//	public String back(BbsVO vo,Model model,HttpSession session) {
-//		//뒤로가기 부를 때 vo에 코드 값넣어 검색 값 주기
-//		vo.setCode((String)session.getAttribute("code"));
-//		//code에 따른 게시판 내용 불러오기
-//		List<BbsVO> list =dao.list(vo);
-//		//게시판 리스트 값 보내기
-//		model.addAttribute("list", list);
-//		//게시판 홈으로 돌려보내기
-//		return "bbs/bbs";
-//	}
-//	
-//	//수정 하기 전 게시글로 가기
-//	@RequestMapping("back2.bbs")
-//	public String back2(BbsVO vo,Model model) {
-//		// 수정페이지에서 받은 id값을 통해 뒤로 가기
-//		BbsVO one =dao.one(vo);
-//		//검색된 게시글 값 보내기
-//		model.addAttribute("dto", one);
-//		// 게시판 상세보기 뷰 이름으로 연결
-//		return "bbs/bbsinfo";
-//	}
-//	
-//	//수정하기 후 상세정보 보기
-//	@RequestMapping("up.bbs")
-//	public String up(BbsVO vo,Model model) {
-//		// bbs 테이블에서 id와 code로 게시판 내용 검색하기
-//		dao.update(vo);
-//		BbsVO one =dao.one(vo);
-//		model.addAttribute("dto", one);
-//		// 게시판 상세보기 뷰 이름으로 연결
-//		return "bbs/bbsinfo";
-//	}
-//	
-//	//게시판 실행 맵퍼
-//	@RequestMapping("open.bbs")
-//	public String open(BbsVO vo,Model model,HttpSession session) {
-//		//검색할 게시판 목록의 검색 코드 값을 세션값에서 가져오기 
-//		vo.setCode((String)session.getAttribute("code"));
-//		//코드를 통한 게시판 검색 목록 
-//		List<BbsVO> list =dao.list(vo);
-//		//코드를 통한 게시판 검색 목록 보내기
-//		model.addAttribute("list", list);
-//		// 게시판 jsp이름
-//		return "bbs/bbs";
-//	}
-//	
-//	// 게시판 상세 보기 맵퍼
-//	@RequestMapping("info.bbs")
-//	public String info(BbsVO vo,Model model) {
-//		// bbs 테이블에서 id와 code로 게시판 내용 검색하기
-//		BbsVO one =dao.one(vo);
-//		model.addAttribute("dto", one);
-//		// 게시판 상세보기 뷰 이름으로 연결
-//		return "bbs/bbsinfo";
-//	}
-//	
-//	//글 타이틀로 검색하기
-//	@RequestMapping("search.bbs")
-//	public String search(BbsVO vo,Model model,HttpSession session) {
-//		//뒤로가기 부를 때 vo에 코드 값넣어 검색 값 주기
-//		vo.setCode((String)session.getAttribute("code"));
-//		List<BbsVO> list =dao.serch(vo);
-//		model.addAttribute("list", list);
-//		//게시판 홈으로 돌려보내기
-//		return "bbs/bbs";
-//	}
-//	
-//	// 게시글 작성 페이지 이동
-//	@RequestMapping("bbs/jspwrite.bbs")
-//	public void write(BbsVO vo,Model model,HttpSession session) {
-//		//뒤로가기 부를 때 vo에 코드 값넣어 검색 값 주기
-//		vo.setCode((String)session.getAttribute("code"));
-//		BbsVO one =dao.one(vo);
-//		model.addAttribute("dto", one);
-//		
-//	}
-//	
-//	//게시글 내용 수정하기
-//	@RequestMapping("bbs/bbsup.bbs")
-//	public void bbsup(BbsVO vo,Model model) {
-//		//vo의id로 나머지 vo 값 다들고오기
-//		BbsVO one =dao.one(vo);
-//		model.addAttribute("dto", one);
-//		
-//	}
+		public String insert(BbsVO vo,Model model,HttpSession session) {
+			//세션에서 apt_code get
+			vo.setApt_code((String)session.getAttribute("code"));
+			System.out.println(vo);
+			//insert 실
+			dao.insert(vo);
+			// 게시글 list 불러오고 model로 다음 jsp로 보냄
+			List<BbsVO> list =dao.list(vo);
+			model.addAttribute("list", list);
+			return "bbs/noti";
+		}
 	
 }
