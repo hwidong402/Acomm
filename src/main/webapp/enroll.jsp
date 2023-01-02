@@ -11,8 +11,7 @@
 <link rel="stylesheet" href="resources/css/member.css">
 <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-<script type="text/javascript">
-</script>
+
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 </head>
 <body>
@@ -40,10 +39,10 @@
             <span class="pwck_input_re_2">비밀번호가 일치하지 않습니다.</span> 
             <span class="must3">필수정보입니다.</span>
             <h2>이름</h2>
-            <input type="text" name="member_name" class="member_name"	> <br>
+            <input type="text" name="member_name" class="member_name"> <br>
             <span class="must4">필수정보입니다.</span>
             <h2>전화번호</h2>
-            <input type="text" name="member_tel" class="member_tel" maxlength="11"> <br>
+            <input type="text" id="member_tel" name="member_tel" class="member_tel" maxlength="13" placeholder="숫자만 입력 가능 합니다."> <br>
             <span class="must6">필수정보입니다.</span>
             <h2>아파트이름</h2>
             <input id ="apt_name" name="apt_name" class="apt_name"> <br>
@@ -127,13 +126,13 @@
                             $('.idck1').css('display','block');
                             $('.idck2').css('display','none');
                             idckv = true;
-                            console.log("사용가능")
+                            //console.log("사용가능")
                             }else if (x != 'no'){
                             /* $('#idck1').text('중복된 아이디입니다.'); */
                             $('.idck1').css('display','none');
                             $('.idck2').css('display','block');
                             idckv = false;
-                            console.log("중복")
+                            //console.log("중복")
                         }
                         if (member_id == ""){
                             $('.idck1').css('display','none');
@@ -208,6 +207,50 @@
                 $('.must6').css('display', 'none');
             }
         });
+        
+        //전화번호에 하이픈 추가
+        var autoHypenPhone = function(str){
+      str = str.replace(/[^0-9]/g, '');
+      var tmp = '';
+      if( str.length < 4){
+          return str;
+      }else if(str.length < 7){
+          tmp += str.substr(0, 3);
+          tmp += '-';
+          tmp += str.substr(3);
+          return tmp;
+      }else if(str.length < 11){
+          tmp += str.substr(0, 3);
+          tmp += '-';
+          tmp += str.substr(3, 3);
+          tmp += '-';
+          tmp += str.substr(6);
+          return tmp;
+      }else{              
+          tmp += str.substr(0, 3);
+          tmp += '-';
+          tmp += str.substr(3, 4);
+          tmp += '-';
+          tmp += str.substr(7);
+          return tmp;
+      }
+  
+      return str;
+}
+
+
+var member_tel = document.getElementById('member_tel');
+
+member_tel.onkeyup = function(){
+  //console.log(this.value);
+  this.value = autoHypenPhone( this.value ) ;  
+}
+/*         function oninputPhone(target) {
+            target.value = target.value
+                .replace(/[^0-9]/g, '')
+                .replace(/(^02.{0}|^01.{1}|[0-9]{3,4})([0-9]{3,4})([0-9]{4})/g, "$1-$2-$3");
+        } */
+        
         //아파트코드
         $('.apt_name').on("propertychange change keyup paste input", function() {
             var apt_name = $('.apt_name').val();
@@ -226,7 +269,7 @@
             var sub_addr = $('.sub_addr').val();
             var member_tel = $('.member_tel').val();
             var apt_name = $('.apt_name').val();
-            /* var apt_code = $('.apt_code').val(); */
+            var apt_code = $('.apt_code').val();
             
             
             
@@ -234,6 +277,12 @@
                 alert("필수정보를 입력해주세요");
                 return false;
             }
+            //else if(apt_code == ""){
+            //	alert("아파트코드를 찾아주세요.");
+            //	alert(apt_code);
+            //	return false;
+            // }  
+            
             else if(member_id.length < 4){
                 alert("아이디는 4자 이상입니다.");
                 return false;

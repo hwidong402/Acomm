@@ -20,6 +20,12 @@ h2 {
 	margin: 0 auto;
 }
 
+#revise {
+	width: 350px;
+	height: 400px;
+	margin: 0 auto;
+}
+
 #header {
 	width: 350px;
 	height: 100px;
@@ -46,7 +52,7 @@ h2 {
 	display: none;
 }
 .pwck_input_re_1 {
-	color: red;
+	color: green;
 	display: none;
 }
 .pwck_input_re_2 {
