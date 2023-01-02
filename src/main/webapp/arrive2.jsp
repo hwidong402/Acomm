@@ -34,8 +34,11 @@ $.ajax({
 </head>
 <body>
 <a href=bus/busstopmap.bus><button>다른 정류장 보기</button></a>
-<div id="result" ></div> <!-- 도착정보 결과 --> 
-<table class="table table-dark table-striped">
+<a href=bus/busstopmap2.bus><button>다른 정류장 보기</button></a>
+<!-- 도착정보 결과 --> 
+<div id="result" style="width:400px;height:350px;" ></div> 
+<!-- table 실험  -->
+<!-- <table class="table table-dark table-striped">
 <tr>
 <td>1</td>
 <td>2</td>
@@ -51,6 +54,6 @@ $.ajax({
 <td>8</td>
 <td>9</td>
 </tr>
-</table>
+</table> -->
 </body>
 </html>

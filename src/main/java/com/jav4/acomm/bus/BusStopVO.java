@@ -34,7 +34,4 @@ public class BusStopVO {
 		return "BusStopVO [stop_id=" + stop_id + ", stop_name=" + stop_name + ", stop_lat=" + stop_lat + ", stop_lon="
 				+ stop_lon + "]";
 	}
-	
-	
-
 }
