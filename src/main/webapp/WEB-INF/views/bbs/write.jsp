@@ -28,23 +28,39 @@ text-align: center;
 				<form action="create.bbs">
 					<table class="table">
 						<tr>
-							<td>글아이디</td>
-							<td><input name="id"></td>
-						</tr>
-						<tr>
 							<td>제목</td>
-							<td><input name="title"></td>
+							<td><input name="bbs_title"></td>
 						</tr>
 						<tr>
 							<td>작성자</td>
-							<td><input name="writer" value="${id}" readonly="readonly">
+							<td><input name="bbs_writer" value="${id}" readonly>
 							</td>
 						</tr>
 						<tr>
 							<td colspan="2">내용</td>
 						</tr>
 						<tr>
-							<td colspan="2"><textarea name="content" rows="5" cols="40"></textarea></td>
+							<td colspan="2"><textarea name="bbs_content" rows="5" cols="40"></textarea></td>
+						</tr>
+						<tr>
+							<td>file(null)</td>
+							<td><input name="bbs_file">
+							</td>
+						</tr>
+						<tr>
+							<td>apt_code</td>
+							<td><input name="apt_code" value="${code}" readonly>
+							</td>
+						</tr>
+						<tr>
+							<td>notice</td>
+							<td><input name="bbs_notice" >
+							</td>
+						</tr>
+						<tr>
+							<td>cate</td>
+							<td><input name="bbs_cate" value="noti" readonly>
+							</td>
 						</tr>
 						<tr>
 							<td colspan="2" >
@@ -57,7 +73,7 @@ text-align: center;
 		</div>
 	</div>
 	<div class="back">
-							<a href="back.bbs"><button  class="btn btn-danger">뒤로가기</button></a>
+							<a href="noti.bbs"><button  class="btn btn-danger">(공지로)돌아가기</button></a>
 	</div>
 </body>
 </html>
