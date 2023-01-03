@@ -82,6 +82,7 @@
 		    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 overflow-hidden">
 				<div class="d-grid">
 				 <button class="btn btn-outline-info" onclick="location.href='bbs_cate.bbs?bbs_cate=hot'" type="button">hot 더보기</button>
+				<!-- 인클루드 될 자리 -->
 				</div>
 				<c:forEach var="list5" items="${list5_hot}">
 			   	<div class="list-group">

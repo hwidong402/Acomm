@@ -57,12 +57,16 @@
 	
 	<!-- 휘동 작업 영역  -->
 	<select id="bbshotall" resultType="bbsVO">
-		select * from bbs
+		select * from bbs ORDER BY bbs_date DESC limit 5
 	</select>
 	
 	<select id="bbshotone" parameterType="bbsVO" resultType="bbsVO">
-		select * from bbs where bbs_id=#{bbs_id}
+		select * from bbs where bbs_id = #{bbs_id}
 	</select>
+	
+	<update id="bbshotup" parameterType="int">
+		update bbs set bbs_count = bbs_count+1 where bbs_id = #{bbs_id}
+	</update>
 	
 </mapper>
 

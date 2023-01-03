@@ -13,6 +13,8 @@ public class BbsVO {
 	private String apt_code;
 	private String bbs_notice;
 	private String bbs_cate;
+	private int bbs_count;
+	private String bbs_like;
 	
 	public int getBbs_id() {
 		return bbs_id;
@@ -69,12 +71,27 @@ public class BbsVO {
 		this.bbs_cate = bbs_cate;
 	}
 	
+	public int getBbs_count() {
+		return bbs_count;
+	}
+	
+	public void setBbs_count(int bbs_count) {
+		this.bbs_count = bbs_count;
+	}
+	
+	public String getBbs_like() {
+		return bbs_like;
+	}
+	
+	public void setBbs_like(String bbs_like) {
+		this.bbs_like = bbs_like;
+	}
+	
 	@Override
 	public String toString() {
 		return "BbsVO [bbs_id=" + bbs_id + ", bbs_title=" + bbs_title + ", bbs_date=" + bbs_date + ", bbs_writer="
 				+ bbs_writer + ", bbs_content=" + bbs_content + ", bbs_file=" + bbs_file + ", apt_code=" + apt_code
-				+ ", bbs_notice=" + bbs_notice + ", bbs_cate=" + bbs_cate + "]";
+				+ ", bbs_notice=" + bbs_notice + ", bbs_cate=" + bbs_cate + ", bbs_count=" + bbs_count + ", bbs_like="
+				+ bbs_like + "]";
 	}
-	
-	
 }

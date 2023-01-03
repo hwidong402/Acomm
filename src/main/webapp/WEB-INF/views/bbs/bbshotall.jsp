@@ -24,6 +24,7 @@
 				<td>코드</td>	 -->
 				<!-- <td>공지사항여부</td> -->
 				<!-- <td>카테고리</td> -->
+				<td>조회수</td>
 				</tr>
 			<c:forEach var="vo" items="${list}">
 				<tr>
@@ -36,6 +37,7 @@
 				<td>${vo.apt_code}</td> --%>
 				<%-- <td>${vo.bbs_notice}</td> --%>
 				<%-- <td>${vo.bbs_cate}</td> --%>
+				<td>${vo.bbs_count}</td>
 				</tr>
 			</c:forEach>
 		</table>

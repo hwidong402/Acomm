@@ -23,5 +23,11 @@ public class BbshotDAO {
 		BbsVO one = my.selectOne("bbs.bbshotone", vo);
 		return one;
 	}
+	
+	public void bbsCount(int bbs_id) {
+		// int count = my.update("bbs.bbshotup", bbs_id);
+		my.update("bbs.bbshotup", bbs_id);
+		// return count;
+	}
 
 }
