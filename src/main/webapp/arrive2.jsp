@@ -35,6 +35,7 @@ $.ajax({
 <body>
 <a href=bus/busstopmap.bus><button>다른 정류장 보기</button></a>
 <a href=bus/busstopmap2.bus><button>다른 정류장 보기</button></a>
+<a href=bus/busstopmap3.bus><button>다른 정류장 보기</button></a>
 <!-- 도착정보 결과 --> 
 <div id="result" style="width:400px;height:350px;" ></div> 
 <!-- table 실험  -->
