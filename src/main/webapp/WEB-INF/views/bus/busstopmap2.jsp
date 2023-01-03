@@ -18,7 +18,7 @@ $(function() {
 	<c:forEach var="dto" items="${list}">
 		var data = new Object() ;
 		 data.content ="<div>${dto.stop_name}</div>";
-		 data.latlng  = new kakao.maps.LatLng(${dto.stop_lat},${dto.stop_lon} ); 
+		 data.latlng  = new kakao.maps.LatLng(${dto.stop_lat}, ${dto.stop_lon}); 
 	
 		// 객체 생성
 		testList.push(data);
@@ -31,7 +31,7 @@ $(function() {
 	
 	// String 형태로 변환
 	var jsonData = JSON.stringify(testList) ;
-		alert(testList);
+		
 	var lat=${lat};	
 	var lon=${lon};
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
@@ -111,6 +111,6 @@ for (var i = 0; i < positions.length; i ++) {
     
 </head>
 <body>
-<div id="map" style="width:100%;height:350px;"></div>
+<div id="map" style="width:100%;height:800px;"></div>
 </body>
 </html>

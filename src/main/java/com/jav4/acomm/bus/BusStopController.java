@@ -30,4 +30,11 @@ public class BusStopController {
 		List<BusStopVO> list= dao.all();
 		model.addAttribute("list",list);
 	}	
+	@RequestMapping("bus/busstopmap3.bus")
+	public void mapinfo3(Model model, HttpSession session) {
+		session.setAttribute("lat",35.12662329524179 );
+		session.setAttribute("lon",129.0902600597399 );
+		List<BusStopVO> list= dao.all();
+		model.addAttribute("list",list);
+	}	
 }
