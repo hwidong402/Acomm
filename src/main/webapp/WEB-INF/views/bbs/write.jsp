@@ -59,7 +59,7 @@ text-align: center;
 						</tr>
 						<tr>
 							<td>cate</td>
-							<td><input name="bbs_cate" value="noti" readonly>
+							<td><input name="bbs_cate" value="${bbs_cate}" readonly>
 							</td>
 						</tr>
 						<tr>
