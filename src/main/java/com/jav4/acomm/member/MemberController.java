@@ -11,9 +11,18 @@ import com.jav4.acomm.bbs.BbsVO;
 public class MemberController {
     @Autowired
     MemberDAO dao; // di (의존성 주입)
+    
     @RequestMapping("m_create")
-    public void insert(MemberVO vo) {
+    public void insert(MemberVO vo, HttpSession session) {
         dao.insert(vo);
+        session.invalidate();
+    }
+    
+    @RequestMapping("enrolldirect")
+    public void sign(AptVO vo, Model model, HttpSession session) {
+        session.setAttribute("apt_name", vo.getApt_name());
+        session.setAttribute("apt_code", vo.getApt_code());
+        System.out.println(vo);
     }
     
       //local 페이지에서 내 정보로 이동하여 개인정보를 수정할 때 실행되는 컨트롤러
@@ -37,12 +46,11 @@ public class MemberController {
         MemberVO result = dao.one(vo);
         model.addAttribute("vo", result);
     }
-    @RequestMapping("m_all")
-    public void all(Model model) {
-        List<MemberVO> list = dao.all();
-        model.addAttribute("list", list);
-    }
-    
+	/*
+	 * @RequesMapping("m_all") public void all(Model model) { List<MemberVO> list =
+	 * dao.all(); model.addAttribute("list", list); }
+	 */
+   
     
     @RequestMapping("m_login")
       public String login(MemberVO vo, HttpSession session, Model model) {
@@ -75,7 +83,15 @@ public class MemberController {
         model.addAttribute("result", result);
     }
     
+    
+    @RequestMapping("maneger/everyinfo")// 관리자만 볼 수 있음.
+    public void everyinfo(MemberVO vo, Model model ) {
+    	System.out.println(vo);
+    	List<MemberVO> list = dao.all();
+         model.addAttribute("list", list);
+        
+    }
+    
  
      
 }
-	

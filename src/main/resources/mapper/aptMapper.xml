@@ -5,7 +5,7 @@
 		select * from apt
 	</select>-->
 	<select id="all" parameterType="aptVO" resultType="aptVO">
-		select apt_name from apt where apt_name like CONCAT('%',#{apt_name},'%')
+		select apt_name, apt_code from apt where apt_name like CONCAT('%',#{apt_name},'%')
 	</select> 
 	
 	<select id="code" parameterType="aptVO" resultType="aptVO">

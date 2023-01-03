@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>A-Comm 회원가입</title>
+<title>${apt_name} 회원가입</title>
 <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
     rel="stylesheet">
@@ -14,6 +14,9 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 </head>
 <body>
+<%-- <%
+    String apt_code = request.getParameter("apt_code");
+%>  --%>
     <div id="header">
         <a href="index.jsp"> <img alt="이미지오류" src="resources/img/acomm.png"
             width="300" height="100"></a> <br>
@@ -44,10 +47,8 @@
             <input type="text" id="member_tel" name="member_tel" class="member_tel" maxlength="13" placeholder="숫자만 입력 가능 합니다."> <br>
             <span class="must6">필수정보입니다.</span>
             <h2>아파트이름</h2>
-            <input id ="apt_name" name="apt_name" class="apt_name"> <br>
-            <span class="must7">필수정보입니다.</span>
-            <!--결과 값 출력하는 곳 --> 
-            <div id="result" class="apt_code"></div>
+            <input id ="apt_name" name="apt_name" class="apt_name" value="${apt_name}" disabled="disabled"> <br>
+            <input id ="apt_code" name="apt_code" class="apt_code" value="${apt_code}" type="hidden"> <br>
             <h2>상세주소</h2>
             <input type="text" name="sub_addr" class="sub_addr"> <br>
             <span class="must5">필수정보입니다.</span>
@@ -70,6 +71,7 @@
                 },                      //여기까지 컨트롤러에게 넘겨줄거야
                 success : function(x) { //성공 시 값 출력
                     $('#result').html(x)
+                    
                 }
             })
         })
@@ -264,12 +266,11 @@ member_tel.onkeyup = function(){
             var member_name = $('.member_name').val();
             var sub_addr = $('.sub_addr').val();
             var member_tel = $('.member_tel').val();
-            var apt_name = $('.apt_name').val();
             var apt_code = $('.apt_code').val();
             
             
             
-            if(member_id == "" || member_pw == "" || pwck == "" || member_name == "" || sub_addr == "" || member_tel == "" || apt_name == ""){
+            if(member_id == "" || member_pw == "" || pwck == "" || member_name == "" || sub_addr == "" || member_tel == ""){
                 alert("필수정보를 입력해주세요");
                 return false;
             }
@@ -296,10 +297,6 @@ member_tel.onkeyup = function(){
             
             else if(member_pw != pwck){
                 alert("비밀번호를 재확인해주세요.");
-                return false;
-            }
-            else if(member_tel.length > 13){
-                alert("전화번호를 제대로 입력해주세요.");
                 return false;
             }
             

@@ -23,7 +23,7 @@
 	</select>
 	
 	<select id="all" resultType="memberVO">
-		select * from apt_member
+		select * from member 
 	</select>
 	
 	<select id="login" parameterType="memberVO" resultType="memberVO">
