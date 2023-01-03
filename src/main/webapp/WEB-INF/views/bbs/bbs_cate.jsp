@@ -13,13 +13,54 @@
 </head>
 <body>
 	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	
+	<!-- 최상단 nav -->
+	<nav class="navbar navbar-expand-lg bg-light">
+	  <div class="container-fluid">
+	    <a class="navbar-brand" href="to_homepage.bbs">A-Comm</a>
+	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+	        <li class="nav-item dropdown">
+	          <a class="nav-link dropdown-toggle" href="open.bbs" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	            커뮤니티
+	          </a>
+	          <ul class="dropdown-menu">
+	            <li><a class="dropdown-item" href="bbs_cate.bbs?bbs_cate=noti">noti</a></li>
+	            <li><a class="dropdown-item" href="bbs_cate.bbs?bbs_cate=hot">hot</a></li>
+	            <li><a class="dropdown-item" href="bbs_cate.bbs?bbs_cate=free">free</a></li>
+	            <li><a class="dropdown-item" href="bbs_cate.bbs?bbs_cate=market">market</a></li>
+	            <li><a class="dropdown-item" href="bbs_cate.bbs?bbs_cate=sugg">sugg</a></li>
+	            <li><a class="dropdown-item" href="bbs_cate.bbs?bbs_cate=worry">worry</a></li>
+	          </ul>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" href="uriapt.jsp">우리 아파트</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" href="urivillage.jsp">우리 동네</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" href="sisol.jsp">시설</a>
+	        </li>
+	      </ul>
+	      <form class="d-flex" role="search">
+	        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+	        <button class="btn btn-outline-success" type="submit">Search</button>
+	      </form>
+	    </div>
+	  </div>
+	</nav>
+
+	<hr>
+	
+	<!-- 본문 -->
 	<div class="container p-5 my-5 bg-primary text-white text-center">
-		<h1>aaa</h1>
+		<h1>${bbs_cate} 게시판</h1>
 	</div>
 	<div class="container mt-5">
 		<div class="row">
 			<div class="col-sm-4">
-				<a href="bbs/write.bbs"><button class="btn btn-primary">글쓰기</button></a>
+				<a href="bbs/write.bbs?bbs_cate=${bbs_cate}"><button class="btn btn-primary">글쓰기</button></a>
 			</div>
 			<div class="col-sm-4"></div>
 			<div class="col-sm-4">

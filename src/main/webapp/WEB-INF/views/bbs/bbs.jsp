@@ -4,125 +4,171 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
 <link rel="stylesheet" href="resources/css/head_nav.css">
 <link rel="stylesheet" href="resources/css/bbs_allcate.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap 5 -->
+<!-- CSS CDN : https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<link href="resources/css/bootstrap.min.css" rel="stylesheet">
+<link href="resources/css/bbs_struc.css" rel="stylesheet">
 </head>
 <body>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-	<div id="nav">
-		<!-- Links -->
-		<ul class="nav justify-content-center">
-			<li class="nav-item"><a href="to_apt">A-Comm</a></li>
-			<li class="nav-item"><a href="open.bbs">커뮤니티</a></li>
-			<li class="nav-item"><a href="utiapt.jsp">우리 아파트</a></li>
-			<li class="nav-item"><a href="matjip.jsp">우리 동네</a></li>
-			<li class="nav-item"><a href="matjip.jsp">시설</a></li>
-		</ul>
-	</div>
-	<hr>
-	<div>
-		<table id="bbs_noti">
-			<tr>
-				<th>글 번호</th>
-				<th style="width: 70%">글 제목</th>
-				<th>작성자</th>
-				<th><a href = "bbs_cate.bbs?bbs_cate=noti"><button>noti 더보기</button></a><br></th>
-			</tr>
-			<c:forEach var="list5_noti" items="${list5_noti}">
-				<tr>
-					<td>${list5_noti.bbs_id}</td>
-					<td><a href="article.bbs?bbs_id=${list5_noti.bbs_id}">${list5_noti.bbs_title}</a></td>
-					<td>${list5_noti.bbs_writer}</td>
-					<td></td>
-				</tr>
-			</c:forEach>
-		</table>
-	</div>
-	<hr>
-	<div id="bbs_hot">
-		<a href = "bbs_cate.bbs?bbs_cate=hot"><button>hot 더보기</button></a><br>
-		hot 들어갈자리
-	</div>
-	<hr>
-	<div>
-		<table id="bbs_free">
-			<tr>
-				<th>글 번호</th>
-				<th style="width: 70%">글 제목</th>
-				<th>작성자</th>
-				<th><a href = "bbs_cate.bbs?bbs_cate=free"><button>free 더보기</button></a><br></th>
-			</tr>
-			<c:forEach var="list5_free" items="${list5_free}">
-				<tr>
-					<td>${list5_free.bbs_id}</td>
-					<td><a href="article.bbs?bbs_id=${list5_free.bbs_id}">${list5_free.bbs_title}</a></td>
-					<td>${list5_free.bbs_writer}</td>
-					<td></td>
-				</tr>
-			</c:forEach>
-		</table>
-	</div>
-	<hr>
-	<div>
-		<table id="bbs_market">
-			<tr>
-				<th>글 번호</th>
-				<th style="width: 70%">글 제목</th>
-				<th>작성자</th>
-				<th><a href = "bbs_cate.bbs?bbs_cate=market"><button>market 더보기</button></a><br></th>
-			</tr>
-			<c:forEach var="list5_market" items="${list5_market}">
-				<tr>
-					<td>${list5_market.bbs_id}</td>
-					<td><a href="article.bbs?bbs_id=${list5_market.bbs_id}">${list5_market.bbs_title}</a></td>
-					<td>${list5_market.bbs_writer}</td>
-					<td></td>
-				</tr>
-			</c:forEach>
-		</table>
-	</div>
-	<hr>
-	<div>
-		<table id="bbs_sugg">
-			<tr>
-				<th>글 번호</th>
-				<th style="width: 70%">글 제목</th>
-				<th>작성자</th>
-				<th><a href = "bbs_cate.bbs?bbs_cate=sugg"><button>sugg 더보기</button></a><br></th>
-			</tr>
-			<c:forEach var="list5_sugg" items="${list5_sugg}">
-				<tr>
-					<td>${list5_sugg.bbs_id}</td>
-					<td><a href="article.bbs?bbs_id=${list5_sugg.bbs_id}">${list5_sugg.bbs_title}</a></td>
-					<td>${list5_sugg.bbs_writer}</td>
-					<td></td>
-				</tr>
-			</c:forEach>
-		</table>
-	</div>
-	<hr>
-	<div>
-		<table id="bbs_worry">
-			<tr>
-				<th>글 번호</th>
-				<th style="width: 70%">글 제목</th>
-				<th>작성자</th>
-				<th><a href = "bbs_cate.bbs?bbs_cate=worry"><button>worry 더보기</button></a><br></th>
-			</tr>
-			<c:forEach var="list5_worry" items="${list5_worry}">
-				<tr>
-					<td>${list5_worry.bbs_id}</td>
-					<td><a href="article.bbs?bbs_id=${list5_worry.bbs_id}">${list5_worry.bbs_title}</a></td>
-					<td>${list5_worry.bbs_writer}</td>
-					<td></td>
-				</tr>
-			</c:forEach>
-		</table>
-	</div>
-
 	
+	<!-- 최상단 nav -->
+	<nav class="navbar navbar-expand-lg bg-light">
+	  <div class="container-fluid">
+	    <a class="navbar-brand" href="to_homepage.bbs">A-Comm</a>
+	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+	        <li class="nav-item dropdown">
+	          <a class="nav-link dropdown-toggle" href="open.bbs" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	            커뮤니티
+	          </a>
+	          <ul class="dropdown-menu">
+	            <li><a class="dropdown-item" href="bbs_cate.bbs?bbs_cate=noti">noti</a></li>
+	            <li><a class="dropdown-item" href="bbs_cate.bbs?bbs_cate=hot">hot</a></li>
+	            <li><a class="dropdown-item" href="bbs_cate.bbs?bbs_cate=free">free</a></li>
+	            <li><a class="dropdown-item" href="bbs_cate.bbs?bbs_cate=market">market</a></li>
+	            <li><a class="dropdown-item" href="bbs_cate.bbs?bbs_cate=sugg">sugg</a></li>
+	            <li><a class="dropdown-item" href="bbs_cate.bbs?bbs_cate=worry">worry</a></li>
+	          </ul>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" href="uriapt.jsp">우리 아파트</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" href="urivillage.jsp">우리 동네</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" href="sisol.jsp">시설</a>
+	        </li>
+	      </ul>
+	      <form class="d-flex" role="search">
+	        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+	        <button class="btn btn-outline-success" type="submit">Search</button>
+	      </form>
+	    </div>
+	  </div>
+	</nav>
+
+	<hr>
+	
+	<!-- 본문 -->
+	<div class="position-relative text-center bg-light">
+      <h3 class="fw-normal">바로 여기!</h3>
+      <p class="lead fw-normal">당신이 보고있는 지금 이 자리에 광고하세요</p>
+ 	</div>
+	    <!-- 1열 -->
+	    <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+		    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 overflow-hidden">
+				<div class="d-grid">
+				 <button class="btn btn-outline-info" onclick="location.href='bbs_cate.bbs?bbs_cate=noti'" type="button">noti 더보기</button>
+				</div>
+				<c:forEach var="list5" items="${list5_noti}">
+			   	<div class="list-group">
+					<div class="list-group-item list-group-item-action">
+						<div class="d-flex w-100 justify-content-between">
+						  	<small>${list5.bbs_writer}</small>
+							<small>${list5.bbs_date}</small>
+						</div>
+					  	<h5 class="ellipsis"><a href="article.bbs?bbs_id=${list5.bbs_id}">${list5.bbs_title}</a></h5>
+					</div>
+				</div>
+				</c:forEach>
+		    </div>
+		    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 overflow-hidden">
+				<div class="d-grid">
+				 <button class="btn btn-outline-info" onclick="location.href='bbs_cate.bbs?bbs_cate=hot'" type="button">hot 더보기</button>
+				</div>
+				<c:forEach var="list5" items="${list5_hot}">
+			   	<div class="list-group">
+					<div class="list-group-item list-group-item-action">
+						<div class="d-flex w-100 justify-content-between">
+						  	<small>${list5.bbs_writer}</small>
+							<small>${list5.bbs_date}</small>
+						</div>
+					  	<h5 class="ellipsis"><a href="article.bbs?bbs_id=${list5.bbs_id}">${list5.bbs_title}</a></h5>
+					</div>
+				</div>
+				</c:forEach>
+		    </div>
+	    </div>
+	    
+	    <!-- 2열 -->
+	    <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+		    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 overflow-hidden">
+				<div class="d-grid">
+				 <button class="btn btn-outline-info" onclick="location.href='bbs_cate.bbs?bbs_cate=free'" type="button">free 더보기</button>
+				</div>
+				<c:forEach var="list5" items="${list5_free}">
+			   	<div class="list-group">
+					<div class="list-group-item list-group-item-action">
+						<div class="d-flex w-100 justify-content-between">
+						  	<small>${list5.bbs_writer}</small>
+							<small>${list5.bbs_date}</small>
+						</div>
+					  	<h5 class="ellipsis"><a href="article.bbs?bbs_id=${list5.bbs_id}">${list5.bbs_title}</a></h5>
+					</div>
+				</div>
+				</c:forEach>
+		    </div>
+		    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 overflow-hidden">
+				<div class="d-grid">
+				 <button class="btn btn-outline-info" onclick="location.href='bbs_cate.bbs?bbs_cate=market'" type="button">market 더보기</button>
+				</div>
+				<c:forEach var="list5" items="${list5_market}">
+			   	<div class="list-group">
+					<div class="list-group-item list-group-item-action">
+						<div class="d-flex w-100 justify-content-between">
+						  	<small>${list5.bbs_writer}</small>
+							<small>${list5.bbs_date}</small>
+						</div>
+					  	<h5 class="ellipsis"><a href="article.bbs?bbs_id=${list5.bbs_id}">${list5.bbs_title}</a></h5>
+					</div>
+				</div>
+				</c:forEach>
+		    </div>
+	    </div>
+	    
+	   	<!-- 3열 -->
+	    <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+		    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 overflow-hidden">
+				<div class="d-grid">
+				 <button class="btn btn-outline-info" onclick="location.href='bbs_cate.bbs?bbs_cate=sugg'" type="button">sugg 더보기</button>
+				</div>
+				<c:forEach var="list5" items="${list5_sugg}">
+			   	<div class="list-group">
+					<div class="list-group-item list-group-item-action">
+						<div class="d-flex w-100 justify-content-between">
+						  	<small>${list5.bbs_writer}</small>
+							<small>${list5.bbs_date}</small>
+						</div>
+					  	<h5 class="ellipsis"><a href="article.bbs?bbs_id=${list5.bbs_id}">${list5.bbs_title}</a></h5>
+					</div>
+				</div>
+				</c:forEach>
+		    </div>
+		    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 overflow-hidden">
+				<div class="d-grid">
+				 <button class="btn btn-outline-info" onclick="location.href='bbs_cate.bbs?bbs_cate=worry'" type="button">worry 더보기</button>
+				</div>
+				<c:forEach var="list5" items="${list5_worry}">
+			   	<div class="list-group">
+					<div class="list-group-item list-group-item-action">
+						<div class="d-flex w-100 justify-content-between">
+						  	<small>${list5.bbs_writer}</small>
+							<small>${list5.bbs_date}</small>
+						</div>
+					  	<h5 class="ellipsis"><a href="article.bbs?bbs_id=${list5.bbs_id}">${list5.bbs_title}</a></h5>
+					</div>
+				</div>
+				</c:forEach>
+		    </div>
+	    </div>
+
+
 </body>
 </html>
