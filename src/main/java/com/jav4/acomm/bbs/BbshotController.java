@@ -37,4 +37,12 @@ public class BbshotController {
 		model.addAttribute("vo", one);
 	}
 	
+	@RequestMapping("bbs/bbshotlike")
+	public String like(LikeVO vo, Model model,HttpSession session) {
+		vo.setMember_id((String)session.getAttribute("id"));
+		System.out.println("서비스 가기전 ----------" + vo);
+		service.bbslike(vo);
+		return "redirect:/bbshot.jsp";
+	}
+	
 }

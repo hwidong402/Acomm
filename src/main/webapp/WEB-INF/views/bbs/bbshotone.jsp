@@ -13,32 +13,37 @@
 </head>
 <body>
 	<div id="bbshotall">
-		<table border="1">
-				<tr>
-				<td>번호</td>	
-				<td>제목</td>
-				<td>날짜</td>	
-				<td>글쓴이</td>
-				<td>내용</td>
-				<td>파일</td>	
-				<td>코드</td>	
-				<td>공지사항여부</td>
-				<td>카테고리</td>
-				<td>조회수</td>
-				</tr>
-				<tr>
-				<td>${vo.bbs_id}</td>
-				<td>${vo.bbs_title}</td>
-				<td>${vo.bbs_date}</td>
-				<td>${vo.bbs_writer}</td>
-				<td>${vo.bbs_content}</td>
-				<td>${vo.bbs_file}</td>
-				<td>${vo.apt_code}</td>
-				<td>${vo.bbs_notice}</td>
-				<td>${vo.bbs_cate}</td>
-				<td>${vo.bbs_count}</td>
-				</tr>
-		</table>
+
+			<table border="1">
+					<tr>
+					<td>번호</td>	
+					<td>제목</td>
+					<td>날짜</td>	
+					<td>글쓴이</td>
+					<td>내용</td>
+					<td>파일</td>	
+					<td>코드</td>	
+					<td>공지사항여부</td>
+					<td>카테고리</td>
+					<td>조회수</td>
+					</tr>
+					<tr>
+					<td>${vo.bbs_id}</td>
+					<td>${vo.bbs_title}</td>
+					<td>${vo.bbs_date}</td>
+					<td>${vo.bbs_writer}</td>
+					<td>${vo.bbs_content}</td>
+					<td>${vo.bbs_file}</td>
+					<td>${vo.apt_code}</td>
+					<td>${vo.bbs_notice}</td>
+					<td>${vo.bbs_cate}</td>
+					<td>${vo.bbs_count}</td>
+					</tr>
+					<tr>
+						<td colspan="10"><a href="bbshotlike?bbs_id=${vo.bbs_id}"><button>좋아요</button></a></td>
+					</tr>
+			</table>
+
 	</div>
 </body>
 </html>

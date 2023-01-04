@@ -26,5 +26,10 @@ public class BbsService {
 		return dao.one(vo);
 	}
 	
+	// 좋아요
+	public void bbslike(LikeVO vo) {
+		dao.bbshotlike(vo);
+	}
+	
 	
 }

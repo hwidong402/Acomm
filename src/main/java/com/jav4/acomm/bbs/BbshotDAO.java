@@ -29,5 +29,10 @@ public class BbshotDAO {
 		my.update("bbs.bbshotup", bbs_id);
 		// return count;
 	}
+	
+	public void bbshotlike(LikeVO vo) {
+		System.out.println("DAO syso ------- " + vo);
+		my.update("bbs.bbshotlike", vo);
+	}
 
 }
