@@ -31,13 +31,25 @@
 	</select>
 	
 	<select id="code2name" parameterType="memberVO" resultType="aptVO">
-		select member_name from apt a, `member` m where a.apt_code = m.apt_code and m.member_id = #{member_id}
+		select a.* from apt a, `member` m where a.apt_code = m.apt_code and m.member_id = #{member_id}
         <!-- select a.name from apt a, apt_member an where a.code = an.code and an.id = #{id} -->
     </select>
 	
 	<select id="idck" parameterType="memberVO" resultType="memberVO">
 		select * from member where member_id = #{member_id}
 	</select>
+	
+	<!-- 버스정류장 update기능 -->
+	<update id="upstop" parameterType="memberVO">
+		update member set stop_id = #{stop_id} where member_id = #{member_id}
+	</update>
+	
+	
+	
+	
+	
+	
+	
 	
 	
 </mapper>
