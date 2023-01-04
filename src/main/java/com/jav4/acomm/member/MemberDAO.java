@@ -16,8 +16,8 @@ public class MemberDAO {
         return my.selectOne("member.print", vo);
     }
     
-    public List<MemberVO> all() {
-        return my.selectList("member.all");
+    public List<MemberVO> all(MemberVO vo) {
+        return my.selectList("member.all", vo);
     }
     
     public void insert(MemberVO vo) {
@@ -47,14 +47,4 @@ public class MemberDAO {
     public void upstop(MemberVO vo) {
 		my.update("member.upstop", vo);
 	}
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }

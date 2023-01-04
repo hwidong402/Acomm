@@ -23,7 +23,8 @@
 	</select>
 	
 	<select id="all" resultType="memberVO">
-		select * from member 
+		 select * from member where member_cls = '0'
+<!-- 		select * from member where member_cls = '0' and apt_code = ${apt_code} -->
 	</select>
 	
 	<select id="login" parameterType="memberVO" resultType="memberVO">
@@ -38,18 +39,11 @@
 	<select id="idck" parameterType="memberVO" resultType="memberVO">
 		select * from member where member_id = #{member_id}
 	</select>
-	
+
 	<!-- 버스정류장 update기능 -->
 	<update id="upstop" parameterType="memberVO">
 		update member set stop_id = #{stop_id} where member_id = #{member_id}
 	</update>
-	
-	
-	
-	
-	
-	
-	
 	
 	
 </mapper>
