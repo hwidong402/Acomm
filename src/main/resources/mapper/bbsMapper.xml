@@ -68,6 +68,10 @@
 		update bbs set bbs_count = bbs_count+1 where bbs_id = #{bbs_id}
 	</update>
 	
+	<update id="bbshotlike" parameterType="likeVO">
+		UPDATE bbs SET bbs_like = CONCAT(bbs_like, ', #{member_id}') WHERE bbs_id = #{bbs_id}
+	</update>
+	
 </mapper>
 
 
