@@ -1,36 +1,33 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-	rel="stylesheet">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-	
 	<!-- 최상단 nav -->
 	<nav class="navbar navbar-expand-lg bg-light">
 	  <div class="container-fluid">
-	    <a class="navbar-brand" href="to_homepage.bbs">A-Comm</a>
+	    <a class="navbar-brand" href="openHomepage">A-Comm</a>
 	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 	        <li class="nav-item dropdown">
-	          <a class="nav-link dropdown-toggle" href="open.bbs" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	          <a class="nav-link dropdown-toggle" href="openBbs" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	            커뮤니티
 	          </a>
 	          <ul class="dropdown-menu">
-	            <li><a class="dropdown-item" href="bbs_cate.bbs?bbs_cate=noti">noti</a></li>
-	            <li><a class="dropdown-item" href="bbs_cate.bbs?bbs_cate=hot">hot</a></li>
-	            <li><a class="dropdown-item" href="bbs_cate.bbs?bbs_cate=free">free</a></li>
-	            <li><a class="dropdown-item" href="bbs_cate.bbs?bbs_cate=market">market</a></li>
-	            <li><a class="dropdown-item" href="bbs_cate.bbs?bbs_cate=sugg">sugg</a></li>
-	            <li><a class="dropdown-item" href="bbs_cate.bbs?bbs_cate=worry">worry</a></li>
+	         	<li><a class="dropdown-item" href="openBbs">bbs</a></li>
+	          	<li><hr class="dropdown-divider"></li>
+	            <li><a class="dropdown-item" href="openBbsCate?bbs_cate=noti">noti</a></li>
+	            <li><a class="dropdown-item" href="openBbsCate?bbs_cate=hot">hot</a></li>
+	            <li><a class="dropdown-item" href="openBbsCate?bbs_cate=free">free</a></li>
+	            <li><a class="dropdown-item" href="openBbsCate?bbs_cate=market">market</a></li>
+	            <li><a class="dropdown-item" href="openBbsCate?bbs_cate=sugg">sugg</a></li>
+	            <li><a class="dropdown-item" href="openBbsCate?bbs_cate=worry">worry</a></li>
 	          </ul>
 	        </li>
 	        <li class="nav-item">
@@ -60,7 +57,7 @@
 	<div class="container mt-5">
 		<div class="row">
 			<div class="col-sm-4">
-				<a href="bbs/write.bbs?bbs_cate=${bbs_cate}"><button class="btn btn-primary">글쓰기</button></a>
+				<a href="openBbsWrite?bbs_cate=${bbs_cate}"><button class="btn btn-primary">글쓰기</button></a>
 			</div>
 			<div class="col-sm-4"></div>
 			<div class="col-sm-4">
@@ -82,7 +79,7 @@
 			<c:forEach var="list" items="${list}">
 				<tr>
 					<td>${list.bbs_id}</td>
-					<td><a href="article.bbs?bbs_id=${list.bbs_id}">${list.bbs_title}</a></td>
+					<td><a href="openBbsPost?bbs_id=${list.bbs_id}">${list.bbs_title}</a></td>
 					<td>${list.bbs_writer}</td>
 				</tr>
 			</c:forEach>

@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +9,7 @@
 	rel="stylesheet">
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
 <style type="text/css">
 .back {
 	text-align: center;
@@ -24,27 +24,27 @@
 		<div class="row">
 			<div class="col-sm-4"></div>
 			<div class="col-sm-4">
-				<form action="up.bbs">
+				<form action="updatePost">
 					<table class="table">
 						<tr>
 							<td>글아이디</td>
-							<td><input name="id" value="${dto.id}" readonly="readonly">
+							<td><input name="bbs_id" value="${post.bbs_id}" readonly="readonly">
 							</td>
 						</tr>
 						<tr>
 							<td>제목</td>
-							<td><input name="title" value="${dto.title}"></td>
+							<td><input name="bbs_title" value="${post.bbs_title}"></td>
 						</tr>
 						<tr>
 							<td>작성자</td>
-							<td><input name="writer" value="${id}" readonly="readonly">
+							<td><input name="bbs_writer" value="${post.bbs_writer}" readonly="readonly">
 							</td>
 						</tr>
 						<tr>
 							<td colspan="2">내용</td>
 						</tr>
 						<tr>
-							<td colspan="2"><textarea cols="40" rows="5" ></textarea></td>
+							<td colspan="2"><textarea cols="40" rows="5" name="bbs_content">${post.bbs_content}</textarea></td>
 						</tr>
 					</table>
 					<!-- 폼의 bbs컬럼에 넣을 값들을 수정하는곳으로 맵핑 -->
@@ -55,7 +55,7 @@
 	</div>
 	<!--수정하지 않고 뒤로가기 호출하면서 bbs에서 검색할 id값을 주기 -->
 	<div class="back">
-		<a href="back2.bbs?id=${dto.id}">
+		<a href="openBbsPost?bbs_id=${post.bbs_id}">
 			<button class="btn btn-danger">뒤로가기</button>
 		</a>
 	</div>
