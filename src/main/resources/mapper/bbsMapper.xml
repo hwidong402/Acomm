@@ -4,27 +4,36 @@
 
 	<!-- cate별로 상세 게시판 보기. --> 
 	<!-- 세션의 apt_code 와 <a href>의 bbs_cate를 둘 다 일치하는 게시글 목록 들고오기 -->
-	<select id="list5" parameterType="bbsVO" resultType="bbsVO">
+	<select id="getList5" parameterType="bbsVO" resultType="bbsVO">
 		select * from bbs where apt_code=#{apt_code} AND bbs_cate=#{bbs_cate} ORDER BY bbs_date DESC limit 5
 	</select>
 	
 	<!-- cate별로 상세 게시판 보기. --> 
 	<!-- 세션의 apt_code 와 <a href>의 bbs_cate를 둘 다 일치하는 게시글 목록 들고오기 -->
-	<select id="all" parameterType="bbsVO" resultType="bbsVO">
+	<select id="getListCate" parameterType="bbsVO" resultType="bbsVO">
 		select * from bbs where apt_code=#{apt_code} AND bbs_cate=#{bbs_cate}
 	</select>
 
 	<!-- 게시글 보기 -->
 	<!-- <a href>의 bbs_id로 게시글 정보 가져오기 -->
-	<select id="one" parameterType="bbsVO" resultType="bbsVO">
+	<select id="getBbsPost" parameterType="bbsVO" resultType="bbsVO">
 		select * from bbs where bbs_id=#{bbs_id}
 	</select>
 	
 	
-	<insert id="create" parameterType="bbsVO">
+	<insert id="insertPost" parameterType="bbsVO">
 		insert into bbs(bbs_title, bbs_date, bbs_writer, bbs_content, bbs_file, apt_code, bbs_notice, bbs_cate) 
 					values(#{bbs_title}, NOW(), #{bbs_writer}, #{bbs_content}, #{bbs_file},#{apt_code},#{bbs_notice},#{bbs_cate})
 	</insert>
+	
+	
+	<update id="updatePost" parameterType="bbsVO">
+		update bbs set bbs_content=#{bbs_content} where bbs_id=#{bbs_id}
+	</update>
+	
+	<delete id="deletePost" parameterType="bbsVO">
+		delete from bbs where bbs_id= #{bbs_id}
+	</delete>
 	
 	<!-- delete, update, all, search, 다시 참조하기--> 
 	

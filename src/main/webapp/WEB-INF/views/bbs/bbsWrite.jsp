@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,9 +22,11 @@ text-align: center;
 	</div>
 	<div class="container mt-5 text-center">
 		<div class="row">
-			<div class="col-sm-4"></div>
+			<div class="col-sm-4">
+				<a href="openBbsCate?bbs_cate=${post.bbs_cate}"><button class="btn btn-danger">뒤로가기</button></a>
+			</div>
 			<div class="col-sm-4" >
-				<form action="create.bbs">
+				<form action="insertPost">
 					<table class="table">
 						<tr>
 							<td>제목</td>
@@ -71,9 +72,6 @@ text-align: center;
 				</form>
 			</div>
 		</div>
-	</div>
-	<div class="back">
-							<a href="noti.bbs"><button  class="btn btn-danger">(공지로)돌아가기</button></a>
 	</div>
 </body>
 </html>

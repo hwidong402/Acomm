@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,25 +15,26 @@
 <link href="resources/css/bbs_struc.css" rel="stylesheet">
 </head>
 <body>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	
 	<!-- 최상단 nav -->
 	<nav class="navbar navbar-expand-lg bg-light">
 	  <div class="container-fluid">
-	    <a class="navbar-brand" href="to_homepage.bbs">A-Comm</a>
+	    <a class="navbar-brand" href="openHomepage">A-Comm</a>
 	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 	        <li class="nav-item dropdown">
-	          <a class="nav-link dropdown-toggle" href="open.bbs" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	          <a class="nav-link dropdown-toggle" href="openBbs" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	            커뮤니티
 	          </a>
 	          <ul class="dropdown-menu">
-	            <li><a class="dropdown-item" href="bbs_cate.bbs?bbs_cate=noti">noti</a></li>
-	            <li><a class="dropdown-item" href="bbs_cate.bbs?bbs_cate=hot">hot</a></li>
-	            <li><a class="dropdown-item" href="bbs_cate.bbs?bbs_cate=free">free</a></li>
-	            <li><a class="dropdown-item" href="bbs_cate.bbs?bbs_cate=market">market</a></li>
-	            <li><a class="dropdown-item" href="bbs_cate.bbs?bbs_cate=sugg">sugg</a></li>
-	            <li><a class="dropdown-item" href="bbs_cate.bbs?bbs_cate=worry">worry</a></li>
+	         	<li><a class="dropdown-item" href="openBbs">bbs</a></li>
+	          	<li><hr class="dropdown-divider"></li>
+	            <li><a class="dropdown-item" href="openBbsCate?bbs_cate=noti">noti</a></li>
+	            <li><a class="dropdown-item" href="openBbsCate?bbs_cate=hot">hot</a></li>
+	            <li><a class="dropdown-item" href="openBbsCate?bbs_cate=free">free</a></li>
+	            <li><a class="dropdown-item" href="openBbsCate?bbs_cate=market">market</a></li>
+	            <li><a class="dropdown-item" href="openBbsCate?bbs_cate=sugg">sugg</a></li>
+	            <li><a class="dropdown-item" href="openBbsCate?bbs_cate=worry">worry</a></li>
 	          </ul>
 	        </li>
 	        <li class="nav-item">
@@ -65,7 +66,7 @@
 	    <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
 		    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 overflow-hidden">
 				<div class="d-grid">
-				 <button class="btn btn-outline-info" onclick="location.href='bbs_cate.bbs?bbs_cate=noti'" type="button">noti 더보기</button>
+				 <button class="btn btn-outline-info" onclick="location.href='openBbsCate?bbs_cate=noti'" type="button">noti 더보기</button>
 				</div>
 				<c:forEach var="list5" items="${list5_noti}">
 			   	<div class="list-group">
@@ -74,14 +75,14 @@
 						  	<small>${list5.bbs_writer}</small>
 							<small>${list5.bbs_date}</small>
 						</div>
-					  	<h5 class="ellipsis"><a href="article.bbs?bbs_id=${list5.bbs_id}">${list5.bbs_title}</a></h5>
+					  	<h5 class="ellipsis"><a href="openBbsPost?bbs_id=${list5.bbs_id}">${list5.bbs_title}</a></h5>
 					</div>
 				</div>
 				</c:forEach>
 		    </div>
 		    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 overflow-hidden">
 				<div class="d-grid">
-				 <button class="btn btn-outline-info" onclick="location.href='bbs_cate.bbs?bbs_cate=hot'" type="button">hot 더보기</button>
+				 <button class="btn btn-outline-info" onclick="location.href='openBbsCate?bbs_cate=hot'" type="button">hot 더보기</button>
 				<jsp:include page="../../../bbshot.jsp"></jsp:include>
 				</div>
 				<c:forEach var="list5" items="${list5_hot}">
@@ -91,7 +92,7 @@
 						  	<small>${list5.bbs_writer}</small>
 							<small>${list5.bbs_date}</small>
 						</div>
-					  	<h5 class="ellipsis"><a href="article.bbs?bbs_id=${list5.bbs_id}">${list5.bbs_title}</a></h5>
+					  	<h5 class="ellipsis"><a href="openBbsPost?bbs_id=${list5.bbs_id}">${list5.bbs_title}</a></h5>
 					</div>
 				</div>
 				</c:forEach>
@@ -102,7 +103,7 @@
 	    <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
 		    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 overflow-hidden">
 				<div class="d-grid">
-				 <button class="btn btn-outline-info" onclick="location.href='bbs_cate.bbs?bbs_cate=free'" type="button">free 더보기</button>
+				 <button class="btn btn-outline-info" onclick="location.href='openBbsCate?bbs_cate=free'" type="button">free 더보기</button>
 				</div>
 				<c:forEach var="list5" items="${list5_free}">
 			   	<div class="list-group">
@@ -111,14 +112,14 @@
 						  	<small>${list5.bbs_writer}</small>
 							<small>${list5.bbs_date}</small>
 						</div>
-					  	<h5 class="ellipsis"><a href="article.bbs?bbs_id=${list5.bbs_id}">${list5.bbs_title}</a></h5>
+					  	<h5 class="ellipsis"><a href="openBbsPost?bbs_id=${list5.bbs_id}">${list5.bbs_title}</a></h5>
 					</div>
 				</div>
 				</c:forEach>
 		    </div>
 		    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 overflow-hidden">
 				<div class="d-grid">
-				 <button class="btn btn-outline-info" onclick="location.href='bbs_cate.bbs?bbs_cate=market'" type="button">market 더보기</button>
+				 <button class="btn btn-outline-info" onclick="location.href='openBbsCate?bbs_cate=market'" type="button">market 더보기</button>
 				</div>
 				<c:forEach var="list5" items="${list5_market}">
 			   	<div class="list-group">
@@ -127,7 +128,7 @@
 						  	<small>${list5.bbs_writer}</small>
 							<small>${list5.bbs_date}</small>
 						</div>
-					  	<h5 class="ellipsis"><a href="article.bbs?bbs_id=${list5.bbs_id}">${list5.bbs_title}</a></h5>
+					  	<h5 class="ellipsis"><a href="openBbsPost?bbs_id=${list5.bbs_id}">${list5.bbs_title}</a></h5>
 					</div>
 				</div>
 				</c:forEach>
@@ -138,7 +139,7 @@
 	    <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
 		    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 overflow-hidden">
 				<div class="d-grid">
-				 <button class="btn btn-outline-info" onclick="location.href='bbs_cate.bbs?bbs_cate=sugg'" type="button">sugg 더보기</button>
+				 <button class="btn btn-outline-info" onclick="location.href='openBbsCate?bbs_cate=sugg'" type="button">sugg 더보기</button>
 				</div>
 				<c:forEach var="list5" items="${list5_sugg}">
 			   	<div class="list-group">
@@ -147,14 +148,14 @@
 						  	<small>${list5.bbs_writer}</small>
 							<small>${list5.bbs_date}</small>
 						</div>
-					  	<h5 class="ellipsis"><a href="article.bbs?bbs_id=${list5.bbs_id}">${list5.bbs_title}</a></h5>
+					  	<h5 class="ellipsis"><a href="openBbsPost?bbs_id=${list5.bbs_id}">${list5.bbs_title}</a></h5>
 					</div>
 				</div>
 				</c:forEach>
 		    </div>
 		    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 overflow-hidden">
 				<div class="d-grid">
-				 <button class="btn btn-outline-info" onclick="location.href='bbs_cate.bbs?bbs_cate=worry'" type="button">worry 더보기</button>
+				 <button class="btn btn-outline-info" onclick="location.href='openBbsCate?bbs_cate=worry'" type="button">worry 더보기</button>
 				</div>
 				<c:forEach var="list5" items="${list5_worry}">
 			   	<div class="list-group">
@@ -163,7 +164,7 @@
 						  	<small>${list5.bbs_writer}</small>
 							<small>${list5.bbs_date}</small>
 						</div>
-					  	<h5 class="ellipsis"><a href="article.bbs?bbs_id=${list5.bbs_id}">${list5.bbs_title}</a></h5>
+					  	<h5 class="ellipsis"><a href="openBbsPost?bbs_id=${list5.bbs_id}">${list5.bbs_title}</a></h5>
 					</div>
 				</div>
 				</c:forEach>
