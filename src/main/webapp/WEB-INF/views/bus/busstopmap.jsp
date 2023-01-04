@@ -12,8 +12,8 @@
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4611b2688b283a9862933471078a1361"></script>
 <script>
-var lat=<%=session.getAttribute("lat")%>;
-var lon=<%=session.getAttribute("lon")%>;
+var lat=${vo.apt_lat};
+var lon=${vo.apt_lon};
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 
         center: new kakao.maps.LatLng(lat, lon), // 지도의 중심좌표

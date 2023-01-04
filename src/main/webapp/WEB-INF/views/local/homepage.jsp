@@ -6,6 +6,28 @@
 <head>
 <meta charset="UTF-8">
 <title>${apt.apt_name}에오신것을 환영합니다!</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+var key="0QABlWOjjNUTH6AflytlfpxXTM2vig%2FbrTph8sbBtvWn80oDTHnmpv%2FzKgQOReCP6x%2BEWLnHq%2B6Pg4SsOYhopQ%3D%3D";//인증키
+$(function() {
+$.ajax({
+			url : "http://apis.data.go.kr/6260000/BusanBIMS/stopArrByBstopid?serviceKey="+key+"&bstopid=163900101",
+					success : function(x) {
+				var table = "<table class="+"table table-dark table-striped"+"><tr><td>버스번호</td><td>남은 시간</td><td>남은 정류장</td></tr>"; // table 만드는 기능
+				$(x).find("item").each(function () {
+					var no=$(this).find("lineno").text();
+					var min=$(this).find("min1").text();
+					var station=$(this).find("station1").text();
+					var info = "<tr><td>"+no+"</td><td>"+min+"</td><td>"+station+"</td></tr>"; //table 항목 추가하기
+					table+=info;
+				})
+					$('#bus').append(table+"</table>");//테이블 입력
+			}
+		  })
+})
+</script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -55,7 +77,7 @@ li {
 			<ul class="nav justify-content-center">
 				<li class="nav-item"><a href="introduce.jsp">아파트 소개</a></li>
 				<li class="nav-item"><a href="notification.jsp">공지사항</a></li>
-				<li class="nav-item"><a href="open.bbs">커뮤니티</a></li>
+				<li class="nav-item"><a href="openBbs">커뮤니티</a></li>
 				<li class="nav-item"><a href="matjip.jsp">주변 맛집</a></li>
 			</ul>
 		</div>
@@ -93,6 +115,14 @@ li {
 				
 			</table>
 		</div>
+	</div>
+	<div id="buslogic" style="width:600px;">
+	<a href=bus/busstopmap.bus?apt_lat=${apt.apt_lat}&apt_lon=${apt.apt_lon}><button>다른 정류장 보기1</button></a>
+<a href=bus/busstopmap2.bus?apt_lat=${apt.apt_lat}&apt_lon=${apt.apt_lon}><button>다른 정류장 보기2</button></a>
+<a href=bus/busstopmap3.bus?apt_lat=${apt.apt_lat}&apt_lon=${apt.apt_lon}><button>다른 정류장 보기3</button></a>
+<a href=bus/busstopmap4.bus?apt_lat=${apt.apt_lat}&apt_lon=${apt.apt_lon}><button>다른 정류장 보기4</button></a>
+<!-- 도착정보 결과 --> 
+<div id="bus" style="width:400px;height:350px;" ></div> 
 	</div>
 </body>
 </html>

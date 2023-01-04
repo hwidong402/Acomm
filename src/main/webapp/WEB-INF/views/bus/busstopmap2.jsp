@@ -18,8 +18,8 @@ $(function() {
 	<c:forEach var="dto" items="${list}">
 		var data = new Object() ;
 		 data.content ="<div>${dto.stop_name}</div>";
-		 data.latlng  = new kakao.maps.LatLng(${dto.stop_lat}, ${dto.stop_lon}); 
 	
+		 data.latlng  = new kakao.maps.LatLng(${dto.stop_lat},${dto.stop_lon}); 
 		// 객체 생성
 		testList.push(data);
 		</c:forEach>
@@ -32,8 +32,8 @@ $(function() {
 	// String 형태로 변환
 	var jsonData = JSON.stringify(testList) ;
 		
-	var lat=${lat};	
-	var lon=${lon};
+	var lat=${vo.apt_lat};	
+	var lon=${vo.apt_lon};
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
     mapOption = { 
         center: new kakao.maps.LatLng(lat, lon), // 지도의 중심좌표

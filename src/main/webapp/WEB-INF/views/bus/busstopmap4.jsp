@@ -87,8 +87,18 @@ function makeClickListener(map, marker, infowindow ) {
     	
     };
 }
-
-});
+$('#upstop').click(function () {
+	$.ajax({
+		url:"up",
+		data: {
+			stop_id : bstopid
+		},
+		success: function(x) {
+			$('#result').html(x)
+		}
+	})
+})
+})
 </script>
     
 </head>
