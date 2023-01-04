@@ -85,10 +85,12 @@ public class MemberController {
     
     
     @RequestMapping("maneger/everyinfo")// 관리자만 볼 수 있음.
-    public void everyinfo(MemberVO vo, Model model ) {
-    	System.out.println(vo);
-    	List<MemberVO> list = dao.all();
-         model.addAttribute("list", list);
+    public void everyinfo(MemberVO vo, Model model, HttpSession session) {
+    	vo.setApt_code((String)session.getAttribute("code"));
+    	//System.out.println(vo);
+    	List<MemberVO> list = dao.all(vo);
+        model.addAttribute("list", list);
+        //System.out.println(list);
         
     }
     

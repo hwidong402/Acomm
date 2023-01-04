@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<c:forEach var="vo" items="${list}">
+ <c:forEach var="vo" items="${list}">
 
 회원 아이디: ${vo.member_id} <br> <!--el: expression language, 속성으로 지정한 것만 프린트!-->
 회원 이름: ${vo.member_name} <br> <!--el: expression language, 속성으로 지정한 것만 프린트!-->

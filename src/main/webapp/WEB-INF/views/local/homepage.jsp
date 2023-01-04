@@ -75,8 +75,9 @@ li {
 		<div id="nav">
 			<!-- Links -->
 			<ul class="nav justify-content-center">
-				<li class="nav-item"><a href="introduce.jsp">아파트 소개</a></li>
+<li class="nav-item"><a href="introduce.jsp">아파트 소개</a></li>
 				<li class="nav-item"><a href="notification.jsp">공지사항</a></li>
+				<li class="nav-item"><a href="open.aptsell">부동산</a></li>
 				<li class="nav-item"><a href="openBbs">커뮤니티</a></li>
 				<li class="nav-item"><a href="matjip.jsp">주변 맛집</a></li>
 			</ul>
