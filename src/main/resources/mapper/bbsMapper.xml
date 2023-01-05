@@ -13,24 +13,29 @@
 	<select id="getListCate" parameterType="bbsVO" resultType="bbsVO">
 		select * from bbs where apt_code=#{apt_code} AND bbs_cate=#{bbs_cate}
 	</select>
-
+	
+	<!-- noti write버튼 admin 필터링 -->
+	<!-- id로 cls 확인 -->
+	<select id="id2cls" parameterType="memberVO" resultType="memberVO">
+        select member_cls from member where member_id=#{member_id}
+    </select>
+	
 	<!-- 게시글 보기 -->
 	<!-- <a href>의 bbs_id로 게시글 정보 가져오기 -->
 	<select id="getBbsPost" parameterType="bbsVO" resultType="bbsVO">
 		select * from bbs where bbs_id=#{bbs_id}
 	</select>
 	
-	
+	<!-- 게시글 삽입 -->
 	<insert id="insertPost" parameterType="bbsVO">
 		insert into bbs(bbs_title, bbs_date, bbs_writer, bbs_content, bbs_file, apt_code, bbs_notice, bbs_cate) 
 					values(#{bbs_title}, NOW(), #{bbs_writer}, #{bbs_content}, #{bbs_file},#{apt_code},#{bbs_notice},#{bbs_cate})
 	</insert>
-	
-	
+	<!-- 게시글 수정 -->
 	<update id="updatePost" parameterType="bbsVO">
 		update bbs set bbs_content=#{bbs_content} where bbs_id=#{bbs_id}
 	</update>
-	
+	<!-- 게시글 삭제 -->
 	<delete id="deletePost" parameterType="bbsVO">
 		delete from bbs where bbs_id= #{bbs_id}
 	</delete>
