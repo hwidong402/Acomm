@@ -69,7 +69,7 @@ function makeClickListener(map, marker, infowindow ) {
 			url : "http://apis.data.go.kr/6260000/BusanBIMS/stopArrByBstopid?serviceKey="+key+"&bstopid="+bstopid,
 					success : function(x) {
 				var title = "<h3>"+stopname+"</h3>"+"<a href=upstop.bus?stop_id="+bstopid+"><button>즐겨찾기 등록</button></a>";
-				var table = "<table class="+"table table-dark table-striped"+"><tr><td style='width:40%'>버스번호</td><td>남은 시간</td><td>남은 정류장</td></tr>"; // table 만드는 기능
+				var table = "<table class="+"table table-dark table-striped"+"><tr><td style='width:80px;'>버스번호</td><td style='width:80px;'>남은 시간</td><td style='width:100px;'>남은 정류장</td></tr>"; // table 만드는 기능
 				$(x).find("item").each(function () {
 					var no=$(this).find("lineno").text();
 					var min=$(this).find("min1").text();
