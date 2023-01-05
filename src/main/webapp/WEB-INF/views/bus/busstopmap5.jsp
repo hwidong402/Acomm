@@ -54,14 +54,21 @@ var icontent="<div>"+x[i].stop_name+"</div>"
 })//list.bus ajax end
 function makeClickListener(map, marker, infowindow ) {
     return function() {
-    	var stopname= infowindow.getContent();
     	bstopid=marker.getTitle();
+    	var stopname
+    	$.ajax({
+			url:"stopsearch.bus",
+			data:{ stop_id:bstopid},
+			success : function(x){
+			stopname=x.stop_name;	
+			}
+		})
+		
     	
-    	infowindow.setContent("");
     	$.ajax({
 			url : "http://apis.data.go.kr/6260000/BusanBIMS/stopArrByBstopid?serviceKey="+key+"&bstopid="+bstopid,
 					success : function(x) {
-				var title = stopname+"<a href=upstop.bus?stop_id="+bstopid+"><button>즐겨찾기 등록</button></a>";
+				var title = "<h3>"+stopname+"</h3>"+"<a href=upstop.bus?stop_id="+bstopid+"><button>즐겨찾기 등록</button></a>";
 				var table = "<table class="+"table table-dark table-striped"+"><tr><td style='width:40%'>버스번호</td><td>남은 시간</td><td>남은 정류장</td></tr>"; // table 만드는 기능
 				$(x).find("item").each(function () {
 					var no=$(this).find("lineno").text();
