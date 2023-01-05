@@ -5,9 +5,10 @@
 		insert into bus_stop values(#{stop_id}, #{stop_lat}, #{stop_lon}, #{stop_name})
 	</insert> -->
 	
-	<update id="up" parameterType="busstopVO">
-		update bbs set content=#{content} where id=#{id}
-	</update>
+	<select id="one" parameterType="busstopVO" resultType="busstopVO">
+	select * from bus_stop where stop_id= #{stop_id}
+	</select>
+	
 	<!-- 버스정류장 정보 다들고오기 -->
 	<select id="all" parameterType="busstopVO" resultType="busstopVO">
 	select * from bus_stop

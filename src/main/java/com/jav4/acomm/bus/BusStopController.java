@@ -17,8 +17,6 @@ import com.jav4.acomm.member.MemberVO;
 public class BusStopController {
 	
 	@Autowired
-	BusStopDAO dao;
-	@Autowired
 	BusStopSercive service;
 	
 	@RequestMapping("bus/busstopmap.bus")
@@ -39,23 +37,40 @@ public class BusStopController {
 		model.addAttribute("vo",vo);
 		model.addAttribute("list",list);
 	}	
-	@RequestMapping("bus/busstopmap4.bus")
-	public void mapinfo4(AptVO vo, Model model) {
+	@RequestMapping("busstopmap4.bus")
+	public String mapinfo4(AptVO vo, Model model) {
 		List<BusStopVO> list= service.all();
 		model.addAttribute("list",list);
 		model.addAttribute("vo",vo);
+		return "bus/busstopmap4";
 	}
-	@RequestMapping("all.bus")
-	@ResponseBody
-	public List<BusStopVO> mapinfo5(AptVO vo, Model model ) {
-		 service.all();
+	@RequestMapping("busstopmap5.bus")
+	public String mapinfo5(AptVO vo, Model model) {
 		model.addAttribute("vo",vo);
+		
+		return "bus/busstopmap5";
+	}
+	@RequestMapping("list.bus")
+	@ResponseBody
+	public List<BusStopVO> mapinfo5( ) {
+		
 		return service.all();
 	}
 	@RequestMapping("upstop.bus")
-	public void upstop(MemberVO vo, HttpSession session ) {
+	public String upstop(MemberVO vo, HttpSession session,Model model ) {
 		vo.setMember_id((String)session.getAttribute("id"));
-		service.upstop(vo);
-		
+		System.out.println(vo.getStop_id());
+		boolean a=service.upstop(vo);
+		System.out.println("update 문 성공여부 >"+a);
+		MemberVO vo2= service.idck(vo);
+		AptVO vo3=service.code2name(vo2);
+		model.addAttribute("member", vo2);
+        model.addAttribute("apt", vo3);
+        return "local/homepage";
+	}	
+	@RequestMapping("stopsearch.bus")
+	@ResponseBody
+	public BusStopVO stopsearch(BusStopVO vo ) {
+		return service.one(vo);
 	}
 }

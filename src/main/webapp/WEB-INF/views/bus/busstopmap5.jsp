@@ -15,21 +15,7 @@ var bstopid="";
 $(function() {
 	// JSON으로 만들 리스트 생성
 	var incontent="";
-	var testList = new Array() ;
-	// 모델로 받은 list에서 객체 꺼내서 변환용 array에 넣기
-	<c:forEach var="dto" items="${list}">
-		// 객체 생성
-		var data = new Object() ;
-		 data.content ="<div>${dto.stop_name}</div>";
-		 //정류소id
-		 data.id =${dto.stop_id};
-		 //정류소 kakaomap용 좌표
-		 data.latlng  = new kakao.maps.LatLng(${dto.stop_lat},${dto.stop_lon});
-		//객체 넣기
-		 testList.push(data);
-		</c:forEach>
-	// String 형태로 변환
-	var jsonData = JSON.stringify(testList) ;
+
 	//접속된 아이디의 apt 좌표
 	var lat=${vo.apt_lat};	
 	var lon=${vo.apt_lon};
@@ -40,20 +26,22 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
     };
 
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-// 켜져있는 infowindow를 저장하기 위한 객체
-var selectedinfowindow="";
-for (var i = 0; i < testList.length; i ++) {
+$.ajax({
+	url:"list.bus",
+	success : function(x){
+		
+		
+for (var i = 0; i < x.length; i ++) {
     // 마커를 생성합니다
     var marker = new kakao.maps.Marker({
-        title:testList[i].id,// 실시간 버스 시간 검색에 사용할 id값 불러오는 용
+        title:x[i].stop_id,// 실시간 버스 시간 검색에 사용할 id값 불러오는 용
     	map: map, // 마커를 표시할 지도
-        position: testList[i].latlng // 마커의 위치
+        position: new kakao.maps.LatLng(x[i].stop_lat,x[i].stop_lon) // 마커의 위치
     });
-
+var icontent="<div>"+x[i].stop_name+"</div>"
     // 마커에 표시할 인포윈도우를 생성합니다 
  var infowindow = new kakao.maps.InfoWindow({
-        content: testList[i].content, // 인포윈도우에 표시할 내용
+        content: icontent, // 인포윈도우에 표시할 내용
   		removable :true
  });
   	
@@ -61,7 +49,9 @@ for (var i = 0; i < testList.length; i ++) {
     // 이벤트 리스너로는 클로저를 만들어 등록합니다 
     // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
     kakao.maps.event.addListener(marker, 'click', makeClickListener(map, marker, infowindow ) );
-}
+}//marker for문 end
+	}//success end
+})//list.bus ajax end
 function makeClickListener(map, marker, infowindow ) {
     return function() {
     	var stopname= infowindow.getContent();
@@ -71,8 +61,8 @@ function makeClickListener(map, marker, infowindow ) {
     	$.ajax({
 			url : "http://apis.data.go.kr/6260000/BusanBIMS/stopArrByBstopid?serviceKey="+key+"&bstopid="+bstopid,
 					success : function(x) {
-				var title = stopname+"<a href=bus/busstopmap4.bus?apt_lat=${vo.apt_lat}&apt_lon=${vo.apt_lon}><button>즐겨찾기 등록</button></a>";
-				var table = "<table class="+"table table-dark table-striped"+"><tr><td>버스번호</td><td>남은 시간</td><td>남은 정류장</td></tr>"; // table 만드는 기능
+				var title = stopname+"<a href=upstop.bus?stop_id="+bstopid+"><button>즐겨찾기 등록</button></a>";
+				var table = "<table class="+"table table-dark table-striped"+"><tr><td style='width:40%'>버스번호</td><td>남은 시간</td><td>남은 정류장</td></tr>"; // table 만드는 기능
 				$(x).find("item").each(function () {
 					var no=$(this).find("lineno").text();
 					var min=$(this).find("min1").text();

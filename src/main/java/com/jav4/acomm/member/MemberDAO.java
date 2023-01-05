@@ -44,7 +44,7 @@ public class MemberDAO {
         return my.selectOne("member.idck", vo);
     }
     
-    public void upstop(MemberVO vo) {
-		my.update("member.upstop", vo);
+    public int upstop(MemberVO vo) {
+		return my.update("member.upstop", vo);
 	}
 }
