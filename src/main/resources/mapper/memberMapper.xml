@@ -23,8 +23,7 @@
 	</select>
 	
 	<select id="all" resultType="memberVO">
-		 select * from member where member_cls = '0'
-<!-- 		select * from member where member_cls = '0' and apt_code = ${apt_code} -->
+		 select * from member where member_cls = '0' and apt_code = #{apt_code}
 	</select>
 	
 	<select id="login" parameterType="memberVO" resultType="memberVO">
