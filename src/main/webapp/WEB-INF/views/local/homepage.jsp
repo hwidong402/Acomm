@@ -10,11 +10,28 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript">
 	var key = "0QABlWOjjNUTH6AflytlfpxXTM2vig%2FbrTph8sbBtvWn80oDTHnmpv%2FzKgQOReCP6x%2BEWLnHq%2B6Pg4SsOYhopQ%3D%3D";//인증키
+	var bstopid=${member.stop_id}
+	alert(bstopid)
+	//정류장 즐겨찾기 미등록 id
 	$(function() {
-		$
-				.ajax({
+	if(bstopid==null){
+		$('#bus').append(
+		"<a href=busstopmap5.bus?apt_lat=${apt.apt_lat}&apt_lon=${apt.apt_lon}><button>즐겨찾는 정류장을 등록해주세요!</button></a>"
+				);
+	}//if null end
+	if(bstopid!=null){
+		//정류장 이름 불러오기
+		$.ajax({
+			url:"stopsearch.bus",
+			data:{ stop_id:bstopid},
+			success : function(x){
+				$('#bus').append("<h3>"+x.stop_name+"</h3>");
+			}
+		})
+	// 실시간 버스 도착정보 ajax
+		$.ajax({
 					url : "http://apis.data.go.kr/6260000/BusanBIMS/stopArrByBstopid?serviceKey="
-							+ key + "&bstopid=163900101",
+							+ key + "&bstopid="+bstopid,
 					success : function(x) {
 						var table = "<table class="+"table table-dark table-striped"+"><tr><td>버스번호</td><td>남은 시간</td><td>남은 정류장</td></tr>"; // table 만드는 기능
 						$(x).find("item").each(
@@ -29,9 +46,13 @@
 									table += info;
 								})
 						$('#bus').append(table + "</table>");//테이블 입력
+				$('#bus').append(
+						"<a href=busstopmap5.bus?apt_lat=${apt.apt_lat}&apt_lon=${apt.apt_lon}><button>즐겨찾는 정류장 변경하기</button></a>"
+								);
 					}
-				})
-	})
+				})//ajax end
+	}//if notnull end
+	})//document end
 </script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
@@ -133,9 +154,12 @@ li {
 			href=bus/busstopmap2.bus?apt_lat=${apt.apt_lat}&apt_lon=${apt.apt_lon}><button>다른
 				정류장 보기2</button></a> <a
 			href=bus/busstopmap3.bus?apt_lat=${apt.apt_lat}&apt_lon=${apt.apt_lon}><button>다른
-				정류장 보기3</button></a> --> <a
-			href=bus/busstopmap4.bus?apt_lat=${apt.apt_lat}&apt_lon=${apt.apt_lon}><button >다른
+				정류장 보기3</button></a> --> 
+			<!--
+				<a href=busstopmap4.bus?apt_lat=${apt.apt_lat}&apt_lon=${apt.apt_lon}><button >다른
 				정류장 보기4</button></a>
+				<a	href=busstopmap5.bus?apt_lat=${apt.apt_lat}&apt_lon=${apt.apt_lon}><button >다른
+				정류장 보기5</button></a> -->
 		<!-- 도착정보 결과 -->
 		<div id="bus" style="width: 600px; height: 350px;"></div>
 	</div>

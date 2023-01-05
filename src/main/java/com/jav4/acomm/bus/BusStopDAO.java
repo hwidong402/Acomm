@@ -15,5 +15,8 @@ public class BusStopDAO {
 	public List<BusStopVO> all() {
 		return my.selectList("busstop.all");
 	}
+	public BusStopVO one(BusStopVO vo) {
+		return my.selectOne("busstop.one", vo);
+	}
 	
 }
