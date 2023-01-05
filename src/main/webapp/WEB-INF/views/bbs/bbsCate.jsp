@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="com.jav4.acomm.bbs.BbsVO"%>
+<%@page import="com.jav4.acomm.member.MemberVO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,7 +59,17 @@
 	<div class="container mt-5">
 		<div class="row">
 			<div class="col-sm-4">
+				<%
+					// cate=noti && id의 cls가 0이면 버튼을 안보여줌
+					String bbs_cate = (String)request.getAttribute("bbs_cate");
+					int member_cls = (int)request.getAttribute("member_cls");
+					if(bbs_cate.equals("noti") && member_cls == 0){
+					}else{
+				%>
 				<a href="openBbsWrite?bbs_cate=${bbs_cate}"><button class="btn btn-primary">글쓰기</button></a>
+				<%
+					}
+				%>
 			</div>
 			<div class="col-sm-4"></div>
 			<div class="col-sm-4">

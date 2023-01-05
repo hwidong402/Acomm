@@ -1,10 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="com.jav4.acomm.bbs.BbsVO"%>
-<%
-String id = (String)session.getAttribute("id");
-BbsVO post = (BbsVO)request.getAttribute("post");
-String bbs_writer = post.getBbs_writer();
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +12,19 @@ String bbs_writer = post.getBbs_writer();
 	text-align: right;
 }
 </style>
+<script type="text/javascript">
+	function findcode() {
+		deleteBtn.onclick = function() {
+			if (confirm("게시글을 삭제하시겠습니까")) {
+				alert("게시글삭제");
+				return true;
+			} else {
+				alert("삭제취소");
+				return false;
+			}
+		}
+	}
+</script>
 </head>
 <body>
 	<!-- 최상단 nav -->
@@ -74,10 +82,12 @@ String bbs_writer = post.getBbs_writer();
 			<div id="up" class="col-sm-4">
 				<%
 					// 세션 id와 작성자가 같아야 수정삭제가 보임
-					if (id.equals(bbs_writer)) {  
+					String id = (String)session.getAttribute("id");
+					BbsVO post = (BbsVO)request.getAttribute("post");
+					if (id.equals(post.getBbs_writer())) {  
 				%>
 				<a href="openBbsUpdate?bbs_id=${post.bbs_id}"><button class="btn btn-info">수정</button></a>
-				<a href="deletePost?bbs_id=${post.bbs_id}"><button class="btn btn-warning">삭제</button></a>
+				<a href="deletePost?bbs_id=${post.bbs_id}" id="deleteBtn"><button class="btn btn-warning" onclick="findcode()" >삭제</button></a>
 				<%
 					}
 				%>

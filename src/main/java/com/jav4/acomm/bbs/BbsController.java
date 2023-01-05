@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.jav4.acomm.member.MemberVO;
+
 
 @Controller
 public class BbsController {
@@ -31,7 +33,6 @@ public class BbsController {
 	public String openBbs(BbsVO vo,HttpSession session, Model model) {
 		//(인기제외) cate별로 list를 최신 5개씩 들고와서 넘겨줌 
 		vo.setApt_code((String)session.getAttribute("code")); // 원래는 apt_code
-		//vo.setBbs_cate("free");
 		
 		// Bbs_cate를 다르게 주면서 list5로 넘겨 List VO를 받는다
 		vo.setBbs_cate("noti");
@@ -51,21 +52,28 @@ public class BbsController {
 		model.addAttribute("list5_market", list5_market);
 		model.addAttribute("list5_sugg", list5_sugg);
 		model.addAttribute("list5_worry", list5_worry);
+		System.out.println("open bbs with list5");
 		
 		return "bbs/bbs";
 	}
 	
 	// cate별로 상세 게시판으로 이동. fin
 	@RequestMapping("openBbsCate")
-	public String openBbsCate(BbsVO vo,HttpSession session,Model model) {
+	public String openBbsCate(BbsVO bvo, MemberVO mvo, HttpSession session,Model model) {
 		//세션의 apt_code 와 <a href>의 bbs_cate를 둘 다 일치하는 게시물만 들고오기
-		vo.setApt_code((String)session.getAttribute("code"));
-		// list로 받아서 bbs_cate.jsp로 넘겨줌 
-		List<BbsVO> list = dao.getListCate(vo);
+		bvo.setApt_code((String)session.getAttribute("code"));
+		List<BbsVO> list = dao.getListCate(bvo);
 		model.addAttribute("list", list);
-		System.out.println("들고온 list >> " + list);
+		System.out.println("open this cate list >> " + list);
+		
+		// noti write버튼 admin 필터링
+		// id로 cls 확인 후 값 넘겨주기 
+		mvo.setMember_id((String)session.getAttribute("id"));
+		MemberVO member_cls = dao.id2cls(mvo); // member 정보 다 들고올 수 있는데 리소스 생각해서 cls 만
+		model.addAttribute("member_cls", member_cls.getMember_cls());
+		
 		// write용 cate 값 넘겨주기 
-		model.addAttribute("bbs_cate", vo.getBbs_cate());
+		model.addAttribute("bbs_cate", bvo.getBbs_cate());
 		return "bbs/bbsCate";
 	}
 	
@@ -76,7 +84,7 @@ public class BbsController {
 		BbsVO post = dao.getBbsPost(vo);
 		// post로 받아서 bbsPost.jsp로 넘겨줌
 		model.addAttribute("post", post);
-		System.out.println("들고온 post >> " + post);
+		System.out.println("open this post >> " + post);
 		return "bbs/bbsPost";
 	}
 	
@@ -84,6 +92,7 @@ public class BbsController {
 	@RequestMapping("openBbsWrite")
 	public String openBbsWrite(BbsVO vo, Model model) {
 		model.addAttribute("bbs_cate", vo.getBbs_cate());
+		System.out.println("open >>" + vo.getBbs_cate() + "<< cate write page");
 		return "bbs/bbsWrite";
 	}
 	
@@ -94,7 +103,7 @@ public class BbsController {
 		BbsVO post = dao.getBbsPost(vo);
 		// post로 받아서 bbsUpdate.jsp로 넘겨줌
 		model.addAttribute("post", post);
-		System.out.println("들고온 post >> " + post);
+		System.out.println("update this post >> " + post);
 		return "bbs/bbsUpdate";
 	}
 	

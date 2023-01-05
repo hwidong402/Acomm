@@ -6,6 +6,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.jav4.acomm.member.MemberVO;
+
+
 @Component
 public class BbsDAO {
 
@@ -25,6 +28,12 @@ public class BbsDAO {
 		List<BbsVO> list = my.selectList("bbs.getListCate", vo);
 		return list;
 	}
+	
+	// noti write버튼 admin 필터링
+	// id로 cls 확인
+	public MemberVO id2cls(MemberVO mvo) { // memberVO import
+        return my.selectOne("bbs.id2cls", mvo);
+    }
 	
 	// 게시글 보기
 	// <a href>의 bbs_id로 게시글 정보 가져오기
