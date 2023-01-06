@@ -66,11 +66,13 @@
 	  </div>
 	</nav>
 
-	<!-- 본문 -->
-
-	<div class="container p-5 my-5 text-center">
+	<!-- 헤더? -->
+	<div class="container p-3 my-3 text-center">
 		<h1>게시글 상세보기</h1>
 	</div>
+	
+	<hr>
+	<!-- 버튼 -->
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-4">
@@ -92,7 +94,9 @@
 			</div>
 		</div>
 	</div>
+	
 	<hr>
+	<!-- 본문 -->
 	<div class="container mt-5 text-center">
 		<table class="table">
 			<tr style="border: 1px solid blue">
@@ -111,7 +115,7 @@
 				<td>${post.bbs_notice}</td>
 				<td>${post.bbs_cate}</td>
 				<td>${post.bbs_count}</td>
-				<td>${post.bbs_like}</td>
+				<td><%-- ${post.bbs_like} --%></td>
 			</tr>
 			<tr>
 				<td colspan="7">내용</td>

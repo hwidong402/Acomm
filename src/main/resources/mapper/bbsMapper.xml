@@ -33,7 +33,7 @@
 	</insert>
 	<!-- 게시글 수정 -->
 	<update id="updatePost" parameterType="bbsVO">
-		update bbs set bbs_content=#{bbs_content} where bbs_id=#{bbs_id}
+		update bbs set bbs_title=#{bbs_title}, bbs_content=#{bbs_content}, bbs_cate=#{bbs_cate}, bbs_notice=#{bbs_notice} where bbs_id=#{bbs_id}
 	</update>
 	<!-- 게시글 삭제 -->
 	<delete id="deletePost" parameterType="bbsVO">

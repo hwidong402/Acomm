@@ -17,69 +17,101 @@
 </style>
 </head>
 <body>
-	<div class="container p-5 my-5 text-center bg-primary text-white">
-		<h2>게시글 수정</h2>
+	<!-- 최상단 nav -->
+	<nav class="navbar navbar-expand-lg bg-light">
+	  <div class="container-fluid">
+	    <a class="navbar-brand" href="openHomepage">A-Comm</a>
+	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+	        <li class="nav-item dropdown">
+	          <a class="nav-link dropdown-toggle" href="openBbs" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	            커뮤니티
+	          </a>
+	          <ul class="dropdown-menu">
+	          	<li><a class="dropdown-item" href="openBbs">bbs</a></li>
+	          	<li><hr class="dropdown-divider"></li>
+	            <li><a class="dropdown-item" href="openBbsCate?bbs_cate=noti">noti</a></li>
+	            <li><a class="dropdown-item" href="openBbsCate?bbs_cate=hot">hot</a></li>
+	            <li><a class="dropdown-item" href="openBbsCate?bbs_cate=free">free</a></li>
+	            <li><a class="dropdown-item" href="openBbsCate?bbs_cate=market">market</a></li>
+	            <li><a class="dropdown-item" href="openBbsCate?bbs_cate=sugg">sugg</a></li>
+	            <li><a class="dropdown-item" href="openBbsCate?bbs_cate=worry">worry</a></li>
+	          </ul>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" href="uriapt.jsp">우리 아파트</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" href="urivillage.jsp">우리 동네</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" href="sisol.jsp">시설</a>
+	        </li>
+	      </ul>
+	      <form class="d-flex" role="search">
+	        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+	        <button class="btn btn-outline-success" type="submit">Search</button>
+	      </form>
+	    </div>
+	  </div>
+	</nav>
+
+	<!-- 헤더? -->
+	<div class="container p-3 my-3 text-center">
+		<h1>게시글 수정</h1>
 	</div>
-	<div class="container mt-5 text-center">
+
+	<hr>
+	<!-- 버튼 -->
+	<div class="container">
 		<div class="row">
-			<div class="col-sm-4"></div>
 			<div class="col-sm-4">
-				<form action="updatePost">
-					<table class="table">
-						<tr>
-							<td>글아이디</td>
-							<td><input name="bbs_id" value="${post.bbs_id}" readonly="readonly">
-							</td>
-						</tr>
-						<tr>
-							<td>작성자</td>
-							<td><input name="bbs_writer" value="${post.bbs_writer}" readonly="readonly">
-							</td>
-						</tr>
-						<tr>
-							<td>제목</td>
-							<td><input name="bbs_title" value="${post.bbs_title}"></td>
-						</tr>
-						<tr>
-							<td>cate</td>
-							<td>
-								<select class="form-select" aria-label="Default select example">
-								  <option value="${post.bbs_cate}"selected>${post.bbs_cate}</option>
-								  <option value="info">info</option>
-								  <option value="free">free</option>
-								  <option value="market">market</option>
-								  <option value="sugg">sugg</option>
-								  <option value="worry">worry</option>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<td>noti=아직 안불러옴</td>
-							<td>
-								<div class="form-check form-switch">
-								  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-								  <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td colspan="2">내용</td>
-						</tr>
-						<tr>
-							<td colspan="2"><textarea cols="40" rows="5" name="bbs_content">${post.bbs_content}</textarea></td>
-						</tr>
-					</table>
-					<!-- 폼의 bbs컬럼에 넣을 값들을 수정하는곳으로 맵핑 -->
-					<button class="btn btn-primary">수정완료</button>
-				</form>
+				<a href="openBbsPost?bbs_id=${post.bbs_id}">
+					<button class="btn btn-warning">뒤로가기</button>
+				</a>
 			</div>
 		</div>
 	</div>
-	<!--수정하지 않고 뒤로가기 호출하면서 bbs에서 검색할 id값을 주기 -->
-	<div class="back">
-		<a href="openBbsPost?bbs_id=${post.bbs_id}">
-			<button class="btn btn-danger">뒤로가기</button>
-		</a>
+	
+	<hr>
+	<!-- 본문 -->
+	<div class="container mt-5">
+		<form action="updatePost">
+
+			<div class="mb-3">
+				<label class="form-label">제목</label> 
+				<input class="form-control" name="bbs_title" value="${post.bbs_title}">
+			</div>
+			<div class="mb-3">
+				<label class="form-label">본문</label>
+				<textarea class="form-control"rows="10">${post.bbs_content}</textarea>
+			</div>
+			<div >
+				<span>글쓴이</span> 
+				<input name="bbs_writer" value="${post.bbs_writer}" readonly="readonly"
+					style=" border: none;&:focus {outline: none;}">
+			</div>
+			<div class="input-group mb-3">
+				<label class="input-group-text" for="inputGroupSelect01">cate</label>
+				<select class="form-select" id="inputGroupSelect01">
+					<option value="${post.bbs_cate}"selected>${post.bbs_cate}</option>
+					<option></option>
+					<hr>
+					<option value="info">info</option>
+					<option value="free">free</option>
+					<option value="market">market</option>
+					<option value="sugg">sugg</option>
+					<option value="worry">worry</option>
+				</select>
+			</div>
+				
+			<div class="mb-3">
+				<input name="bbs_notice" value="1" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+				<label class="form-check-label" for="flexSwitchCheckDefault">공지로 포스트하기</label>
+			</div>
+			<!-- 폼의 bbs컬럼에 넣을 값들을 수정하는곳으로 맵핑 -->
+			<button class="btn btn-primary">수정완료</button>
+		</form>
 	</div>
 </body>
 </html>
