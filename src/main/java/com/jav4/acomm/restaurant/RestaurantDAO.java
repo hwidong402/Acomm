@@ -9,9 +9,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class RestaurantDAO {
 
-//	@Autowired
-//	SqlSessionTemplate my;
+	@Autowired
+	SqlSessionTemplate my;
 
-
+	public List<RestaurantVO> list() {
+		return my.selectList("restaurant.list");
+	}
 
 }

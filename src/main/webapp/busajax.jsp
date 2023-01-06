@@ -21,7 +21,17 @@ var list=null;
 		
 	}
 }) */
+
 $.ajax({
+	url:"list.rest",
+	success : function(x){
+		alert(x[0].rest_id)
+		alert(x[0].rest_name)
+		
+	}
+})
+//버스 ajax연습
+/* $.ajax({
 	url:"list.bus",
 	success : function(x){
 		stopname=x[100].stop_name;
@@ -48,7 +58,7 @@ $.ajax({
 					$('#result').append("<div style=width400>"+stopname+"</div>"+table+"</table>");//테이블 입력
 			}
 		  })
-})
+}) */
 </script>
 </head>
 <body>
