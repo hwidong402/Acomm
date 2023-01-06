@@ -59,14 +59,6 @@
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
 	<!-- 휘동 작업 영역  -->
 	<select id="bbshotall" resultType="bbsVO">
 		select * from bbs ORDER BY bbs_date DESC limit 5
@@ -92,18 +84,21 @@
 		insert into bbs_like(bbs_id, member_code, like_time) values (#{bbs_id}, #{member_code}, now())
 	</insert>
 	
+	<select id="bbslikeone" parameterType="bbslikeVO" resultType="bbslikeVO">
+		select * from bbs_like where bbs_id = #{bbs_id}
+	</select>
+	
+	<delete id="bbslikedel" parameterType="bbslikeVO">
+		DELETE FROM bbs_like WHERE bbs_id= #{bbs_id}
+	</delete>
+	
+	
+	
+	
+	
+	
+	
 	
 
 	
 </mapper>
-
-
-
-
-
-
-
-
-
-
-
