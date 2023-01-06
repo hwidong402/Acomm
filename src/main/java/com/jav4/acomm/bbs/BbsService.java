@@ -32,8 +32,20 @@ public class BbsService {
 //	}
 	
 	// 통합 테이블 좋아요 추가
-	public void bbslike(BbslikeVO vo) {
+	public BbslikeVO bbslike(BbslikeVO vo) {
+		BbslikeVO one = dao.bbslikeone(vo);
 		dao.bbslike(vo);
+		return one;
 	}
 	
+	// 통합 테이블 좋아요 취소
+	public BbslikeVO bbslikedel(BbslikeVO vo) {
+		BbslikeVO one = dao.bbslikeone(vo);
+		dao.bbslikedel(vo);
+		return one;
+	}
+	
+	public BbslikeVO bbslikeone(BbslikeVO vo) {
+		return dao.bbslikeone(vo);
+	}
 }
