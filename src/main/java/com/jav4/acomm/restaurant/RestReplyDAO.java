@@ -7,17 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class RestaurantDAO {
+public class RestReplyDAO {
 
 	@Autowired
 	SqlSessionTemplate my;
 
-	public List<RestaurantVO> list() {
-		return my.selectList("restaurant.list");
-	}
-	
-	public RestaurantVO one(RestaurantVO vo) {
-		return my.selectOne("restaurant.one", vo);
+	public List<RestReplyVO> list(RestReplyVO vo) {
+		return my.selectList("restreply.list",vo);
 	}
 
 }
