@@ -6,12 +6,12 @@
 	</insert>
 	
 	<update id="up" parameterType="memberVO">
-		update member set member_pw = #{member_pw}, member_tel = #{member_tel} where member_id = #{member_id}
+		update member set member_pw = #{member_pw}, member_tel = #{member_tel} where member_code = #{member_code}
 		<!-- update apt_member set sub_addr = #{sub_addr} where id = #{id} -->
 	</update>
 	
 	<delete id="del"  parameterType="memberVO">
-		delete from apt_member where id = #{id}
+		update member set member_id = concat('#del/',member_id,'/',round(rand()*100,5)), member_name = '탈퇴한 회원', member_tel = '탈퇴한 회원', sub_addr = '탈퇴한 회원' where member_code  = '1'
 	</delete>
 	
 	<select id="one" parameterType="memberVO" resultType="memberVO">
@@ -19,7 +19,7 @@
 	</select>
 	
 	<select id="print" parameterType="memberVO" resultType="memberVO">
-		select * from member where member_id = #{member_id}
+		select * from member where member_code = #{member_code}
 	</select>
 	
 	<select id="all" resultType="memberVO">
@@ -38,7 +38,6 @@
 	<select id="idck" parameterType="memberVO" resultType="memberVO">
 		select * from member where member_id = #{member_id}
 	</select>
-
 	<!-- 버스정류장 update기능 -->
 	<update id="upstop" parameterType="memberVO">
 		update member set stop_id = #{stop_id} where member_id = #{member_id}

@@ -28,17 +28,18 @@ public class MemberController {
       //local 페이지에서 내 정보로 이동하여 개인정보를 수정할 때 실행되는 컨트롤러
       @RequestMapping("local/m_up")// 수정이 마치면 view아래 local/m_up으로 gogo public void
       public void update(MemberVO vo, HttpSession session) {
-      vo.setMember_id((String)session.getAttribute("id")); 
+      vo.setMember_code((Integer)session.getAttribute("member_code"));
       System.out.println(vo);
       dao.update(vo);
       session.invalidate(); // 로그인으로 돌아가면서 session 풀기
       }
    
-    @RequestMapping("local/myinfo")// 내정보를 보여주는 페이지
-    public void print(MemberVO vo, Model model, HttpSession session) {
-        vo.setMember_id((String)session.getAttribute("id")); 
+    @RequestMapping("myinfo")// 내정보를 보여주는 페이지
+    public String print(MemberVO vo, Model model, HttpSession session) {
+    	vo.setMember_code((Integer)session.getAttribute("member_code"));
         MemberVO one=dao.print(vo);
         model.addAttribute("one",one);
+        return "local/myinfo";
     }
     
     @RequestMapping("m_one")
@@ -60,8 +61,10 @@ public class MemberController {
         if (vo2 == null) {
           return "no";
         } else {
-          session.setAttribute("id", vo2.getMember_id());
+          session.setAttribute("member_code", vo2.getMember_code());
           session.setAttribute("code", vo2.getApt_code());
+          session.setAttribute("id", vo2.getMember_id());
+          session.setAttribute("city", vo3.getApt_city());
           model.addAttribute("member", vo2);
           model.addAttribute("apt", vo3);
           return "local/homepage";
@@ -84,13 +87,14 @@ public class MemberController {
     }
     
     
-    @RequestMapping("maneger/everyinfo")// 관리자만 볼 수 있음.
-    public void everyinfo(MemberVO vo, Model model, HttpSession session) {
+    @RequestMapping("everyinfo")// 관리자만 볼 수 있음.
+    public String everyinfo(MemberVO vo, Model model, HttpSession session) {
     	vo.setApt_code((String)session.getAttribute("code"));
     	//System.out.println(vo);
     	List<MemberVO> list = dao.all(vo);
         model.addAttribute("list", list);
         //System.out.println(list);
+        return "maneger/everyinfo";
         
     }
     

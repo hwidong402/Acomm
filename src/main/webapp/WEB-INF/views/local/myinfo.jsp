@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>내 정보 수정</title>
-<link rel="stylesheet" href="../resources/css/member.css">
+<link rel="stylesheet" href="resources/css/member.css">
 <script type="text/javascript">
 </script>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
