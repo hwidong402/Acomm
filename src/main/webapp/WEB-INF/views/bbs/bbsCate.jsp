@@ -52,11 +52,14 @@
 
 	<hr>
 	
-	<!-- 본문 -->
-	<div class="container p-5 my-5 bg-primary text-white text-center">
-		<h1>${bbs_cate} 게시판</h1>
+	<!-- 헤더? -->
+	<div class="container p-3 my-3 text-center">
+		<h1>cate</h1>
 	</div>
-	<div class="container mt-5">
+
+	<hr>
+	<!-- 버튼 -->
+	<div class="container">
 		<div class="row">
 			<div class="col-sm-4">
 				<%
@@ -71,29 +74,32 @@
 					}
 				%>
 			</div>
-			<div class="col-sm-4"></div>
-			<div class="col-sm-4">
-				<form action="search.bbs">
-					<input name="title">
-					<button class="btn btn-success">검색</button>
-				</form>
-			</div>
 		</div>
 	</div>
+	
 	<hr>
+	<!-- 본문 -->
 	<div class="container mt-5 text-center">
 		<table class="table">
-			<tr>
-				<th>글 번호</th>
-				<th style="width: 70%">글 제목</th>
-				<th>작성자</th>
+			<tr style="border: 1px solid blue">
+				<td>포스트 아이디</td>
+				<td>제목</td>
+				<td>글쓴이</td>
+				<td>공지?</td>
+				<td>카테고리</td>
+				<td>조회수</td>
+				<td>좋아요</td>
 			</tr>
 			<c:forEach var="list" items="${list}">
-				<tr>
-					<td>${list.bbs_id}</td>
-					<td><a href="openBbsPost?bbs_id=${list.bbs_id}">${list.bbs_title}</a></td>
-					<td>${list.bbs_writer}</td>
-				</tr>
+			<tr>
+				<td>${post.bbs_id}</td>
+				<td><a href="openBbsPost?bbs_id=${list.bbs_id}">${list.bbs_title}</a></td>
+				<td>${post.bbs_writer}</td>
+				<td>${post.bbs_notice}</td>
+				<td>${post.bbs_cate}</td>
+				<td>${post.bbs_count}</td>
+				<td><%-- ${post.bbs_like} --%></td>
+			</tr>
 			</c:forEach>
 		</table>
 	</div>

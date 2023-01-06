@@ -76,7 +76,7 @@
 							<small>${list5.bbs_date}</small>
 						</div>
 					  	<h5 class="ellipsis" style="display: inline-block"><a href="openBbsPost?bbs_id=${list5.bbs_id}">${list5.bbs_title}</a></h5>
-					  	<span class="badge bg-primary rounded-pill" style="float: right">♡${list5.bbs_like}</span>
+					  	<span class="badge bg-primary rounded-pill" style="float: right">♡<%-- ${list5.bbs_like} --%></span>
 					  	<span class="badge bg-primary rounded-pill" style="float: right">🖐${list5.bbs_count}</span>
 					</div>
 				</div>
