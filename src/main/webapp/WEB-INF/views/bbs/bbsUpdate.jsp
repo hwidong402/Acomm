@@ -32,12 +32,34 @@
 							</td>
 						</tr>
 						<tr>
+							<td>작성자</td>
+							<td><input name="bbs_writer" value="${post.bbs_writer}" readonly="readonly">
+							</td>
+						</tr>
+						<tr>
 							<td>제목</td>
 							<td><input name="bbs_title" value="${post.bbs_title}"></td>
 						</tr>
 						<tr>
-							<td>작성자</td>
-							<td><input name="bbs_writer" value="${post.bbs_writer}" readonly="readonly">
+							<td>cate</td>
+							<td>
+								<select class="form-select" aria-label="Default select example">
+								  <option value="${post.bbs_cate}"selected>${post.bbs_cate}</option>
+								  <option value="info">info</option>
+								  <option value="free">free</option>
+								  <option value="market">market</option>
+								  <option value="sugg">sugg</option>
+								  <option value="worry">worry</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>noti=아직 안불러옴</td>
+							<td>
+								<div class="form-check form-switch">
+								  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+								  <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+								</div>
 							</td>
 						</tr>
 						<tr>
