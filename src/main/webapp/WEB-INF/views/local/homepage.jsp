@@ -132,11 +132,11 @@ li {
 					<td>
 					<c:choose>
 							<c:when test="${member.member_cls==0}">
-								<a href="local/myinfo"><button
+								<a href="myinfo"><button
 										class="btn btn-outline-primary" style="width: 200px;">내정보</button></a>
 							</c:when>
 							<c:when test="${member.member_cls==1}">
-								<a href="maneger/everyinfo"><button
+								<a href="everyinfo"><button
 										class="btn btn-outline-primary" style="width: 200px;">회원관리</button></a>
 							</c:when>
 					</c:choose>

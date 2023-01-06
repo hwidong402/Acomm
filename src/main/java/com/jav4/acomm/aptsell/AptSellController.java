@@ -1,16 +1,12 @@
 package com.jav4.acomm.aptsell;
-
 import java.util.List;
-
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import com.jav4.acomm.apt.AptVO;
 import com.jav4.acomm.member.MemberVO;
-
 @Controller
 public class AptSellController {
 	
@@ -18,10 +14,12 @@ public class AptSellController {
 	AptSellDAO dao;	
 	
 	@RequestMapping("open.aptsell")
-	public String open(MemberVO vo,HttpSession session, Model model) {
+	public String open(MemberVO vo, AptVO vo2, HttpSession session, Model model) {
 	
-		vo.setApt_code((String)session.getAttribute("code")); 
+		vo.setApt_code((String)session.getAttribute("code"));
+		vo2.setApt_city((String)session.getAttribute("city"));
 		System.out.println(vo);
+		System.out.println(vo2);
 		
 		
 		return "aptsell/aptinfo";
