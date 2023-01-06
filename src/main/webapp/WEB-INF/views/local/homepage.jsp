@@ -108,7 +108,7 @@ li {
 				<!-- <li class="nav-item"><a href="notification.jsp">공지사항</a></li> -->
 				<li class="nav-item"><a href="open.aptsell">부동산</a></li>
 				<li class="nav-item"><a href="openBbs">커뮤니티</a></li>
-				<li class="nav-item"><a href="matjip.jsp">주변 맛집</a></li>
+				<li class="nav-item"><a href="matjip?apt_lat=${apt.apt_lat}&apt_lon=${apt.apt_lon}">주변 맛집</a></li>
 			</ul>
 		</div>
 		<div id="content" style="width: 600px;">
