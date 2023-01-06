@@ -11,7 +11,6 @@
 <script type="text/javascript">
 	var key = "0QABlWOjjNUTH6AflytlfpxXTM2vig%2FbrTph8sbBtvWn80oDTHnmpv%2FzKgQOReCP6x%2BEWLnHq%2B6Pg4SsOYhopQ%3D%3D";//인증키
 	var bstopid=${member.stop_id}
-	alert(bstopid)
 	//정류장 즐겨찾기 미등록 id
 	$(function() {
 	if(bstopid==null){
