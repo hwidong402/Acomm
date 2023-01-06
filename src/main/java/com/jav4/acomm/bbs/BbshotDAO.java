@@ -32,15 +32,15 @@ public class BbshotDAO {
 		// return count;
 	}
 	
-	// bbs 테이블에 좋아요 추가
-	public void bbshotlike(LikeVO vo) {
-		System.out.println("DAO syso ------- " + vo);
-		my.update("bbs.bbshotlike", vo);
-	}
+//	// bbs 테이블에 좋아요 추가
+//	public void bbshotlike(LikeVO vo) {
+//		System.out.println("DAO syso ------- " + vo);
+//		my.update("bbs.bbshotlike", vo);
+//	}
 	
-	// member 테이블에 좋아요 추가
-	public void memberlike(LikeVO vo) {
-		my.update("bbs.memberlike", vo);
+	// 통합 테이블에 좋아요 추가
+	public void bbslike(BbslikeVO vo) {
+		my.insert("bbs.bbslike", vo);
 	}
 
 }

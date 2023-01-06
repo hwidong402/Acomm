@@ -82,19 +82,15 @@
 	</update>
 	
 	<!-- 좋아요 누르면 올라가기 -->
-	<update id="memberlike" parameterType="likeVO">
+<!-- 	<update id="memberlike" parameterType="likeVO">
 		<![CDATA[
 		UPDATE member SET member_like = CONCAT(member_like, #{bbs_id}, ', ' ) WHERE member_id = #{member_id}
 		]]>
-	</update>
-	
-	<update id="bbshotlike" parameterType="likeVO">
-		<![CDATA[
-		UPDATE bbs SET bbs_like = CONCAT(bbs_like, #{member_id}, ', ') WHERE bbs_id = #{bbs_id}
-		]]>
-	</update>
-	
-	
+	</update> -->
+
+	<insert id="bbslike" parameterType="bbslikeVO">
+		insert into bbs_like(bbs_id, member_code, like_time) values (#{bbs_id}, #{member_code}, now())
+	</insert>
 	
 	
 

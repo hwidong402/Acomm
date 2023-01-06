@@ -26,15 +26,14 @@ public class BbsService {
 		return dao.one(vo);
 	}
 	
-	// bbs 좋아요
-	public void bbslike(LikeVO vo) {
-		dao.bbshotlike(vo);
-	}
+//	// bbs 좋아요
+//	public void bbslike(LikeVO vo) {
+//		dao.bbshotlike(vo);
+//	}
 	
-	// member 좋아요
-	public void memberlike(LikeVO vo) {
-		dao.memberlike(vo);
+	// 통합 테이블 좋아요 추가
+	public void bbslike(BbslikeVO vo) {
+		dao.bbslike(vo);
 	}
-	
 	
 }

@@ -38,12 +38,20 @@ public class BbshotController {
 	}
 	
 	// 게시판 좋아요
+//	@RequestMapping("bbs/bbshotlike")
+//	public String like(LikeVO vo, Model model,HttpSession session) {
+//		vo.setMember_id((String)session.getAttribute("id"));
+//		System.out.println("서비스 가기전 ----------" + vo);
+//		service.bbslike(vo); // bbs 좋아요
+//		service.memberlike(vo); // member 좋아요
+//		return "redirect:/bbshot.jsp";
+//	}
+	
 	@RequestMapping("bbs/bbshotlike")
-	public String like(LikeVO vo, Model model,HttpSession session) {
-		vo.setMember_id((String)session.getAttribute("id"));
-		System.out.println("서비스 가기전 ----------" + vo);
-		service.bbslike(vo); // bbs 좋아요
-		service.memberlike(vo); // member 좋아요
+	public String name(BbslikeVO vo, Model model, HttpSession session) {
+		vo.setMember_code((Integer)session.getAttribute("member_code"));
+		System.out.println("bbs_like 디비 가기전--------> " + vo);
+		service.bbslike(vo);
 		return "redirect:/bbshot.jsp";
 	}
 	
