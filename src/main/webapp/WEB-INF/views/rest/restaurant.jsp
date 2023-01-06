@@ -52,17 +52,17 @@ for (var i = 0; i < x.length; i ++) {
 })//list.bus ajax end
 function makeClickListener(map, marker, infowindow ) {
     return function() {
+    	var restname
   /*   	restid=marker.getTitle();
     	var stopname
     	$.ajax({
 			url:"search.rest",
 			data:{ rest_id:restid},
 			success : function(x){
-			stopname=x.rest_name;	
+			restname=x.rest_name;	
 			}
 		}) */
 		
-    	
     	
         infowindow.open(map, marker);
     	

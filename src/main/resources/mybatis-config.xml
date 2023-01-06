@@ -13,6 +13,7 @@
       <typeAlias type="com.jav4.acomm.apt.AptVO" alias="aptVO"></typeAlias>
       <typeAlias type="com.jav4.acomm.bus.BusStopVO" alias="busstopVO"></typeAlias>
       <typeAlias type="com.jav4.acomm.restaurant.RestaurantVO" alias="restaurantVO"></typeAlias>
+      <typeAlias type="com.jav4.acomm.restaurant.RestReplyVO" alias="restreplyVO"></typeAlias>
    </typeAliases>
    <!-- SQL문 정의하는 파일들의 목록을 지정. -->
    <mappers>
@@ -21,6 +22,7 @@
       <mapper resource="mapper/aptMapper.xml" />
       <mapper resource="mapper/busStopMapper.xml" />
       <mapper resource="mapper/restaurantMapper.xml" />
+      <mapper resource="mapper/restReplyMapper.xml" />
    </mappers>
    
 </configuration>

@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="restaurant">
-<select id="list" resultType="restaurantVO">
+ <select id="list" resultType="restaurantVO">
 select * from restaurant
 </select>
+<select id="one" parameterType="restaurantVO" resultType="restaurantVO">
+select * from restaurant where rest_id=#{rest_id}
+</select>
 
+<insert id="insert" parameterType="restaurantVO">
+insert into restaurant values (null,#{rest_name},#{rest_lat},#{rest_lon})
+</insert> 
 <!-- 	<insert id="create" parameterType="bbsVO">
 		insert into bbs values(#{id}, #{title}, #{writer}, #{content},#{code})
 	</insert>
