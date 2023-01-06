@@ -66,17 +66,15 @@
 	  </div>
 	</nav>
 
-	<hr>
-	
 	<!-- 본문 -->
 
-	<div class="container p-5 my-5 text-center bg-primary text-white">
+	<div class="container p-5 my-5 text-center">
 		<h1>게시글 상세보기</h1>
 	</div>
-	<div class="container mt-5">
+	<div class="container">
 		<div class="row">
 			<div class="col-sm-4">
-				<a href="openBbsCate?bbs_cate=${post.bbs_cate}"><button class="btn btn-danger">뒤로가기</button></a>
+				<a href="openBbsCate?bbs_cate=${post.bbs_cate}"><button class="btn btn-warning">뒤로가기</button></a>
 			</div>
 			<div class="col-sm-4"></div>
 			<div id="up" class="col-sm-4">
@@ -87,25 +85,39 @@
 					if (id.equals(post.getBbs_writer())) {  
 				%>
 				<a href="openBbsUpdate?bbs_id=${post.bbs_id}"><button class="btn btn-info">수정</button></a>
-				<a href="deletePost?bbs_id=${post.bbs_id}" id="deleteBtn"><button class="btn btn-warning" onclick="findcode()" >삭제</button></a>
+				<a href="deletePost?bbs_id=${post.bbs_id}" id="deleteBtn"><button class="btn btn-danger" onclick="findcode()" >삭제</button></a>
 				<%
 					}
 				%>
 			</div>
 		</div>
 	</div>
+	<hr>
 	<div class="container mt-5 text-center">
 		<table class="table">
-			<tr>
+			<tr style="border: 1px solid blue">
+				<td>포스트 아이디</td>
+				<td>제목</td>
+				<td>글쓴이</td>
+				<td>공지?</td>
+				<td>카테고리</td>
+				<td>조회수</td>
+				<td>좋아요</td>
+			</tr>
+			<tr style="border: 1px solid blue">
 				<td>${post.bbs_id}</td>
-				<td style="width: 60%">${post.bbs_title}</td>
+				<td>${post.bbs_title}</td>
 				<td>${post.bbs_writer}</td>
+				<td>${post.bbs_notice}</td>
+				<td>${post.bbs_cate}</td>
+				<td>${post.bbs_count}</td>
+				<td>${post.bbs_like}</td>
 			</tr>
 			<tr>
-				<td colspan="3">내용</td>
+				<td colspan="7">내용</td>
 			</tr>
 			<tr>
-				<td colspan="3">${post.bbs_content}</td>
+				<td colspan="7">${post.bbs_content}</td>
 			</tr>
 		</table>
 	</div>
