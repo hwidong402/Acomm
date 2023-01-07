@@ -50,7 +50,7 @@
 	</select>
 	<!-- 버스정류장 update기능 -->
 	<update id="upstop" parameterType="memberVO">
-		update member set stop_id = #{stop_id} where member_id = #{member_id}
+		update member set stop_id = #{stop_id} where member_code = #{member_code}
 	</update>
 	
 	
