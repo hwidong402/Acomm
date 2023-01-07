@@ -11,12 +11,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>우리아파트</title>
-<script
-    src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js">
-</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
     $(function() {
+			//1. 이데일리 부동산 뉴스
             $.ajax({
                 url : 'https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Frss.edaily.co.kr%2Frealestate_news.xml',
                         
@@ -37,10 +36,11 @@
                         //<a href='https://naver.com' target=_blank>
                         //a = "<a href= " + l + ">" + t + "</a>"
                         $('#result1').append(a + " <br>")
-                        console.log(a)
+                        //console.log(a)
                     }
                 } //success
             }) //ajax
+            //2. mbn 부동산 뉴스
             $.ajax({
                 url : 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.mbn.co.kr%2Frss%2Festate%2F',
                 data : {
@@ -61,6 +61,7 @@
                     }
                 } //success
             }) //ajax
+            //3. 헤럴드 경제 부동산 뉴스
             $.ajax({
                 url : 'https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Fbiz.heraldcorp.com%2Fcommon_prog%2Frssdisp.php%3Fct%3D010300000000.xml',
                 data : {
@@ -81,6 +82,7 @@
                     }
                     } //success
             }) //ajax
+            //4. 매일경제 부동산 뉴스
             $.ajax({
                 url : 'https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Fnews.mk.co.kr%2Frss%2Fland.xml',
                 data : {
@@ -101,6 +103,7 @@
                     }
                     } //success
             }) //ajax
+            //5. 닥터 아파트 부동산 뉴스
             $.ajax({
                 url : 'https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Fwww.drapt.com%2Findex%2Fdrapt_rss2.0.xml&api_key=ejxvkemry0qjivbotntyvygzajjtuawoqoituggy',
                 data : {
@@ -153,9 +156,6 @@
 <div id="totalnews" style=" float: left; width: 50%;">
 <hr color="green">
 <h2>전국 부동산 뉴스</h2>
-<a href='https://naver.com' target=_blank>
-  새 탭으로 링크 열기
-</a> <br>
     <div id="result1">e데일리<br></div>
     <div id="result2">mbn<br></div>
     <div id="result3">헤럴드경제<br></div>
@@ -165,17 +165,31 @@
 <div id="busannews" style=" float: left; width: 50%;">
 <hr color="green">
 <h2>${city} 부동산 뉴스</h2>
-<!-- <a href="https://land.naver.com/news/newsRead.naver?type=region&prsco_id=015&arti_id=0004769071">눌러보세요</a>
-이 모양이 나와야 함 -->
+<!-- 현재 로그인 시 잡히는 apt_city를 이용하여 그에 따라 맞는 지역(17군데)의 네이버 부동산 뉴스를 제공하고 있음
+이걸 로그인 시 세션을 잡는 것이 아니라 모델로 넘기는 것으로 하고 모델값을 잡도록 변경해야 부하가 적음 -->
+<a href="https://land.naver.com/news/newsRead.naver?type=region&prsco_id=015&arti_id=0004769071" target="_blank">눌러보세요</a> <br>
 <c:choose>
 <c:when test="${city eq '부산광역시'}"><%
     Document doc2 = Jsoup.connect("https://land.naver.com/news/region.naver?city_no=2600000000&dvsn_no=").get();
           Elements posts = doc2.body().getElementsByClass("section_headline");
           Elements file = posts.select("dt");
              for(Element e : file){
-            	 out.println(e);
-                    out.println("https://land.naver.com/" + e.select("a").attr("href").substring(1, 64));
+            	 //out.println(e);
+                    out.println("<a href=https://land.naver.com/" + e.select("a").attr("href").substring(1, 64)+" target='_blank'>네이버 뉴스 이름을 어떻게 가져오지</a> <br>");
+                    
              }
+             //현재 e로 보여주는데 e에서 갖고 있는 dt의 종류는 두 가지
+             //썸네일과 글로 된 기사 제목이 있는데 썸네일이 없는 경우도 있음, 이런 경우에는 기사에 dt가 하나 밖에 없음
+             //문제는 dt에서 보내주는 a태그의 href는 본인들 페이지에서만 돌아가도록 뷰처럼 제공됨
+             //그래서 우리사이트에서 href를 클릭하면 404에러가 나옴
+             //밑의 링크는 해당 href에다가 앞에 네이버 주소를 붙혀서 정상적으로 돌아가는 링크로 만든 것
+             //이 링크를 사용하여 정상적으로 만들기 위해선
+             //1. e의 href를 해당 링크로 모두 변경
+             //1-1) 이러면 썸네일과 제목 모두 살릴 수 있음
+             //2. 바뀐 링크를 이용하여 새로운 a태그와 href를 만들기
+             //<a href="https://land.naver.com/news/newsRead.naver?type=region&prsco_id=015&arti_id=0004769071">눌러보세요</a>
+             //2-1) 이 모양이 나와야 함
+             //2-2) 이러면 썸네일은 그냥 죽어버림
 %></c:when>
 <c:when test="${city eq '경기도'}"><%
     Document doc2 = Jsoup.connect("https://land.naver.com/news/region.naver?city_no=4100000000&dvsn_no=").get();

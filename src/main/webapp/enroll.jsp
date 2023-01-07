@@ -1,78 +1,80 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>A-Comm 회원가입</title>
 <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-    rel="stylesheet">
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
 <link rel="stylesheet" href="resources/css/member.css">
 <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 </head>
 <body>
-    <div id="header">
-        <a href="index.jsp"> <img alt="이미지오류" src="resources/img/acomm.png"
-            width="300" height="100"></a> <br>
-    </div>
-    <div id="enrollform">
-        <form action="m_create" method="post" onsubmit="return submitf();">
-			<h2>닉네임</h2>        
-        	<input type="text" name="member_nick" class="member_nick"> <br>
+	<div id="header">
+		<a href="index.jsp"> <img alt="이미지오류"
+			src="resources/img/acomm.png" width="300" height="100"></a> <br>
+	</div>
+	<div id="enrollform">
+		<form action="m_create" method="post" onsubmit="return submitf();">
+			<h2>닉네임</h2>
+			<input type="text" name="member_nick" class="member_nick"> <br>
 			<span class="must0" style="color: red;">필수정보입니다.</span> 
-            <span class="length0" style="color: red; display: none">닉네임은 최소2자입니다.</span>
-            <span class="nickck1" style="color: green; display: none;">사용가능한 닉네임입니다.</span> 
-            <span class="nickck2" style="color: red; display: none;">중복된 닉네임입니다.</span>
-            <h2>아이디</h2>
-            <input type="text" name="member_id" class="member_id" placeholder="아이디는 4~20자의 영어와 숫자조합" maxlength="20" onkeyup="chkCharCode(event)"> <br>
-            <!-- <span id="idck1"></span>  -->
-            <span class="must1">필수정보입니다.</span> 
-            <span class="length" style="color: red; display: none">아이디는 최소 4자입니다.</span>
-            <span class="idck1" style="color: green; display: none;">사용가능한 아이디입니다.</span> 
-            <span class="idck2">중복된 아이디입니다.</span>
-            <h2>비밀번호</h2>
-            <input type="password" name="member_pw" class="member_pw"> <br>
-            <span class="must2">필수정보입니다.</span>
-            <span class="length2" style="color: red; display: none">비밀번호는 최소 4자입니다.</span>
-            <h2>비밀번호 재확인</h2>
-            <input type="password" name="pwc" class="pwc"> <br> 
-            <span class="final_pwck_ck">비밀번호 확인을 입력해주세요.</span> 
-            <span class="pwck_input_re_1" style="color: green;">비밀번호가 일치합니다.</span> 
-            <span class="pwck_input_re_2">비밀번호가 일치하지 않습니다.</span> 
-            <span class="must3">필수정보입니다.</span>
-            <h2>이름</h2>
-            <input type="text" name="member_name" class="member_name"> <br>
-            <span class="must4">필수정보입니다.</span>
-            <h2>전화번호</h2>
-            <input type="text" id="member_tel" name="member_tel" class="member_tel" maxlength="13" placeholder="숫자만 입력 가능 합니다."> <br>
-            <span class="must6">필수정보입니다.</span>
-            <h2>아파트이름</h2>
-            <input id ="apt_name" name="apt_name" class="apt_name"> <br>
-            <span class="must7">필수정보입니다.</span>
-            <!--결과 값 출력하는 곳 --> 
-            <div id="result" class="apt_code"></div>
-            <h2>상세주소</h2>
-            <input type="text" name="sub_addr" class="sub_addr"> <br>
-            <span class="must5">필수정보입니다.</span>
-            <hr>
-            <!-- <input type="submit" value="가입하기" > -->
-            <button type="submit" class="btn btn-success" style="width: 300px;">가입하기</button>
-            <br>
-        </form>
-    </div>
-    
-    <script type="text/javascript">
-    //아파트코드
+			<span class="length0" style="color: red; display: none">닉네임은 최소2자입니다.</span> 
+			<span class="nickck1" style="color: green; display: none;">사용가능한 닉네임입니다.</span> 
+			<span class="nickck2" style="color: red; display: none;">중복된 닉네임입니다.</span>
+			<h2>아이디</h2>
+			<input type="text" name="member_id" class="member_id"
+				placeholder="아이디는 4~20자의 영어와 숫자조합" maxlength="20"
+				onkeyup="chkCharCode(event)"> <br>
+			<!-- <span id="idck1"></span>  -->
+			<span class="must1">필수정보입니다.</span> 
+			<span class="length" style="color: red; display: none">아이디는 최소 4자입니다.</span> 
+			<span class="idck1" style="color: green; display: none;">사용가능한 아이디입니다.</span> 
+			<span class="idck2">중복된 아이디입니다.</span>
+			<h2>비밀번호</h2>
+			<input type="password" name="member_pw" class="member_pw"> <br>
+			<span class="must2">필수정보입니다.</span> 
+			<span class="length2" style="color: red; display: none">비밀번호는 최소 4자입니다.</span>
+			<h2>비밀번호 재확인</h2>
+			<input type="password" name="pwc" class="pwc"> <br> 
+			<span class="final_pwck_ck">비밀번호 확인을 입력해주세요.</span> 
+			<span class="pwck_input_re_1" style="color: green;">비밀번호가 일치합니다.</span> 
+			<span class="pwck_input_re_2">비밀번호가 일치하지 않습니다.</span> 
+			<span class="must3">필수정보입니다.</span>
+			<h2>이름</h2>
+			<input type="text" name="member_name" class="member_name"> <br>
+			<span class="must4">필수정보입니다.</span>
+			<h2>전화번호</h2>
+			<input type="text" id="member_tel" name="member_tel" class="member_tel" 
+			maxlength="13" placeholder="숫자만 입력 가능 합니다."> <br> 
+			<span class="must6">필수정보입니다.</span>
+			<h2>아파트이름</h2>
+			<input id="apt_name" name="apt_name" class="apt_name"> <br>
+			<span class="must7">필수정보입니다.</span>
+			<!--결과 값 출력하는 곳 -->
+			<div id="result" class="apt_code"></div>
+			<h2>상세주소</h2>
+			<input type="text" name="sub_addr" class="sub_addr"> <br>
+			<span class="must5">필수정보입니다.</span>
+			<hr>
+			<!-- <input type="submit" value="가입하기" > -->
+			<button type="submit" class="btn btn-success" style="width: 300px;">가입하기</button>
+			<br>
+		</form>
+	</div>
+
+	<script type="text/javascript">
+    //아파트이름 검색 시 아파트이름과 아파트코드 불러오는 ajax
         $('.apt_name').on("propertychange change keyup paste input", function() {
             $.ajax({                    //ajax를 이용해서 화면넘기지 않을거임
-                url : 'apt/apt_code',   //view아래 apt파일이 있음
+                url : 'apt/apt_code',   //views아래 apt폴더에 파일이 있음
                 data : {
                     apt_name : $('#apt_name').val(),
                     apt_code : $('#apt_code').val()
-                    /* apt_city : $('#apt_city').val() */
                 },                      //여기까지 컨트롤러에게 넘겨줄거야
                 success : function(x) { //성공 시 값 출력
                     $('#result').html(x)
@@ -97,7 +99,7 @@
 //      })
 //  })
     
-    	//닉네임
+    	//닉네임 입력 및 길이 확인
     	$('.member_nick').on("propertychange change keyup paste input", function() {
             
             var member_nick = $('.member_nick').val();
@@ -115,23 +117,20 @@
             //닉네임 중복 검사        
             $.ajax({
                 type: "get",
-                url: 'nickok',
+                url: 'nickok', //views아래에 위치
                 data: {member_nick, member_nick},
                 success: function(x) {
-                    
                 
                             if (x == 'no' && member_nick.length > 1){
-                            /* $('#idck1').text('사용가능한 아이디입니다.'); */
                             $('.nickck1').css('display','block');
                             $('.nickck2').css('display','none');
+                            //console.log("닉네임 사용가능")
                             nickckv = true;
-                            //console.log("사용가능")
                             }else if (x != 'no'){
-                            /* $('#idck1').text('중복된 아이디입니다.'); */
                             $('.nickck1').css('display','none');
                             $('.nickck2').css('display','block');
+                            //console.log("닉네임 중복")
                             nickckv = false;
-                            //console.log("중복")
                         }
                         if (member_nick == ""){
                             $('.nickck1').css('display','none');
@@ -140,22 +139,19 @@
                     
                 },
                 error: function() {
-                    //alert('error')
+                	//alert('닉네임 중복 검사 ajax 에러')
                 }
             })
             
         });
     
-    
-    
-    
-        //아이디 한글 제한
+        //아이디에는 영어와 숫자만 가능하도록 제한
             window.chkCharCode = function(event) {
         const regExp = /[^0-9a-zA-Z]/g;
         const ele = event.target;
         if (regExp.test(ele.value)) {ele.value = ele.value.replace(regExp, '');}};
     
-        //아이디
+        //아이디 입력 및 길이 제한
         $('.member_id').on("propertychange change keyup paste input", function() {
             
             var member_id = $('.member_id').val();
@@ -173,23 +169,20 @@
             //아이디 중복 검사        
             $.ajax({
                 type: "get",
-                url: 'ckok',
+                url: 'ckok', //views아래에 위치
                 data: {member_id, member_id},
                 success: function(x) {
                     
-                
                             if (x == 'no' && member_id.length > 3){
-                            /* $('#idck1').text('사용가능한 아이디입니다.'); */
                             $('.idck1').css('display','block');
                             $('.idck2').css('display','none');
                             idckv = true;
-                            //console.log("사용가능")
+                            //console.log("아이디 사용가능")
                             }else if (x != 'no'){
-                            /* $('#idck1').text('중복된 아이디입니다.'); */
                             $('.idck1').css('display','none');
                             $('.idck2').css('display','block');
                             idckv = false;
-                            //console.log("중복")
+                            //console.log("아이디 중복")
                         }
                         if (member_id == ""){
                             $('.idck1').css('display','none');
@@ -198,12 +191,12 @@
                     
                 },
                 error: function() {
-                    alert('error')
+                    //alert('아이디 중복 검사 ajax 에러')
                 }
             })
             
         });
-        //비밀번호
+        //비밀번호 입력 및 최소 길이 검사
         $('.member_pw').on("propertychange change keyup paste input", function() {
             var member_pw = $('.member_pw').val();
             if (member_pw == "") {
@@ -217,7 +210,7 @@
                 $('.length2').css('display', 'none');
             }
         });
-        //비밀번호확인
+        //비밀번호 확인
         $('.pwc').on("propertychange change keyup paste input", function() {
             var pw = $('.member_pw').val();
             var pwck = $('.pwc').val();
@@ -237,7 +230,7 @@
                 $('.must3').css('display', 'none');
             }
         });
-        //이름
+        //이름 입력 검사
         $('.member_name').on("propertychange change keyup paste input", function() {
             var name = $('.member_name').val();
             if (name == "") {
@@ -246,7 +239,7 @@
                 $('.must4').css('display', 'none');
             }
         });
-        //상세주소
+        //상세주소 입력 검사
         $('.sub_addr').on("propertychange change keyup paste input", function() {
             var sub_addr = $('.sub_addr').val();
             if (sub_addr == "") {
@@ -255,7 +248,7 @@
                 $('.must5').css('display', 'none');
             }
         });
-        //전화번호
+        //전화번호 입력 검사
         $('.member_tel').on("propertychange change keyup paste input", function() {
             var tel = $('.member_tel').val();
             if (tel == "") {
@@ -296,16 +289,10 @@
 }
 var member_tel = document.getElementById('member_tel');
 member_tel.onkeyup = function(){
-  //console.log(this.value);
   this.value = autoHypenPhone( this.value ) ;  
 }
-/*         function oninputPhone(target) {
-            target.value = target.value
-                .replace(/[^0-9]/g, '')
-                .replace(/(^02.{0}|^01.{1}|[0-9]{3,4})([0-9]{3,4})([0-9]{4})/g, "$1-$2-$3");
-        } */
         
-        //아파트코드
+        //아파트이름 입력 검사
         $('.apt_name').on("propertychange change keyup paste input", function() {
             var apt_name = $('.apt_name').val();
             if (apt_name == "") {
