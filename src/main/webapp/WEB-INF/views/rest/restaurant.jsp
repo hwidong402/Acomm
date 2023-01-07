@@ -5,6 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- 상가 정보 띄우기용 부트스트랩  -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<!-- jquery -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4611b2688b283a9862933471078a1361"></script>
@@ -32,9 +36,9 @@ $.ajax({
 for (var i = 0; i < x.length; i ++) {
     // 마커를 생성합니다
     var marker = new kakao.maps.Marker({
-        title:x[i].rest_id,// 실시간 버스 시간 검색에 사용할 id값 불러오는 용
+        title:x[i].rest_id,// 상가 검색에  사용할 id값 마커에 인자에 등록
     	map: map, // 마커를 표시할 지도
-        position: new kakao.maps.LatLng(x[i].rest_lat,x[i].rest_lon) // 마커의 위치
+        position: new kakao.maps.LatLng(x[i].rest_lat,x[i].rest_lon) // 상가리스트의 마커의 위치
     });
 
     // 마커에 표시할 인포윈도우를 생성합니다 
@@ -52,38 +56,48 @@ for (var i = 0; i < x.length; i ++) {
 })//list.bus ajax end
 function makeClickListener(map, marker, infowindow ) {
     return function() {
-    	var restname
-  /*   	restid=marker.getTitle();
-    	var stopname
-    	$.ajax({
-			url:"search.rest",
-			data:{ rest_id:restid},
-			success : function(x){
-			restname=x.rest_name;	
-			}
-		}) */
+    	var restname=+"";
+
 		
-    	
+//상세정보 띄우기 버튼 
+var incontent="<a class=btn btn-primary data-bs-toggle=offcanvas href=#offcanvasExample role=button aria-controls=offcanvasExample> 더보기</a>"
+  
+    	infowindow.setContent(incontent);
         infowindow.open(map, marker);
     	
     };
 }
-/* $('#upstop').click(function () {
-	$.ajax({
-		url:"upstop.bus",
-		data: {
-			stop_id : bstopid
-		},
-		success: function(x) {
-			
-		}
-	})
-}) */
+
 })
 </script>
     
 </head>
 <body>
 <div id="map" style="width:100%;height:800px;"></div>
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+  Button with data-bs-target
+</button>
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div>
+      Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+    </div>
+    <div class="dropdown mt-3">
+      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+        Dropdown button
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
 </body>
 </html>

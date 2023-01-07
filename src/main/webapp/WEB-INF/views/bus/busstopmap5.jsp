@@ -53,8 +53,11 @@ var icontent="<div>"+x[i].stop_name+"</div>"
 })//list.bus ajax end
 function makeClickListener(map, marker, infowindow ) {
     return function() {
+    	//클릭한 마커에 저장된 버스정류장 id 불러오기
     	bstopid=marker.getTitle();
-    	var stopname
+    	//클릭한 정류장 이름 담는 변수
+    	var stopname="";
+    	//정류장 id로 이름 가져오는 ajax
     	$.ajax({
 			url:"stopsearch.bus",
 			data:{ stop_id:bstopid},
@@ -63,7 +66,7 @@ function makeClickListener(map, marker, infowindow ) {
 			}
 		})
 		
-    	
+    	//버스 정류장 도착정보 불러오기
     	$.ajax({
 			url : "http://apis.data.go.kr/6260000/BusanBIMS/stopArrByBstopid?serviceKey="+key+"&bstopid="+bstopid,
 					success : function(x) {
@@ -77,9 +80,11 @@ function makeClickListener(map, marker, infowindow ) {
 					table+=info;
 				})
 				table+="</table>";
+				//클릭한 마커의 정류장 관련 정보를 인포윈도우에 담기 
 					infowindow.setContent(title+table);
 			}
 		  })
+		  //ㅈ
         infowindow.open(map, marker);
     	
     };
