@@ -10,15 +10,16 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript">
 	var key = "0QABlWOjjNUTH6AflytlfpxXTM2vig%2FbrTph8sbBtvWn80oDTHnmpv%2FzKgQOReCP6x%2BEWLnHq%2B6Pg4SsOYhopQ%3D%3D";//인증키
-	var bstopid=${member.stop_id}
+	var bstopid=${member.stop_id}+"";
+	
 	//정류장 즐겨찾기 미등록 id
 	$(function() {
-	if(bstopid==null){
+	if(bstopid==""){
 		$('#bus').append(
 		"<a href=busstopmap5.bus?apt_lat=${apt.apt_lat}&apt_lon=${apt.apt_lon}><button>즐겨찾는 정류장을 등록해주세요!</button></a>"
 				);
 	}//if null end
-	if(bstopid!=null){
+	else{
 		//정류장 이름 불러오기
 		$.ajax({
 			url:"stopsearch.bus",
@@ -26,7 +27,7 @@
 			success : function(x){
 				$('#bus').append("<h3>"+x.stop_name+"</h3>");
 			}
-		})
+		})//정류장 정보 불러오는 ajax end
 	// 실시간 버스 도착정보 ajax
 		$.ajax({
 					url : "http://apis.data.go.kr/6260000/BusanBIMS/stopArrByBstopid?serviceKey="
@@ -49,7 +50,7 @@
 						"<a href=busstopmap5.bus?apt_lat=${apt.apt_lat}&apt_lon=${apt.apt_lon}><button>즐겨찾는 정류장 변경하기</button></a>"
 								);
 					}
-				})//ajax end
+				})//도착정보 ajax end
 	}//if notnull end
 	})//document end
 </script>
