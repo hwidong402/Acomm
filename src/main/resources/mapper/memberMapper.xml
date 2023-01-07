@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member">
+	<!-- 회원가입 정보 값 넣기  -->
 	<insert id="create" parameterType="memberVO">
 		insert into member(member_nick, member_id, member_pw, member_name, member_tel, apt_code, sub_addr, member_date) values (#{member_nick}, #{member_id}, #{member_pw}, #{member_name},  #{member_tel}, #{apt_code}, #{sub_addr},now())
 	</insert>
 	
+	<!--개인정보 수정시 실행되는 mapper 닉네임,비밀번호,전화번호를 바꿀 수 있습니다. 조건은 세션값으로 잡아두었던 member_code로 구별  -->
 	<update id="up" parameterType="memberVO">
 		update member set member_nick = #{member_nick}, member_pw = #{member_pw}, member_tel = #{member_tel} where member_code = #{member_code}
 		<!-- update apt_member set sub_addr = #{sub_addr} where id = #{id} -->
@@ -18,14 +20,17 @@
 		select * from apt_member where id = #{id}
 	</select>
 	
+	<!-- member정보전체를 검색 조건은 세션으로 잡았던 member_code  -->
 	<select id="print" parameterType="memberVO" resultType="memberVO">
 		select * from member where member_code = #{member_code}
 	</select>
 	
+	<!-- 관리자는 cls='0'(일반회원) 정보를 모두 알 수 있다 단 조건이 두개인데 자기 아파트 사람들만 알 수 있음. -->
 	<select id="all" resultType="memberVO">
 		 select * from member where member_cls = '0' and apt_code = #{apt_code}
 	</select>
 	
+	<!-- 조건 id값과 and pw값이 서로 일치한 한 member에 대한 컬럼 모두 줌 -->
 	<select id="login" parameterType="memberVO" resultType="memberVO">
 		select * from member where member_id = #{member_id} and member_pw = #{member_pw}
 	</select>
@@ -35,10 +40,11 @@
         <!-- select a.name from apt a, apt_member an where a.code = an.code and an.id = #{id} -->
     </select>
 	
+	<!--조건 id값이 없으면 member가 출력되지 않는다 즉 이 아이디를 만들어도 된다는 뜻-->
 	<select id="idck" parameterType="memberVO" resultType="memberVO">
 		select * from member where member_id = #{member_id}
 	</select>
-	
+	<!--조건 nick값이 없으면 member가 출력되지 않는다 즉 이 nick를 만들어도 된다는 뜻-->
 	<select id="nickck" parameterType="memberVO" resultType="memberVO">
 		select * from member where member_nick = #{member_nick}
 	</select>

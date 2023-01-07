@@ -1,20 +1,24 @@
 package com.jav4.acomm.aptsell;
 
 public class AptSellVO {
-	private String apt_code;
-	private String apt_name;
-	private String apt_city;
-	private String apt_town;
-	private String apt_village;
-	private String apt_addr;
-	private String apt_subaddr;
-	private double apt_lat;
-	private double apt_lon;
-	public String getApt_code() {
-		return apt_code;
+	private String aptsell_id; //아파트상세코드
+	private int apt_price; //아파트 거래금액
+	private String apt_name; //아파트이름
+	private int sell_year; //거래년도
+	private int sell_mon; //거래월
+	private int sell_floor; //판매아파트 층
+	
+	public String getAptsell_id() {
+		return aptsell_id;
 	}
-	public void setApt_code(String apt_code) {
-		this.apt_code = apt_code;
+	public void setAptsell_id(String aptsell_id) {
+		this.aptsell_id = aptsell_id;
+	}
+	public int getApt_price() {
+		return apt_price;
+	}
+	public void setApt_price(int apt_price) {
+		this.apt_price = apt_price;
 	}
 	public String getApt_name() {
 		return apt_name;
@@ -22,55 +26,28 @@ public class AptSellVO {
 	public void setApt_name(String apt_name) {
 		this.apt_name = apt_name;
 	}
-	public String getApt_city() {
-		return apt_city;
+	public int getSell_year() {
+		return sell_year;
 	}
-	public void setApt_city(String apt_city) {
-		this.apt_city = apt_city;
+	public void setSell_year(int sell_year) {
+		this.sell_year = sell_year;
 	}
-	public String getApt_town() {
-		return apt_town;
+	public int getSell_mon() {
+		return sell_mon;
 	}
-	public void setApt_town(String apt_town) {
-		this.apt_town = apt_town;
+	public void setSell_mon(int sell_mon) {
+		this.sell_mon = sell_mon;
 	}
-	public String getApt_village() {
-		return apt_village;
+	public int getSell_floor() {
+		return sell_floor;
 	}
-	public void setApt_village(String apt_village) {
-		this.apt_village = apt_village;
-	}
-	public String getApt_addr() {
-		return apt_addr;
-	}
-	public void setApt_addr(String apt_addr) {
-		this.apt_addr = apt_addr;
-	}
-	public String getApt_subaddr() {
-		return apt_subaddr;
-	}
-	public void setApt_subaddr(String apt_subaddr) {
-		this.apt_subaddr = apt_subaddr;
-	}
-	public double getApt_lat() {
-		return apt_lat;
-	}
-	public void setApt_lat(double apt_lat) {
-		this.apt_lat = apt_lat;
-	}
-	public double getApt_lon() {
-		return apt_lon;
-	}
-	public void setApt_lon(double apt_lon) {
-		this.apt_lon = apt_lon;
+	public void setSell_floor(int sell_floor) {
+		this.sell_floor = sell_floor;
 	}
 	@Override
 	public String toString() {
-		return "AptSellVO [apt_code=" + apt_code + ", apt_name=" + apt_name + ", apt_city=" + apt_city + ", apt_town="
-				+ apt_town + ", apt_village=" + apt_village + ", apt_addr=" + apt_addr + ", apt_subaddr=" + apt_subaddr
-				+ ", apt_lat=" + apt_lat + ", apt_lon=" + apt_lon + "]";
+		return "AptSellVO [aptsell_id=" + aptsell_id + ", apt_price=" + apt_price + ", apt_name=" + apt_name
+				+ ", sell_year=" + sell_year + ", sell_mon=" + sell_mon + ", sell_floor=" + sell_floor + "]";
 	}
-	
-	
-	
+
 }
