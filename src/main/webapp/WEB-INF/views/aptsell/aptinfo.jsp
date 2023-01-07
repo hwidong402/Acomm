@@ -175,7 +175,7 @@
           Elements file = posts.select("dt");
              for(Element e : file){
             	 //out.println(e);
-                    out.println("<a href=https://land.naver.com/" + e.select("a").attr("href").substring(1, 64)+" target='_blank'>네이버 뉴스 이름을 어떻게 가져오지</a> <br>");
+                    out.println("<a href=https://land.naver.com/" + e.select("a").attr("href").substring(1, 64)+" target='_blank'>"+e.select("a").text()+"</a> <br>");
                     
              }
              //현재 e로 보여주는데 e에서 갖고 있는 dt의 종류는 두 가지
