@@ -1,16 +1,17 @@
 package com.jav4.acomm.apt;
 
+//아파트 vo 
 public class AptVO {
 
-	private String apt_code; 
-	private String apt_name; 
-	private String apt_city;
-	private String apt_town;
-	private String apt_village;
-	private String apt_addr;
-	private String apt_subaddr;
-	private double apt_lat;
-	private double apt_lon;
+	private String apt_code; // 아파트 마다 가지고 있는 코드
+	private String apt_name; // 아파트 이름
+	private String apt_city; // 아파트 지역 ex) 부산, 인천, 대전 등 
+	private String apt_town; // 시 or 구 or 군 등등등...
+	private String apt_village; // 좌동 , 중동 할때 동 친구들
+	private String apt_addr; // full address 
+	private String apt_subaddr; // 간단한 주소 표시 
+	private double apt_lat; // 위도
+	private double apt_lon; // 경도
 	
 	public String getApt_code() {
 		return apt_code;

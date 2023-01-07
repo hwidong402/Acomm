@@ -1,18 +1,18 @@
 package com.jav4.acomm.member;
 import java.util.Date;
 public class MemberVO {
-    private int member_code;
-    private String member_nick;
-    private String member_id;
-    private String member_pw;
-    private String member_name;
-    private String member_tel;
-    private String apt_code;
-    private String sub_addr;
-    private int member_cls;
-    private Date member_date;
-    private String stop_id;
-    private String member_like;
+    private int member_code; // 맴버 고유번호
+    private String member_nick; // 맴버 닉네임
+    private String member_id; // 맴버 아이디
+    private String member_pw; // 맴버 비밀번호
+    private String member_name; // 맴버 이름
+    private String member_tel; // 맴버 전화번호
+    private String apt_code; // 맴버가 사는 아파트 코드
+    private String sub_addr; // 상세 주소
+    private int member_cls; // 관리자인지 아닌지 판단 
+    private Date member_date; // 회원가입일자
+    private String stop_id; // 정류장 코드
+    private String member_like; // 좋아용
     
     
     

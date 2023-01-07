@@ -7,7 +7,8 @@
 	<select id="all" parameterType="aptVO" resultType="aptVO">
 		select apt_name, apt_code from apt where apt_name like CONCAT('%',#{apt_name},'%')
 	</select> 
-	
+	<!-- 아파트 이름과 아파트 코드를 검색합니다. 조건은 like문을 이용  
+	ex) 해운대 검색 -> 해운대의 이름을 가진 아파트들을 검색해줍니다. 해운대 동원비스타, 해운대 래미안 ..등-->
 	<select id="code" parameterType="aptVO" resultType="aptVO">
 		select apt_name, apt_code from apt where apt_name like CONCAT('%',#{apt_name},'%')
 		<!-- select apt_name, apt_city from apt where apt_name like CONCAT('%',#{apt_name},'%') -->
