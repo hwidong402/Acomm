@@ -161,7 +161,7 @@ li {
 				<a	href=busstopmap5.bus?apt_lat=${apt.apt_lat}&apt_lon=${apt.apt_lon}><button >다른
 				정류장 보기5</button></a> -->
 		<!-- 도착정보 결과 -->
-		<div id="bus" style="width: 600px; height: 350px;"></div>
+		<div id="bus" style="width: 600px; height: 350px; overflow: auto;"></div>
 	</div>
 	<div>
 	공지사항 <br><br><br><br><br><br><br><br>
