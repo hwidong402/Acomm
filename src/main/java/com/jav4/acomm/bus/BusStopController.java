@@ -58,10 +58,9 @@ public class BusStopController {
 	}
 	@RequestMapping("upstop.bus")
 	public String upstop(MemberVO vo, HttpSession session,Model model ) {
-		vo.setMember_id((String)session.getAttribute("id"));
-		System.out.println(vo.getStop_id());
+		vo.setMember_code((int)session.getAttribute("member_code"));
 		boolean a=service.upstop(vo);
-		System.out.println("update 문 성공여부 >"+a);
+		//세션의 코드값으로 홈페이지 정보값 불러오기
 		MemberVO vo2= service.idck(vo);
 		AptVO vo3=service.code2name(vo2);
 		model.addAttribute("member", vo2);

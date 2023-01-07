@@ -19,7 +19,7 @@ public class BusStopSercive {
 	MemberDAO mdao;
 	public MemberVO idck(MemberVO vo) {
 		
-		MemberVO vo2 = mdao.idck(vo); // vo2 member의 전체값
+		MemberVO vo2 = mdao.print(vo); // vo2 member의 전체값
 		return vo2;
 	}
 	public AptVO code2name(MemberVO vo) {
