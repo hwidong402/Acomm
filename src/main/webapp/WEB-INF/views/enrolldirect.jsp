@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>${apt_name} 회원가입</title>
+<title>A-Comm 회원가입</title>
 <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
     rel="stylesheet">
@@ -14,15 +14,18 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 </head>
 <body>
-<%-- <%
-    String apt_code = request.getParameter("apt_code");
-%>  --%>
     <div id="header">
         <a href="index.jsp"> <img alt="이미지오류" src="resources/img/acomm.png"
             width="300" height="100"></a> <br>
     </div>
     <div id="enrollform">
         <form action="m_create" method="post" onsubmit="return submitf();">
+			<h2>닉네임</h2>        
+        	<input type="text" name="member_nick" class="member_nick">  <br>
+			<span class="must0" style="color: red;">필수정보입니다.</span> 
+            <span class="length0" style="color: red; display: none">닉네임은 최소2자입니다.</span>
+            <span class="nickck1" style="color: green; display: none;">사용가능한 닉네임입니다.</span> 
+            <span class="nickck2" style="color: red; display: none;">중복된 닉네임입니다.</span>
             <h2>아이디</h2>
             <input type="text" name="member_id" class="member_id" placeholder="아이디는 4~20자의 영어와 숫자조합" maxlength="20" onkeyup="chkCharCode(event)"> <br>
             <!-- <span id="idck1"></span>  -->
@@ -71,7 +74,6 @@
                 },                      //여기까지 컨트롤러에게 넘겨줄거야
                 success : function(x) { //성공 시 값 출력
                     $('#result').html(x)
-                    
                 }
             })
         })
@@ -92,6 +94,58 @@
 //          })
 //      })
 //  })
+    
+    	//닉네임
+    	$('.member_nick').on("propertychange change keyup paste input", function() {
+            
+            var member_nick = $('.member_nick').val();
+            if (member_nick == "") {
+                $('.must0').css('display', 'block');
+            } else {
+                $('.must0').css('display', 'none');
+            }
+            if (member_nick.length < 2 && member_nick.length >= 1) {
+                $('.length0').css('display', 'block');
+            } else {
+                $('.length0').css('display', 'none');
+            }
+                
+            //닉네임 중복 검사        
+            $.ajax({
+                type: "get",
+                url: 'nickok',
+                data: {member_nick, member_nick},
+                success: function(x) {
+                    
+                
+                            if (x == 'no' && member_nick.length > 1){
+                            /* $('#idck1').text('사용가능한 아이디입니다.'); */
+                            $('.nickck1').css('display','block');
+                            $('.nickck2').css('display','none');
+                            nickckv = true;
+                            //console.log("사용가능")
+                            }else if (x != 'no'){
+                            /* $('#idck1').text('중복된 아이디입니다.'); */
+                            $('.nickck1').css('display','none');
+                            $('.nickck2').css('display','block');
+                            nickckv = false;
+                            //console.log("중복")
+                        }
+                        if (member_nick == ""){
+                            $('.nickck1').css('display','none');
+                            $('.nickck2').css('display','none');
+                        }
+                    
+                },
+                error: function() {
+                    //alert('error')
+                }
+            })
+            
+        });
+    
+    
+    
     
         //아이디 한글 제한
             window.chkCharCode = function(event) {
@@ -249,7 +303,7 @@ member_tel.onkeyup = function(){
                 .replace(/(^02.{0}|^01.{1}|[0-9]{3,4})([0-9]{3,4})([0-9]{4})/g, "$1-$2-$3");
         } */
         
-        //아파트코드
+/*         //아파트코드
         $('.apt_name').on("propertychange change keyup paste input", function() {
             var apt_name = $('.apt_name').val();
             if (apt_name == "") {
@@ -257,20 +311,20 @@ member_tel.onkeyup = function(){
             } else {
                 $('.must7').css('display', 'none');
             }
-        });
+        }); */
         //회원가입 유효성 검증
         function submitf() {
+            var member_nick = $('.member_nick').val();
             var member_id = $('.member_id').val();
             var member_pw = $('.member_pw').val();
             var pwck = $('.pwc').val();
             var member_name = $('.member_name').val();
             var sub_addr = $('.sub_addr').val();
             var member_tel = $('.member_tel').val();
+            var apt_name = $('.apt_name').val();
             var apt_code = $('.apt_code').val();
             
-            
-            
-            if(member_id == "" || member_pw == "" || pwck == "" || member_name == "" || sub_addr == "" || member_tel == ""){
+            if(member_nick == "" || member_id == "" || member_pw == "" || pwck == "" || member_name == "" || sub_addr == "" || member_tel == ""){
                 alert("필수정보를 입력해주세요");
                 return false;
             }
@@ -279,6 +333,10 @@ member_tel.onkeyup = function(){
             //  alert(apt_code);
             //  return false;
             // }  
+            else if(member_nick.length < 2){
+                alert("닉네임은 2자 이상입니다.");
+                return false;
+            }
             
             else if(member_id.length < 4){
                 alert("아이디는 4자 이상입니다.");
@@ -290,6 +348,11 @@ member_tel.onkeyup = function(){
                 return false;
             }
             
+            else if(nickckv == false){
+                alert("닉네임이 중복입니다.");
+                return false;
+            }
+            
             else if(idckv == false){
                 alert("아이디가 중복입니다.");
                 return false;
@@ -297,6 +360,10 @@ member_tel.onkeyup = function(){
             
             else if(member_pw != pwck){
                 alert("비밀번호를 재확인해주세요.");
+                return false;
+            }
+            else if(member_tel.length != 13){
+                alert("핸드폰 번호를 제대로 입력해주세요.");
                 return false;
             }
             
