@@ -76,6 +76,7 @@ public class MemberController {
         return "redirect:index.jsp";
     }
     
+    //아이디중복검사
     @RequestMapping("ckok")
     public void idck(MemberVO vo, Model model) {
         MemberVO vo2 = dao.idck(vo);
@@ -86,6 +87,16 @@ public class MemberController {
         model.addAttribute("result", result);
     }
     
+    //닉네임중복검사
+    @RequestMapping("nickok")
+    public void nickck(MemberVO vo, Model model) {
+    	MemberVO vo2 = dao.nickck(vo);
+    	String result = "no";
+    	if(vo2 != null) {
+    		result = "yes";
+    	}
+    	model.addAttribute("result", result);
+    }
     
     @RequestMapping("everyinfo")// 관리자만 볼 수 있음.
     public String everyinfo(MemberVO vo, Model model, HttpSession session) {

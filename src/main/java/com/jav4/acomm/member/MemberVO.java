@@ -2,6 +2,7 @@ package com.jav4.acomm.member;
 import java.util.Date;
 public class MemberVO {
     private int member_code;
+    private String member_nick;
     private String member_id;
     private String member_pw;
     private String member_name;
@@ -13,7 +14,15 @@ public class MemberVO {
     private String stop_id;
     private String member_like;
     
-    public int getMember_code() {
+    
+    
+    public String getMember_nick() {
+		return member_nick;
+	}
+	public void setMember_nick(String member_nick) {
+		this.member_nick = member_nick;
+	}
+	public int getMember_code() {
         return member_code;
     }
     public void setMember_code(int member_code) {
@@ -80,13 +89,14 @@ public class MemberVO {
         this.member_like = member_like;
     }
     
-    @Override
-    public String toString() {
-        return "MemberVO [member_code=" + member_code + ", member_id=" + member_id + ", member_pw=" + member_pw
-                + ", member_name=" + member_name + ", member_tel=" + member_tel + ", apt_code=" + apt_code
-                + ", sub_addr=" + sub_addr + ", member_cls=" + member_cls + ", member_date=" + member_date
-                + ", stop_id=" + stop_id + "]";
-    }
+	@Override
+	public String toString() {
+		return "MemberVO [member_code=" + member_code + ", member_nick=" + member_nick + ", member_id=" + member_id
+				+ ", member_pw=" + member_pw + ", member_name=" + member_name + ", member_tel=" + member_tel
+				+ ", apt_code=" + apt_code + ", sub_addr=" + sub_addr + ", member_cls=" + member_cls + ", member_date="
+				+ member_date + ", stop_id=" + stop_id + ", member_like=" + member_like + "]";
+	}
+    
     
     
 }

@@ -44,6 +44,10 @@ public class MemberDAO {
         return my.selectOne("member.idck", vo);
     }
     
+    public MemberVO nickck(MemberVO vo) {
+    	return my.selectOne("member.nickck", vo);
+    }
+    
     public int upstop(MemberVO vo) {
 		return my.update("member.upstop", vo);
 	}
