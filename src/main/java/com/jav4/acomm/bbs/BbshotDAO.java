@@ -39,18 +39,22 @@ public class BbshotDAO {
 //	}
 	
 	// 통합 테이블에 좋아요 추가
-	public BbslikeVO bbslike(BbslikeVO vo) {
-		BbslikeVO one = my.selectOne("bbs.bbslikeone", vo);
+	public void bbslike(BbslikeVO vo) {
+//		BbslikeVO one = my.selectOne("bbs.bbslikeone", vo);
 		my.insert("bbs.bbslike", vo);
-		return one;
+//		return one;
 	}
 	
 	// 좋아요 취소
-	public BbslikeVO bbslikedel(BbslikeVO vo) {
-		BbslikeVO one = my.selectOne("bbs.bbslikeone", vo);
+	public void bbslikedel(BbslikeVO vo) {
+//		BbslikeVO one = my.selectOne("bbs.bbslikeone", vo);
 		my.delete("bbs.bbslikedel", vo);
-		return one;
+//		return one;
 	}
+	
+//	public boolean bbslikeone(BbslikeVO vo) {
+//		return my.selectOne("bbs.bbslikeone", vo);
+//	}
 	
 	public BbslikeVO bbslikeone(BbslikeVO vo) {
 		return my.selectOne("bbs.bbslikeone", vo);

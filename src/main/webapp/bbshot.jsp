@@ -12,16 +12,13 @@
 <link rel="stylesheet" href="resources/css/bbshot.css">
 <script type="text/javascript">
 	$(function() {
-		$('#b1').click(function() {
 			$.ajax({
 				url : "bbs/bbshotall",
 				success : function(data) {
 					console.log(data)
 					$('#context').html(data);
 				}
-
 			});
-		})
 	});
 </script>
 </head>
