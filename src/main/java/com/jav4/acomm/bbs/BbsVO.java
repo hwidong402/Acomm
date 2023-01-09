@@ -17,6 +17,7 @@ public class BbsVO {
 	private String bbs_notice;
 	private String bbs_cate;
 	private int bbs_count;
+	
 	public int getBbs_id() {
 		return bbs_id;
 	}

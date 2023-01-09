@@ -69,7 +69,7 @@
 					<td>${vo.bbs_id}</td>
 					<td>${vo.bbs_title}</td>
 					<td>${vo.bbs_date}</td>
-					<td>${vo.bbs_writer}</td>
+					<td>${vo.member_nick}</td>
 					<td>${vo.bbs_content}</td>
 					<td>${vo.bbs_file}</td>
 					<td>${vo.apt_code}</td>
