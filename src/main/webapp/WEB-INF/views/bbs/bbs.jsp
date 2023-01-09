@@ -14,7 +14,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript">
 	// cate array의 항목을 각각 ajax 호출
-	function list5(){
+	/* function list5(){ */
 	var cate = ['noti', 'free', 'market','sugg', 'worry']
 	   $.each(cate, function(index, value) {
 	      $.ajax({
@@ -25,7 +25,7 @@
 	         }
 	      });
 	   });
-	}
+	/* } */
 	
 	// seconds 마다 refresh << 서버에 부담이 됨. 조심히 쓰거나 막을것
 			// 바로 setInterval쓰면 delay가 먼저 시작함
