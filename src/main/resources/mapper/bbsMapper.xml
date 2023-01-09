@@ -29,7 +29,7 @@
 	<!-- noti write버튼 admin 필터링 -->
 	<!-- id로 cls 확인 -->
 	<select id="id2cls" parameterType="memberVO" resultType="memberVO">
-        select member_cls from member where member_id=#{member_id}
+        select member_cls from member where member_code=#{member_code}
     </select>
 	
 	<!-- 게시글 보기 -->
@@ -40,8 +40,8 @@
 	
 	<!-- 게시글 삽입 -->
 	<insert id="insertPost" parameterType="bbsVO">
-		insert into bbs(bbs_title, bbs_date, bbs_writer, bbs_content, bbs_file, apt_code, bbs_notice, bbs_cate) 
-					values(#{bbs_title}, NOW(), #{bbs_writer}, #{bbs_content}, #{bbs_file},#{apt_code},#{bbs_notice},#{bbs_cate})
+		insert into bbs(bbs_title, bbs_date, member_code, member_nick, bbs_content, bbs_file, apt_code, bbs_notice, bbs_cate) 
+					values(#{bbs_title}, NOW(), #{member_code}, #{member_nick}, #{bbs_content}, #{bbs_file}, #{apt_code}, #{bbs_notice},#{bbs_cate})
 	</insert>
 	<!-- 게시글 수정 -->
 	<update id="updatePost" parameterType="bbsVO">

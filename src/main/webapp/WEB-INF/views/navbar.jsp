@@ -20,13 +20,13 @@
 	          </ul>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="uriapt.jsp">우리 아파트</a>
+	          <a class="nav-link" href="introduce.jsp">아파트 소개</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="urivillage.jsp">우리 동네</a>
+	          <a class="nav-link" href="open.aptsell">부동산</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="sisol.jsp">시설</a>
+	          <a class="nav-link" href="matjip?apt_lat=${apt.apt_lat}&apt_lon=${apt.apt_lon}">주변 맛집</a>
 	        </li>
 	      </ul>
 	      <form class="d-flex" role="search">

@@ -30,7 +30,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-4">
-				<a href="openBbsPost?bbs_id=${post.bbs_id}">
+				<a href="openBbsPost">
 					<button class="btn btn-warning">뒤로가기</button>
 				</a>
 			</div>
@@ -40,7 +40,7 @@
 	<hr>
 	<!-- 본문 -->
 	<div class="container mt-5">
-		<form action="updatePost">
+		<form action="updatePost?bbs_id=${post.bbs_id}" method="post" > <!-- 왜 얘로 정보가 안넘어갈까? -->
 
 			<div class="mb-3">
 				<label class="form-label">제목</label> 
@@ -48,19 +48,19 @@
 			</div>
 			<div class="mb-3">
 				<label class="form-label">본문</label>
-				<textarea class="form-control"rows="10">${post.bbs_content}</textarea>
+				<textarea name="bbs_content" class="form-control"rows="10">${post.bbs_content}</textarea>
 			</div>
 			<div >
-				<span>글쓴이</span> 
-				<input name="bbs_writer" value="${post.bbs_writer}" readonly="readonly"
+				<span>닉네임</span> 
+				<input name="member_nick" value="${post.member_nick}" readonly="readonly"
 					style=" border: none;&:focus {outline: none;}">
 			</div>
 			<div class="input-group mb-3">
 				<label class="input-group-text" for="inputGroupSelect01">cate</label>
-				<select class="form-select" id="inputGroupSelect01">
+				<select name="bbs_cate" class="form-select" id="inputGroupSelect01">
 					<option value="${post.bbs_cate}"selected>${post.bbs_cate}</option>
 					<option></option>
-					<hr>
+					<!-- <hr> ??? -->
 					<option value="info">info</option>
 					<option value="free">free</option>
 					<option value="market">market</option>
@@ -70,11 +70,18 @@
 			</div>
 				
 			<div class="mb-3">
-				<input name="bbs_notice" value="1" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-				<label class="form-check-label" for="flexSwitchCheckDefault">공지로 포스트하기</label>
+				<div>
+					<input type="radio" id="nomal" name="bbs_notice" value="0" checked>
+					<label for="nomal">일반글</label>
+				</div>
+
+				<div>
+					<input type="radio" id="noti" name="bbs_notice" value="1">
+					<label for="noti">공지글</label>
+				</div>
 			</div>
 			<!-- 폼의 bbs컬럼에 넣을 값들을 수정하는곳으로 맵핑 -->
-			<button class="btn btn-primary">수정완료</button>
+			<button type="submit" class="btn btn-primary">수정완료</button>
 		</form>
 	</div>
 </body>
