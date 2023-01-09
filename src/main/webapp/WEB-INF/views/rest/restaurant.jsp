@@ -4,20 +4,26 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>주변 상가 정보</title>
 <!-- 상가 정보 띄우기용 부트스트랩  -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 <!-- jquery -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<!-- kakao map api -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4611b2688b283a9862933471078a1361"></script>
 <script>
-var key="0QABlWOjjNUTH6AflytlfpxXTM2vig%2FbrTph8sbBtvWn80oDTHnmpv%2FzKgQOReCP6x%2BEWLnHq%2B6Pg4SsOYhopQ%3D%3D";//인증키
-var bstopid="";
-$(function() {
-	// JSON으로 만들 리스트 생성
 
+$(function() {
+//상가 등록페이지 버튼 만들기
+
+	if(${vo2.member_cls}==1){
+		$('#insert').html("<a href=restwrite.rest?apt_lat=${vo.apt_lat}&apt_lon=${vo.apt_lon}><button>상가 등록</button></a>")
+	}
+	
+	
+//지도 만들기 상가표시
 	//접속된 아이디의 apt 좌표
 	var lat=${vo.apt_lat};	
 	var lon=${vo.apt_lon};
@@ -56,31 +62,36 @@ for (var i = 0; i < x.length; i ++) {
 })//list.bus ajax end
 function makeClickListener(map, marker, infowindow ) {
     return function() {
+    	// 레스토랑 이름 변수 
     	var restname="";
 	restid=marker.getTitle();
+	
 	$.ajax({
 		url:"search.rest",
 		data:{ rest_id:restid},
 		success : function(x){
 		restname=x.rest_name;
-		$('#offcanvasExampleLabel').html(restname);
-var incontent="<div><h4>"+restname+"</h4></div><a class=btn btn-primary data-bs-toggle=offcanvas href=#offcanvasExample role=button aria-controls=offcanvasExample> 더보기</a>"
+	//인포윈도우에 추가할 내용	
+var incontent="<div style='white-space: nowrap;'><h4>"+restname+"ㅣ - "+"</h4></div><a class=btn btn-primary data-bs-toggle=offcanvas href=#offcanvasExample role=button aria-controls=offcanvasExample> 더보기</a>"
     	infowindow.setContent(incontent);
+		//더보기 클릭시 정보창 제목 변경
+		$('#offcanvasExampleLabel').html(restname);
 		}
 	})	
 
 //상세정보 띄우기 버튼 
   
         infowindow.open(map, marker);
-    	
-    };
-}
+    
+    }//return function end
+}// make ClickListener end
 
 })
 </script>
     
 </head>
 <body>
+<div id="insert"></div>
 <div id="map" style="width:100%;height:800px;"></div>
 <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
   Button with data-bs-target
@@ -88,7 +99,7 @@ var incontent="<div><h4>"+restname+"</h4></div><a class=btn btn-primary data-bs-
 
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
   <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">제목</h5>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body" id="restinfo" style="overflow:auto">
