@@ -19,5 +19,9 @@ public class RestaurantDAO {
 	public RestaurantVO one(RestaurantVO vo) {
 		return my.selectOne("restaurant.one", vo);
 	}
+	public int insert(RestaurantVO vo) {
+		
+		return my.insert("restaurant.insert", vo);
+	}
 
 }

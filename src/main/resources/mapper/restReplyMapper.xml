@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="restreply">
 <select id="list" parameterType="restreplyVO" resultType="restreplyVO">
-	select * from rest_reply where rest_id = #{rest_id} and apt_code= #{apt_code} order by rere_id desc
+	select * from rest_reply where rest_id = #{rest_id} order by rere_id desc
 </select>
  <insert id="insert" parameterType="restreplyVO">
 	insert into rest_reply (null,#{rere_writer},#{rere_content},#{rest_id},#{rere_score},#{apt_code})
