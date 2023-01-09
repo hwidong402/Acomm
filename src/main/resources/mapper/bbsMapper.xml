@@ -2,6 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="bbs">
 
+	<!-- apt * by apt_code  --> 
+	<select id="aptAll" parameterType="aptVO" resultType="aptVO">
+		select * from apt where apt_code = #{apt_code}
+	</select>
+	
+	<!-- member * by member_code  --> 
+	<select id="memberAll" parameterType="memberVO" resultType="memberVO">
+		select * from member where member_code = #{member_code}
+	</select>
+
+
+
 	<!-- cate별로 상세 게시판 보기. --> 
 	<!-- 세션의 apt_code 와 <a href>의 bbs_cate를 둘 다 일치하는 게시글 목록 들고오기 -->
 	<select id="getList5" parameterType="bbsVO" resultType="bbsVO">

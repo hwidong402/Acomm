@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.support.SessionStatus;
 
+import com.jav4.acomm.apt.AptVO;
 import com.jav4.acomm.member.MemberVO;
 
 
@@ -22,37 +24,36 @@ public class BbsController {
 	
 	// homepage 열기
 	@RequestMapping("openHomepage")
-	public String openHomepage() {
+	public String openHomepage(AptVO avo, MemberVO mvo, HttpSession session, Model model) {
+		avo.setApt_code((String)session.getAttribute("code"));
+		mvo.setMember_code((int)session.getAttribute("member_code"));
+		AptVO avo2 = dao.aptAll(avo); 
+		MemberVO mvo2 = dao.memberAll(mvo); 
+        model.addAttribute("member", mvo2); 
+        model.addAttribute("apt", avo2);
+		
 		return "local/homepage";
 		// 리턴 없이하니 http://localhost:8080/acomm/local/open.bbs 로가서 404 뜸
+	}
+
+	// bbs에서 list5 들고오기
+	@RequestMapping("bbsList5")
+	public String bbsList5(BbsVO vo, HttpSession session, Model model) {
+		vo.setApt_code((String)session.getAttribute("code")); // 원래는 apt_code
+		List<BbsVO> list5 = dao.getList5(vo);
+		// List VO를 model로 넘긴다
+		model.addAttribute("list5", list5);
+		model.addAttribute("cate", vo.getBbs_cate());
+		
+		return "bbs/bbsList5";
 	}
 
 
 	// bbs (전체용) 게시판으로 이동
 	@RequestMapping("openBbs")
 	public String openBbs(BbsVO vo,HttpSession session, Model model) {
-		//(인기제외) cate별로 list를 최신 5개씩 들고와서 넘겨줌 
-		vo.setApt_code((String)session.getAttribute("code")); // 원래는 apt_code
-		
-		// Bbs_cate를 다르게 주면서 list5로 넘겨 List VO를 받는다
-		vo.setBbs_cate("noti");
-		List<BbsVO> list5_noti = dao.getList5(vo);
-		vo.setBbs_cate("free");
-		List<BbsVO> list5_free = dao.getList5(vo);
-		vo.setBbs_cate("market");
-		List<BbsVO> list5_market = dao.getList5(vo);
-		vo.setBbs_cate("sugg");
-		List<BbsVO> list5_sugg = dao.getList5(vo);
-		vo.setBbs_cate("worry");
-		List<BbsVO> list5_worry = dao.getList5(vo);
-		
-		// List VO를 model로 넘긴다
-		model.addAttribute("list5_noti", list5_noti);
-		model.addAttribute("list5_free", list5_free);
-		model.addAttribute("list5_market", list5_market);
-		model.addAttribute("list5_sugg", list5_sugg);
-		model.addAttribute("list5_worry", list5_worry);
-		System.out.println("open bbs with list5");
+//		//(인기제외) cate별로 list를 최신 5개씩 들고와서 넘겨줌 
+//		vo.setApt_code((String)session.getAttribute("code")); // 원래는 apt_code
 		
 		return "bbs/bbs";
 	}

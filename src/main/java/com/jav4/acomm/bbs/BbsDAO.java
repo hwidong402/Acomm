@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.jav4.acomm.apt.AptVO;
 import com.jav4.acomm.member.MemberVO;
 
 
@@ -40,6 +41,17 @@ public class BbsDAO {
 		//		}
 		return list;
 	}
+	
+	//	member * by member_code
+	public AptVO aptAll(AptVO avo) { // memberVO import
+        return my.selectOne("bbs.aptAll", avo);
+    }
+	
+	// apt * by apt_code
+	public MemberVO memberAll(MemberVO mvo) { // memberVO import
+        return my.selectOne("bbs.memberAll", mvo);
+    }
+		
 	
 	// noti write버튼 admin 필터링
 	// id로 cls 확인
