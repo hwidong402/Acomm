@@ -53,6 +53,16 @@
 				})//도착정보 ajax end
 	}//if notnull end
 	})//document end
+	
+	/* function list5(){ */
+	      $.ajax({
+	         url : "bbsList5?bbs_cate=noti",
+	         success : function(data) {
+	            console.log(data)
+	            $('#notiList').html(data);
+	         }
+	      });
+	/* } */
 </script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
@@ -81,12 +91,6 @@ li {
 	margin: 20px;
 }
 
-#nav {
-	font: 25px 궁서 bold;
-	margin: 20px;
-	border: 1px solid blue;
-}
-
 #my_box, #apt_img, #apt_img_logo, #apt_name {
 	display: inline-block;
 	margin: 20px;
@@ -101,16 +105,10 @@ li {
 				alt="${member.apt_code}_logo" height="50"> --%>
 			<h2 id="apt_name">${apt.apt_name}</h2>
 		</div>
-		<div id="nav">
-			<!-- Links -->
-			<ul class="nav justify-content-center">
-				<li class="nav-item"><a href="introduce.jsp">아파트 소개</a></li>
-				<!-- <li class="nav-item"><a href="notification.jsp">공지사항</a></li> -->
-				<li class="nav-item"><a href="open.aptsell">부동산</a></li>
-				<li class="nav-item"><a href="openBbs">커뮤니티</a></li>
-				<li class="nav-item"><a href="matjip?apt_lat=${apt.apt_lat}&apt_lon=${apt.apt_lon}">주변 맛집</a></li>
-			</ul>
-		</div>
+		
+		<!-- nav -->
+		<%@ include file="../navbar.jsp" %>
+		
 		<div id="content" style="width: 600px;">
 			
 			<table id="my_box">
@@ -163,9 +161,9 @@ li {
 		<!-- 도착정보 결과 -->
 		<div id="bus" style="width: 600px; height: 350px; overflow: auto;"></div>
 	</div>
-	<div>
-	공지사항 <br><br><br><br><br><br><br><br>
-	</div>
+	
+	<div id="notiList"></div>
+	
 	<div>
 	<img id="apt_img" src="resources/img/lobby_entrance.jpg"
 			<%-- <img id="apt_img" src="resources/img/${member.apt_code}.jpg" --%>

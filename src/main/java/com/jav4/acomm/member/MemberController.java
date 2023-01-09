@@ -64,7 +64,7 @@ public class MemberController {
           return "no";  // no.jsp로 이동
         } else { // member_code, code, id, city를 세션값으로 잡음
           session.setAttribute("member_code", vo2.getMember_code());
-          session.setAttribute("code", vo2.getApt_code());
+          session.setAttribute("apt_code", vo2.getApt_code());
           //session.setAttribute("id", vo2.getMember_id());
           //session.setAttribute("city", vo3.getApt_city());
           model.addAttribute("member", vo2); 
