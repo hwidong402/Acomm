@@ -28,13 +28,13 @@
 	}
 	
 	// seconds 마다 refresh << 서버에 부담이 됨. 조심히 쓰거나 막을것
-	// 바로 setInterval쓰면 delay가 먼저 시작함
-	function startInterval(seconds, callback) {
-			   callback();
-			   return setInterval(callback, seconds * 1000);
-			 }
+			// 바로 setInterval쓰면 delay가 먼저 시작함
+			/* function startInterval(seconds, callback) {
+					   callback();
+					   return setInterval(callback, seconds * 1000);
+					 } */
 	// 주고싶은 delay time과, function을 기재
-	startInterval(3, list5);
+			/* startInterval(3, list5); */
 </script>
 </head>
 <body>
