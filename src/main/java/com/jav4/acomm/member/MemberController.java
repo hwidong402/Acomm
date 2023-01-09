@@ -65,8 +65,8 @@ public class MemberController {
         } else { // member_code, code, id, city를 세션값으로 잡음
           session.setAttribute("member_code", vo2.getMember_code());
           session.setAttribute("code", vo2.getApt_code());
-          session.setAttribute("id", vo2.getMember_id());
-          session.setAttribute("city", vo3.getApt_city());
+          //session.setAttribute("id", vo2.getMember_id());
+          //session.setAttribute("city", vo3.getApt_city());
           model.addAttribute("member", vo2); 
           model.addAttribute("apt", vo3);
           return "local/homepage"; //local/homepage로 넘어감
@@ -81,6 +81,16 @@ public class MemberController {
     }
     
     //아이디중복검사
+	/*
+	 * 1. enroll.jsp의 member_id에 값을 입력 
+	 * 2. enroll.jsp의 자바스크립트에서 data로 member_id를 여기로 보내는 ajax실행 
+	 * 3. MemberController.java.에서 ckok.jsp가 mapping된 구문 실행 
+	 * 4. 중복이면 result를 yes, 중복이 아니면 result를 no로 모델값을 보냄 
+	 * 5. 받아오는 데 성공했으면 받은 모델값을 x로 이하 스크립트 실행 
+	 * 6. x가 no이면 중복이 아닐 때의 조건문을 실행 
+	 * 7. x가 yes이면 중복일 때의 조건문을 실행
+	 */
+    
     @RequestMapping("ckok") //회원가입 enroll에서 아이디 중복검사를 할 때 실행되는 컨트롤러 
     public void idck(MemberVO vo, Model model) {
         MemberVO vo2 = dao.idck(vo); //  DB에 id값을 넣어서 아이디 중복이 있는지 확인하러감.
@@ -92,6 +102,15 @@ public class MemberController {
     }
     
     //닉네임중복검사
+	/*
+	 * 1. enroll.jsp의 member_nick에 값을 입력 
+	 * 2. enroll.jsp의 자바스크립트에서 data로 member_nick을 여기로 보내는 ajax실행 
+	 * 3. MemberController.java.에서 nickok.jsp가 mapping된 구문 실행 
+	 * 4. 중복이면 result를 yes, 중복이 아니면 result를 no로 모델값을 보냄 
+	 * 5. 받아오는 데 성공했으면 받은 모델값을 x로 이하 스크립트 실행 
+	 * 6. x가 no이면 중복이 아닐 때의 조건문을 실행 
+	 * 7. x가 yes이면 중복일 때의 조건문을 실행
+	 */
     @RequestMapping("nickok") //닉네임 enroll에서 닉네임 중복검사를 할 때 실행됨 
     public void nickck(MemberVO vo, Model model) {
     	MemberVO vo2 = dao.nickck(vo); //  DB에 nickname값을 넣어서 아이디 중복이 있는지 확인하러감.
