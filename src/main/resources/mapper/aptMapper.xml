@@ -13,4 +13,8 @@
 		select apt_name, apt_code from apt where apt_name like CONCAT('%',#{apt_name},'%')
 		<!-- select apt_name, apt_city from apt where apt_name like CONCAT('%',#{apt_name},'%') -->
 	</select>
+	<select id="city" parameterType="aptVO" resultType="aptVO">
+		select * from apt where apt_code = #{apt_code}
+	</select>
+	<!-- 아파트가 위치한 도시를 불러옴 -->
 </mapper>

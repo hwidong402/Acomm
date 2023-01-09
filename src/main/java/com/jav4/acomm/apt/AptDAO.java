@@ -23,4 +23,8 @@ public class AptDAO {
 	public List<AptVO> readcode(AptVO vo){ // 위에거와 실행로직은 동일!
 		return my.selectList("apt.code",vo);
 	}
+	
+	public AptVO city(AptVO vo) { //로그인 시 세션 대신 모델로 도시 불러오기 위함
+		return my.selectOne("apt.city", vo);
+	}
 }

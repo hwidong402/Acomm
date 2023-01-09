@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.jav4.acomm.apt.AptDAO;
 import com.jav4.acomm.apt.AptVO;
 import com.jav4.acomm.member.MemberVO;
 @Controller
@@ -13,13 +15,14 @@ public class AptSellController {
 	@Autowired
 	AptSellDAO dao;	
 	
+	@Autowired
+	AptDAO dao2;
 	//homepage로 들어와서 부동산 메뉴바를 클릭했을 때 실행되는 컨트롤러 입니다.
-	@RequestMapping("open.aptsell") // !- 간단한 컨트롤러를 넣었지 손대야할 부분이 많습니다.
-	public String open(MemberVO vo, AptVO vo2, HttpSession session, Model model) {
-		vo.setApt_code((String)session.getAttribute("code")); 
-		vo2.setApt_city((String)session.getAttribute("city")); //code 및 도시(부산, 경기, 서울 등)을 세션으로 잡음
-		System.out.println(vo);
-		System.out.println(vo2);
+	@RequestMapping("open.aptsell") // 로그인 시 세션 설정한 아파트 코트를 세션으로 잡고 모델로 도시를 불러옴
+	public String open(AptVO vo, HttpSession session, Model model) {
+		vo.setApt_code((String)session.getAttribute("code"));
+		AptVO city = dao2.city(vo);
+		model.addAttribute("city", city);
 		return "aptsell/aptinfo";
 	
 	}
