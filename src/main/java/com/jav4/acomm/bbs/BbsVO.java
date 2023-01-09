@@ -2,19 +2,21 @@ package com.jav4.acomm.bbs;
 
 import java.util.Date;
 
+import java_cup.internal_error;
+
 public class BbsVO {
 
 	private int bbs_id;
 	private String bbs_title;
 	private Date bbs_date;
-	private String bbs_writer;
+	private int member_code;
+	private String member_nick;
 	private String bbs_content;
 	private String bbs_file;
 	private String apt_code;
 	private String bbs_notice;
 	private String bbs_cate;
 	private int bbs_count;
-	
 	public int getBbs_id() {
 		return bbs_id;
 	}
@@ -33,11 +35,17 @@ public class BbsVO {
 	public void setBbs_date(Date bbs_date) {
 		this.bbs_date = bbs_date;
 	}
-	public String getBbs_writer() {
-		return bbs_writer;
+	public int getMember_code() {
+		return member_code;
 	}
-	public void setBbs_writer(String bbs_writer) {
-		this.bbs_writer = bbs_writer;
+	public void setMember_code(int member_code) {
+		this.member_code = member_code;
+	}
+	public String getMember_nick() {
+		return member_nick;
+	}
+	public void setMember_nick(String member_nick) {
+		this.member_nick = member_nick;
 	}
 	public String getBbs_content() {
 		return bbs_content;
@@ -75,11 +83,12 @@ public class BbsVO {
 	public void setBbs_count(int bbs_count) {
 		this.bbs_count = bbs_count;
 	}
-	
 	@Override
 	public String toString() {
-		return "BbsVO [bbs_id=" + bbs_id + ", bbs_title=" + bbs_title + ", bbs_date=" + bbs_date + ", bbs_writer="
-				+ bbs_writer + ", bbs_content=" + bbs_content + ", bbs_file=" + bbs_file + ", apt_code=" + apt_code
-				+ ", bbs_notice=" + bbs_notice + ", bbs_cate=" + bbs_cate + ", bbs_count=" + bbs_count + "]";
+		return "BbsVO [bbs_id=" + bbs_id + ", bbs_title=" + bbs_title + ", bbs_date=" + bbs_date + ", member_code="
+				+ member_code + ", member_nick=" + member_nick + ", bbs_content=" + bbs_content + ", bbs_file="
+				+ bbs_file + ", apt_code=" + apt_code + ", bbs_notice=" + bbs_notice + ", bbs_cate=" + bbs_cate
+				+ ", bbs_count=" + bbs_count + "]";
 	}
+	
 }

@@ -25,7 +25,7 @@ public class BbsController {
 	// homepage 열기
 	@RequestMapping("openHomepage")
 	public String openHomepage(AptVO avo, MemberVO mvo, HttpSession session, Model model) {
-		avo.setApt_code((String)session.getAttribute("code"));
+		avo.setApt_code((String)session.getAttribute("apt_code"));
 		mvo.setMember_code((int)session.getAttribute("member_code"));
 		AptVO avo2 = dao.aptAll(avo); 
 		MemberVO mvo2 = dao.memberAll(mvo); 
@@ -39,7 +39,7 @@ public class BbsController {
 	// bbs에서 list5 들고오기
 	@RequestMapping("bbsList5")
 	public String bbsList5(BbsVO vo, HttpSession session, Model model) {
-		vo.setApt_code((String)session.getAttribute("code")); // 원래는 apt_code
+		vo.setApt_code((String)session.getAttribute("apt_code")); // 원래는 apt_code
 		List<BbsVO> list5 = dao.getList5(vo);
 		// List VO를 model로 넘긴다
 		model.addAttribute("list5", list5);
@@ -62,14 +62,14 @@ public class BbsController {
 	@RequestMapping("openBbsCate")
 	public String openBbsCate(BbsVO bvo, MemberVO mvo, HttpSession session,Model model) {
 		//세션의 apt_code 와 <a href>의 bbs_cate를 둘 다 일치하는 게시물만 들고오기
-		bvo.setApt_code((String)session.getAttribute("code"));
+		bvo.setApt_code((String)session.getAttribute("apt_code"));
 		List<BbsVO> list = dao.getListCate(bvo);
 		model.addAttribute("list", list);
 		System.out.println("open this cate list >> " + list);
 		
 		// noti write버튼 admin 필터링
 		// id로 cls 확인 후 값 넘겨주기 
-		mvo.setMember_id((String)session.getAttribute("id"));
+		mvo.setMember_code((int)session.getAttribute("member_code"));
 		MemberVO member_cls = dao.id2cls(mvo); // member 정보 다 들고올 수 있는데 리소스 생각해서 cls 만
 		model.addAttribute("member_cls", member_cls.getMember_cls());
 		
@@ -91,9 +91,12 @@ public class BbsController {
 	
 	// 게시글 작성 페이지 이동
 	@RequestMapping("openBbsWrite")
-	public String openBbsWrite(BbsVO vo, Model model) {
-		model.addAttribute("bbs_cate", vo.getBbs_cate());
-		System.out.println("open >>" + vo.getBbs_cate() + "<< cate write page");
+	public String openBbsWrite(BbsVO bvo, MemberVO mvo, HttpSession session, Model model) {
+		mvo.setMember_code((int)session.getAttribute("member_code"));
+		MemberVO mvo2 = dao.memberAll(mvo); 
+        model.addAttribute("member", mvo2); 
+		model.addAttribute("bbs_cate", bvo.getBbs_cate());
+		System.out.println(bvo.getBbs_cate() + "<< cate의 글 작성페이지로 이동");
 		return "bbs/bbsWrite";
 	}
 	
@@ -104,7 +107,7 @@ public class BbsController {
 		BbsVO post = dao.getBbsPost(vo);
 		// post로 받아서 bbsUpdate.jsp로 넘겨줌
 		model.addAttribute("post", post);
-		System.out.println("update this post >> " + post);
+		System.out.println("update post get >> " + post);
 		return "bbs/bbsUpdate";
 	}
 	
@@ -116,6 +119,7 @@ public class BbsController {
 	// 게시글 작성 완료 > data insert + cate로 이동
 	@RequestMapping("insertPost")
 	public String insertPost(BbsVO vo) {
+		System.out.println("insert할 BbsVO = "+vo);
 		// insert 실행
 		dao.insertPost(vo);
 		// openBbsCate
@@ -125,7 +129,7 @@ public class BbsController {
 	// 게시글 수정 완료 > data update + post로 이동
 	@RequestMapping("updatePost")
 	public String updatePost(BbsVO vo) {
-		System.out.println("지금 가진vo" + vo);
+		System.out.println("update할 BbsVO = " + vo);
 		//update 실행
 		dao.updatePost(vo);
 		// openBbsPost 실행3

@@ -16,7 +16,7 @@
 	
 	<!-- 헤더? -->
 	<div class="container p-3 my-3 text-center">
-		<h1>cate</h1>
+		<h1>${bbs_cate} cate</h1>
 	</div>
 
 	<hr>
@@ -54,12 +54,12 @@
 			</tr>
 			<c:forEach var="list" items="${list}">
 			<tr>
-				<td>${post.bbs_id}</td>
+				<td>${list.bbs_id}</td>
 				<td><a href="openBbsPost?bbs_id=${list.bbs_id}">${list.bbs_title}</a></td>
-				<td>${post.bbs_writer}</td>
-				<td>${post.bbs_notice}</td>
-				<td>${post.bbs_cate}</td>
-				<td>${post.bbs_count}</td>
+				<td>${list.member_nick}</td>
+				<td>${list.bbs_notice}</td>
+				<td>${list.bbs_cate}</td>
+				<td>${list.bbs_count}</td>
 				<td><%-- ${post.bbs_like} --%></td>
 			</tr>
 			</c:forEach>

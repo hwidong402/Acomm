@@ -28,17 +28,6 @@ public class BbsDAO {
 	// 세션의 apt_code 와 <a href>의 bbs_cate를 둘 다 일치하는 게시글 목록 들고오기
 	public List<BbsVO> getListCate(BbsVO vo) {
 		List<BbsVO> list = my.selectList("bbs.getListCate", vo);
-		// bbs_like 에서 전체길이 - ","가 없는 길이 = ","의 갯수 = 좋아요의 수
-		// list에서 bbs_like들고와서 좋아요 수를 String으로 넣어줌
-		
-		// like_count 칼럼이 있었을 경우, list를 필터링 
-		//		for (int i = 0; i < list.size(); i++) {
-		//			int likeCount = list.get(i).getBbs_like().length() - list.get(i).getBbs_like().replace(",", "").length();
-		//			System.out.println("i번째 = " + i + "..likecount=" + likeCount);
-		//			BbsVO returnVo = list.get(i);
-		//			returnVo.setBbs_like(Integer.toString(likeCount));
-		//			list.set(i, returnVo); 
-		//		}
 		return list;
 	}
 	

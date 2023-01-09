@@ -1,3 +1,4 @@
+<%@page import="java_cup.parser"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="com.jav4.acomm.bbs.BbsVO"%>
 <!DOCTYPE html>
@@ -45,10 +46,9 @@
 			<div class="col-sm-4"></div>
 			<div id="up" class="col-sm-4">
 				<%
-					// 세션 id와 작성자가 같아야 수정삭제가 보임
-					String id = (String)session.getAttribute("id");
+					// 세션 member_code와 게시글의 member_code가 같아야 수정삭제가 보임
 					BbsVO post = (BbsVO)request.getAttribute("post");
-					if (id.equals(post.getBbs_writer())) {  
+					if (session.getAttribute("member_code").equals(post.getMember_code())) {
 				%>
 				<a href="openBbsUpdate?bbs_id=${post.bbs_id}"><button class="btn btn-info">수정</button></a>
 				<a href="deletePost?bbs_id=${post.bbs_id}" id="deleteBtn"><button class="btn btn-danger" onclick="findcode()" >삭제</button></a>
@@ -75,7 +75,7 @@
 			<tr style="border: 1px solid blue">
 				<td>${post.bbs_id}</td>
 				<td>${post.bbs_title}</td>
-				<td>${post.bbs_writer}</td>
+				<td>${post.member_nick}</td>
 				<td>${post.bbs_notice}</td>
 				<td>${post.bbs_cate}</td>
 				<td>${post.bbs_count}</td>
