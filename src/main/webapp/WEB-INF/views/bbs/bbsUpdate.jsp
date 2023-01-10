@@ -30,7 +30,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-4">
-				<a href="openBbsPost">
+				<a href="openBbsPost?bbs_id=${post.bbs_id}">
 					<button class="btn btn-warning">뒤로가기</button>
 				</a>
 			</div>
