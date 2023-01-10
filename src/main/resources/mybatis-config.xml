@@ -9,7 +9,7 @@
    <typeAliases>
       <typeAlias type="com.jav4.acomm.member.MemberVO" alias="memberVO"></typeAlias>
       <typeAlias type="com.jav4.acomm.bbs.BbsVO" alias="bbsVO"></typeAlias>
-      <typeAlias type="com.jav4.acomm.bbs.BbsReplyVO" alias="bbsVO"></typeAlias>
+      <typeAlias type="com.jav4.acomm.bbs_reply.BbsReplyVO" alias="bbsreplyVO"></typeAlias>
       <typeAlias type="com.jav4.acomm.bbs.BbslikeVO" alias="bbslikeVO"></typeAlias>
       <typeAlias type="com.jav4.acomm.apt.AptVO" alias="aptVO"></typeAlias>
       <typeAlias type="com.jav4.acomm.bus.BusStopVO" alias="busstopVO"></typeAlias>

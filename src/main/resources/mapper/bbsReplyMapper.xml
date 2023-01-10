@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="bbsreply">
 	<!-- bbsReply * by apt_code  --> 
-	<select id="getBbsReply" parameterType="BbsReplyVO" resultType="BbsReplyVO">
+	<select id="getBbsReply" parameterType="bbsreplyVO" resultType="bbsreplyVO">
 		select * from bbs_reply where bbs_id = #{bbs_id}
 	</select>
 </mapper>
