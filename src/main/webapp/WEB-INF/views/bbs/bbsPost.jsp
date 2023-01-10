@@ -89,6 +89,60 @@
 			</tr>
 		</table>
 	</div>
+	
+	<!-- 댓글 목록 영역 -->
+	<div id="bbsReply" class="container mt-5 text-center"></div>
+	<!-- 댓글작성 영역 -->
+<%-- 	<div>
+		<form action="bbsReply?bbs_id=${post.bbs_id}" method="post">
+			<input name="member_code" value="${post.member_code}" readonly="readonly">
+			<input name="member_nick" value="${post.member_nick}" readonly="readonly">
+			<textarea name="reply_content" id="reply_content" placeholder="댓글"></textarea>
+			<button id="replyBtn">등록</button>
+		</form>	    
+	</div> --%>
+	<div>
+		<textarea name="reply_content" id="reply_content" placeholder="댓글"></textarea>
+		<button id="replyBtn">등록</button>
+	</div>
+	
+	 
+	<script type="text/javascript">
+	// 페이지 열자마자 한번 해주고
+	$(function() {
+		getBbsReply();
+	}
+	// 버튼누름
+	$(document).ready(function() {
+	  $('#replyBtn').click(function() {
+	    var reply = $('#reply').val();
+	    $.ajax({
+	    	  type: "POST",
+	    	  url: 'bbsReply?bbs_id='+${post.bbs_id},
+	    	  data:  {'reply': reply, 'member_nick':${post.member_nick}, 'member_code':${post.member_code}},
+	    	  success: function(response) {
+	    	    // Do something with the response from the server
+	    	    getBbsReply();
+	    	  }
+	    	});
+	  });
+	});
+	
+	
+	function getBbsReply(){
+    $.ajax({
+       url : "bbsReply?bbs_id="+${post.bbs_id},
+       success : function(data) {
+          console.log(data)
+          $('#bbsReply').html(data);
+       }
+	
+	// 등록 버튼을 클릭하면 
+	// bbsReplyList만 재시작
+	
+	
+	</script>
+	
 
 </body>
 </body>
