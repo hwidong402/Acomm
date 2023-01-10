@@ -15,5 +15,7 @@ public class RestReplyDAO {
 	public List<RestReplyVO> list(RestReplyVO vo) {
 		return my.selectList("restreply.list",vo);
 	}
-
+	public int insert(RestReplyVO vo) {
+		return my.insert("restreply.insert", vo);
+	}
 }

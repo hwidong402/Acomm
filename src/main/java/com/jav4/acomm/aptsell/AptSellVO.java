@@ -7,6 +7,7 @@ public class AptSellVO {
 	private int sell_year; //거래년도
 	private int sell_mon; //거래월
 	private int sell_floor; //판매아파트 층
+	private String apt_subaddr;
 	
 	public String getAptsell_id() {
 		return aptsell_id;
@@ -44,10 +45,20 @@ public class AptSellVO {
 	public void setSell_floor(int sell_floor) {
 		this.sell_floor = sell_floor;
 	}
+	public String getApt_subaddr() {
+		return apt_subaddr;
+	}
+	public void setApt_subaddr(String apt_subaddr) {
+		this.apt_subaddr = apt_subaddr;
+	}
 	@Override
 	public String toString() {
 		return "AptSellVO [aptsell_id=" + aptsell_id + ", apt_price=" + apt_price + ", apt_name=" + apt_name
-				+ ", sell_year=" + sell_year + ", sell_mon=" + sell_mon + ", sell_floor=" + sell_floor + "]";
+				+ ", sell_year=" + sell_year + ", sell_mon=" + sell_mon + ", sell_floor=" + sell_floor
+				+ ", apt_subaddr=" + apt_subaddr + "]";
 	}
+	
+
+
 
 }

@@ -17,8 +17,8 @@ $(function() {
 	var incontent="";
 
 	//접속된 아이디의 apt 좌표
-	var lat=${vo.apt_lat};	
-	var lon=${vo.apt_lon};
+	var lat=${apt.apt_lat};	
+	var lon=${apt.apt_lon};
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
     mapOption = { 
         center: new kakao.maps.LatLng(lat, lon), // 지도의 중심좌표

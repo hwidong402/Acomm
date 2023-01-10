@@ -1,27 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="bbsreply">
-<!-- 	<insert id="create" parameterType="bbsVO">
-		insert into bbs values(#{id}, #{title}, #{writer}, #{content},#{code})
-	</insert>
-	<delete id="del" parameterType="bbsVO">
-		delete from bbs where id= #{id}
-	</delete>
-	<update id="up" parameterType="bbsVO">
-		update bbs set content=#{content} where id=#{id}
-	</update>
-	해당 아파트의 게시글  검색
-	<select id="all" parameterType="bbsVO" resultType="bbsVO">
-	select * from bbs where code=#{code}
+	<!-- bbsReply * by apt_code  --> 
+	<select id="getBbsReply" parameterType="BbsReplyVO" resultType="BbsReplyVO">
+		select * from bbs_reply where bbs_id = #{bbs_id}
 	</select>
-	입력한 제목으로 해당 아파트 코드 내 검색 
-	<select id="search" parameterType="bbsVO" resultType="bbsVO">
-		select * from bbs where title=#{title} and code=#{code}
-	</select>
-	상세보기 하기위한 id로 하나검색하는 sql 
-	<select id="one" parameterType="bbsVO" resultType="bbsVO">
-	select * from bbs where id=#{id}
-	</select> -->
 </mapper>
 
 

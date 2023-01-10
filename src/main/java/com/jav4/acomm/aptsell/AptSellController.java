@@ -20,9 +20,12 @@ public class AptSellController {
 	//homepage로 들어와서 부동산 메뉴바를 클릭했을 때 실행되는 컨트롤러 입니다.
 	@RequestMapping("open.aptsell") // 로그인 시 세션 설정한 아파트 코트를 세션으로 잡고 모델로 도시를 불러옴
 	public String open(AptVO vo, HttpSession session, Model model) {
-		vo.setApt_code((String)session.getAttribute("code"));
+		vo.setApt_code((String)session.getAttribute("apt_code"));
+		//System.out.println("1차vo>>>"+vo);
 		AptVO city = dao2.city(vo);
+		//System.out.println("2차city>>>"+city);
 		model.addAttribute("city", city);
+		//System.out.println("3차model>>>"+model);
 		return "aptsell/aptinfo";
 	
 	}

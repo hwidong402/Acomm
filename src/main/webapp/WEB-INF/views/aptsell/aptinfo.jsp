@@ -6,11 +6,17 @@
 <%@ page import="org.jsoup.nodes.Document" %>
 <%@ page import="org.jsoup.nodes.Element" %>
 <%@ page import="org.jsoup.select.Elements" %>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>${city.apt_name}부동산</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- <link href="resources/css/bootstrap.min.css" rel="stylesheet"> --> <!-- resources에 bootstrap 있음 -->
+<link href="resources/css/bbs_struc.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
@@ -143,19 +149,44 @@
       var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
       chart.draw(data, options);
     }
+    $.ajax({
+        url : "test.jsp",
+        success : function(data) {
+           console.log(data)
+           $('#test1').html(data);
+        }
+     });
 </script>
 </head>
 <body>
-<body>
+	<!-- 최상단 nav -->
+	<%@ include file="../navbar.jsp" %>
 <div id="all">
-<hr color="blue">
+<div id="test1"></div>
+		<div id="test">
+
+			<%-- <%
+				Document doc3 = Jsoup.connect("https://m.r114.com/?_c=memul&_m=complex&_a=price&CortarNo=2635010700&mmCode=A01001&ComplexCd=A03156120300026&ComplexNm=").get();
+			Elements posts3 = doc3.body().getElementsByClass("inner6");
+			Elements file3 = posts3.select("tr");
+			for (Element e : file3) {
+					out.println(e);
+				//out.println("<a href=https://land.naver.com/" + e.select("a").attr("href").substring(1, 64) + " target='_blank'>"+ e.select("a").text() + "</a> <br>");
+
+			}
+			%> --%>
+
+		</div>
+
+		<hr color="blue">
 <div id="back">
 <a href="javascript:history.back();">뒤로가기</a>
-<a href="javascript:location.href = document.referrer;">뒤로가기 후 새로고침</a>
-<a href="javascript:location.reload()">새로고침</a>
+<!-- <a href="javascript:location.href = document.referrer;">뒤로가기 후 새로고침</a> -->
+<!-- <a href="javascript:location.reload()">새로고침</a> -->
 </div>
 <div id="chart" >
 <hr color="green">
+${city.apt_town} 아파트 실거래가
 <div id="curve_chart" style="width: 900px; height: 500px"></div>
 </div>
 <div id="news">

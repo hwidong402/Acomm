@@ -45,8 +45,13 @@ public class BusStopController {
 		return "bus/busstopmap4";
 	}
 	@RequestMapping("busstopmap5.bus")
-	public String mapinfo5(AptVO vo, Model model) {
-		model.addAttribute("vo",vo);
+	public String mapinfo5(MemberVO vo, Model model,HttpSession session) {
+		vo.setMember_code((int)session.getAttribute("member_code"));
+		//세션의 코드값으로 홈페이지 정보값 불러오기
+		MemberVO vo2= service.idck(vo);
+		AptVO vo3=service.code2name(vo2);
+		model.addAttribute("member", vo2);
+        model.addAttribute("apt", vo3);
 		
 		return "bus/busstopmap5";
 	}

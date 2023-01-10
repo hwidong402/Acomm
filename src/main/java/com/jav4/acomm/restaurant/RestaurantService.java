@@ -56,4 +56,9 @@ public class RestaurantService {
 	public List<RestReplyVO> list(RestReplyVO vo){
 		return rrdao.list(vo);
 	}
+	
+	public boolean insert(RestReplyVO vo) {
+		if(rrdao.insert(vo)>0)return true;
+		else return false;
+	}
 }

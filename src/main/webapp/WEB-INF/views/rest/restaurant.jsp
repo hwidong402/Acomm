@@ -18,15 +18,15 @@
 $(function() {
 //상가 등록페이지 버튼 만들기
 
-	if(${vo2.member_cls}==1){
-		$('#insert').html("<a href=restwrite.rest?apt_lat=${vo.apt_lat}&apt_lon=${vo.apt_lon}><button>상가 등록</button></a>")
+	if(${member.member_cls}==1){
+		$('#insert').html("<a href=restwrite.rest><button>상가 등록</button></a>")
 	}
 	
 	
 //지도 만들기 상가표시
 	//접속된 아이디의 apt 좌표
-	var lat=${vo.apt_lat};	
-	var lon=${vo.apt_lon};
+	var lat=${apt.apt_lat};	
+	var lon=${apt.apt_lon};
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
     mapOption = { 
         center: new kakao.maps.LatLng(lat, lon), // 지도의 중심좌표
@@ -65,7 +65,9 @@ function makeClickListener(map, marker, infowindow ) {
     	// 레스토랑 이름 변수 
     	var restname="";
 	restid=marker.getTitle();
-	
+	var onebutton = "<a href=restone.rest?rest_id="+restid+"><button>상세보기</button></a>";
+	alert(onebutton)
+	$('#restone').html(onebutton);
 	$.ajax({
 		url:"search.rest",
 		data:{ rest_id:restid},
@@ -76,12 +78,13 @@ var incontent="<div style='white-space: nowrap;'><h4>"+restname+"ㅣ - "+"</h4><
     	infowindow.setContent(incontent);
 		//더보기 클릭시 정보창 제목 변경
 		$('#offcanvasExampleLabel').html(restname);
+		
 		}
 	})	
 
 //상세정보 띄우기 버튼 
-  
         infowindow.open(map, marker);
+  
     
     }//return function end
 }// make ClickListener end
@@ -93,6 +96,7 @@ var incontent="<div style='white-space: nowrap;'><h4>"+restname+"ㅣ - "+"</h4><
 <body>
 <div id="insert"></div>
 <div id="map" style="width:100%;height:800px;"></div>
+<a href="back.rest"><button>뒤로가기</button></a>
 <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
   Button with data-bs-target
 </button> -->
@@ -103,6 +107,7 @@ var incontent="<div style='white-space: nowrap;'><h4>"+restname+"ㅣ - "+"</h4><
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body" id="restinfo" style="overflow:auto">
+    <div id="restone"></div>
     <div>
       Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
     </div>

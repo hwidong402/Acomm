@@ -16,8 +16,8 @@
 var key="0QABlWOjjNUTH6AflytlfpxXTM2vig%2FbrTph8sbBtvWn80oDTHnmpv%2FzKgQOReCP6x%2BEWLnHq%2B6Pg4SsOYhopQ%3D%3D";//인증키
 $(function() {
 	
-var lat=${vo.apt_lat};
-var lon=${vo.apt_lon};
+var lat=${apt.apt_lat};
+var lon=${apt.apt_lon};
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 
         center: new kakao.maps.LatLng(lat, lon), // 지도의 중심좌표
@@ -64,12 +64,12 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
 <div id="clickLatlng"></div>
 <div id="insertform">
 <form action="restinsert.rest">
-상가 이름 : <input name="rest_name"> <br>
+상가 이름 : <input name="rest_name" required="required"> <br>
 상가 위도 : <input id="rest_lat" name="rest_lat" readonly="readonly"><br>
 상가 경도 : <input id="rest_lon" name="rest_lon" readonly="readonly"><br>
 <button>상가 등록하기</button>
 </form>
 </div>
-<a href="matjip?apt_lat=${vo.apt_lat}&apt_lon=${vo.apt_lon}"><button>뒤로가기</button></a>
+<a href="matjip"><button>뒤로가기</button></a>
 </body>
 </html>
