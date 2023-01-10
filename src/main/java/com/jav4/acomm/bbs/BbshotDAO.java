@@ -52,10 +52,13 @@ public class BbshotDAO {
 //		return one;
 	}
 	
-//	public boolean bbslikeone(BbslikeVO vo) {
-//		return my.selectOne("bbs.bbslikeone", vo);
-//	}
+	// bbs_id와 member_code가 일치하는 테이블 전체검색
+	public List<BbslikeVO> hotlist(BbslikeVO vo) {
+		List<BbslikeVO> list = my.selectList("bbs.likeall",vo);
+		return list;
+	}
 	
+	// bbs_id와 member_code가 일치하는 테이블 하나검색
 	public BbslikeVO bbslikeone(BbslikeVO vo) {
 		return my.selectOne("bbs.bbslikeone", vo);
 	}

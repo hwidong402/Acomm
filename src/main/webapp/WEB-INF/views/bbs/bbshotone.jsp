@@ -13,37 +13,40 @@
 </head>
 <script type="text/javascript">
 	
+
 	$(function() {
-		var bbsid = $('#bbslikeid').val();
-		var bbsmembercode = $('#bbslikememcode').val();
-		
+		// 여기 조건이냐
+		$('#b1').click(function() {
+			var bbsid = $('#bbsid').val();
+			var bbsmembercode = $('#bbsmembercode').val();
+			alert(bbsid + "   " + bbsmembercode)
+			// 여기 조건이냐
 			if ((bbsid == "") && (bbsmembercode == "")) {
-				$('#b1').css({'background-color' : 'yellow'});
-				$('#b1').click(function() {
-					$.ajax({
-						url : "bbshotlike?bbs_id=${vo.bbs_id}",
-						success : function(data) {
-							console.log(data)
-							$('#b1').css({'background-color' : 'red'});
-							document.location.href = document.location.href;
-						}
-					}); // 1 ajax
-				}) // 1 b1 click
-			} else if ((bbsid != "") && (bbsmembercode != "")) {
+				alert("좋아요 하셨습니다")
+				$.ajax({
+					url : "bbshotlike?bbs_id=${vo.bbs_id}",
+					success : function(data) {
+						console.log(data)
+						$('#b1').css({'background-color' : 'yellow'});
+						document.location.href = document.location.href;
+					}
+				}); // 1 ajax
+			} //if
+			if ((bbsid != "") && (bbsmembercode != "")) {
 				$('#b1').css({'background-color' : 'pink'});
-				$('#b1').click(function() {
+				alert("좋아요를 취소 하셨습니다")
+				//$('#b1').click(function() {
 					$.ajax({
 						url : "bbslikedel?bbs_id=${vo.bbs_id}",
 						success : function(data) {
 							console.log(data)
-							$('#b1').css({'background-color' : 'blue'});
 							document.location.href = document.location.href;
 						}
 					}); // ajax 끝
-				}) // 삭제 b1
-			}// 첫번째 if 끝
-			
-	}); // body 
+				//}) // 삭제 b1
+			} // 두 번째 if 끝
+		}) // b1 click 
+	}) // body 
 	
 </script>
 <body>
@@ -61,9 +64,7 @@
 					<td>공지사항여부</td>
 					<td>카테고리</td>
 					<td>조회수</td>
-					<td hidden="hidden">bbslike like_id</td>
-					<td hidden="hidden">bbslike bbs_id</td>
-					<td hidden="hidden">bbslike member_code</td>
+					
 					</tr>
 					<tr>
 					<td>${vo.bbs_id}</td>
@@ -76,15 +77,27 @@
 					<td>${vo.bbs_notice}</td>
 					<td>${vo.bbs_cate}</td>
 					<td>${vo.bbs_count}</td>
-					<td hidden="hidden"> <input value="${bbslike.like_id}" id="bbslikeid"/> </td>
-					<td hidden="hidden"> ${bbslike.bbs_id} </td>
-					<td hidden="hidden"> <input value="${bbslike.member_code}" id="bbslikememcode" /></td>
+					
 					</tr>
 					<tr>
 						<td colspan="10">
 								<button id="b1">좋아요</button>
 						</td>
 					</tr>
+			</table>
+			<table>
+				<tr>
+					<td>bbslike like_id</td>
+					<td>bbslike bbs_id</td>
+					<td>bbslike member_code</td>
+				</tr>
+			<%-- <c:forEach var="vo2" items="${vo2}"> --%>
+				<tr>
+					<td> ${vo2.like_id}</td>
+					<td><input id="bbsid" value="${vo2.bbs_id}"></td>
+					<td><input id="bbsmembercode" value="${vo2.member_code}"></td>
+				</tr>
+			<%-- </c:forEach> --%>
 			</table>
 
 	</div>

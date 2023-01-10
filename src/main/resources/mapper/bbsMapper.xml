@@ -92,17 +92,18 @@
 		]]>
 	</update> -->
 
-	<!-- <select id="bbslikeone" parameterType="bbslikeVO" resultType="boolean">
-		select * from bbs_like where bbs_id = #{bbs_id} and member_code = #{member_code}
-	</select> -->
+	<select id="likeall" parameterType="bbslikeVO" resultType="bbslikeVO">
+		select * from bbs_like WHERE bbs_id= #{bbs_id} and member_code = #{member_code}
+	</select>
 	
 	<!-- 좋아요 추가 -->
 	<insert id="bbslike" parameterType="bbslikeVO">
 		insert into bbs_like(bbs_id, member_code, like_time) values (#{bbs_id}, #{member_code}, now())
 	</insert>
+	
 	<!-- bbs_like 테이블 검색 -->
 	<select id="bbslikeone" parameterType="bbslikeVO" resultType="bbslikeVO">
-		select * from bbs_like where bbs_id = #{bbs_id}
+		select * from bbs_like where bbs_id = #{bbs_id} and member_code = #{member_code}
 	</select>
 	
 	<!-- 좋아요 삭제 -->
@@ -110,7 +111,11 @@
 		DELETE FROM bbs_like WHERE bbs_id= #{bbs_id} and member_code = #{member_code}
 	</delete>
 	
-	
+	<select id="" resultType="bbsVO">
+		select bbs.bbs_count, bbs.bbs_id, countTable.bbs_id_like, bbs.bbs_date 
+		from bbs, (select bbs_id, count(bbs_id) as bbs_id_like from bbs_like group by bbs_id) countTable
+		where bbs.bbs_id = countTable.bbs_id
+	</select>
 	
 	
 	

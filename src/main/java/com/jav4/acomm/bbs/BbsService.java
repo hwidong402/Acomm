@@ -33,9 +33,7 @@ public class BbsService {
 	
 	// 통합 테이블 좋아요 추가
 	public void bbslike(BbslikeVO vo) {
-//		BbslikeVO one = dao.bbslikeone(vo);
-		dao.bbslike(vo);
-//		return one;
+			dao.bbslike(vo);
 	}
 	
 	// 통합 테이블 좋아요 취소
@@ -45,10 +43,12 @@ public class BbsService {
 //		return one;
 	}
 	
-//	public boolean bbslikeone(BbslikeVO vo) {
-//		return dao.bbslikeone(vo);
-//	}
+	// bbs_id와 member_code가 일치하는 테이블 전체검색
+	public List<BbslikeVO> hotlist(BbslikeVO vo) {
+		 return dao.hotlist(vo);
+	}
 	
+	// bbs_id와 member_code가 일치하는 테이블 하나검색
 	public BbslikeVO bbslikeone(BbslikeVO vo) {
 		return dao.bbslikeone(vo);
 	}

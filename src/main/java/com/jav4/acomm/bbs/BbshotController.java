@@ -27,7 +27,7 @@ public class BbshotController {
 	
 	// 게시판 상세 보기
 	@RequestMapping("bbs/bbshotone")
-	public void info(BbsVO vo,Model model, BbslikeVO vo2) {
+	public void info(BbsVO vo, BbslikeVO vo2, Model model, HttpSession session) {
 		// bbs 테이블에서 bbs_id로 게시판 내용 검색하기
 		System.out.println("-----서비스 부르기 전------ " + vo.getBbs_id());
 		service.bbsCount(vo.getBbs_id()); // 게시글 조회수 증가
@@ -36,10 +36,11 @@ public class BbshotController {
 		System.out.println("서비스 부른후 bbs 게시글 하나 검색 ---- " + vo);
 //		vo2.setBbs_id(vo.getBbs_id());
 		System.out.println("vo2에 bbs_id가 찍히냐? => " + vo2);
+		vo2.setMember_code((Integer)session.getAttribute("member_code"));
 		BbslikeVO one2 = service.bbslikeone(vo2);
 		System.out.println("----------하나검색 후 " + one + "\n BbslikeVO : " + one2);
 		model.addAttribute("vo", one);
-		model.addAttribute("bbslike", one2);
+		model.addAttribute("vo2", one2);
 	}
 	
 	// 게시판 좋아요
