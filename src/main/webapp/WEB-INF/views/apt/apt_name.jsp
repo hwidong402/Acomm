@@ -6,7 +6,18 @@
 	
 </script>
 <script type="text/javascript">
+
+	function changetype() {
+		var num = document.getElementById("aptname").selectedIndex;
+		var f = document.getElementById("b2");
+		f.type= "submit";
+		if(num == 0){
+			f.type= "hidden";
+		}
+	}
+
 	function findcode() {
+		
 		var num = document.getElementById("aptname").selectedIndex;
 		var arr = document.getElementById("aptname").options;
 		//alert("Index " + arr[num].index + " : " + arr[num].text);
@@ -51,13 +62,14 @@
 
 
 <select onclick="findcode()"
-	onchange="document.getElementById('apt_name').value = this.options[this.selectedIndex].label"
+	onchange="document.getElementById('apt_name').value = this.options[this.selectedIndex].label;changetype()"
 	id="aptname" name="apt_code" class="apt_code"
 	style="width: 500px; color: black;">
+	<option>아파트를 선택해주세요.</option>
 	<c:forEach items="${list}" var="one">
 		<option label="${one.apt_name}" value="${one.apt_code}">${one.apt_name}</option>
 	</c:forEach>
 </select>
 <br>
 
-<input type="submit" value="우리아파트 회원가입" id="b2">
+<input type="hidden" value="우리아파트 회원가입" id="b2">

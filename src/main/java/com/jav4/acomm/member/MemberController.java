@@ -65,10 +65,12 @@ public class MemberController {
         } else { // member_code, code, id, city를 세션값으로 잡음
           session.setAttribute("member_code", vo2.getMember_code());
           session.setAttribute("apt_code", vo2.getApt_code());
+          //System.out.println(vo2);
           //session.setAttribute("id", vo2.getMember_id());
           //session.setAttribute("city", vo3.getApt_city());
           model.addAttribute("member", vo2); 
           model.addAttribute("apt", vo3);
+          //System.out.println(vo3);
           return "local/homepage"; //local/homepage로 넘어감
         }
      }
@@ -124,7 +126,7 @@ public class MemberController {
     //관리자가 버튼 실행 시 
     @RequestMapping("everyinfo") // homepage에 버튼 로직(member.member_cls==1) 구문이 있는데 이 구문은 관리자만 볼 수 있는 버튼이며 클릭시 실행되는 로직
     public String everyinfo(MemberVO vo, Model model, HttpSession session) { 
-    	vo.setApt_code((String)session.getAttribute("code")); // 세션 값은 Apt_code에서 가지고옴
+    	vo.setApt_code((String)session.getAttribute("apt_code")); // 세션 값은 Apt_code에서 가지고옴
     	//System.out.println(vo);
     	List<MemberVO> list = dao.all(vo); // 관리자 권한으로 회원들의 정보를 가져와서 list에 담기
         model.addAttribute("list", list); // list에 담아서
