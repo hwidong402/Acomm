@@ -3,12 +3,19 @@ package com.jav4.acomm.restaurant;
 public class RestReplyVO {
 
 		private int rere_id;
+		private int member_code;
 		private String rere_writer;
 		private String rere_content;
 		private int rest_id;
 		private float rere_score;
 		private String apt_code;
 		
+		public int getMember_code() {
+			return member_code;
+		}
+		public void setMember_code(int member_code) {
+			this.member_code = member_code;
+		}
 		public String getApt_code() {
 			return apt_code;
 		}

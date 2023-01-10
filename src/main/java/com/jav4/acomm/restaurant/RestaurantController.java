@@ -19,55 +19,99 @@ public class RestaurantController {
 	
 	@Autowired
 	RestaurantService service;
+	
+	//상가 페이지 관련 맵핑
+	
 	//주변 상가 페이지 이동
 	@RequestMapping("matjip")
-	public String restaurant(AptVO vo,MemberVO vo2,Model model,HttpSession session) {
-		vo2.setMember_code((int)session.getAttribute("member_code"));
-		vo2=service.idck(vo2);
-		model.addAttribute("vo", vo);
-		model.addAttribute("vo2", vo2);
+	public String restaurant(MemberVO vo,Model model,HttpSession session) {
+		vo.setMember_code((int)session.getAttribute("member_code"));
+		vo=service.idck(vo);
+		AptVO vo2=service.code2name(vo);
+		//페이지 로드용 정보
+				//멤버
+				model.addAttribute("member", vo);
+				//아파트
+				model.addAttribute("apt", vo2);
 		return "rest/restaurant";//주변상가 표시페이지
 	}
-	//
+	
+	//상가 등록 페이지 이동
 	@RequestMapping("restwrite.rest")
-	public String restwrite(AptVO vo,MemberVO vo2,Model model,HttpSession session) {
-		vo2.setMember_code((int)session.getAttribute("member_code"));
-		vo2=service.idck(vo2);
-		model.addAttribute("vo", vo);
-		model.addAttribute("vo2", vo2);
+	public String restwrite(MemberVO vo,Model model,HttpSession session) {
+		vo.setMember_code((int)session.getAttribute("member_code"));
+		vo=service.idck(vo);
+		AptVO vo2=service.code2name(vo);
+		//페이지 로드용 정보
+				//멤버
+				model.addAttribute("member", vo);
+				//아파트
+				model.addAttribute("apt", vo2);
 		return "rest/restaurantwrite";//주변상가 표시페이지
 	}
+	
+	//상가 위치 등록
 	@RequestMapping("restinsert.rest")
-	public String restinsert(AptVO vo,MemberVO vo2,RestaurantVO vo3,Model model,HttpSession session) {
-		vo2.setMember_code((int)session.getAttribute("member_code"));
-		vo2=service.idck(vo2);
-		vo=service.code2name(vo2);
-		boolean s =service.insert(vo3);
-		if(s) {
-		System.out.println(s);
+	public String restinsert(MemberVO vo,RestaurantVO vo3,Model model,HttpSession session) {
+	if(vo3.getRest_name()!=null||vo3.getRest_lat()!=0.0||vo3.getRest_lon()!=0.0){ 
+		vo.setMember_code((int)session.getAttribute("member_code"));
+		//세션의 코드값으로 홈페이지 정보값 불러오기
+		 vo= service.idck(vo);
+		AptVO vo2=service.code2name(vo);
+		service.insert(vo3);
 		
-			model.addAttribute("vo", vo);
-		model.addAttribute("vo2", vo2);
-		return "rest/restaurant";}
-		else{
-			
-				model.addAttribute("vo", vo);
-			model.addAttribute("vo2", vo2);
+		//페이지 로드용 정보
+				//멤버
+				model.addAttribute("member", vo);
+				//아파트
+				model.addAttribute("apt", vo2);
+		return "rest/restaurant";
+		}else {
 			return "rest/restaurantwrite";
-		}
+			}
+		
 	}
+	
+	//상가에서 홈페이지로 이동
+	@RequestMapping("back.rest")
+	public String upstop(MemberVO vo, HttpSession session,Model model ) {
+		vo.setMember_code((int)session.getAttribute("member_code"));
+		//세션의 코드값으로 홈페이지 정보값 불러오기
+		vo= service.idck(vo);
+		AptVO vo2=service.code2name(vo);
+		//페이지 로드용 정보
+				//멤버
+				model.addAttribute("member", vo);
+				//아파트
+				model.addAttribute("apt", vo2);
+        return "local/homepage";
+	}	
+	
+	//상가상세보기 페이지
+	@RequestMapping("restone.rest")
+	public String restone(MemberVO vo,RestaurantVO vo3 ,HttpSession session,Model model ) {
+		vo.setMember_code((int)session.getAttribute("member_code"));
+		//세션의 코드값으로 홈페이지 정보값 불러오기
+		//레스토랑 id로 하나의 정보 검색
+		vo3=service.one(vo3);
+		vo= service.idck(vo);
+		AptVO vo2=service.code2name(vo);
+		
+		//페이지 로드용 정보 전송
+		//레스토랑 관련 정보
+		model.addAttribute("rest",vo3);
+		//member 관련 정보
+		model.addAttribute("member", vo);
+		//apt 관련 정보
+		model.addAttribute("apt", vo2);
+		return "rest/restaurantone";
+	}	
+	
 	//상가 list json으로 들고오기
 	@RequestMapping("list.rest")
 	@ResponseBody
 	public List<RestaurantVO> all() {
-		
 		return service.list();//저장된 상가목록 
-	}
-	//상가 후기 리스트 검색  json
-	@RequestMapping("list.reply")
-	@ResponseBody
-	public List<RestReplyVO> list(RestReplyVO vo){
-		return service.list(vo);
 	}
 	// 상가 하나 검색 json
 	@RequestMapping("search.rest")
@@ -76,4 +120,28 @@ public class RestaurantController {
 		return service.one(vo);
 	}
 	
+	//상가 후기 관련 맵핑
+	
+	//상가 후기 리스트 검색  json
+	@RequestMapping("list.reply")
+	@ResponseBody
+	public List<RestReplyVO> list(RestReplyVO vo){
+		return service.list(vo);
+	}
+	
+	//상가 후기 작성 페이지 이동
+	@RequestMapping("replywrite.rest")
+	public String replywrite(MemberVO vo,RestaurantVO vo3,HttpSession session,Model model) {
+		vo=service.idck(vo);
+		AptVO vo2=service.code2name(vo);
+		
+		//페이지 로드용 정보
+		//멤버
+		model.addAttribute("member", vo);
+		//아파트
+		model.addAttribute("apt", vo2);
+		//레스토랑 id
+		model.addAttribute("rest", vo3);
+		return "rest/restreplywrite";
+	}
 }
