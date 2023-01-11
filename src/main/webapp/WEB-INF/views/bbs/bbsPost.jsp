@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <style type="text/css">
@@ -101,7 +102,7 @@
 			<button id="replyBtn">등록</button>
 		</form>	    
 	</div> --%>
-	<div>
+	<div class="container mt-5 text-center">
 		<textarea name="reply_content" id="reply_content" placeholder="댓글"></textarea>
 		<button id="replyBtn">등록</button>
 	</div>
@@ -109,33 +110,52 @@
 	 
 	<script type="text/javascript">
 	// 페이지 열자마자 한번 해주고
-	$(function() {
+	/* $(function() {
 		getBbsReply();
+	} */
+	
+	//bbs reply list 들고와줌
+	$(function() { 
+			$.ajax({
+				url : "bbsReply?bbs_id="+${post.bbs_id},
+				success : function(data) {
+					console.log("들고온 데이터 = " + data)
+					 $('#bbsReply').html(data);
+				}
+			});
+	}); 
+	function getReply(){
+		$(function() { 
+			$.ajax({
+				url : "bbsReply?bbs_id="+${post.bbs_id},
+				success : function(data) {
+					console.log("들고온 데이터 = " + data)
+					 $('#bbsReply').html(data);
+				}
+			});
+	}); 
 	}
+	 
 	// 버튼누름
-	$(document).ready(function() {
-	  $('#replyBtn').click(function() {
-	    var reply = $('#reply').val();
-	    $.ajax({
-	    	  type: "POST",
-	    	  url: 'bbsReply?bbs_id='+${post.bbs_id},
-	    	  data:  {'reply': reply, 'member_nick':${post.member_nick}, 'member_code':${post.member_code}},
-	    	  success: function(response) {
-	    	    // Do something with the response from the server
-	    	    getBbsReply();
-	    	  }
-	    	});
-	  });
-	});
+	$(function() {
+		$('#replyBtn').click(function() {
+			var reply_content = $('#reply_content').val();
+			$.ajax({
+				type: "POST",
+				url: 'insertBbsReply?bbs_id='+${post.bbs_id},
+				data:  {'reply_content': reply_content},
+				success: function(data) {
+					getReply();
+				},
+				error : function() {
+					alert("error")
+				} //error
+			}); // ajax
+		}); //click
+	}); // fun
 	
 	
-	function getBbsReply(){
-    $.ajax({
-       url : "bbsReply?bbs_id="+${post.bbs_id},
-       success : function(data) {
-          console.log(data)
-          $('#bbsReply').html(data);
-       }
+	
 	
 	// 등록 버튼을 클릭하면 
 	// bbsReplyList만 재시작

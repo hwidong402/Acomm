@@ -20,6 +20,9 @@ public class BbsController {
 	@Autowired
 	BbsDAO dao;
 	
+	@Autowired
+	BbsService service;
+	
 	// ▽▽▽▽▽ Read Zone ▽▽▽▽▽
 	
 	// homepage 열기
@@ -81,6 +84,7 @@ public class BbsController {
 	// 게시글로 이동
 	@RequestMapping("openBbsPost")
 	public String openBbsPost(BbsVO vo,Model model) {
+		service.bbsCount(vo.getBbs_id()); // 게시글 조회수 증가
 		// <a href>의 bbs_id로 게시글 정보 가져오기
 		BbsVO post = dao.getBbsPost(vo);
 		// post로 받아서 bbsPost.jsp로 넘겨줌
@@ -119,8 +123,8 @@ public class BbsController {
 	// 게시글 작성 완료 > data insert + cate로 이동
 	@RequestMapping("insertPost")
 	public String insertPost(BbsVO vo) {
-		System.out.println("insert할 BbsVO = "+vo);
 		// insert 실행
+		System.out.println("insert할 BbsVO = "+vo);
 		dao.insertPost(vo);
 		// openBbsCate
 		return "redirect:openBbsCate?bbs_cate="+vo.getBbs_cate();
