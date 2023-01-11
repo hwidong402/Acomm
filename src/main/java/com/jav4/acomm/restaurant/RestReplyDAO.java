@@ -11,11 +11,20 @@ public class RestReplyDAO {
 
 	@Autowired
 	SqlSessionTemplate my;
-
+	// 상가하나의 후기 전체 검색
 	public List<RestReplyVO> list(RestReplyVO vo) {
 		return my.selectList("restreply.list",vo);
 	}
+	
+	//후기 insert
 	public int insert(RestReplyVO vo) {
 		return my.insert("restreply.insert", vo);
 	}
+	
+	//후기 delete
+	public int delete(RestReplyVO vo) {
+		return my.delete("restreply", vo);
+	}
+	
+	
 }

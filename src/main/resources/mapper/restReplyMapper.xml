@@ -5,11 +5,14 @@
 	select * from rest_reply where rest_id = #{rest_id} order by rere_id desc
 </select>
  <insert id="insert" parameterType="restreplyVO">
-	insert into rest_reply (null,#{member_code},#{rere_writer},#{rere_content},#{rest_id},#{rere_score},#{apt_code})
+	insert into rest_reply values (null,#{member_code},#{rere_writer},#{rere_content},#{rest_id},#{rere_score},#{apt_code})
 </insert>
 <update id="update" parameterType="restreplyVO">
 	update rest_reply set rere_content=#{rere_content},rere_score=#{rere_score} where rere_id=#{rere_id}
 </update> 
+<delete id="delete" parameterType="restreplyVO">
+delete from rest_reply where rere_id = #{rere_id}
+</delete>
 <!-- 	<insert id="create" parameterType="bbsVO">
 		insert into bbs values(#{id}, #{title}, #{writer}, #{content},#{code})
 	</insert>

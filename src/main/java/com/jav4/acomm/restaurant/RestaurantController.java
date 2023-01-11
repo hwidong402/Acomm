@@ -132,6 +132,7 @@ public class RestaurantController {
 	//상가 후기 작성 페이지 이동
 	@RequestMapping("replywrite.rest")
 	public String replywrite(MemberVO vo,RestaurantVO vo3,HttpSession session,Model model) {
+		vo.setMember_code((int)session.getAttribute("member_code"));
 		vo=service.idck(vo);
 		AptVO vo2=service.code2name(vo);
 		
@@ -143,5 +144,39 @@ public class RestaurantController {
 		//레스토랑 id
 		model.addAttribute("rest", vo3);
 		return "rest/restreplywrite";
+	}
+	@RequestMapping("replyinsert.rest")
+	public String replyinsert(MemberVO vo,RestaurantVO vo3,RestReplyVO vo4,HttpSession session,Model model) {
+		vo.setMember_code((int)session.getAttribute("member_code"));
+		vo=service.idck(vo);
+		AptVO vo2=service.code2name(vo);
+		vo3=service.one(vo3);
+		service.insert(vo4);
+		//페이지 로드용 정보
+		
+		//멤버
+		model.addAttribute("member", vo);
+		//아파트
+		model.addAttribute("apt", vo2);
+		//레스토랑 id
+		model.addAttribute("rest", vo3);
+		return "rest/restaurantone";
+	}
+	@RequestMapping("replydelete.rest")
+	public String replydelete(MemberVO vo,RestaurantVO vo3,RestReplyVO vo4,HttpSession session,Model model) {
+		vo.setMember_code((int)session.getAttribute("member_code"));
+		vo=service.idck(vo);
+		AptVO vo2=service.code2name(vo);
+		vo3=service.one(vo3);
+		service.insert(vo4);
+		//페이지 로드용 정보
+		
+		//멤버
+		model.addAttribute("member", vo);
+		//아파트
+		model.addAttribute("apt", vo2);
+		//레스토랑 id
+		model.addAttribute("rest", vo3);
+		return "rest/restaurantone";
 	}
 }
