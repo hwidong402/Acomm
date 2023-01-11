@@ -14,8 +14,8 @@ public class BbshotDAO {
 	
 	
 	//실험용 리스트 내용전체 다들고오기
-	public List<BbsVO> list(BbsVO vo) {
-		List<BbsVO> list = my.selectList("bbs.bbshotall",vo);
+	public List<BbslikeVO> list(BbslikeVO vo) {
+		List<BbslikeVO> list = my.selectList("bbs.bbshotall",vo); 
 		return list;
 	}
 	

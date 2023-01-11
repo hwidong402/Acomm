@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +13,26 @@
 <link rel="stylesheet" href="resources/css/bbshot.css">
 </head>
 <body>
-	<div id="bbshotall">
+<div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 overflow-hidden">
+		<div class="d-grid">
+			<button class="btn btn-outline-info"
+				onclick="location.href='openBbsCate?bbs_cate=${cate}'" type="button">${cate} 더보기</button>
+		</div>
+		<c:forEach var="hotvo" items="${hotlist}">
+			<div class="list-group">
+				<div class="list-group-item list-group-item-action">
+					<div class="d-flex w-100 justify-content-between">
+						<small>${hotvo.member_nick}</small> <small><fmt:formatDate pattern="yyyy-MM-dd" value="${hotvo.bbs_date}"/></small>
+					</div>
+					<h5 class="ellipsis">
+						<a href="bbs/bbshotone?bbs_id=${hotvo.bbs_id}">${hotvo.bbs_title}</a>
+					</h5>
+				</div>
+			</div>
+		</c:forEach>
+	</div>
+	
+	<%-- <div id="bbshotall">
 		<table border="1">
 				<tr>
 				<td>번호</td>	
@@ -30,17 +50,17 @@
 				<tr>
 				<td>${vo.bbs_id}</td>
 				<td><a href="bbs/bbshotone?bbs_id=${vo.bbs_id}">${vo.bbs_title}</a></td>
-				<td>${vo.bbs_date}</td>
-				<%-- <td>${vo.bbs_writer}</td> --%>
-				<%-- <td>${vo.bbs_content}</td> --%>
-				<%-- <td>${vo.bbs_file}</td>
-				<td>${vo.apt_code}</td> --%>
-				<%-- <td>${vo.bbs_notice}</td> --%>
-				<%-- <td>${vo.bbs_cate}</td> --%>
+				<td><fmt:formatDate pattern="yyyy-MM-dd" value="${vo.bbs_date}"/></td>
+				<td>${vo.bbs_writer}</td>
+				<td>${vo.bbs_content}</td>
+				<td>${vo.bbs_file}</td>
+				<td>${vo.apt_code}</td>
+				<td>${vo.bbs_notice}</td>
+				<td>${vo.bbs_cate}</td>
 				<td>${vo.bbs_count}</td>
 				</tr>
 			</c:forEach>
 		</table>
-	</div>
+	</div> --%>
 </body>
 </html>

@@ -20,9 +20,9 @@ public class BbshotController {
 	
 	// 게시판 전체 가져오기
 	@RequestMapping("bbs/bbshotall")
-	public void all(BbsVO vo,Model model) {
-		List<BbsVO> list = service.list(vo);
-		model.addAttribute("list", list);
+	public void all(BbslikeVO vo,Model model) {
+		List<BbslikeVO> list = service.list(vo);
+		model.addAttribute("hotlist", list);
 	}
 	
 	// 게시판 상세 보기

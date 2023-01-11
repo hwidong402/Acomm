@@ -25,6 +25,19 @@
 	         }
 	      });
 	   });
+	
+	/* bbshot 추가 */
+	$(function() {
+			$.ajax({
+				url : "bbs/bbshotall",
+				success : function(data) {
+					console.log(data)
+					$('#hotlist').html(data);
+				}
+			});
+	});
+	
+	
 	/* } */
 	
 	// seconds 마다 refresh << 서버에 부담이 됨. 조심히 쓰거나 막을것
@@ -50,9 +63,7 @@
     <!-- 1열 -->
     <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
 	    <div id="notiList"></div>
-	    <div>
-			<jsp:include page="../../../bbshot.jsp"></jsp:include>
-	    </div>
+	    <div id="hotlist"></div>
     </div>
     
     <!-- 2열 -->

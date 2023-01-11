@@ -72,12 +72,14 @@
 	
 	
 	<!-- 휘동 작업 영역  -->
-	<select id="bbshotall" resultType="bbsVO">
+	<select id="" resultType="bbsVO">
 		select * from bbs ORDER BY bbs_date DESC limit 5
 	</select>
 	
 	<select id="bbshotone" parameterType="bbsVO" resultType="bbsVO">
-		select * from bbs where bbs_id = #{bbs_id}
+		select bbs.*, countTable.bbs_id_like
+		from bbs, (select bbs_id, count(bbs_id) as bbs_id_like from bbs_like group by bbs_id) countTable
+		where bbs.bbs_id = countTable.bbs_id and bbs.bbs_id = #{bbs_id}
 	</select>
 	
 	<!-- 조회수 -->
@@ -111,17 +113,22 @@
 		DELETE FROM bbs_like WHERE bbs_id= #{bbs_id} and member_code = #{member_code}
 	</delete>
 	
-	<select id="" resultType="bbsVO">
-		select bbs.bbs_count, bbs.bbs_id, countTable.bbs_id_like, bbs.bbs_date 
+	<!-- 인기게시글 전체 중에 5개만 검색 -->
+	<select id="bbshotall" resultType="bbsVO">
+		select hotall.* from (
+		select bbs.*, countTable.bbs_id_like
 		from bbs, (select bbs_id, count(bbs_id) as bbs_id_like from bbs_like group by bbs_id) countTable
-		where bbs.bbs_id = countTable.bbs_id
+		where bbs.bbs_id = countTable.bbs_id) hotall
+		where hotall.bbs_count >= 100 and hotall.bbs_id_like > 3 order by bbs_id desc limit 5
 	</select>
 	
-	
-	
-	
-	
-	
-
+	<!-- 더보기 눌렀을 때 인기게시글 전체 검색 -->
+	<select id="bbshotall2" resultType="bbsVO">
+		select hotall.* from (
+		select bbs.*, countTable.bbs_id_like
+		from bbs, (select bbs_id, count(bbs_id) as bbs_id_like from bbs_like group by bbs_id) countTable
+		where bbs.bbs_id = countTable.bbs_id) hotall
+		where hotall.bbs_count >= 100 and hotall.bbs_id_like > 3 order by bbs_id desc
+	</select>
 	
 </mapper>

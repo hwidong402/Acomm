@@ -1,6 +1,8 @@
+<%@page import="com.jav4.acomm.bbs.BbsVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,29 +14,37 @@
 <!-- <link rel="stylesheet" href="../../resources/css/bbshot.css"> -->
 </head>
 <script type="text/javascript">
-	
-
 	$(function() {
+		
+		/* 유지보수로 페이지 새로고침을 막아보는 함수 설정 */
+		/* function refresh() {
+			$.ajax({
+				url : "bbs/bbshotall",
+				success : function(data) {
+					console.log(data)
+					$('#hotlist').html(data);
+				}
+			});
+		} */
+		
+		
 		// 여기 조건이냐
 		$('#b1').click(function() {
 			var bbsid = $('#bbsid').val();
 			var bbsmembercode = $('#bbsmembercode').val();
-			alert(bbsid + "   " + bbsmembercode)
 			// 여기 조건이냐
 			if ((bbsid == "") && (bbsmembercode == "")) {
-				alert("좋아요 하셨습니다")
+				$('#b1').css({'background-color' : 'yellow'});
 				$.ajax({
 					url : "bbshotlike?bbs_id=${vo.bbs_id}",
 					success : function(data) {
 						console.log(data)
-						$('#b1').css({'background-color' : 'yellow'});
 						document.location.href = document.location.href;
 					}
 				}); // 1 ajax
 			} //if
 			if ((bbsid != "") && (bbsmembercode != "")) {
 				$('#b1').css({'background-color' : 'pink'});
-				alert("좋아요를 취소 하셨습니다")
 				//$('#b1').click(function() {
 					$.ajax({
 						url : "bbslikedel?bbs_id=${vo.bbs_id}",
@@ -64,12 +74,12 @@
 					<td>공지사항여부</td>
 					<td>카테고리</td>
 					<td>조회수</td>
-					
+					<td>좋아요</td>
 					</tr>
 					<tr>
 					<td>${vo.bbs_id}</td>
 					<td>${vo.bbs_title}</td>
-					<td>${vo.bbs_date}</td>
+					<td><fmt:formatDate pattern="yyyy-MM-dd" value="${vo.bbs_date}"/></td>
 					<td>${vo.member_nick}</td>
 					<td>${vo.bbs_content}</td>
 					<td>${vo.bbs_file}</td>
@@ -77,12 +87,10 @@
 					<td>${vo.bbs_notice}</td>
 					<td>${vo.bbs_cate}</td>
 					<td>${vo.bbs_count}</td>
-					
-					</tr>
-					<tr>
-						<td colspan="10">
-								<button id="b1">좋아요</button>
-						</td>
+					<td>${vo.bbs_id_like}</td>
+					<td>
+							<button id="b1">좋아요</button>
+					</td>
 					</tr>
 			</table>
 			<table>

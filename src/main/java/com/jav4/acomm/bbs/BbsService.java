@@ -12,7 +12,7 @@ public class BbsService {
 	BbshotDAO dao;
 	
 	// 전체 검색
-	public List<BbsVO> list(BbsVO vo) {
+	public List<BbslikeVO> list(BbslikeVO vo) {
 		 return dao.list(vo);
 	}
 	

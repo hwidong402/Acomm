@@ -11,7 +11,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <link rel="stylesheet" href="resources/css/bbshot.css">
 <script type="text/javascript">
-	$(function() {
+	/* $(function() {
 			$.ajax({
 				url : "bbs/bbshotall",
 				success : function(data) {
@@ -19,12 +19,10 @@
 					$('#context').html(data);
 				}
 			});
-	});
+	}); */
 </script>
 </head>
 <body>
-<a href="bbs/bbshotall"> 뷰로 </a>
-<button id="b1">테스트용 버튼하나</button>
-<div id="context"></div>
+<!-- <div id="context"></div> -->
 </body>
 </html>
