@@ -66,7 +66,7 @@ function makeClickListener(map, marker, infowindow ) {
     	var restname="";
 	restid=marker.getTitle();
 	var onebutton = "<a href=restone.rest?rest_id="+restid+"><button>상세보기</button></a>";
-	alert(onebutton)
+	
 	$('#restone').html(onebutton);
 	$.ajax({
 		url:"search.rest",

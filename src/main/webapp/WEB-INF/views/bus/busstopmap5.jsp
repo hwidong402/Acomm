@@ -12,6 +12,17 @@
 //버스 시스템 인증키
 var key="0QABlWOjjNUTH6AflytlfpxXTM2vig%2FbrTph8sbBtvWn80oDTHnmpv%2FzKgQOReCP6x%2BEWLnHq%2B6Pg4SsOYhopQ%3D%3D";
 var bstopid="";
+	function findcode() {
+		upstop.onclick = function() {
+			if (confirm("즐겨찾는 정류장을 등록하시겠습니까?")) {
+				alert("등록 성공");
+				return true;
+			} else {
+				alert("등록 취소");
+				return false;
+			}
+		}
+	}
 $(function() {
 	// JSON으로 만들 리스트 생성
 	var incontent="";
@@ -71,7 +82,7 @@ function makeClickListener(map, marker, infowindow ) {
     	$.ajax({
 			url : "http://apis.data.go.kr/6260000/BusanBIMS/stopArrByBstopid?serviceKey="+key+"&bstopid="+bstopid,
 					success : function(x) {
-				var title = "<h3>"+stopname+"</h3>"+"<a href=upstop.bus?stop_id="+bstopid+"><button>즐겨찾기 등록</button></a>";
+				var title = "<h3>"+stopname+"</h3>"+"<a href=upstop.bus?stop_id="+bstopid+" id='upstop'><button onclick='findcode()'>즐겨찾기 등록</button></a>";
 				var table = "<table class="+"table table-dark table-striped"+"><tr><td style='width:80px;'>버스번호</td><td style='width:80px;'>남은 시간</td><td style='width:100px;'>남은 정류장</td></tr>"; // table 만드는 기능
 				$(x).find("item").each(function () {
 					var no=$(this).find("lineno").text();

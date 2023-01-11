@@ -15,7 +15,45 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4611b2688b283a9862933471078a1361"></script>
 <script>
 $(function() {
-	
+	//버튼 클릭시 확인 창 추가 로직
+	/* function findcode() {
+		deletereply.onclick = function() {
+			if (confirm("후기를 삭제하시겠습니까")) {
+				alert("후기삭제");
+				return true;
+			} else {
+				alert("삭제취소");
+				return false;
+			}
+		}
+	} */
+ 	//후기목록 들고오기
+	$.ajax({
+		url : "list.reply",
+		data : {rest_id:${rest.rest_id}},
+				success : function(x) {
+				var other=false;
+				var review="<table class=table><tr><td colspan='4'>후기</td></tr>";
+			for (var i = 0; i <x.length; i++) {
+				var writer=	x[i].rere_writer;//작성자 닉네임		
+				var aptcode= x[i].apt_code;//작성자 apt 코드		
+				var membercode= x[i].member_code;// 작성자 멤버 코드		
+				var rerecontent= x[i].rere_content;//작성한 내용
+				var rerescore= x[i].rere_score;	// 작성한 평점
+				if(${member_code }==membercode){
+				var myreview = "<table class=table><tr><td colspan='4'>나의 후기</td></tr><tr><td colspan='2'>"+writer+"</td><td>"+rerescore+"</td><td><button>리뷰삭제</button></td></tr><tr><td colspan='4'>"+rerecontent+"</td></tr></table>";
+					$('#myreply').html(myreview);
+				}else{
+					other=true;
+					review += "<tr><td colspan='2'>"+writer+"</td><td>평점</td><td>"+rerescore+"</td></tr><tr><td colspan='4'>"+rerecontent+"</td></tr>";
+				}//else end
+				}//for end
+					review+="</table>";
+					if(other){
+					$('#replylist').html(review);
+				}
+		}//success end
+	  })
 	
 	var lat=${rest.rest_lat}+"";
 	var lon=${rest.rest_lon}+"";
@@ -50,8 +88,8 @@ marker.setMap(map);
 </div>
 <div id="reply"class="container-md" style="text-align: center;">
 <h3>후기</h3>
-<div><a href="replywrite.rest?rest_id=${rest.rest_id}"><button>후기작성</button></a></div>
-<div id="replylist"></div>
+<div id= "myreply"><a href="replywrite.rest?rest_id=${rest.rest_id}"><button>후기작성</button></a></div>
+<div id="replylist">후기가 없어요.</div>
 </div>
 <br>
 <div class="container-md" id="map" style="width:100%;height:350px;"></div>

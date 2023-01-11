@@ -56,9 +56,14 @@ public class RestaurantService {
 	public List<RestReplyVO> list(RestReplyVO vo){
 		return rrdao.list(vo);
 	}
-	
+	//상가 후기 insert 
 	public boolean insert(RestReplyVO vo) {
 		if(rrdao.insert(vo)>0)return true;
 		else return false;
 	}
+	public boolean delete(RestReplyVO vo) {
+		if(rrdao.delete(vo)>0)return true;
+		else return false;
+	}
+	
 }
