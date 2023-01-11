@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="bbsreply">
+	
 	<!-- bbsReply * by apt_code  --> 
 	<select id="getBbsReply" parameterType="bbsreplyVO" resultType="bbsreplyVO">
 		select * from bbs_reply where bbs_id = #{bbs_id}
+	</select>
+	
+	<!-- 게시글 댓글 삽입 -->
+	<insert id="insertBbsReply" parameterType="bbsreplyVO">
+		insert into bbs_reply(bbs_id, reply_content, member_code, member_nick, reply_date) 
+					values(#{bbs_id}, #{reply_content}, #{member_code}, #{member_nick}, NOW())
+	</insert>
+	<!--  member code 2 nick  --> 
+	<select id="mcode2nick" parameterType="int" resultType="String">
+		select member_nick from member where member_code = #{member_code}
 	</select>
 </mapper>
 

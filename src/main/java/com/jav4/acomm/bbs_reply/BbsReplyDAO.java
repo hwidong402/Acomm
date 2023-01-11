@@ -20,5 +20,15 @@ public class BbsReplyDAO {
 		List<BbsReplyVO> bbsReply = my.selectList("bbsreply.getBbsReply", vo);
 		return bbsReply;
 	}
-
+	
+	// 댓글 넣기
+	public void insertBbsReply(BbsReplyVO vo) {
+		my.insert("bbsreply.insertBbsReply", vo);
+	}
+	// member code 2 nick
+	public String mcode2nick(int code) {
+		String nick = my.selectOne("bbsreply.mcode2nick", code);
+		return nick;
+	}
+		
 }
