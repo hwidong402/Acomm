@@ -2,6 +2,7 @@
 <%@ page import="java_cup.parser"%>
 <%@ page import="com.jav4.acomm.bbs.BbsVO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -98,6 +99,36 @@
 		}); //click
 	}); // function
 	
+	$(function() {
+		$('#b1').click(function() {
+			var bbsid = $('#bbsid').val();
+			var bbsmembercode = $('#bbsmembercode').val();
+			// 여기 조건이냐
+			if ((bbsid == "") && (bbsmembercode == "")) {
+				$('#b1').css({'background-color' : 'yellow'});
+				$.ajax({
+					url : "bbs/bbshotlike?bbs_id=${post.bbs_id}",
+					success : function(data) {
+						console.log(data)
+						document.location.href = document.location.href;
+					}
+				}); // 1 ajax
+			} //if
+			if ((bbsid != "") && (bbsmembercode != "")) {
+				$('#b1').css({'background-color' : 'pink'});
+				//$('#b1').click(function() {
+					$.ajax({
+						url : "bbs/bbslikedel?bbs_id=${post.bbs_id}",
+						success : function(data) {
+							console.log(data)
+							document.location.href = document.location.href;
+						}
+					}); // ajax 끝
+				//}) // 삭제 b1
+			} // 두 번째 if 끝
+		}) // b1 click 
+	}) // body 
+	
 		
 </script>
 </head>
@@ -140,6 +171,7 @@
 			<tr style="border: 1px solid blue">
 				<td>포스트 아이디</td>
 				<td>제목</td>
+				<td>날짜</td>	
 				<td>글쓴이</td>
 				<td>공지?</td>
 				<td>카테고리</td>
@@ -149,17 +181,21 @@
 			<tr style="border: 1px solid blue">
 				<td>${post.bbs_id}</td>
 				<td>${post.bbs_title}</td>
+				<td><fmt:formatDate pattern="yyyy년MM월dd일 hh시 mm분" value="${post.bbs_date}"/></td>
 				<td>${post.member_nick}</td>
 				<td>${post.bbs_notice}</td>
 				<td>${post.bbs_cate}</td>
 				<td>${post.bbs_count}</td>
-				<td><%-- ${post.bbs_like} --%></td>
+				<td>${post.bbs_like_count}</td>
+				<td>
+					<button id="b1" class="btn btn-primary">좋아요</button>
+				</td>
 			</tr>
 			<tr>
-				<td colspan="7">내용</td>
+				<td colspan="9">내용</td>
 			</tr>
 			<tr>
-				<td colspan="7">${post.bbs_content}</td>
+				<td colspan="9">${post.bbs_content}</td>
 			</tr>
 		</table>
 	</div>
@@ -177,6 +213,21 @@
 			<br>
 		</div>
 	</div>
+	
+	<table class="table">
+		<tr style="border: 1px solid blue" hidden="hidden">
+			<td>bbslike like_id</td>
+			<td>bbslike bbs_id</td>
+			<td>bbslike member_code</td>
+		</tr>
+	<%-- <c:forEach var="vo2" items="${vo2}"> --%>
+		<tr style="border: 1px solid blue" hidden="hidden">
+			<td>${post2.like_id}</td>
+			<td><input id="bbsid" value="${post2.bbs_like_id}"></td>
+			<td><input id="bbsmembercode" value="${post2.member_code}"></td>
+		</tr>
+	<%-- </c:forEach> --%>
+	</table>
 
 </body>
 </body>

@@ -12,6 +12,11 @@
 <script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <!-- <link rel="stylesheet" href="../../resources/css/bbshot.css"> -->
+<style type="text/css">
+#up {
+	text-align: right;
+}
+</style>
 </head>
 <script type="text/javascript">
 	$(function() {
@@ -60,47 +65,85 @@
 	
 </script>
 <body>
-	<div id="bbshotall">
+	<!-- 최상단 nav -->
+	<%@ include file="../navbar.jsp" %>
 
-			<table border="1">
-					<tr>
-					<td>번호</td>	
-					<td>제목</td>
-					<td>날짜</td>	
-					<td>글쓴이</td>
-					<td>내용</td>
-					<td>파일</td>	
-					<td>코드</td>	
-					<td>공지사항여부</td>
-					<td>카테고리</td>
-					<td>조회수</td>
-					<td>좋아요</td>
+	<!-- 헤더? -->
+	<div class="container p-3 my-3 text-center">
+		<h1>게시글 상세보기</h1>
+	</div>
+	
+	<hr>
+<!-- 버튼 -->
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4">
+				<a href="openBbsCate?bbs_cate=${vo.bbs_cate}"><button class="btn btn-warning">뒤로가기</button></a>
+			</div>
+			<div class="col-sm-4"></div>
+			<div id="up" class="col-sm-4">
+				<%-- 
+				 <%
+					// 세션 member_code와 게시글의 member_code가 같아야 수정삭제가 보임
+					BbsVO vo = (BbsVO)request.getAttribute("vo");
+					if (session.getAttribute("member_code").equals(vo.getMember_code())) {
+				%>
+				<a href="openBbsUpdate?bbs_id=${vo.bbs_id}"><button class="btn btn-info">수정</button></a>
+				<a href="deletePost?bbs_id=${vo.bbs_id}" id="deleteBtn"><button class="btn btn-danger" onclick="findcode()" >삭제</button></a>
+				<%
+					}
+				%> --%>
+			</div>
+		</div>
+	</div>
+
+<hr>
+	<div id="bbshotall" class="container mt-5 text-center">
+			<table class="table">
+					<tr style="border: 1px solid blue">
+						<td>포스트아이디</td>	
+						<td>제목</td>
+						<td>날짜</td>	
+						<td>글쓴이</td>
+						<!-- <td>내용</td> -->
+						<!-- <td>파일</td>	 -->
+						<!-- <td>코드</td>	 -->
+						<td>공지사항여부</td>
+						<td>카테고리</td>
+						<td>조회수</td>
+						<td>좋아요</td>
+					</tr>
+					<tr style="border: 1px solid blue">
+						<td>${vo.bbs_id}</td>
+						<td>${vo.bbs_title}</td>
+						<td><fmt:formatDate pattern="yyyy년MM월dd일 hh시 mm분" value="${vo.bbs_date}"/></td>
+						<td>${vo.member_nick}</td>
+						<%-- <td>${vo.bbs_content}</td>
+						<td>${vo.bbs_file}</td>
+						<td>${vo.apt_code}</td> --%>
+						<td>${vo.bbs_notice}</td>
+						<td>${vo.bbs_cate}</td>
+						<td>${vo.bbs_count}</td>
+						<td>${vo.bbs_like_count}</td>
+						<td>
+							<button id="b1" class="btn btn-primary">좋아요</button>
+						</td>
 					</tr>
 					<tr>
-					<td>${vo.bbs_id}</td>
-					<td>${vo.bbs_title}</td>
-					<td><fmt:formatDate pattern="yyyy년MM월dd일 hh시 mm분" value="${vo.bbs_date}"/></td>
-					<td>${vo.member_nick}</td>
-					<td>${vo.bbs_content}</td>
-					<td>${vo.bbs_file}</td>
-					<td>${vo.apt_code}</td>
-					<td>${vo.bbs_notice}</td>
-					<td>${vo.bbs_cate}</td>
-					<td>${vo.bbs_count}</td>
-					<td>${vo.bbs_like_count}</td>
-					<td>
-							<button id="b1">좋아요</button>
-					</td>
+						<td colspan="9">내용</td>
+					</tr>
+					<tr>
+						<td colspan="9">${vo.bbs_content}</td>
 					</tr>
 			</table>
-			<table>
-				<tr>
+			<table class="table">
+				<tr style="border: 1px solid blue">
 					<td>bbslike like_id</td>
 					<td>bbslike bbs_id</td>
 					<td>bbslike member_code</td>
 				</tr>
 			<%-- <c:forEach var="vo2" items="${vo2}"> --%>
-				<tr>
+				<tr style="border: 1px solid blue">
 					<td> ${vo2.like_id}</td>
 					<td><input id="bbsid" value="${vo2.bbs_like_id}"></td>
 					<td><input id="bbsmembercode" value="${vo2.member_code}"></td>

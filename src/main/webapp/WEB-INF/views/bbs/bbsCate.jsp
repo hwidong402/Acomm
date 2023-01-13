@@ -60,7 +60,7 @@
 				<td>${list.bbs_notice}</td>
 				<td>${list.bbs_cate}</td>
 				<td>${list.bbs_count}</td>
-				<td><%-- ${post.bbs_like} --%></td>
+				<td>${list.bbs_like_count}</td>
 			</tr>
 			</c:forEach>
 		</table>

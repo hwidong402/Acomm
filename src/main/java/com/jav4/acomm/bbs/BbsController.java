@@ -84,12 +84,16 @@ public class BbsController {
 	
 	// 게시글로 이동
 	@RequestMapping("openBbsPost")
-	public String openBbsPost(BbsVO vo,Model model) {
+	public String openBbsPost(BbsVO vo, BbslikeVO vo2, Model model, HttpSession session) {
 		service.bbsCount(vo.getBbs_id()); // 게시글 조회수 증가
 		// <a href>의 bbs_id로 게시글 정보 가져오기
 		BbsVO post = dao.getBbsPost(vo);
 		// post로 받아서 bbsPost.jsp로 넘겨줌
+		vo2.setMember_code((Integer)session.getAttribute("member_code"));
+		BbslikeVO one = service.bbslikeone(vo2);
 		model.addAttribute("post", post);
+		model.addAttribute("post2", one);
+		System.out.println("BbslikeVO 검색 >> " + one);
 		System.out.println("open this post >> " + post);
 		return "bbs/bbsPost";
 	}
