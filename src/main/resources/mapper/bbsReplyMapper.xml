@@ -16,6 +16,10 @@
 	<select id="mcode2nick" parameterType="int" resultType="String">
 		select member_nick from member where member_code = #{member_code}
 	</select>
+	<!-- 게시글 삭제 -->
+	<delete id="deleteBbsReply" parameterType="bbsreplyVO">
+		delete from bbs_reply where reply_id= #{reply_id}
+	</delete>
 </mapper>
 
 

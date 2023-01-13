@@ -30,5 +30,10 @@ public class BbsReplyDAO {
 		String nick = my.selectOne("bbsreply.mcode2nick", code);
 		return nick;
 	}
+	// 댓글 삭제
+	// id로 댓글 검색하여 댓글삭제
+	public void deleteBbsReply(BbsReplyVO vo) {
+		my.delete("bbsreply.deleteBbsReply", vo);
+	}
 		
 }

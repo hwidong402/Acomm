@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="com.jav4.acomm.member.MemberVO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,6 +50,12 @@
 				<td><input name="member_code" value="${member.member_code}" readonly="readonly"></td>
 				<td><input name="member_nick" value="${member.member_nick}" readonly="readonly"></td>
 				<td>
+					<%
+					// 세션 member_code와 게시글의 member_code가 같아야 수정삭제가 보임
+					MemberVO member = (MemberVO)request.getAttribute("member");
+					int member_cls = member.getMember_cls();
+					if (member_cls == 1) {
+					%>
 					<div>
 						<input type="radio" id="nomal" name="bbs_notice" value="0" checked>
 						<label for="nomal">일반글</label>
@@ -58,6 +65,9 @@
 						<input type="radio" id="noti" name="bbs_notice" value="1">
 						<label for="noti">공지글</label>
 					</div>
+					<%
+					}
+					%>
 				</td>
 				<td>
 					<select name="bbs_cate" class="form-select" >

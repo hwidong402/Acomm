@@ -1,6 +1,7 @@
-<%@page import="java_cup.parser"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@page import="com.jav4.acomm.bbs.BbsVO"%>
+<%@ page import="java_cup.parser"%>
+<%@ page import="com.jav4.acomm.bbs.BbsVO"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,14 +10,17 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style type="text/css">
 #up {
 	text-align: right;
 }
 </style>
 <script type="text/javascript">
-	function findcode() {
-		deleteBtn.onclick = function() {
+
+	// post 삭제 경고
+	function deleteWarning() {
+		deletePost.onclick = function() {
 			if (confirm("게시글을 삭제하시겠습니까")) {
 				alert("게시글삭제");
 				return true;
@@ -26,6 +30,75 @@
 			}
 		}
 	}
+	/* function replyWarning() {
+		replyDeleteBtn.onclick = function() {
+			if (confirm("게시글을 삭제하시겠습니까")) {
+				alert("게시글삭제");
+				return true;
+			} else {
+				alert("삭제취소");
+				return false;
+			}
+		}
+	} */
+	
+	// page 시작하자마자 BbsReply 가져와줌
+	window.onload = function() {
+		getBbsReply();
+	 }
+	// BbsReply 들고오는 func
+	function getBbsReply(){
+		$(function() { 
+			$.ajax({
+				url : "getBbsReply?bbs_id="+${post.bbs_id},
+				success : function(data) {
+					console.log("들고온 데이터 = " + data)
+					 $('#bbsReply').html(data);
+				}
+			}); // ajax
+		}); // function
+	}; //getBbsReply()
+	
+	
+	// insertBbsReply 버튼누름 > reply_content를 bbsReply에 insert
+	$(function() {
+		$('#insertBbsReply').click(function() {
+			var reply_content = $('#reply_content').val();
+			$.ajax({
+				type: "POST",
+				url: 'insertBbsReply?bbs_id='+${post.bbs_id},
+				data: {'reply_content': reply_content},
+				success: function(data) {
+					getBbsReply(); // bbsReply 들고와줌
+					document.getElementById("reply_content").value=''; // reply_content 비우기
+				},
+				error : function() {
+					alert("error")
+				}
+			}); // ajax
+		}); //click
+	}); // function
+		
+	$(function() {
+		// replyDelete 클래스 버튼누름 > id의 값을 들고 옴 > reply_id를 비교해서 지움
+		$('.deleteBbsReply').click(function() {
+			var reply_id = $(this).attr('id');
+			console.log(reply_id);
+			$.ajax({
+				type: "POST",
+				url: 'deleteBbsReply',
+				data: {'reply_id': reply_id},
+				success: function(data) {
+					getBbsReply(); // bbsReply 들고와줌
+				},
+				error : function() {
+					alert("error")
+				}
+			}); // ajax
+		}); //click
+	}); // function
+	
+		
 </script>
 </head>
 <body>
@@ -93,76 +166,17 @@
 	
 	<!-- 댓글 목록 영역 -->
 	<div id="bbsReply" class="container mt-5 text-center"></div>
+	
 	<!-- 댓글작성 영역 -->
-<%-- 	<div>
-		<form action="bbsReply?bbs_id=${post.bbs_id}" method="post">
-			<input name="member_code" value="${post.member_code}" readonly="readonly">
-			<input name="member_nick" value="${post.member_nick}" readonly="readonly">
-			<textarea name="reply_content" id="reply_content" placeholder="댓글"></textarea>
-			<button id="replyBtn">등록</button>
-		</form>	    
-	</div> --%>
 	<div class="container mt-5 text-center">
-		<textarea name="reply_content" id="reply_content" placeholder="댓글"></textarea>
-		<button id="replyBtn">등록</button>
+		<div class="mb-3">
+			<textarea name="reply_content" id="reply_content" placeholder="댓글" class="form-control" rows="2"></textarea>
+		</div>
+		<div>
+			<button id="insertBbsReply" class="btn btn-primary">등록</button>
+			<br>
+		</div>
 	</div>
-	
-	 
-	<script type="text/javascript">
-	// 페이지 열자마자 한번 해주고
-	/* $(function() {
-		getBbsReply();
-	} */
-	
-	//bbs reply list 들고와줌
-	$(function() { 
-			$.ajax({
-				url : "bbsReply?bbs_id="+${post.bbs_id},
-				success : function(data) {
-					console.log("들고온 데이터 = " + data)
-					 $('#bbsReply').html(data);
-				}
-			});
-	}); 
-	function getReply(){
-		$(function() { 
-			$.ajax({
-				url : "bbsReply?bbs_id="+${post.bbs_id},
-				success : function(data) {
-					console.log("들고온 데이터 = " + data)
-					 $('#bbsReply').html(data);
-				}
-			});
-	}); 
-	}
-	 
-	// 버튼누름
-	$(function() {
-		$('#replyBtn').click(function() {
-			var reply_content = $('#reply_content').val();
-			$.ajax({
-				type: "POST",
-				url: 'insertBbsReply?bbs_id='+${post.bbs_id},
-				data:  {'reply_content': reply_content},
-				success: function(data) {
-					getReply();
-				},
-				error : function() {
-					alert("error")
-				} //error
-			}); // ajax
-		}); //click
-	}); // fun
-	
-	
-	
-	
-	// 등록 버튼을 클릭하면 
-	// bbsReplyList만 재시작
-	
-	
-	</script>
-	
 
 </body>
 </body>
