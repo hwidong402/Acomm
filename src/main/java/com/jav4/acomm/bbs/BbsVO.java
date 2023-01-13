@@ -17,7 +17,7 @@ public class BbsVO {
 	private String bbs_notice;
 	private String bbs_cate;
 	private int bbs_count;
-	private int bbs_id_like;
+	private int bbs_like_count;
 	
 	public int getBbs_id() {
 		return bbs_id;
@@ -85,11 +85,11 @@ public class BbsVO {
 	public void setBbs_count(int bbs_count) {
 		this.bbs_count = bbs_count;
 	}
-	public int getBbs_id_like() {
-		return bbs_id_like;
+	public int getBbs_like_count() {
+		return bbs_like_count;
 	}
-	public void setBbs_id_like(int bbs_id_like) {
-		this.bbs_id_like = bbs_id_like;
+	public void setBbs_like_count(int bbs_like_count) {
+		this.bbs_like_count = bbs_like_count;
 	}
 	
 	@Override
@@ -97,6 +97,6 @@ public class BbsVO {
 		return "BbsVO [bbs_id=" + bbs_id + ", bbs_title=" + bbs_title + ", bbs_date=" + bbs_date + ", member_code="
 				+ member_code + ", member_nick=" + member_nick + ", bbs_content=" + bbs_content + ", bbs_file="
 				+ bbs_file + ", apt_code=" + apt_code + ", bbs_notice=" + bbs_notice + ", bbs_cate=" + bbs_cate
-				+ ", bbs_count=" + bbs_count + ", bbs_id_like=" + bbs_id_like + "]";
+				+ ", bbs_count=" + bbs_count + ", bbs_like_count=" + bbs_like_count + "]";
 	}
 }

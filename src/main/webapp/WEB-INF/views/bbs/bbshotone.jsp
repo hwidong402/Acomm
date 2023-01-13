@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+    <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -79,7 +79,7 @@
 					<tr>
 					<td>${vo.bbs_id}</td>
 					<td>${vo.bbs_title}</td>
-					<td><fmt:formatDate pattern="yyyy-MM-dd" value="${vo.bbs_date}"/></td>
+					<td><fmt:formatDate pattern="yyyy년MM월dd일 hh시 mm분" value="${vo.bbs_date}"/></td>
 					<td>${vo.member_nick}</td>
 					<td>${vo.bbs_content}</td>
 					<td>${vo.bbs_file}</td>
@@ -87,7 +87,7 @@
 					<td>${vo.bbs_notice}</td>
 					<td>${vo.bbs_cate}</td>
 					<td>${vo.bbs_count}</td>
-					<td>${vo.bbs_id_like}</td>
+					<td>${vo.bbs_like_count}</td>
 					<td>
 							<button id="b1">좋아요</button>
 					</td>
@@ -102,7 +102,7 @@
 			<%-- <c:forEach var="vo2" items="${vo2}"> --%>
 				<tr>
 					<td> ${vo2.like_id}</td>
-					<td><input id="bbsid" value="${vo2.bbs_id}"></td>
+					<td><input id="bbsid" value="${vo2.bbs_like_id}"></td>
 					<td><input id="bbsmembercode" value="${vo2.member_code}"></td>
 				</tr>
 			<%-- </c:forEach> --%>

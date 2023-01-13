@@ -77,9 +77,9 @@
 	</select>
 	
 	<select id="bbshotone" parameterType="bbsVO" resultType="bbsVO">
-		select bbs.*, countTable.bbs_id_like
-		from bbs, (select bbs_id, count(bbs_id) as bbs_id_like from bbs_like group by bbs_id) countTable
-		where bbs.bbs_id = countTable.bbs_id and bbs.bbs_id = #{bbs_id}
+		select bbs.*, countTable.bbs_like_id   from bbs,
+		 (select bbs_like_id, count(bbs_like_id) as bbs_like_count from bbs_like group by bbs_like_id) countTable
+		where bbs.bbs_id = countTable.bbs_like_id and bbs.bbs_id =  #{bbs_id}
 	</select>
 	
 	<!-- 조회수 -->
@@ -95,40 +95,40 @@
 	</update> -->
 
 	<select id="likeall" parameterType="bbslikeVO" resultType="bbslikeVO">
-		select * from bbs_like WHERE bbs_id= #{bbs_id} and member_code = #{member_code}
+		select * from bbs_like WHERE bbs_like_id= #{bbs_like_id} and member_code = #{member_code}
 	</select>
 	
 	<!-- 좋아요 추가 -->
 	<insert id="bbslike" parameterType="bbslikeVO">
-		insert into bbs_like(bbs_id, member_code, like_time) values (#{bbs_id}, #{member_code}, now())
+		insert into bbs_like(bbs_like_id, member_code, like_time) values (#{bbs_id}, #{member_code}, now())
 	</insert>
 	
 	<!-- bbs_like 테이블 검색 -->
 	<select id="bbslikeone" parameterType="bbslikeVO" resultType="bbslikeVO">
-		select * from bbs_like where bbs_id = #{bbs_id} and member_code = #{member_code}
+		select * from bbs_like where bbs_like_id = #{bbs_id} and member_code = #{member_code}
 	</select>
 	
 	<!-- 좋아요 삭제 -->
 	<delete id="bbslikedel" parameterType="bbslikeVO">
-		DELETE FROM bbs_like WHERE bbs_id= #{bbs_id} and member_code = #{member_code}
+		DELETE FROM bbs_like WHERE bbs_like_id= #{bbs_id} and member_code = #{member_code}
 	</delete>
 	
 	<!-- 인기게시글 전체 중에 5개만 검색 -->
 	<select id="bbshotall" resultType="bbsVO">
 		select hotall.* from (
-		select bbs.*, countTable.bbs_id_like
-		from bbs, (select bbs_id, count(bbs_id) as bbs_id_like from bbs_like group by bbs_id) countTable
-		where bbs.bbs_id = countTable.bbs_id) hotall
-		where hotall.bbs_count >= 100 and hotall.bbs_id_like > 3 order by bbs_id desc limit 5
+		select bbs.*, countTable.bbs_like_count
+		from bbs, (select bbs_like_id, count(bbs_like_id) as bbs_like_count from bbs_like group by bbs_like_id) countTable
+		where bbs.bbs_id = countTable.bbs_like_id) hotall
+		where hotall.bbs_count >= 100 and hotall.bbs_like_count > 3 order by bbs_id desc limit 5
 	</select>
 	
 	<!-- 더보기 눌렀을 때 인기게시글 전체 검색 -->
 	<select id="bbshotall2" resultType="bbsVO">
 		select hotall.* from (
-		select bbs.*, countTable.bbs_id_like
-		from bbs, (select bbs_id, count(bbs_id) as bbs_id_like from bbs_like group by bbs_id) countTable
-		where bbs.bbs_id = countTable.bbs_id) hotall
-		where hotall.bbs_count >= 100 and hotall.bbs_id_like > 3 order by bbs_id desc
+		select bbs.*, countTable.bbs_like_count
+		from bbs, (select bbs_like_id, count(bbs_like_id) as bbs_like_count from bbs_like group by bbs_like_id) countTable
+		where bbs.bbs_id = countTable.bbs_like_id) hotall
+		where hotall.bbs_count >= 100 and hotall.bbs_like_count > 3 order by bbs_id desc
 	</select>
 	
 </mapper>
