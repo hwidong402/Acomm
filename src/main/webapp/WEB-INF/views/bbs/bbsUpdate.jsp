@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="com.jav4.acomm.bbs.BbsVO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,7 +69,12 @@
 					<option value="worry">worry</option>
 				</select>
 			</div>
-				
+
+			<%
+			// 세션 member_code와 게시글의 member_code가 같아야 수정삭제가 보임
+			int member_cls = (int) request.getAttribute("member_cls");
+			if (member_cls == 1) {
+			%>
 			<div class="mb-3">
 				<div>
 					<input type="radio" id="nomal" name="bbs_notice" value="0" checked>
@@ -80,6 +86,10 @@
 					<label for="noti">공지글</label>
 				</div>
 			</div>
+			<%
+			}
+			%>
+
 			<!-- 폼의 bbs컬럼에 넣을 값들을 수정하는곳으로 맵핑 -->
 			<button type="submit" class="btn btn-primary">수정완료</button>
 		</form>

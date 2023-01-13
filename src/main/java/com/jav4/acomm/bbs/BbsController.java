@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.jav4.acomm.apt.AptVO;
+import com.jav4.acomm.bbs_reply.BbsReplyDAO;
 import com.jav4.acomm.member.MemberVO;
 
 
@@ -71,7 +72,7 @@ public class BbsController {
 		System.out.println("open this cate list >> " + list);
 		
 		// noti write버튼 admin 필터링
-		// id로 cls 확인 후 값 넘겨주기 
+		// code로 cls 확인 후 값 넘겨주기 
 		mvo.setMember_code((int)session.getAttribute("member_code"));
 		MemberVO member_cls = dao.id2cls(mvo); // member 정보 다 들고올 수 있는데 리소스 생각해서 cls 만
 		model.addAttribute("member_cls", member_cls.getMember_cls());
@@ -106,9 +107,14 @@ public class BbsController {
 	
 	// 게시글 수정 페이지 이동
 	@RequestMapping("openBbsUpdate")
-	public String openBbsUpdate(BbsVO vo, Model model) {
+	public String openBbsUpdate(BbsVO bvo, MemberVO mvo, HttpSession session,Model model) {
+		// code로 cls 확인 후 값 넘겨주기 
+		mvo.setMember_code((int)session.getAttribute("member_code"));
+		MemberVO member_cls = dao.id2cls(mvo); // member 정보 다 들고올 수 있는데 리소스 생각해서 cls 만
+		model.addAttribute("member_cls", member_cls.getMember_cls());
+		
 		// <a href>의 bbs_id로 게시글 정보 가져오기
-		BbsVO post = dao.getBbsPost(vo);
+		BbsVO post = dao.getBbsPost(bvo);
 		// post로 받아서 bbsUpdate.jsp로 넘겨줌
 		model.addAttribute("post", post);
 		System.out.println("update post get >> " + post);
