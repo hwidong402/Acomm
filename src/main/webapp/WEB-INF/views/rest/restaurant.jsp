@@ -14,7 +14,8 @@
 <!-- kakao map api -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4611b2688b283a9862933471078a1361"></script>
 <script>
-
+//var selectedinfowindow="";
+var restid="";
 $(function() {
 //상가 등록페이지 버튼 만들기
 
@@ -74,24 +75,157 @@ function makeClickListener(map, marker, infowindow ) {
 		success : function(x){
 		restname=x.rest_name;
 	//인포윈도우에 추가할 내용	
-var incontent="<div style='white-space: nowrap;'><h4>"+restname+"ㅣ - "+"</h4></div><a class=btn btn-primary data-bs-toggle=offcanvas href=#offcanvasExample role=button aria-controls=offcanvasExample> 더보기</a>"
+var incontent="<div style='white-space: nowrap;'><a class=btn btn-primary data-bs-toggle=offcanvas href=#offcanvasExample role=button aria-controls=offcanvasExample><h4>"+restname+"ㅣ - "+"</h4></a></div>"
     	infowindow.setContent(incontent);
 		//더보기 클릭시 정보창 제목 변경
 		$('#offcanvasExampleLabel').html(restname);
-		
 		}
-	})	
-
-//상세정보 띄우기 버튼 
-        infowindow.open(map, marker);
-  
-    
+	});	
+	//좌측 뷰 내용 초기화 및 평점
+	$.ajax({
+		url : "list.reply",
+		data : {rest_id:restid},
+				success : function(x) {
+					$('#avescore').html("");
+					$('#myreply').html("나의 후기가 없습니다."+"<a href=replywrite.rest?rest_id="+restid+"><button>후기작성</button></a>");
+					$('#replylist').html("다른 사람들의 후기가 없습니다.");
+				var other=false;
+				var sumscore=0;
+				var review="<table class=table><tr><td colspan='4'>후기</td></tr>";
+			for (var i = 0; i <x.length; i++) {
+				var writer=	x[i].rere_writer;//작성자 닉네임		
+				var aptcode= x[i].apt_code;//작성자 apt 코드		
+				var membercode= x[i].member_code;// 작성자 멤버 코드		
+				var rerecontent= x[i].rere_content;//작성한 내용
+				var rerescore= x[i].rere_score;	// 작성한 평점
+				sumscore+=x[i].rere_score;
+				 /* if(${member_code }==membercode){
+				var myreview = "<table class=table><tr><td colspan='4'>나의 후기</td></tr><tr><td colspan='2'>"+writer+"</td><td>"+rerescore+"</td><td><button>리뷰삭제</button></td></tr><tr><td colspan='4'>"+rerecontent+"</td></tr></table>";
+					$('#myreply').html(myreview);
+				}else{
+					other=true;
+					review += "<tr><td colspan='2'>"+writer+"</td><td>평점</td><td>"+rerescore+"</td></tr><tr><td colspan='4'>"+rerecontent+"</td></tr>";
+				}//else end */
+				}//for end
+					/* review+="</table>";
+					if(other){
+					$('#replylist').html(review);
+				}  */
+					if(x.length!=0){
+						$('#avescore').html("전체평점:"+(sumscore/x.length).toFixed(2)+"/5");
+					}
+		}//success end
+	  })//ajax end
+	  
+	  $.ajax({
+	url:"myreview.reply",
+	data:{ rest_id:restid},
+	success : function(x){
+		console.log(x.length);
+		if(x.length>5){
+		$('#myreply').html(x);
+		//내 리뷰의 삭제 버튼 기능 등록하기
+		$(function() {
+			$('#delete').click(function() {
+			var	rereid=$('#delete').attr("name");
+				$.ajax({
+					url:"replydelete2.rest",
+					data:{rere_id:rereid},
+					success : function(x){
+						//viewretry();
+						location.reload();
+					}
+				})//ajax end
+			
+			})//click end
+		})//document end
+	}//if end
+	}
+})
+	  //다른사람 리뷰 들고오기
+	  $.ajax({
+			url:"otherreview.reply",
+			data:{ rest_id:restid},
+			success : function(x){
+				console.log(x.length);
+				if(x.length>15){
+				$('#replylist').html(x);
+				}//if end
+			}//success end
+		})//다른사람 리뷰 end	  
+	  
+	 
+		//상세정보 띄우기 버튼 
+       infowindow.open(map, marker);
+	//	selectedinfowindow=infowindow;
     }//return function end
 }// make ClickListener end
+/* function makeClickListener2(selectedinfowindow) {
+    return function() {
+        selectedinfowindow.close();
+    };
+} */
+//testbutton end
+})//document end
 
-})
+
+    function viewretry() {
+	$.ajax({
+		url : "list.reply",
+		data : {rest_id:restid},
+				success : function(x) {
+					$('#avescore').html("");
+					$('#myreply').html("나의 후기가 없습니다."+"<a href=replywrite.rest?rest_id="+restid+"><button>후기작성</button></a>");
+					$('#replylist').html("다른 사람들의 후기가 없습니다.");
+				var other=false;
+				var sumscore1=0;
+				var review="<table class=table><tr><td colspan='4'>후기</td></tr>";
+			for (var i = 0; i <x.length; i++) {
+				sumscore+=x[i].rere_score;
+				}
+					if(x.length!=0){
+						$('#avescore').html("전체평점:"+(sumscore1/x.length).toFixed(2)+"/5");
+					}
+		}//success end
+	  })
+	  
+	  $.ajax({
+	url:"myreview.reply",
+	data:{ rest_id:restid},
+	success : function(x){
+		
+		if(x.length>5){
+		$('#myreply').html(x);
+		//내 리뷰의 삭제 버튼 기능 등록하기
+		$(function() {
+				$('#delete').click(function() {
+					var	rereid=$('#delete').attr("name");
+						$.ajax({
+							url:"replydelete2.reply",
+							data:{rere_id:rereid},
+							success : function(x){
+								viewretry();
+							}//success end
+						})	//inner ajax end
+			})//click end
+		})//document end
+		
+		}//	if end
+	}//success end
+})//ajax end
+	  //다른사람 리뷰 들고오기
+	  $.ajax({
+			url:"otherreview.rest",
+			data:{ rest_id:restid},
+			success : function(x){
+				console.log(x.length);
+				if(x.length>15){
+				$('#replylist').html(x);
+				}//if end
+			}//success end
+		})
+	}
 </script>
-    
 </head>
 <body>
 <div id="insert"></div>
@@ -100,19 +234,21 @@ var incontent="<div style='white-space: nowrap;'><h4>"+restname+"ㅣ - "+"</h4><
 <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
   Button with data-bs-target
 </button> -->
+<a class="btn btn-primary" data-bs-toggle=offcanvas href=#offcanvasExample role=button aria-controls=offcanvasExample id="viewpage"> 더보기</a>
 
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasExampleLabel">제목</h5>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body" id="restinfo" style="overflow:auto">
-    <div id="restone"></div>
-    <div>
-      Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
-    </div>
+    <span id="avescore"></span>
+    <span id="restone"></span>
+    <div id="myreply"></div>
+    <div id="replylist"></div>
     <div class="dropdown mt-3">
-      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+    
+     <!--  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
         Dropdown button
       </button>
       <ul class="dropdown-menu">
@@ -164,7 +300,7 @@ var incontent="<div style='white-space: nowrap;'><h4>"+restname+"ㅣ - "+"</h4><
         <li><a class="dropdown-item" href="#">Something else here</a></li>
         <li><a class="dropdown-item" href="#">Something else here</a></li>
         <li><a class="dropdown-item" href="#">Something else here</a></li>
-      </ul>
+      </ul> -->
     </div>
   </div>
 </div>

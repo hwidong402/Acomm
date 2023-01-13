@@ -12,16 +12,18 @@
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <body>
-<div id="writearea">
+<div id="writearea"class="container mt-5 text-center">
 <form action="replyinsert.rest">
 <input id="membercode" name="member_code" type="hidden" value=${member.member_code }>
 <input id="membernick" name="rere_writer" type="hidden" value=${member.member_nick }>
 <input id="aptcode" name="apt_code" type="hidden" value=${apt.apt_code }>
 <input id="restid" name="rest_id" type="hidden" value=${rest.rest_id }>
-<table>
-<tr>
-<td>평점</td>
-<td><select name="rere_score">
+
+<div class="mb-3">
+<h3>후기 작성</h3>
+<br><br>
+<span>평점</span>
+<select name="rere_score">
 <option value="0.0">0.0점</option>
 <option value="0.5">0.5점</option>
 <option value="1.0">1.0점</option>
@@ -33,18 +35,17 @@
 <option value="4.0">4.0점</option>
 <option value="4.5">4.5점</option>
 <option value="5.0">5.0점</option>
-</select></td>
-</tr>
-<tr>
-<td colspan="2">후기</td>
-</tr>
-<tr>
-<td colspan="2"><textarea cols="10" rows="5" name="rere_content"></textarea></td>
-</tr>
-</table>
-<button>후기 등록</button>
-</form>
-<button >뒤로가기</button>
+</select></div>
+<div class="mb-3">
+<label class="form-label">후기</label>
+<textarea class="form-control" rows="5" name="rere_content" required="required"></textarea>
 </div>
+<div>
+<button class ="btn btn-primary">후기 등록</button>
+</div>
+</form>
+<a href="matjip"><button class ="btn btn-danger">맛집 홈으로</button></a>
+</div>
+
 </body>
 </html>

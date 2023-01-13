@@ -23,8 +23,13 @@ public class RestReplyDAO {
 	
 	//후기 delete
 	public int delete(RestReplyVO vo) {
-		return my.delete("restreply", vo);
+		return my.delete("restreply.delete", vo);
 	}
-	
+	public RestReplyVO myreview(RestReplyVO vo) {
+		return my.selectOne("restreply.myreview", vo);
+	}
+	public List<RestReplyVO> otherreview(RestReplyVO vo) {
+		return my.selectList("restreply.otherreview", vo);
+	}
 	
 }

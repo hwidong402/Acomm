@@ -13,6 +13,13 @@
 <delete id="delete" parameterType="restreplyVO">
 delete from rest_reply where rere_id = #{rere_id}
 </delete>
+<select id="myreview" parameterType="restreplyVO" resultType="restreplyVO">
+select * from rest_reply where rest_id = #{rest_id} and member_code=#{member_code}
+</select>
+<select id="otherreview" parameterType="restreplyVO" resultType="restreplyVO">
+select * from rest_reply where rest_id = #{rest_id} and member_code != #{member_code} order by rere_id desc
+</select>
+
 <!-- 	<insert id="create" parameterType="bbsVO">
 		insert into bbs values(#{id}, #{title}, #{writer}, #{content},#{code})
 	</insert>

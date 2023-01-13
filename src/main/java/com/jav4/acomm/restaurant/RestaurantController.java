@@ -168,7 +168,7 @@ public class RestaurantController {
 		vo=service.idck(vo);
 		AptVO vo2=service.code2name(vo);
 		vo3=service.one(vo3);
-		service.insert(vo4);
+		service.delete(vo4);
 		//페이지 로드용 정보
 		
 		//멤버
@@ -179,4 +179,29 @@ public class RestaurantController {
 		model.addAttribute("rest", vo3);
 		return "rest/restaurantone";
 	}
+	@RequestMapping("replydelete2.rest")
+	public String replydelete2(RestReplyVO vo4) {
+	
+		service.delete(vo4);
+		//페이지 로드용 정보
+		
+		return "rest/deletereply";
+	}
+	
+	//나의 후기 검색
+		@RequestMapping("myreview.reply")
+		public String myreview(RestReplyVO vo4,Model model,HttpSession session){
+			vo4.setMember_code((int)session.getAttribute("member_code"));
+			vo4= service.myreview(vo4);
+			model.addAttribute("reply",vo4);
+			 return "rest/myreview";
+		}
+		@RequestMapping("otherreview.reply")
+		public String otherreview( RestReplyVO vo4,Model model,HttpSession session){
+			vo4.setMember_code((int)session.getAttribute("member_code"));
+			List<RestReplyVO> list= service.otherreview(vo4);
+			model.addAttribute("reply",list);
+			return "rest/otherreview";
+		}
+	
 }

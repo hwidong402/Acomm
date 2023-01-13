@@ -66,4 +66,10 @@ public class RestaurantService {
 		else return false;
 	}
 	
+	public RestReplyVO myreview(RestReplyVO vo) {
+		return rrdao.myreview(vo);
+	}
+	public List<RestReplyVO> otherreview(RestReplyVO vo) {
+		return rrdao.otherreview(vo);
+	}
 }
