@@ -1,17 +1,16 @@
 package com.jav4.acomm.apt;
-
-//아파트 vo 
+//아파트 vo
 public class AptVO {
-
 	private String apt_code; // 아파트 마다 가지고 있는 코드
 	private String apt_name; // 아파트 이름
-	private String apt_city; // 아파트 지역 ex) 부산, 인천, 대전 등 
+	private String apt_city; // 아파트 지역 ex) 부산, 인천, 대전 등
 	private String apt_town; // 시 or 구 or 군 등등등...
 	private String apt_village; // 좌동 , 중동 할때 동 친구들
-	private String apt_addr; // full address 
-	private String apt_subaddr; // 간단한 주소 표시 
+	private String apt_addr; // full address
+	private String apt_subaddr; // 간단한 주소 표시
 	private double apt_lat; // 위도
 	private double apt_lon; // 경도
+	private int apt_addrcode; //법정동코드
 	
 	public String getApt_code() {
 		return apt_code;
@@ -67,13 +66,20 @@ public class AptVO {
 	public void setApt_lon(double apt_lon) {
 		this.apt_lon = apt_lon;
 	}
-	
+	public int getApt_addrcode() {
+		return apt_addrcode;
+	}
+	public void setApt_addrcode(int apt_addrcode) {
+		this.apt_addrcode = apt_addrcode;
+	}
 	@Override
 	public String toString() {
 		return "AptVO [apt_code=" + apt_code + ", apt_name=" + apt_name + ", apt_city=" + apt_city + ", apt_town="
 				+ apt_town + ", apt_village=" + apt_village + ", apt_addr=" + apt_addr + ", apt_subaddr=" + apt_subaddr
-				+ ", apt_lat=" + apt_lat + ", apt_lon=" + apt_lon + "]";
+				+ ", apt_lat=" + apt_lat + ", apt_lon=" + apt_lon + ", apt_addrcode=" + apt_addrcode + "]";
 	}
+	
+	
 	
 	
 }

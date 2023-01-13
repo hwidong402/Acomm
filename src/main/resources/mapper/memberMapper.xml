@@ -8,7 +8,7 @@
 	
 	<!--개인정보 수정시 실행되는 mapper 닉네임,비밀번호,전화번호를 바꿀 수 있습니다. 조건은 세션값으로 잡아두었던 member_code로 구별  -->
 	<update id="up" parameterType="memberVO">
-		update member set member_nick = #{member_nick}, member_pw = #{member_pw}, member_tel = #{member_tel} where member_code = #{member_code}
+		update member set member_nick = #{member_nick}, member_pw = #{member_pw}, member_name= #{member_name}, member_tel = #{member_tel} where member_code = #{member_code}
 		<!-- update apt_member set sub_addr = #{sub_addr} where id = #{id} -->
 	</update>
 	
