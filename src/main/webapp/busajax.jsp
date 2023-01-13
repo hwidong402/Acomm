@@ -5,6 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- 상가 정보 띄우기용 부트스트랩  -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -12,6 +15,36 @@ var key="0QABlWOjjNUTH6AflytlfpxXTM2vig%2FbrTph8sbBtvWn80oDTHnmpv%2FzKgQOReCP6x%
 var	stopid=163900101;
 var stopname="";
 var list=null;
+$(function() {
+//마이 리뷰 들고오기	
+/* $.ajax({
+	url:"myreview.reply",
+	data:{ rest_id:4,
+		member_code:1},
+	success : function(x){
+		console.log(x.length);
+		if(x.length>5){
+		$('#myreview').html(x);
+			
+		}
+		
+	}
+}) */
+//다른사람 리뷰 들고오기
+$.ajax({
+	url:"otherreview.reply",
+	data:{ rest_id:1,
+		member_code:1},
+	success : function(x){
+		console.log(x.length);
+		if(x.length>15){
+		$('#myreview').html(x);
+			
+		}
+		
+	}
+})
+})
 /* $.ajax({
 	url:"stopsearch.bus",
 	data:{ stop_id:stopid},
@@ -22,14 +55,14 @@ var list=null;
 	}
 }) */
 
-$.ajax({
+/* $.ajax({
 	url:"list.rest",
 	success : function(x){
 		alert(x[0].rest_id)
 		alert(x[0].rest_name)
 		
 	}
-})
+}) */
 //버스 ajax연습
 /* $.ajax({
 	url:"list.bus",
@@ -59,9 +92,11 @@ $.ajax({
 			}
 		  })
 }) */
+
 </script>
 </head>
 <body>
 <div id="result" style="width:400px;height:350px;" ></div> 
+<div id="myreview">기존의 글</div>
 </body>
 </html>
