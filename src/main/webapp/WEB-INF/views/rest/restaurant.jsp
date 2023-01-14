@@ -5,6 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>주변 상가 정보</title>
+<style type="text/css">
+.child-one{
+position: relative;
+top: 50px; left:90%;
+z-index: 2;
+}
+</style>
 <!-- 상가 정보 띄우기용 부트스트랩  -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
@@ -19,10 +26,6 @@ var restid="";
 $(function() {
 //상가 등록페이지 버튼 만들기
 
-	if(${member.member_cls}==1){
-		$('#insert').html("<a href=restwrite.rest><button>상가 등록</button></a>")
-	}
-	
 	
 //지도 만들기 상가표시
 	//접속된 아이디의 apt 좌표
@@ -87,7 +90,7 @@ var incontent="<div style='white-space: nowrap;'><a class=btn btn-primary data-b
 		data : {rest_id:restid},
 				success : function(x) {
 					$('#avescore').html("");
-					$('#myreply').html("나의 후기가 없습니다."+"<a href=replywrite.rest?rest_id="+restid+"><button>후기작성</button></a>");
+					$('#myreply').html("나의 후기가 없습니다."+"<a href=replywrite2.rest?rest_id="+restid+"><button>후기작성</button></a>");
 					$('#replylist').html("다른 사람들의 후기가 없습니다.");
 				var other=false;
 				var sumscore=0;
@@ -128,6 +131,7 @@ var incontent="<div style='white-space: nowrap;'><a class=btn btn-primary data-b
 		$(function() {
 			$('#delete').click(function() {
 			var	rereid=$('#delete').attr("name");
+			console.log(rereid);
 				$.ajax({
 					url:"replydelete2.rest",
 					data:{rere_id:rereid},
@@ -145,16 +149,13 @@ var incontent="<div style='white-space: nowrap;'><a class=btn btn-primary data-b
 	  //다른사람 리뷰 들고오기
 	  $.ajax({
 			url:"otherreview.reply",
-			data:{ rest_id:restid},
+			data:{rest_id:restid},
 			success : function(x){
-				console.log(x.length);
 				if(x.length>15){
 				$('#replylist').html(x);
 				}//if end
 			}//success end
 		})//다른사람 리뷰 end	  
-	  
-	 
 		//상세정보 띄우기 버튼 
        infowindow.open(map, marker);
 	//	selectedinfowindow=infowindow;
@@ -166,6 +167,9 @@ var incontent="<div style='white-space: nowrap;'><a class=btn btn-primary data-b
     };
 } */
 //testbutton end
+if(${member.member_cls}==1){
+	$('#insert').html("<a href=restwrite.rest><button class='btn btn-primary'>상가 등록</button></a>");
+}
 })//document end
 
 
@@ -175,7 +179,7 @@ var incontent="<div style='white-space: nowrap;'><a class=btn btn-primary data-b
 		data : {rest_id:restid},
 				success : function(x) {
 					$('#avescore').html("");
-					$('#myreply').html("나의 후기가 없습니다."+"<a href=replywrite.rest?rest_id="+restid+"><button>후기작성</button></a>");
+					$('#myreply').html("나의 후기가 없습니다."+"<a href=replywrite2.rest?rest_id="+restid+"><button>후기작성</button></a>");
 					$('#replylist').html("다른 사람들의 후기가 없습니다.");
 				var other=false;
 				var sumscore1=0;
@@ -187,7 +191,7 @@ var incontent="<div style='white-space: nowrap;'><a class=btn btn-primary data-b
 						$('#avescore').html("전체평점:"+(sumscore1/x.length).toFixed(2)+"/5");
 					}
 		}//success end
-	  })
+	  })//ajaxend
 	  
 	  $.ajax({
 	url:"myreview.reply",
@@ -218,7 +222,6 @@ var incontent="<div style='white-space: nowrap;'><a class=btn btn-primary data-b
 			url:"otherreview.rest",
 			data:{ rest_id:restid},
 			success : function(x){
-				console.log(x.length);
 				if(x.length>15){
 				$('#replylist').html(x);
 				}//if end
@@ -228,13 +231,14 @@ var incontent="<div style='white-space: nowrap;'><a class=btn btn-primary data-b
 </script>
 </head>
 <body>
-<div id="insert"></div>
-<div id="map" style="width:100%;height:800px;"></div>
-<a href="back.rest"><button>뒤로가기</button></a>
+<%@ include file="../navbar.jsp" %>
+<div class="parent" >
+<div id="insert" class="child-one"></div>
+<div id="map" style="width:100%;height:800px; z-indx:1;"></div>
+</div>
 <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
   Button with data-bs-target
 </button> -->
-<a class="btn btn-primary" data-bs-toggle=offcanvas href=#offcanvasExample role=button aria-controls=offcanvasExample id="viewpage"> 더보기</a>
 
 <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
   <div class="offcanvas-header">
@@ -246,62 +250,6 @@ var incontent="<div style='white-space: nowrap;'><a class=btn btn-primary data-b
     <span id="restone"></span>
     <div id="myreply"></div>
     <div id="replylist"></div>
-    <div class="dropdown mt-3">
-    
-     <!--  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-        Dropdown button
-      </button>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-      </ul> -->
-    </div>
   </div>
 </div>
 </body>

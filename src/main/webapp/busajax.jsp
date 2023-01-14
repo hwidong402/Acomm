@@ -17,9 +17,9 @@ var stopname="";
 var list=null;
 $(function() {
 //마이 리뷰 들고오기	
-/* $.ajax({
+ $.ajax({
 	url:"myreview.reply",
-	data:{ rest_id:4,
+	data:{ rest_id:1,
 		member_code:1},
 	success : function(x){
 		console.log(x.length);
@@ -29,9 +29,10 @@ $(function() {
 		}
 		
 	}
-}) */
+}) 
+})
 //다른사람 리뷰 들고오기
-$.ajax({
+/* $.ajax({
 	url:"otherreview.reply",
 	data:{ rest_id:1,
 		member_code:1},
@@ -44,7 +45,7 @@ $.ajax({
 		
 	}
 })
-})
+}) */
 /* $.ajax({
 	url:"stopsearch.bus",
 	data:{ stop_id:stopid},

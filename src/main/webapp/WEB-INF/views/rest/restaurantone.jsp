@@ -87,6 +87,7 @@ marker.setMap(map);
 </script>
 </head>
 <body>
+<%@ include file="../navbar.jsp" %>
 <div class="container-md" style="text-align: center;">
 <h2 id="restlavel">${rest.rest_name}</h2>
 <br>
@@ -98,6 +99,6 @@ marker.setMap(map);
 </div>
 <br>
 <div class="container-md" id="map" style="width:100%;height:350px;"></div>
-  <a href="matjip">주변 맛집</a>
+
 </body>
 </html>

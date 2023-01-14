@@ -10,6 +10,12 @@ public class RestReplyVO {
 		private float rere_score;
 		private String apt_code;
 		
+		@Override
+		public String toString() {
+			return "RestReplyVO [rere_id=" + rere_id + ", member_code=" + member_code + ", rere_writer=" + rere_writer
+					+ ", rere_content=" + rere_content + ", rest_id=" + rest_id + ", rere_score=" + rere_score
+					+ ", apt_code=" + apt_code + "]";
+		}
 		public int getMember_code() {
 			return member_code;
 		}

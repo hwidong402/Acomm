@@ -14,7 +14,7 @@
 <body>
 <%@ include file="../navbar.jsp" %>
 <div id="writearea"class="container mt-5 text-center">
-<form action="replyinsert.rest">
+<form action="replyinsert2.rest">
 <input id="membercode" name="member_code" type="hidden" value="${member.member_code }">
 <input id="membernick" name="rere_writer" type="hidden" value="${member.member_nick }">
 <input id="aptcode" name="apt_code" type="hidden" value="${apt.apt_code }">

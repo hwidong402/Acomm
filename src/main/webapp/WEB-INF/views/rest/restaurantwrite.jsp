@@ -58,18 +58,19 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
 </script>
 </head>
 <body>
+<%@ include file="../navbar.jsp" %>
 <div id="map" style="width:100%;height:350px;"></div>
-<p><em>등록하고싶은 상가위치를 클릭해주세요!</em></p> 
 
+<div id="insertform" class="container mt-5 text-center">
+<p><em>등록할 상가위치를 클릭해주세요!</em></p> 
 <div id="clickLatlng"></div>
-<div id="insertform">
 <form action="restinsert.rest">
 상가 이름 : <input name="rest_name" required="required"> <br>
-상가 위도 : <input id="rest_lat" name="rest_lat" readonly="readonly"><br>
-상가 경도 : <input id="rest_lon" name="rest_lon" readonly="readonly"><br>
-<button>상가 등록하기</button>
+상가 위도 : <input id="rest_lat" name="rest_lat" readonly="readonly" required="required"><br>
+상가 경도 : <input id="rest_lon" name="rest_lon" readonly="readonly" required="required"><br>
+<button class="btn btn-primary">상가 등록하기</button>
 </form>
+<a href="matjip"><button class="btn btn-danger">뒤로가기</button></a>
 </div>
-<a href="matjip"><button>뒤로가기</button></a>
 </body>
 </html>
