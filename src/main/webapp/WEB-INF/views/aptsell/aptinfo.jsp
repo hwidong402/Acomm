@@ -36,7 +36,7 @@
                 data : {
                     url : "http://rss.edaily.co.kr/realestate_news.xml",
                     api_key : "ejxvkemry0qjivbotntyvygzajjtuawoqoituggy",
-                    count : 5
+                    count : 20
                 },                      
                 success : function(x) {
                     list = x.items
@@ -45,7 +45,7 @@
                         p = list[i].pubDate
                         l = list[i].link
                         a = "<a href= " + l + " target=_blank>" + t + "</a>"
-                        $('#result1').append(a + " <br>")
+                        $('#result1').append(a + " <br><br>")
                     }
                 } //success
             }) //ajax
@@ -55,7 +55,7 @@
                 data : {
                     url : "https://www.mbn.co.kr/rss/estate/",
                     api_key : "ejxvkemry0qjivbotntyvygzajjtuawoqoituggy",
-                    count : 5
+                    count : 20
                 },                      
                 success : function(x) {
                     list = x.items
@@ -64,7 +64,7 @@
                         p = list[i].pubDate
                         l = list[i].link
                         a = "<a href= " + l + " target=_blank>" + t + "</a>"
-                        $('#result2').append(a + " <br>")
+                        $('#result2').append(a + " <br><br>")
                     }
                 } //success
             }) //ajax
@@ -74,7 +74,7 @@
                 data : {
                     url : "http://biz.heraldcorp.com/common_prog/rssdisp.php?ct=010300000000.xml",
                     api_key : "ejxvkemry0qjivbotntyvygzajjtuawoqoituggy",
-                    count : 5
+                    count : 20
                 },                      
                 success : function(x) {
                     list = x.items
@@ -83,7 +83,7 @@
                         p = list[i].pubDate
                         l = list[i].link
                         a = "<a href= " + l + " target=_blank>" + t + "</a>"
-                        $('#result3').append(a + " <br>")
+                        $('#result3').append(a + " <br><br>")
                     }
                     } //success
             }) //ajax
@@ -93,7 +93,7 @@
                 data : {
                     url : "http://news.mk.co.kr/rss/land.xml",
                     api_key : "ejxvkemry0qjivbotntyvygzajjtuawoqoituggy",
-                    count : 5
+                    count : 20
                 },                      
                 success : function(x) {
                     list = x.items
@@ -102,7 +102,7 @@
                         p = list[i].pubDate
                         l = list[i].link
                         a = "<a href= " + l + " target=_blank>" + t + "</a>"
-                        $('#result4').append(a + " <br>")
+                        $('#result4').append(a + " <br><br>")
                     }
                     } //success
             }) //ajax
@@ -112,7 +112,7 @@
                 data : {
                     url : "http://www.drapt.com/index/drapt_rss2.0.xml",
                     api_key : "ejxvkemry0qjivbotntyvygzajjtuawoqoituggy",
-                    count : 5
+                    count : 20
                 },                      
                 success : function(x) {
                     list = x.items
@@ -121,7 +121,7 @@
                         p = list[i].pubDate
                         l = list[i].link
                         a = "<a href= " + l + " target=_blank>" + t + "</a>"
-                        $('#result5').append(a + " <br>")
+                        $('#result5').append(a + " <br><br>")
                     }
                     } //success
             }) //ajax
@@ -163,7 +163,7 @@
     double avgppp1=0.0;
 	
 	%>
-<div id="all"> <!-- 부동산 페이지 전체 div -->
+<div id="all" style="padding-left: 10%; padding-right: 10%;"> <!-- 부동산 페이지 전체 div -->
 
 <!-- 부동산 api가져오고 parsing -->
 <%!public   String getTagValue(String tag, org.w3c.dom.Element eElement) {
@@ -185,13 +185,19 @@
     %>
 <!-- 부동산 api가져오고 parsing -->
 <div> <!-- 부동산 자료 전체 -->
-<div id="chart" > <!-- 구글차트 들어갈 div -->
+<div id="chart" style="float: left; width: 50%; height: 700px;"> <!-- 구글차트 들어갈 div -->
 <hr color="green">
-${city.apt_city} ${city.apt_town} ${city.apt_village} 아파트 실거래가
-<div id="curve_chart" style="width: 900px; height: 500px"></div> <!-- js로 그린 구글차트 들어갈 div -->
+${city.apt_city} ${city.apt_town} ${city.apt_village} 아파트 차트
+<hr color="green">
+<div id="curve_chart" style="width: 100%; height: 80%"></div> <!-- js로 그린 구글차트 들어갈 div -->
 </div> <!-- 구글차트 들어갈 div -->
-<div id="jan"> <!-- 1월 부동산 자료 -->
+<div id="apistart" style="height: 700px; overflow: auto; float: left; width: 50%;"> <!-- api테이블 상위 div -->
 <hr color="green">
+${city.apt_city} ${city.apt_town} ${city.apt_village} 아파트 월별 실거래가
+<hr color="green">
+<div id="api" style="height: 600px; overflow: auto;"> <!-- api로 가져온 데이터 테이블로 -->
+<div id="jan"> <!-- 1월 부동산 자료 -->
+<!-- <hr color="green"> -->
 1월 ${city.apt_city} ${city.apt_town} ${city.apt_village} 아파트 실거래가  
 <a href=#none id="show1" onclick="if(d1.style.display=='none') {d1.style.display='';show1.innerText='접기'} 
 else {d1.style.display='none';show1.innerText='펼치기'}">펼치기</a>
@@ -218,9 +224,9 @@ String key = "JrqNlrVp5feNuizVqC%2FZqxtYlCjg6W5ggf4ig4%2F7RTVcIPN4kIStXkZLvYQBlL
             <tr>
             <th width="350px" height="15px" style="text-align: left;">아파트이름</th>
             <th width="180px" height="15px" style="text-align: left;">실거래가(만원)</th>
-            <th width="100px" height="15px" style="text-align: left;">거래년</th>
-            <th width="100px" height="15px" style="text-align: left;">거래월</th>
-            <th width="100px" height="15px" style="text-align: left;">거래일</th>
+            <th width="180px" height="15px" style="text-align: left;">거래날짜</th>
+            <!-- <th width="100px" height="15px" style="text-align: left;">거래월</th> -->
+            <!-- <th width="100px" height="15px" style="text-align: left;">거래일</th> -->
             <th width="80px" height="15px" style="text-align: left;">층</th>
             <th width="100px" height="15px" style="text-align: left;">동</th>
             <th height="15px" style="text-align: left;">전용면적</th>
@@ -254,12 +260,12 @@ String key = "JrqNlrVp5feNuizVqC%2FZqxtYlCjg6W5ggf4ig4%2F7RTVcIPN4kIStXkZLvYQBlL
                     ppp1=ppp1+pp;
                     %>
                     <tr>
-                    <td width="340px" height="40px"><%=c1%></td>
+                    <td width="350px" height="40px"><%=c1%></td>
                     <td width="180px" height="40px"><%=code%></td>
-                    <td width="100px" height="40px"><%=d1%></td>
-                    <td width="100px" height="40px"><%=e1%></td>
-                    <td width="100px" height="40px"><%=i1%></td>
-                    <td width="80px" height="40px"><%=f1%></td>
+                    <td width="200px" height="40px"><%=d1%>년 <%=e1%>월 <%=i1%>일</td>
+                    <%-- <td width="100px" height="40px"><%=e1%></td> --%>
+                    <%-- <td width="100px" height="40px"><%=i1%></td> --%>
+                    <td width="60px" height="40px"><%=f1%></td>
                     <td width="100px" height="40px"><%=g1%></td>
                     <td width="100px" height="40px"><%=h1%>㎡</td>
 					</tr>                    
@@ -305,10 +311,10 @@ else {d12.style.display='none';show12.innerText='펼치기'}">펼치기</a><br>
             <tr>
             <th width="350px" height="15px" style="text-align: left;">아파트이름</th>
             <th width="180px" height="15px" style="text-align: left;">실거래가(만원)</th>
-            <th width="100px" height="15px" style="text-align: left;">거래년</th>
-            <th width="100px" height="15px" style="text-align: left;">거래월</th>
-            <th width="100px" height="15px" style="text-align: left;">거래일</th>
-            <th width="80px" height="15px" style="text-align: left;">층</th>
+            <th width="200px" height="15px" style="text-align: left;">거래날짜</th>
+            <!-- <th width="100px" height="15px" style="text-align: left;">거래월</th> -->
+            <!-- <th width="100px" height="15px" style="text-align: left;">거래일</th> -->
+            <th width="60px" height="15px" style="text-align: left;">층</th>
             <th width="100px" height="15px" style="text-align: left;">동</th>
             <th height="15px" style="text-align: left;">전용면적</th>
             </tr>
@@ -341,12 +347,12 @@ else {d12.style.display='none';show12.innerText='펼치기'}">펼치기</a><br>
                     %>   
                     
                     <tr>
-                    <td width="340px" height="40px"><%=c12%></td>
+                    <td width="350px" height="40px"><%=c12%></td>
                     <td width="180px" height="40px"><%=code%></td>
-                    <td width="100px" height="40px"><%=d12%></td>
-                    <td width="100px" height="40px"><%=e12%></td>
-                    <td width="100px" height="40px"><%=i12%></td>
-                    <td width="80px" height="40px"><%=f12%></td>
+                    <td width="200px" height="40px"><%=d12%>년 <%=e12%>월 <%=i12%>일</td>
+                    <%-- <td width="100px" height="40px"><%=e12%></td> --%>
+                    <%-- <td width="100px" height="40px"><%=i12%></td> --%>
+                    <td width="60px" height="40px"><%=f12%></td>
                     <td width="100px" height="40px"><%=g12%></td>
                     <td width="100px" height="40px"><%=h12%>㎡</td>
                     </tr>
@@ -395,10 +401,10 @@ else {d11.style.display='none';show11.innerText='펼치기'}">펼치기</a><br>
             <tr>
             <th width="350px" height="15px" style="text-align: left;">아파트이름</th>
             <th width="180px" height="15px" style="text-align: left;">실거래가(만원)</th>
-            <th width="100px" height="15px" style="text-align: left;">거래년</th>
-            <th width="100px" height="15px" style="text-align: left;">거래월</th>
-            <th width="100px" height="15px" style="text-align: left;">거래일</th>
-            <th width="80px" height="15px" style="text-align: left;">층</th>
+			<th width="200px" height="15px" style="text-align: left;">거래날짜</th>
+            <!-- <th width="100px" height="15px" style="text-align: left;">거래월</th> -->
+            <!-- <th width="100px" height="15px" style="text-align: left;">거래일</th> -->
+            <th width="60px" height="15px" style="text-align: left;">층</th>
             <th width="100px" height="15px" style="text-align: left;">동</th>
             <th height="15px" style="text-align: left;">전용면적</th>
             </tr>
@@ -431,12 +437,12 @@ else {d11.style.display='none';show11.innerText='펼치기'}">펼치기</a><br>
                     %>   
                     
                     <tr>
-                    <td width="340px" height="40px"><%=c11%></td>
+                    <td width="350px" height="40px"><%=c11%></td>
                     <td width="180px" height="40px"><%=code%></td>
-                    <td width="100px" height="40px"><%=d11%></td>
-                    <td width="100px" height="40px"><%=e11%></td>
-                    <td width="100px" height="40px"><%=i11%></td>
-                    <td width="80px" height="40px"><%=f11%></td>
+                    <td width="200px" height="40px"><%=d11%>년 <%=e11%>월 <%=i11%>일</td>
+                    <%-- <td width="100px" height="40px"><%=e11%></td> --%>
+                    <%-- <td width="100px" height="40px"><%=i11%></td> --%>
+                    <td width="60px" height="40px"><%=f11%></td>
                     <td width="100px" height="40px"><%=g11%></td>
                     <td width="100px" height="40px"><%=h11%>㎡</td>
                     </tr>
@@ -485,10 +491,10 @@ else {d10.style.display='none';show10.innerText='펼치기'}">펼치기</a><br>
             <tr>
             <th width="350px" height="15px" style="text-align: left;">아파트이름</th>
             <th width="180px" height="15px" style="text-align: left;">실거래가(만원)</th>
-            <th width="100px" height="15px" style="text-align: left;">거래년</th>
-            <th width="100px" height="15px" style="text-align: left;">거래월</th>
-            <th width="100px" height="15px" style="text-align: left;">거래일</th>
-            <th width="80px" height="15px" style="text-align: left;">층</th>
+            <th width="200px" height="15px" style="text-align: left;">거래날짜</th>
+            <!-- <th width="100px" height="15px" style="text-align: left;">거래월</th> -->
+            <!-- <th width="100px" height="15px" style="text-align: left;">거래일</th> -->
+            <th width="60px" height="15px" style="text-align: left;">층</th>
             <th width="100px" height="15px" style="text-align: left;">동</th>
             <th height="15px" style="text-align: left;">전용면적</th>
             </tr>
@@ -522,10 +528,10 @@ else {d10.style.display='none';show10.innerText='펼치기'}">펼치기</a><br>
                     <tr>
                     <td width="340px" height="40px"><%=c10%></td>
                     <td width="180px" height="40px"><%=code%></td>
-                    <td width="100px" height="40px"><%=d10%></td>
-                    <td width="100px" height="40px"><%=e10%></td>
-                    <td width="100px" height="40px"><%=i10%></td>
-                    <td width="80px" height="40px"><%=f10%></td>
+                    <td width="200px" height="40px"><%=d10%>년 <%=e10%>월 <%=i10%>일</td>
+                    <%-- <td width="100px" height="40px"><%=e10%></td> --%>
+                    <%-- <td width="100px" height="40px"><%=i10%></td> --%>
+                    <td width="60px" height="40px"><%=f10%></td>
                     <td width="100px" height="40px"><%=g10%></td>
                     <td width="100px" height="40px"><%=h10%>㎡</td>
                     </tr>
@@ -548,7 +554,10 @@ else {d10.style.display='none';show10.innerText='펼치기'}">펼치기</a><br>
         }
 %>
 </div> <!-- 10월 부동산 자료 -->
+</div> <!-- api로 가져온 데이터 테이블로 -->
+</div> <!-- api테이블 상위 div -->
 </div> <!-- 부동산 자료 전체 -->
+
 <%
 if(avg1 == 0){
 	avg1 = avg12;
@@ -574,18 +583,55 @@ if(avgppp11 == 0){
 <hr color="blue">
 
 <div id="news"> <!-- 부동산 뉴스 전체 div -->
-<div id="totalnews" style=" float: left; width: 50%;"> <!-- rss로 가져온 뉴스 div -->
+<div id="totalnews" style=" float: left; width: 45%;"> <!-- rss로 가져온 뉴스 div -->
 <hr color="green">
-<h2>전국 부동산 뉴스</h2>
-    <div id="result1">e데일리<br></div>
-    <div id="result2">mbn<br></div>
-    <div id="result3">헤럴드경제<br></div>
-    <div id="result4">매일경제 <br></div>
-    <div id="result5">닥터아파트 <br></div>
+<span style="color: red; font-size: 50px;">전국부동산뉴스</span>
+<div id="rsstable" style="height: 1000px; overflow: auto;"> <!-- rss로 가져온 뉴스를 table로 만듬 -->
+<table>
+<tr>
+	<th> <h2>e데일리 <a href=#none id="news1" onclick="if(result1.style.display=='none') {result1.style.display='';news1.innerText='접기'}
+	else {result1.style.display='none';news1.innerText='펼치기'}">펼치기</a></h2></th>
+</tr>
+<tr>
+	<td><div id="result1" style="display: none;"></div></td>
+</tr>
+<tr>
+	<th><h2>mbn <a href=#none id="news2" onclick="if(result2.style.display=='none') {result2.style.display='';news2.innerText='접기'}
+	else {result2.style.display='none';news2.innerText='펼치기'}">펼치기</a></h2></th>
+</tr>
+<tr>
+    <td><div id="result2" style="display: none;"></div></td>
+</tr>
+<tr>
+	<th><h2>헤럴드경제 <a href=#none id="news3" onclick="if(result3.style.display=='none') {result3.style.display='';news3.innerText='접기'}
+	else {result3.style.display='none';news3.innerText='펼치기'}">펼치기</a></h2></th>
+</tr>
+<tr>
+    <td><div id="result3" style="display: none;"></div></td>
+</tr>
+<tr>
+	<th><h2>매일경제 <a href=#none id="news4" onclick="if(result4.style.display=='none') {result4.style.display='';news4.innerText='접기'}
+	else {result4.style.display='none';news4.innerText='펼치기'}">펼치기</a></h2></th>
+</tr>
+<tr>
+    <td><div id="result4" style="display: none;"></div></td>
+</tr>
+<tr>
+	<th><h2>닥터아파트 <a href=#none id="news5" onclick="if(result5.style.display=='none') {result5.style.display='';news5.innerText='접기'}
+	else {result5.style.display='none';news5.innerText='펼치기'}">펼치기</a></h2></th>
+</tr>
+<tr>
+   <td> <div id="result5" style="display: none;"></div></td>
+</tr>
+</table>
+</div> <!-- rss로 가져온 뉴스를 table로 만듬 -->
+
 </div> <!-- rss로 가져온 뉴스 div -->
-<div id="subnews" style=" float: left; width: 50%;"> <!-- 크롤링으로 가져온 지역뉴스 div -->
+
+
+<div id="subnews" style=" float: right; width: 50%;"> <!-- 크롤링으로 가져온 지역뉴스 div -->
 <hr color="green">
-<h2>${city.apt_city} 부동산 뉴스</h2>
+<span style="color: red; font-size: 50px;">${city.apt_city} 부동산 뉴스</span> <br>
 				<c:choose>
 					<c:when test="${city.apt_city eq '부산광역시'}">
 						<%
