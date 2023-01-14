@@ -64,14 +64,17 @@
 	      });
 	/* } */
 </script>
+
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
 	rel="stylesheet">
+	<link rel="stylesheet" href="resources/css/style.css">
+	
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <style type="text/css">
 div{
-border: 1px solid blue;
+/* border: 1px solid blue; */
 }
 * {
 	/* text-align: center; /* 가로가운데 정렬 */
@@ -98,25 +101,22 @@ li {
 </style>
 </head>
 <body>
-	<div>
-		<div id="header">
-<%-- 			<img id="apt_img_logo"
-				src="resources/img/${member.apt_code}_logo.jpg"
-				alt="${member.apt_code}_logo" height="50"> --%>
-			<h2 id="apt_name">${apt.apt_name}</h2>
-		</div>
-		
-		<!-- nav -->
-		<%@ include file="../navbar.jsp" %>
-		
-		<div id="content" style="width: 600px;">
-			
-			<table id="my_box">
-			
+<!-- nav -->
+<%@ include file="../navbar.jsp" %>
+<div id="full" style="padding-left: 3%; padding-right: 3%"> <!-- 홈페이지 전체화면 -->
+<div id="header"> <!-- 아파트이름 -->
+	<h2 id="apt_name">${apt.apt_name}</h2>
+</div> <!-- 아파트이름 -->
+<div id=infobus" style="float: left; width: 20%">
+<div id="content" style="width: 100%;"> <!-- 내정보 -->
+
+
+<table id="my_box">
 				<tr>
-					<td colspan="2"><%-- <img
-						src="resources/img/${member.member_name}.jpg"
-						alt="${member.member_name}" height="250"> --%></td>
+					<td colspan="2">
+					<img src="resources/img/sim.jpg" class="circle">
+					
+					</td>
 				</tr>
 				<tr>
 					<td colspan="2">
@@ -143,31 +143,33 @@ li {
 				</tr>
 
 			</table>
-		</div>
-	</div>
-	<div id="buslogic" style="width: 600px;">
-<!-- 		<a
-			href=bus/busstopmap.bus?apt_lat=${apt.apt_lat}&apt_lon=${apt.apt_lon}><button>다른
-				정류장 보기1</button></a> <a
-			href=bus/busstopmap2.bus?apt_lat=${apt.apt_lat}&apt_lon=${apt.apt_lon}><button>다른
-				정류장 보기2</button></a> <a
-			href=bus/busstopmap3.bus?apt_lat=${apt.apt_lat}&apt_lon=${apt.apt_lon}><button>다른
-				정류장 보기3</button></a> --> 
-			<!--
-				<a href=busstopmap4.bus?apt_lat=${apt.apt_lat}&apt_lon=${apt.apt_lon}><button >다른
-				정류장 보기4</button></a>
-				<a	href=busstopmap5.bus?apt_lat=${apt.apt_lat}&apt_lon=${apt.apt_lon}><button >다른
-				정류장 보기5</button></a> -->
-		<!-- 도착정보 결과 -->
-		<div id="bus" style="width: 600px; height: 350px; overflow: auto;"></div>
-	</div>
+</div> <!-- 내정보 -->
+<div id="buslogic" style="width: 100%;"> <!-- 버스정류장 -->
+<!-- 도착정보 결과 -->
+<div id="bus" style="width: 100%; height: 350px; overflow: auto;"></div>
+</div> <!-- 버스정류장 -->
+</div> <!-- infobus -->
+
+<div id="noti" style="float: right; width: 70%;"> <!-- 공지사항 -->
+<div class="position-relative text-center bg-light">
+      <h3 class="fw-normal">바로 여기!</h3>
+      <p class="lead fw-normal">당신이 보고있는 지금 이 자리에 광고하세요</p>
+ 	</div>
+<div id="notiList"></div>
+
+</div> <!-- 공지사항 -->
+
+</div> <!-- 전체화면 -->
+
+
+		
 	
-	<div id="notiList"></div>
 	
-	<div>
+	
+	<%-- <div>
 	<img id="apt_img" src="resources/img/lobby_entrance.jpg"
-			<%-- <img id="apt_img" src="resources/img/${member.apt_code}.jpg" --%>
+			<img id="apt_img" src="resources/img/${member.apt_code}.jpg"
 				height="370" width="600">
-				</div>
+				</div> --%>
 </body>
 </html>

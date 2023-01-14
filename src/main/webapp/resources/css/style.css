@@ -10,3 +10,14 @@ body{
 .l1{
 	align-content: center;
 }
+
+.circle{
+    width: 150px;
+    height: 150px;
+    border: solid white 1px;
+    border-radius: 50%;
+    object-fit: cover;
+    left: 50%;
+}
+
+

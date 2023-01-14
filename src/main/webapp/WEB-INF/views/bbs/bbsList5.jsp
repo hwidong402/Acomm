@@ -14,7 +14,7 @@
 			<div class="list-group">
 				<div class="list-group-item list-group-item-action">
 					<div class="d-flex w-100 justify-content-between">
-						<small>${list5.bbs_like_count}</small>
+						<%-- <small>${list5.bbs_like_count}</small> --%>
 						<small>${list5.member_nick}</small>
 						 <small><fmt:formatDate pattern="yyyy년 MM월 dd일" value="${list5.bbs_date}"/></small>
 					</div>
