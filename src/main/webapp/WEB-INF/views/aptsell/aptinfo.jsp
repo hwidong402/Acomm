@@ -185,12 +185,12 @@
     %>
 <!-- 부동산 api가져오고 parsing -->
 <div> <!-- 부동산 자료 전체 -->
-<div id="chart" style="float: left; width: 50%; height: 700px;"> <!-- 구글차트 들어갈 div -->
+<div id="chart" style="float: left; width: 50%; height: 700px;"> <!-- 구글차트 들어갈 div 1열 1행-->
 <hr color="green">
 ${city.apt_city} ${city.apt_town} ${city.apt_village} 아파트 차트
 <hr color="green">
-<div id="curve_chart" style="width: 100%; height: 80%"></div> <!-- js로 그린 구글차트 들어갈 div -->
-</div> <!-- 구글차트 들어갈 div -->
+<div id="curve_chart" style="width: 100%; height: 80%;"></div> <!-- js로 그린 구글차트 들어갈 div -->
+</div> <!-- 구글차트 들어갈 div 1열 1행-->
 <div id="apistart" style="height: 700px; overflow: auto; float: left; width: 50%;"> <!-- api테이블 상위 div -->
 <hr color="green">
 ${city.apt_city} ${city.apt_town} ${city.apt_village} 아파트 월별 실거래가
@@ -205,8 +205,8 @@ else {d1.style.display='none';show1.innerText='펼치기'}">펼치기</a>
 <hr color="green">
 <%
     //결과를 저장할 result 변수 선언
-String key = "JrqNlrVp5feNuizVqC%2FZqxtYlCjg6W5ggf4ig4%2F7RTVcIPN4kIStXkZLvYQBlLmur4fydCzvAHjQHd9SqOM5qA%3D%3D";
-//JrqNlrVp5feNuizVqC%2FZqxtYlCjg6W5ggf4ig4%2F7RTVcIPN4kIStXkZLvYQBlLmur4fydCzvAHjQHd9SqOM5qA%3D%3D (임채윤 key)
+//String key = "JrqNlrVp5feNuizVqC%2FZqxtYlCjg6W5ggf4ig4%2F7RTVcIPN4kIStXkZLvYQBlLmur4fydCzvAHjQHd9SqOM5qA%3D%3D";
+String key = "KYz4a7bdo60awWOrCRJVLCc8CBx2lX1r0aiohUQ%2FHk2cCcnePEh1hr8T6B9oNFfoqINkgMEFQRpEtuu7ZChX4Q%3D%3D";
 
         try{
             // parsing할 url 지정(API 키 포함해서)
@@ -238,6 +238,7 @@ String key = "JrqNlrVp5feNuizVqC%2FZqxtYlCjg6W5ggf4ig4%2F7RTVcIPN4kIStXkZLvYQBlL
                 %>
                 <%
                 String b1 = (getTagValue("거래금액", eElement));
+                String p1 = (getTagValue("거래금액", eElement));
                 String c1 = (getTagValue("아파트", eElement));
                 String d1 = (getTagValue("년", eElement));
                 String e1 = (getTagValue("월", eElement));
@@ -261,7 +262,7 @@ String key = "JrqNlrVp5feNuizVqC%2FZqxtYlCjg6W5ggf4ig4%2F7RTVcIPN4kIStXkZLvYQBlL
                     %>
                     <tr>
                     <td width="350px" height="40px"><%=c1%></td>
-                    <td width="180px" height="40px"><%=code%></td>
+                    <td width="180px" height="40px"><%=p1%></td>
                     <td width="200px" height="40px"><%=d1%>년 <%=e1%>월 <%=i1%>일</td>
                     <%-- <td width="100px" height="40px"><%=e1%></td> --%>
                     <%-- <td width="100px" height="40px"><%=i1%></td> --%>
@@ -326,6 +327,7 @@ else {d12.style.display='none';show12.innerText='펼치기'}">펼치기</a><br>
                 %>
                 <%
                 String b12 = (getTagValue("거래금액", eElement));
+                String p12 = (getTagValue("거래금액", eElement));
                 String c12 = (getTagValue("아파트", eElement));
                 String d12 = (getTagValue("년", eElement));
                 String e12 = (getTagValue("월", eElement));
@@ -348,7 +350,7 @@ else {d12.style.display='none';show12.innerText='펼치기'}">펼치기</a><br>
                     
                     <tr>
                     <td width="350px" height="40px"><%=c12%></td>
-                    <td width="180px" height="40px"><%=code%></td>
+                    <td width="180px" height="40px"><%=p12%></td>
                     <td width="200px" height="40px"><%=d12%>년 <%=e12%>월 <%=i12%>일</td>
                     <%-- <td width="100px" height="40px"><%=e12%></td> --%>
                     <%-- <td width="100px" height="40px"><%=i12%></td> --%>
@@ -416,6 +418,7 @@ else {d11.style.display='none';show11.innerText='펼치기'}">펼치기</a><br>
                 %>
                 <%
                 String b11 = (getTagValue("거래금액", eElement));
+                String p11 = (getTagValue("거래금액", eElement));
                 String c11 = (getTagValue("아파트", eElement));
                 String d11 = (getTagValue("년", eElement));
                 String e11 = (getTagValue("월", eElement));
@@ -438,7 +441,7 @@ else {d11.style.display='none';show11.innerText='펼치기'}">펼치기</a><br>
                     
                     <tr>
                     <td width="350px" height="40px"><%=c11%></td>
-                    <td width="180px" height="40px"><%=code%></td>
+                    <td width="180px" height="40px"><%=p11%></td>
                     <td width="200px" height="40px"><%=d11%>년 <%=e11%>월 <%=i11%>일</td>
                     <%-- <td width="100px" height="40px"><%=e11%></td> --%>
                     <%-- <td width="100px" height="40px"><%=i11%></td> --%>
@@ -506,6 +509,7 @@ else {d10.style.display='none';show10.innerText='펼치기'}">펼치기</a><br>
                 %>
                 <%
                 String b10 = (getTagValue("거래금액", eElement));
+                String p10 = (getTagValue("거래금액", eElement));
                 String c10 = (getTagValue("아파트", eElement));
                 String d10 = (getTagValue("년", eElement));
                 String e10 = (getTagValue("월", eElement));
@@ -527,7 +531,7 @@ else {d10.style.display='none';show10.innerText='펼치기'}">펼치기</a><br>
                     %>   
                     <tr>
                     <td width="340px" height="40px"><%=c10%></td>
-                    <td width="180px" height="40px"><%=code%></td>
+                    <td width="180px" height="40px"><%=p10%></td>
                     <td width="200px" height="40px"><%=d10%>년 <%=e10%>월 <%=i10%>일</td>
                     <%-- <td width="100px" height="40px"><%=e10%></td> --%>
                     <%-- <td width="100px" height="40px"><%=i10%></td> --%>
