@@ -11,9 +11,14 @@ public class BbsService {
 	@Autowired
 	BbshotDAO dao;
 	
-	// 전체 검색
-	public List<BbslikeVO> list(BbslikeVO vo) {
+	// 인기게시글 5개만 검색
+	public List<BbsVO> list(BbsVO vo) {
 		 return dao.list(vo);
+	}
+	
+	// 인기게시글 전체 검색
+	public List<BbsVO> listAll(BbsVO vo) {
+		return dao.listAll(vo);
 	}
 	
 	// 조회수

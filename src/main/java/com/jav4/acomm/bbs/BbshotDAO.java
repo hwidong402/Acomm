@@ -13,9 +13,15 @@ public class BbshotDAO {
 	SqlSessionTemplate my;
 	
 	
-	//실험용 리스트 내용전체 다들고오기
-	public List<BbslikeVO> list(BbslikeVO vo) {
-		List<BbslikeVO> list = my.selectList("bbs.bbshotall",vo); 
+	// 인기 게시글 리스트 내용 5개만 들고오기
+	public List<BbsVO> list(BbsVO vo) {
+		List<BbsVO> list = my.selectList("bbs.bbshotall",vo); 
+		return list;
+	}
+	
+	// 인기 게시글 리스트 내용 전체 다들고오기
+	public List<BbsVO> listAll(BbsVO vo) {
+		List<BbsVO> list = my.selectList("bbs.bbshotall2",vo); 
 		return list;
 	}
 	

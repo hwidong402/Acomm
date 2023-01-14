@@ -137,12 +137,12 @@
 	</delete>
 	
 	<!-- 인기게시글 전체 중에 5개만 검색 -->
-	<select id="bbshotall" resultType="bbsVO">
+	<select id="bbshotall" parameterType="bbsVO" resultType="bbsVO">
 		select hotall.* from (
 		select bbs.*, countTable.bbs_like_count
 		from bbs, (select bbs_like_id, count(bbs_like_id) as bbs_like_count from bbs_like group by bbs_like_id) countTable
 		where bbs.bbs_id = countTable.bbs_like_id) hotall
-		where hotall.bbs_count >= 100 and hotall.bbs_like_count > 3 order by bbs_id desc limit 5
+		where hotall.bbs_count >= 100 and hotall.bbs_like_count > 3 and apt_code = #{apt_code} order by bbs_id desc limit 5
 	</select>
 	
 	<!-- 더보기 눌렀을 때 인기게시글 전체 검색 -->
@@ -151,7 +151,7 @@
 		select bbs.*, countTable.bbs_like_count
 		from bbs, (select bbs_like_id, count(bbs_like_id) as bbs_like_count from bbs_like group by bbs_like_id) countTable
 		where bbs.bbs_id = countTable.bbs_like_id) hotall
-		where hotall.bbs_count >= 100 and hotall.bbs_like_count > 3 order by bbs_id desc
+		where hotall.bbs_count >= 100 and hotall.bbs_like_count > 3 and apt_code = #{apt_code} order by bbs_id desc
 	</select>
 	
 </mapper>

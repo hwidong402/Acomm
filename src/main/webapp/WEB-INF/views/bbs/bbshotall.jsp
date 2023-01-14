@@ -16,7 +16,7 @@
 <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 overflow-hidden">
 		<div class="d-grid">
 			<button class="btn btn-outline-info"
-				onclick="location.href='openBbsCate?bbs_cate=${cate}'" type="button">${cate} 더보기</button>
+				onclick="location.href='bbslistall'" type="button">인기글 더보기</button>
 		</div>
 		<c:forEach var="hotvo" items="${hotlist}">
 			<div class="list-group">
@@ -25,7 +25,7 @@
 						<small>${hotvo.member_nick}</small> <small><fmt:formatDate pattern="yyyy년 MM월 dd일" value="${hotvo.bbs_date}"/></small>
 					</div>
 					<h5 class="ellipsis">
-						<a href="bbs/bbshotone?bbs_id=${hotvo.bbs_id}">${hotvo.bbs_title}</a>
+						<a href="openBbsPost?bbs_id=${hotvo.bbs_id}">${hotvo.bbs_title}</a>
 					</h5>
 				</div>
 			</div>

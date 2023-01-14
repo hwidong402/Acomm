@@ -12,9 +12,18 @@
 <script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <!-- <link rel="stylesheet" href="../../resources/css/bbshot.css"> -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <style type="text/css">
 #up {
 	text-align: right;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
 }
 </style>
 </head>
@@ -126,7 +135,7 @@
 						<td>${vo.bbs_count}</td>
 						<td>${vo.bbs_like_count}</td>
 						<td>
-							<button id="b1" class="btn btn-primary">좋아요</button>
+							<span class="material-symbols-outlined"><button id="b1">좋아요</button></span>
 						</td>
 					</tr>
 					<tr>

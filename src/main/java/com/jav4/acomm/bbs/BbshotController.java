@@ -18,30 +18,40 @@ public class BbshotController {
 	@Autowired
 	BbsService service;
 	
-	// 게시판 전체 가져오기
+	// 인기 게시글 5개만 가져오기
 	@RequestMapping("bbs/bbshotall")
-	public void all(BbslikeVO vo,Model model) {
-		List<BbslikeVO> list = service.list(vo);
+	public void all(BbsVO vo,Model model, HttpSession session) {
+		vo.setApt_code((String)session.getAttribute("apt_code"));
+		List<BbsVO> list = service.list(vo);
 		model.addAttribute("hotlist", list);
 	}
 	
-	// 게시판 상세 보기
-	@RequestMapping("bbs/bbshotone")
-	public void info(BbsVO vo, BbslikeVO vo2, Model model, HttpSession session) {
-		// bbs 테이블에서 bbs_id로 게시판 내용 검색하기
-		System.out.println("-----서비스 부르기 전------ " + vo.getBbs_id());
-		service.bbsCount(vo.getBbs_id()); // 게시글 조회수 증가
-		System.out.println("-------서비스 부른 후 ----- " + vo);
-		BbsVO one = service.one(vo);  // 게시글 하나 상세 검색
-		System.out.println("서비스 부른후 bbs 게시글 하나 검색 ---- " + vo);
-//		vo2.setBbs_id(vo.getBbs_id());
-		System.out.println("vo2에 bbs_id가 찍히냐? => " + vo2);
-		vo2.setMember_code((Integer)session.getAttribute("member_code"));
-		BbslikeVO one2 = service.bbslikeone(vo2);
-		System.out.println("----------하나검색 후 " + one + "\n BbslikeVO : " + one2);
-		model.addAttribute("vo", one);
-		model.addAttribute("vo2", one2);
+	// 인기 게시글 전체 가져오기
+	@RequestMapping("bbslistall")
+	public String listall(BbsVO vo,Model model, HttpSession session) {
+		vo.setApt_code((String)session.getAttribute("apt_code"));
+		List<BbsVO> list = service.listAll(vo);
+		model.addAttribute("hotlist", list);
+		return "bbs/bbslistall";
 	}
+	
+	// 게시판 상세 보기 --> 추후 원영님껄로 합쳐질 예정
+//	@RequestMapping("bbs/bbshotone")
+//	public String info(BbsVO vo, BbslikeVO vo2, Model model, HttpSession session) {
+//		// bbs 테이블에서 bbs_id로 게시판 내용 검색하기
+//		System.out.println("-----서비스 부르기 전------ " + vo.getBbs_id());
+//		service.bbsCount(vo.getBbs_id()); // 게시글 조회수 증가
+//		System.out.println("-------서비스 부른 후 ----- " + vo);
+//		BbsVO one = service.one(vo);  // 게시글 하나 상세 검색
+//		System.out.println("서비스 부른후 bbs 게시글 하나 검색 ---- " + vo);
+//		System.out.println("vo2에 bbs_id가 찍히냐? => " + vo2);
+//		vo2.setMember_code((Integer)session.getAttribute("member_code"));
+//		BbslikeVO one2 = service.bbslikeone(vo2);
+//		System.out.println("----------하나검색 후 " + one + "\n BbslikeVO : " + one2);
+//		model.addAttribute("vo", one);
+//		model.addAttribute("vo2", one2);
+//		return "bbs/bbsPost2";
+//	}
 	
 	// 게시판 좋아요
 //	@RequestMapping("bbs/bbshotlike")
