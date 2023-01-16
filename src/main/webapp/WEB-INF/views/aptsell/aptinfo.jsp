@@ -205,8 +205,8 @@ else {d1.style.display='none';show1.innerText='펼치기'}">펼치기</a>
 <hr color="green">
 <%
     //결과를 저장할 result 변수 선언
-//String key = "JrqNlrVp5feNuizVqC%2FZqxtYlCjg6W5ggf4ig4%2F7RTVcIPN4kIStXkZLvYQBlLmur4fydCzvAHjQHd9SqOM5qA%3D%3D";
-String key = "KYz4a7bdo60awWOrCRJVLCc8CBx2lX1r0aiohUQ%2FHk2cCcnePEh1hr8T6B9oNFfoqINkgMEFQRpEtuu7ZChX4Q%3D%3D";
+String key = "JrqNlrVp5feNuizVqC%2FZqxtYlCjg6W5ggf4ig4%2F7RTVcIPN4kIStXkZLvYQBlLmur4fydCzvAHjQHd9SqOM5qA%3D%3D";
+String key1 = "KYz4a7bdo60awWOrCRJVLCc8CBx2lX1r0aiohUQ%2FHk2cCcnePEh1hr8T6B9oNFfoqINkgMEFQRpEtuu7ZChX4Q%3D%3D";
 
         try{
             // parsing할 url 지정(API 키 포함해서)
@@ -389,7 +389,7 @@ else {d11.style.display='none';show11.innerText='펼치기'}">펼치기</a><br>
 <%
         try{
             // parsing할 url 지정(API 키 포함해서)
-            String url = "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev?serviceKey="+key+"&pageNo=1&numOfRows=100&LAWD_CD="+gu+"&DEAL_YMD=202211";
+            String url = "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev?serviceKey="+key1+"&pageNo=1&numOfRows=100&LAWD_CD="+gu+"&DEAL_YMD=202211";
             DocumentBuilderFactory dbFactoty = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactoty.newDocumentBuilder();
             org.w3c.dom.Document doc = dBuilder.parse(url);
@@ -480,7 +480,7 @@ else {d10.style.display='none';show10.innerText='펼치기'}">펼치기</a><br>
 <%
         try{
             // parsing할 url 지정(API 키 포함해서)
-            String url = "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev?serviceKey="+key+"&pageNo=1&numOfRows=100&LAWD_CD="+gu+"&DEAL_YMD=202210";
+            String url = "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev?serviceKey="+key1+"&pageNo=1&numOfRows=100&LAWD_CD="+gu+"&DEAL_YMD=202210";
             DocumentBuilderFactory dbFactoty = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactoty.newDocumentBuilder();
             org.w3c.dom.Document doc = dBuilder.parse(url);
