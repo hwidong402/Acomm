@@ -13,7 +13,7 @@
 	</update>
 	
 	<delete id="del"  parameterType="memberVO">
-		update member set member_id = concat('#del/',member_id,'/',round(rand()*100,5)), member_name = '탈퇴한 회원', member_tel = '탈퇴한 회원', sub_addr = '탈퇴한 회원' where member_code  = '1'
+		update member set member_id = concat('#del/',member_id,'/',round(rand()*100,5)), member_pw = '탈퇴한 회원', member_name = '탈퇴한 회원', member_tel = '탈퇴한 회원', sub_addr = '탈퇴한 회원' where member_code  = #{member_code}
 	</delete>
 	
 	<select id="one" parameterType="memberVO" resultType="memberVO">

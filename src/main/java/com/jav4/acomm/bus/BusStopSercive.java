@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jav4.acomm.apt.AptVO;
-import com.jav4.acomm.member.MemberDAO;
+import com.jav4.acomm.member.MemberDAOInter;
 import com.jav4.acomm.member.MemberVO;
 
 @Service
@@ -16,7 +16,7 @@ public class BusStopSercive {
 	BusStopDAO bdao;
 	// memberdb 관련 기능
 	@Autowired
-	MemberDAO mdao;
+	MemberDAOInter mdao;
 	
 	//버스 정류장 리스트 불러오기 주기
 	public List<BusStopVO> all(){

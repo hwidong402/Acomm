@@ -3,6 +3,15 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BXH0MBY7NR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BXH0MBY7NR');
+</script>
 <title>A-COMM</title>
 <meta charset="UTF-8">
 <script type="text/javascript" src="resources/js/jquery-3.6.0.min.js"></script>

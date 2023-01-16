@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jav4.acomm.apt.AptVO;
-import com.jav4.acomm.member.MemberDAO;
+import com.jav4.acomm.member.MemberDAOInter;
 import com.jav4.acomm.member.MemberVO;
 
 @Service
@@ -16,7 +16,7 @@ public class RestaurantService {
 	RestaurantDAO rdao;
 	//member db 연결
 	@Autowired
-	MemberDAO mdao;
+	MemberDAOInter mdao;
 	//restreply db 연결
 	@Autowired
 	RestReplyDAO rrdao;

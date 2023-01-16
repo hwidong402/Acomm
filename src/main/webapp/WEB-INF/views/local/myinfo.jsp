@@ -12,8 +12,13 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+
+
+</script>
 </head>
 <body>
+<div id="all">
 	<div id="revise">
 		<h2>개인정보 수정</h2>
 		<form action="local/m_up" method="post" onsubmit="return submitf();">
@@ -40,11 +45,29 @@
 			<h2>전화번호</h2>
 			<input type="text" id="member_tel" name="member_tel"
 				class="member_tel" maxlength="13" value="${one.member_tel}">
-			<hr>
+			<hr style="width: 300px">
 			<button type="submit" class="btn btn-success" style="width: 300px;">변경하기</button>
 		</form>
+		<hr style="width: 300px">
+		<form action="delete">
+		
+		<input type="submit" id="b2" class="btn btn-danger" style="width: 300px;" value="탈퇴하기">
+		<!-- <button onclick="findcode()" id="b2" class="btn btn-danger" style="width: 300px;">탈퇴하기</button> -->
+		</form>
+	</div>
 	</div>
 	<script type="text/javascript">
+	
+	//회원탈퇴 확인
+		b2.onclick = function() {
+			if (confirm("A-COMM을 탈퇴하시겠습니까?")) {
+				return true;
+			} else {
+				return false;
+			}	
+		}
+	
+	
 	//닉네임 입력 및 길이 확인
 	$('.member_nick').on("propertychange change keyup paste input", function() {
         var member_nick = $('.member_nick').val();
