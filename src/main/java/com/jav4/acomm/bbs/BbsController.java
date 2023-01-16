@@ -22,7 +22,7 @@ public class BbsController {
 	BbsDAO dao;
 	
 	@Autowired
-	BbsService service;
+	BbsServiceInter service;
 	
 	// ▽▽▽▽▽ Read Zone ▽▽▽▽▽
 	
