@@ -4,6 +4,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BXH0MBY7NR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BXH0MBY7NR');
+</script>
 <meta charset="UTF-8">
 <title>${apt.apt_name}에오신것을환영합니다!</title>
 <script
