@@ -56,6 +56,14 @@
 		</form>
 	</div>
 	</div>
+	
+	<div>
+		<form action="ocr" method="post" enctype="multipart/form-data">
+			신분증 사진 찾기 <input type="file" name="file"> <br>
+			<button>서버로 파일 업로드</button>
+		</form>
+	</div>
+	
 	<script type="text/javascript">
 	
 	//회원탈퇴 확인
