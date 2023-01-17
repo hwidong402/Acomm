@@ -17,7 +17,7 @@ import com.jav4.acomm.member.MemberVO;
 public class BusStopController {
 	
 	@Autowired
-	BusStopSercive service;
+	BusStopServiceInterface service;
 	
 	@RequestMapping("bus/busstopmap.bus")
 	public void mapinfo(AptVO vo,Model model) {

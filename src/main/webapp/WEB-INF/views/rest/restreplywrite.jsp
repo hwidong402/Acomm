@@ -16,7 +16,7 @@
 <div id="writearea"class="container mt-5 text-center">
 <form action="replyinsert.rest">
 <input id="membercode" name="member_code" type="hidden" value="${member.member_code }">
-<input id="membernick" name="rere_writer" type="hidden" value="${member.member_nick }">
+<input id="membernick" name="rere_writer" type="hidden" value="${apt.apt_name }">
 <input id="aptcode" name="apt_code" type="hidden" value="${apt.apt_code }">
 <input id="restid" name="rest_id" type="hidden" value="${rest.rest_id }">
 

@@ -31,5 +31,11 @@ public class RestReplyDAO {
 	public List<RestReplyVO> otherreview(RestReplyVO vo) {
 		return my.selectList("restreply.otherreview", vo);
 	}
+	public List<RestReplyVO> posreview(RestReplyVO vo) {
+		return my.selectList("restreply.posreview", vo);
+	}
+	public List<RestReplyVO> negreview(RestReplyVO vo) {
+		return my.selectList("restreply.negreview", vo);
+	}
 	
 }

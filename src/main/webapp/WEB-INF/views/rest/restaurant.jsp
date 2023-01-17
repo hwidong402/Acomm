@@ -146,19 +146,19 @@ var incontent="<div style='white-space: nowrap;'><a class=btn btn-primary data-b
 					data:{rere_id:rereid},
 					success : function(x){
 						//viewretry();
-						location.reload();
+						$('#myreply').html("나의 후기가 없습니다."+"<a href=replywrite2.rest?rest_id="+restid+"><button>후기작성</button></a>");
 					}
 				})//ajax end
 			
-			})//click end
-		})//document end
-	}//if end
-	}
-})
+			}) //click end
+		})// new document end
+	}// if end
+	}// success end
+})// myreview ajax end
 	  //다른사람 리뷰 들고오기
 	  $.ajax({
 			url:"otherreview.reply",
-			data:{rest_id:restid},
+			data:{rest_id : restid },
 			success : function(x){
 				if(x.length>15){
 				$('#replylist').html(x);
@@ -176,13 +176,14 @@ var incontent="<div style='white-space: nowrap;'><a class=btn btn-primary data-b
     };
 } */
 //testbutton end
+//상가등록 버튼 추가
 if(${member.member_cls}==1){
 	$('#insert').html("<a href=restwrite.rest><button class='btn btn-primary'>상가 등록</button></a>");
 }
 })//document end
 
 
-    function viewretry() {
+    /* function viewretry() {
 	$.ajax({
 		url : "list.reply",
 		data : {rest_id:restid},
@@ -236,7 +237,7 @@ if(${member.member_cls}==1){
 				}//if end
 			}//success end
 		})
-	}
+	} */
 </script>
 </head>
 <body>

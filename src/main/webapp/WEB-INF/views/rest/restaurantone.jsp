@@ -32,32 +32,53 @@ $(function() {
  	//후기목록 들고오기
 	$.ajax({
 		url : "list.reply",
-		data : {rest_id:${rest.rest_id}},
+		data : {rest_id : ${rest.rest_id }},
 				success : function(x) {
-				var other=false;
 				
-				var review="<table class=table><tr><td colspan='4'>후기</td></tr>";
+					var other=false;
+				var sum = 0;
 			for (var i = 0; i <x.length; i++) {
-				var writer=	x[i].rere_writer;//작성자 닉네임		
-				var aptcode= x[i].apt_code;//작성자 apt 코드		
-				var membercode= x[i].member_code;// 작성자 멤버 코드		
-				var rerecontent= x[i].rere_content;//작성한 내용
+			
 				var rerescore= x[i].rere_score;	// 작성한 평점
-				var rereid=x[i].rere_id;//후기의 id
-				if(${member_code }==membercode){
-				var myreview = "<table class=table><tr><td colspan='4'>나의 후기</td></tr><tr><td colspan='2'>"+writer+"</td><td>"+rerescore+"</td><td><a href=replydelete.rest?rere_id="+rereid+"&rest_id=${rest.rest_id}><button id='deletereply'>리뷰삭제</button></a></td></tr><tr><td colspan='4'>"+rerecontent+"</td></tr></table>";
-					$('#myreply').html(myreview);
-				}else{
-					other=true;
-					review += "<tr><td colspan='2'>"+writer+"</td><td>평점</td><td>"+rerescore+"</td></tr><tr><td colspan='4'>"+rerecontent+"</td></tr>";
-				}//else end
-				}//for end
-					review+="</table>";
-					if(other){
-					$('#replylist').html(review);
-				}
-		}//success end
-	  })
+				
+			
+			}
+		} 
+		//success end
+	  }) 
+	  //list.reply ajax end
+	  //나의 후기 검색
+		 $.ajax({
+			url:"myreviewone.reply",
+			data:{ rest_id:${rest.rest_id }},
+			success : function(x){
+				console.log(x.length);
+				if(x.length>5){
+				$('#myreply').html(x);
+			}// if end
+			}// success end
+		})// myreview ajax end
+	  //긍정후기 
+	   $.ajax({
+			url:"posreview.reply",
+			data:{rest_id : ${rest.rest_id }},
+			success : function(x){
+				if(x.length>15){
+				$('#posreply').html(x);
+				}//if end
+			}//success end
+		})//긍정 리뷰 ajax end
+		//부정후기
+		 $.ajax({
+				url:"negreview.reply",
+				data:{rest_id : ${rest.rest_id }},
+				success : function(x){
+					if(x.length>15){
+					$('#negreply').html(x);
+					}//if end
+				}//success end
+			})//부정 리뷰ajax end
+			
 	var lat=${rest.rest_lat}+"";
 	var lon=${rest.rest_lon}+"";
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -81,7 +102,7 @@ marker.setMap(map);
 
 // 아래 코드는 지도 위의 마커를 제거하는 코드입니다
 // marker.setMap(null);    
-})
+})//document end
 
 
 </script>
@@ -94,8 +115,18 @@ marker.setMap(map);
 </div>
 <div id="reply"class="container-md" style="text-align: center;">
 <h3>후기</h3>
-<div id= "myreply"><a href="replywrite.rest?rest_id=${rest.rest_id}"><button>후기작성</button></a></div>
-<div id="replylist">후기가 없어요.</div>
+<div id= "myreply">나의 후기가 없습니다.<a href="replywrite.rest?rest_id=${rest.rest_id}"><button>후기작성</button></a></div>
+
+<div>
+<div style="float: left; width: 50%;">
+<h4>긍정적인 후기</h4>
+<div id="posreply">긍정적 후기가 없습니다.</div>
+</div>
+<div style="float: right; width: 50%;">
+<h4>부정적인 후기</h4>
+<div id="negreply">부정적 후기가 없습니다.</div>
+</div>
+</div>
 </div>
 <br>
 <div class="container-md" id="map" style="width:100%;height:350px;"></div>
