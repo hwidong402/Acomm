@@ -26,7 +26,7 @@
 	          <a class="nav-link" href="open.aptsell">부동산</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="matjip?apt_lat=${apt.apt_lat}&apt_lon=${apt.apt_lon}">주변 맛집</a>
+	          <a class="nav-link" href="matjip">주변 맛집</a>
 	        </li>
 	      </ul>
 	      <form class="d-flex" role="search">

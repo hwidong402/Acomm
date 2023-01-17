@@ -5,19 +5,27 @@
 	select * from rest_reply where rest_id = #{rest_id} order by rere_id desc
 </select>
  <insert id="insert" parameterType="restreplyVO">
-	insert into rest_reply values (null,#{member_code},#{rere_writer},#{rere_content},#{rest_id},#{rere_score},#{apt_code})
+	insert into rest_reply values (null,#{member_code},#{rere_writer},#{rere_content},#{rest_id},#{rere_score},#{apt_code},#{rere_posneg})
 </insert>
 <update id="update" parameterType="restreplyVO">
 	update rest_reply set rere_content=#{rere_content},rere_score=#{rere_score} where rere_id=#{rere_id}
 </update> 
 <delete id="delete" parameterType="restreplyVO">
-delete from rest_reply where rere_id = #{rere_id}
+	delete from rest_reply where rere_id = #{rere_id}
 </delete>
 <select id="myreview" parameterType="restreplyVO" resultType="restreplyVO">
-select * from rest_reply where rest_id = #{rest_id} and member_code=#{member_code}
+	select * from rest_reply where rest_id = #{rest_id} and member_code=#{member_code}
 </select>
 <select id="otherreview" parameterType="restreplyVO" resultType="restreplyVO">
-select * from rest_reply where rest_id = #{rest_id} and member_code != #{member_code} order by rere_id desc
+	select * from rest_reply where rest_id = #{rest_id} and member_code != #{member_code} order by rere_id desc
+</select>
+ 
+<select id="posreview" parameterType="restreplyVO" resultType="restreplyVO">
+	select * from rest_reply where rest_id = #{rest_id} and member_code != #{member_code} and rere_posneg = 1 order by rere_id desc
+</select>
+
+<select id="negreview" parameterType="restreplyVO" resultType="restreplyVO">
+	select * from rest_reply where rest_id = #{rest_id} and member_code != #{member_code} and rere_posneg = 0 order by rere_id desc
 </select>
 
 <!-- 	<insert id="create" parameterType="bbsVO">
