@@ -9,6 +9,7 @@ public class RestReplyVO {
 		private int rest_id;
 		private float rere_score;
 		private String apt_code;
+		private int rere_posneg;
 		
 		@Override
 		public String toString() {
@@ -16,6 +17,15 @@ public class RestReplyVO {
 					+ ", rere_content=" + rere_content + ", rest_id=" + rest_id + ", rere_score=" + rere_score
 					+ ", apt_code=" + apt_code + "]";
 		}
+		
+		public int getRere_posneg() {
+			return rere_posneg;
+		}
+
+		public void setRere_posneg(int rere_posneg) {
+			this.rere_posneg = rere_posneg;
+		}
+
 		public int getMember_code() {
 			return member_code;
 		}

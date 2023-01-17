@@ -20,6 +20,9 @@ public class RestaurantService {
 	//restreply db 연결
 	@Autowired
 	RestReplyDAO rrdao;
+	//긍부정평가서비스
+	@Autowired
+	DictionaryService dservice;
 	
 	//레스토랑 리스트 검색
 	public List<RestaurantVO> list() {
@@ -58,18 +61,29 @@ public class RestaurantService {
 	}
 	//상가 후기 insert 
 	public boolean insert(RestReplyVO vo) {
+		vo.setRere_posneg(dservice.emotion(vo.getRere_content()));
 		if(rrdao.insert(vo)>0)return true;
 		else return false;
 	}
+	//후기 삭제
 	public boolean delete(RestReplyVO vo) {
 		if(rrdao.delete(vo)>0)return true;
 		else return false;
 	}
-	
+	//나의 후기 검색
 	public RestReplyVO myreview(RestReplyVO vo) {
 		return rrdao.myreview(vo);
 	}
+	//다른사람 후기 검색
 	public List<RestReplyVO> otherreview(RestReplyVO vo) {
 		return rrdao.otherreview(vo);
+	}
+	//긍정 후기 검색 메써드
+	public List<RestReplyVO> posreview(RestReplyVO vo) {
+		return rrdao.posreview(vo);
+	}
+	//부정 후기 검색 메써드
+	public List<RestReplyVO> negreview(RestReplyVO vo) {
+		return rrdao.negreview(vo);
 	}
 }
