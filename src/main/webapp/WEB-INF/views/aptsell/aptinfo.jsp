@@ -139,7 +139,7 @@
 </head>
 <body>
 	<!-- 최상단 nav -->
-	<%@ include file="../navbar.jsp" %>
+	<%@ include file="../common/navbar.jsp" %>
 	<%
 	AptVO vo = (AptVO)request.getAttribute("city");
     String x = " " + vo.getApt_village();

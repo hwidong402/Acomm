@@ -241,7 +241,7 @@ if(${member.member_cls}==1){
 </script>
 </head>
 <body>
-<%@ include file="../navbar.jsp" %>
+<%@ include file="../common/navbar.jsp" %>
 <div class="parent" >
 <div id="insert" class="child-one"></div>
 <div id="map" style="width:100%;height:800px; z-indx:1;"></div>

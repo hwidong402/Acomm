@@ -58,7 +58,7 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
 </script>
 </head>
 <body>
-<%@ include file="../navbar.jsp" %>
+<%@ include file="../common/navbar.jsp" %>
 <div id="map" style="width:100%;height:350px;"></div>
 
 <div id="insertform" class="container mt-5 text-center">
