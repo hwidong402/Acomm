@@ -61,7 +61,7 @@
 </head>
 <body>
 	<!-- 최상단 nav -->
-	<%@ include file="../navbar.jsp" %>
+	<%@ include file="../common/navbar.jsp" %>
 	
 	<!-- 본문 -->
 	<div class="position-relative text-center bg-light">

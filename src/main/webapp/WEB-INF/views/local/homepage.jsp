@@ -5,7 +5,7 @@
 <html>
 <head>
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BXH0MBY7NR"></script>
+<%@ include file="../common/innerHead.jsp" %>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -111,7 +111,7 @@ li {
 </head>
 <body>
 <!-- nav -->
-<%@ include file="../navbar.jsp" %>
+<%@ include file="../common/navbar.jsp" %>
 <div id="full" style="padding-left: 3%; padding-right: 3%"> <!-- 홈페이지 전체화면 -->
 <div id="header"> <!-- 아파트이름 -->
 	<h2 id="apt_name">${apt.apt_name}</h2>

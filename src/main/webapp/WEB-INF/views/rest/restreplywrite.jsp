@@ -12,7 +12,7 @@
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <body>
-<%@ include file="../navbar.jsp" %>
+<%@ include file="../common/navbar.jsp" %>
 <div id="writearea"class="container mt-5 text-center">
 <form action="replyinsert.rest">
 <input id="membercode" name="member_code" type="hidden" value="${member.member_code }">
