@@ -108,7 +108,7 @@ marker.setMap(map);
 </script>
 </head>
 <body>
-<%@ include file="../navbar.jsp" %>
+<%@ include file="../common/navbar.jsp" %>
 <div class="container-md" style="text-align: center;">
 <h2 id="restlavel">${rest.rest_name}</h2>
 <br>

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import com.jav4.acomm.apt.AptVO;
 import com.jav4.acomm.bbs.BbsVO;
 @Controller
@@ -51,7 +52,13 @@ public class MemberController {
 	 */
     // 로그인이 실행되는 로직
     @RequestMapping("m_login")
-      public String login(MemberVO vo, HttpSession session, Model model) {
+      public String login(MemberVO vo, HttpSession session, Model model) throws Exception {
+    	//weather
+//    	Weather weather = new Weather();
+//    	String sunny = weather.getWeather();
+//    	System.out.println("controller의 sunny > " + sunny);
+    	
+    	
         MemberVO vo2 = service.login(vo); // vo2 한 member의 전체칼럼
         AptVO vo3 = service.code2name(vo); //vo3 member 이름
         if (vo2 == null) {  // vo2가 만약 비어있다면 (로그인이 실패를 했다면)

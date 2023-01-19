@@ -75,7 +75,7 @@
 </script>
 <body>
 	<!-- 최상단 nav -->
-	<%@ include file="../navbar.jsp" %>
+	<%@ include file="../common/navbar.jsp" %>
 
 	<!-- 헤더? -->
 	<div class="container p-3 my-3 text-center">

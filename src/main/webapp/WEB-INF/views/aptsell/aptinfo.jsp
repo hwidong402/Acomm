@@ -21,17 +21,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>${city.apt_name}부동산</title>
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BXH0MBY7NR"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<%@ include file="../common/innerHead.jsp" %>
 
-  gtag('config', 'G-BXH0MBY7NR');
-</script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-<!-- <link href="resources/css/bootstrap.min.css" rel="stylesheet"> --> <!-- resources에 bootstrap 있음 -->
 <link href="resources/css/bbs_struc.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -139,7 +130,7 @@
 </head>
 <body>
 	<!-- 최상단 nav -->
-	<%@ include file="../navbar.jsp" %>
+	<%@ include file="../common/navbar.jsp" %>
 	<%
 	AptVO vo = (AptVO)request.getAttribute("city");
     String x = " " + vo.getApt_village();

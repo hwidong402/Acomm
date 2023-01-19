@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AptController  {
 	
 	@Autowired
-	AptService service;	
+	AptServiceInter service;	
 	
 	// index파일에서 RDB에 있는 아파트 검색을 처리하기 위한 컨트롤러
 	@RequestMapping("apt/apt_name") //view아래에 apt/apt_name이라는 파일이 있음!
