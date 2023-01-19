@@ -37,12 +37,13 @@ $(function() {
 				
 					var other=false;
 				var sum = 0;
+				if(x.length>0){
+					
 			for (var i = 0; i <x.length; i++) {
-			
-				var rerescore= x[i].rere_score;	// 작성한 평점
-				
-			
+				sum+= x[i].rere_score;	// 작성한 평점
 			}
+			$('#score').html("전체평점:"+(sum/x.length).toFixed(2)+"/5");
+				}//if end
 		} 
 		//success end
 	  }) 
@@ -102,7 +103,8 @@ marker.setMap(map);
 
 // 아래 코드는 지도 위의 마커를 제거하는 코드입니다
 // marker.setMap(null);    
-})//document end
+})
+//document end
 
 
 </script>
@@ -111,12 +113,13 @@ marker.setMap(map);
 <%@ include file="../navbar.jsp" %>
 <div class="container-md" style="text-align: center;">
 <h2 id="restlavel">${rest.rest_name}</h2>
+<div id="score"></div>
 <br>
 </div>
 <div id="reply"class="container-md" style="text-align: center;">
 <h3>후기</h3>
-<div id= "myreply">나의 후기가 없습니다.<a href="replywrite.rest?rest_id=${rest.rest_id}"><button>후기작성</button></a></div>
-
+<div id= "myreply">나의 후기가 없습니다.<a href="replywrite.rest?rest_id=${rest.rest_id}"><button class="btn btn-primary">후기작성</button></a></div>
+<br>
 <div>
 <div style="float: left; width: 50%;">
 <h4>긍정적인 후기</h4>
