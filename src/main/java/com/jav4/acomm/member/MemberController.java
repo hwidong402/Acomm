@@ -120,7 +120,7 @@ public class MemberController {
     public void nickck(MemberVO vo, Model model) {
     	MemberVO vo2 = service.nickck(vo); //  DB에 nickname값을 넣어서 아이디 중복이 있는지 확인하러감.
     	String result = "no";
-    	if(vo2 != null) { // if 구문 mapper에서 id를 검색하러 가는데 select * from 전체검색을 해서 검색 된 값이 있으면 vo는 꽉 찬 가방이 되어서 중복된 닉네임이 있다는걸 암시
+    	if(vo2 != null) { // if 구문 mapper에서 nick을 검색하러 가는데 select * from 전체검색을 해서 검색 된 값이 있으면 vo는 꽉 찬 가방이 되어서 중복된 닉네임이 있다는걸 암시
     		result = "yes"; // 꽉 차 있음면 result 값을 yes을 주어서 모델로 값을 넘김 여기까지가 백엔드가 처리해주고 나머지는 프론트가 도와줌
     	}
     	model.addAttribute("result", result); // yes는 중복임 no는 중복이 아님
