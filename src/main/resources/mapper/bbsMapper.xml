@@ -154,4 +154,10 @@
 		where hotall.bbs_count >= 100 and hotall.bbs_like_count > 3 and apt_code = #{apt_code} order by bbs_id desc
 	</select>
 	
+	<select id="ocr" parameterType="ocrVO" resultType="ocrVO">
+		select apt.apt_subaddr, member.member_name from apt, member where replace (apt_subaddr, ' ', '') = #{apt_subaddr} and member.member_name = #{member_name}
+		<!-- select * from apt, member where replace (apt_subaddr, ' ', '') = #{apt_subaddr} and member.member_name = #{member_name} -->
+	</select>
+	
+	
 </mapper>

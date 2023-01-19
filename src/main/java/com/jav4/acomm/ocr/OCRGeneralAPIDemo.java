@@ -21,15 +21,13 @@ public class OCRGeneralAPIDemo {
 	public static void main(String[] args) {
 		String apiURL = NaverVISIONAPI.OCR_URL;
 		String secretKey = NaverVISIONAPI.SECRECT_KEY;
-		// String imageFile = "alone1.jpeg";
-		// String imageFile = "doc1.jpeg";
-		// String imageFile = "money.jpg";
-//		String imageFile = "id_card.jpg";
-		String imageFile = "dl_hwi.jpg";
+//		String imageFile = "D:\\Hwidong\\back-end_edu\\final-workspace\\Acomm\\id_card.jpg";
+//		String imageFile = "dl_hwi.jpg";
 //		String imageFile = "id_hwi.jpg";
-//		String imageFile = "id_woo.jpg";
-//		String imageFile = "id2.jpg";
-//		String imageFile = "dl_young.jpg";
+//		String imageFile = "D:\\Hwidong\\back-end_edu\\final-workspace\\Acomm\\id2.jpg";
+//		String imageFile = "D:\\Hwidong\\back-end_edu\\final-workspace\\Acomm\\id_woo.jpg";
+//		String imageFile = "D:\\Hwidong\\back-end_edu\\final-workspace\\Acomm\\dl_young.jpg";
+		String imageFile = "D:\\Hwidong\\back-end_edu\\final-workspace\\Acomm\\dl_hwi.jpg";
 
 		try {
 			URL url = new URL(apiURL);
@@ -96,12 +94,51 @@ public class OCRGeneralAPIDemo {
 				String inferText = (String) fields_one.get("inferText");
 				System.out.println(inferText + " ");
 //				String inferText2 = inferText.replaceAll("[^0-9]", ""); //숫자 0-9을 제외한 문자는 공백으로 대체
+//				String inferText2 = inferText.substring(inferText.indexOf(",")); // , 밑으로 문자열 제거
+//				String inferText2 = inferText.substring(0, inferText.indexOf(",") + 1);
+//				System.out.println("추출된 인덱스는 " + inferText2);
 //				if (inferText2.length() > 3 && inferText2.length() < 6) {
-					list.add(inferText);
+				list.add(inferText);
 //				}
 			}
+			
+			String name = list.get(0);
+			String list_addr = list.get(1);
 			System.out.println();
-			System.out.println("ocr_result>> " + list);
+			System.out.println("괄호가 포함이 되어있습니까? >> " + name.contains("("));
+			
+			
+			// 1번째 인덱스 추출
+			if (name.contains("(")) {
+				name = name.substring(0, list.get(0).indexOf("("));
+			} 
+			
+			if (name.contains(" ")) {
+				name = name.substring(list.get(0).indexOf(" ")).replace(" ", "");
+			}
+			
+			// 2번째 인덱스 추출
+			if (list.get(1).contains(",")) {
+				list_addr = list_addr.substring(0, list.get(1).indexOf(","));
+			}
+			
+			String[] str = list_addr.split("\n");
+			String str2 = String.join("", str);
+			String addr = str2.replace(" ", "");
+			
+			
+			System.out.println();
+			System.out.println("추출된 이름은 \n" + name);
+			System.out.println("추출된 주소는 \n" + list_addr);
+			System.out.println("줄바꿈 추출 >> " + str[0]);
+			System.out.println("줄바꿈 추출 >> " + str[1]);
+			System.out.println("배열을 스트링으로 >> " + str2);
+			System.out.println("공백제거 스트링으로 >> " + addr);
+			
+			
+//			System.out.println();
+//			System.out.println("ocr_result>> " + list);
+			
 		} catch (Exception e) {
 			System.out.println(e);
 		}

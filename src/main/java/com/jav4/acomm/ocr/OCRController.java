@@ -1,7 +1,6 @@
 package com.jav4.acomm.ocr;
 
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
@@ -20,25 +19,25 @@ import com.jav4.acomm.member.MemberVO;
 @Controller
 public class OCRController {
 	
+	@Autowired
+	OcrServiceinter service;
 	
-	// ocr 실행하기
+	// ocr
 	@RequestMapping("ocr")
-	public String ocr(Model model) {
+	public String uploadForm(HttpServletRequest request, MultipartFile file, Model model) throws Exception {
+		String savedName = file.getOriginalFilename();
+//		String uploadPath = request.getSession().getServletContext().getRealPath("resources/img");
+		File target = new File("D:\\Hwidong\\back-end_edu\\final-workspace\\Acomm\\src\\main\\webapp\\resources\\img\\" + savedName);
+		file.transferTo(target);
+		
 		NaverOCRAPI ocr = new NaverOCRAPI();
-		System.out.println(ocr);
-		String result = ocr.ocr();
+		OcrVO vo = ocr.ocr(savedName);
+		
+		boolean result = service.ocrlist(vo); 
+		
+		System.out.println("컨트롤러의 vo >> " + vo);
 		model.addAttribute("ocr", result);
 		return "bbs/ocr";
-	}
-	
-	
-	@RequestMapping("uploadForm")
-	public void uploadForm(HttpServletRequest request, MultipartFile file, Model model) throws Exception {
-		String savedName = file.getOriginalFilename();
-		String uploadPath = request.getSession().getServletContext().getRealPath("resources/upload");
-		File target = new File(uploadPath + "/" + savedName);
-		file.transferTo(target);
-		model.addAttribute("savedName", savedName);
 	}
 	
 	

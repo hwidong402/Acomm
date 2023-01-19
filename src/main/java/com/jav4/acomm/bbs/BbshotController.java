@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BbshotController {
 	
 	//@Autowired
-	//BbshotDAO dao;
+	//OcrDAO dao;
 	
 	@Autowired
 	BbsServiceInter service;

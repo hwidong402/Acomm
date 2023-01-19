@@ -21,16 +21,16 @@ public class NaverOCRAPI {
 
 	
 	
-	public String ocr() {
+	public OcrVO ocr(String savedName) {
 		String apiURL = NaverVISIONAPI.OCR_URL;
 		String secretKey = NaverVISIONAPI.SECRECT_KEY;
 //		String imageFile = "id_card.jpg";
 //		String imageFile = "dl_hwi.jpg";
-		String imageFile = "D:\\Hwidong\\back-end_edu\\final-workspace\\Acomm\\id_hwi.jpg";
+//		String imageFile = "id_hwi.jpg";
 //		String imageFile = "id_woo.jpg";
 //		String imageFile = "id2.jpg";
-//		String imageFile = "dl_young.jpg";
-
+		String imageFile = "D:\\Hwidong\\back-end_edu\\final-workspace\\Acomm\\src\\main\\webapp\\resources\\img\\" + savedName;
+		System.out.println("받아온 파일 >> " + savedName);
 		try {
 			URL url = new URL(apiURL);
 			// 연결설정
@@ -64,7 +64,6 @@ public class NaverOCRAPI {
 			wr.close();
 
 			int responseCode = con.getResponseCode();
-			System.out.println("레즈폰스 코드는 >> " + responseCode);
 			BufferedReader br;
 			if (responseCode == 200) {
 				br = new BufferedReader(new InputStreamReader(con.getInputStream()));
@@ -78,7 +77,7 @@ public class NaverOCRAPI {
 			}
 			br.close();
 
-	////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
 			System.out.println(response);
 			JSONParser parser = new JSONParser();
 			org.json.simple.JSONObject jsonResult2 = (org.json.simple.JSONObject) parser.parse(response.toString());
@@ -97,17 +96,62 @@ public class NaverOCRAPI {
 				String inferText = (String) fields_one.get("inferText");
 				System.out.println(inferText + " ");
 //				String inferText2 = inferText.replaceAll("[^0-9]", ""); //숫자 0-9을 제외한 문자는 공백으로 대체
+//				String inferText2 = inferText.substring(inferText.indexOf(",")); // , 밑으로 문자열 제거
+//				String inferText2 = inferText.substring(0, inferText.indexOf(",") + 1);
+//				System.out.println("추출된 인덱스는 " + inferText2);
 //				if (inferText2.length() > 3 && inferText2.length() < 6) {
-					list.add(inferText);
+				list.add(inferText);
 //				}
 			}
+			
+			String name = list.get(0);
+			String list_addr = list.get(1);
 			System.out.println();
-			System.out.println("ocr_result>> " + list);
-			return "success";
+			System.out.println("괄호가 포함이 되어있습니까? >> " + name.contains("("));
+			
+			
+			// 1번째 인덱스 추출
+			if (name.contains("(")) {
+				name = name.substring(0, list.get(0).indexOf("("));
+			}
+			
+			if (name.contains(" ")) {
+				name = name.substring(list.get(0).indexOf(" ")).replace(" ", "");
+			}
+			
+			// 2번째 인덱스 추출
+			if (list.get(1).contains(",")) {
+				list_addr = list_addr.substring(0, list.get(1).indexOf(","));
+			}
+			String[] str = list_addr.split("\n");
+			String str2 = String.join("", str);
+			String addr = str2.replace(" ", "");
+			
+			
+			System.out.println();
+			System.out.println("추출된 이름은 \n" + name);
+			System.out.println("추출된 주소는 \n" + list_addr);
+			System.out.println("줄바꿈 추출 >> " + str[0]);
+			System.out.println("줄바꿈 추출 >> " + str[1]);
+			System.out.println("배열을 스트링으로 >> " + str2);
+			System.out.println("공백제거 스트링으로 >> " + addr);
+			
+//			System.out.println();
+//			System.out.println("ocr_result>> " + list);
+			
+			OcrVO vo = new OcrVO();
+			vo.setApt_subaddr(addr);
+			vo.setMember_name(name);
+			System.out.println("성공했을때 vo >> " + vo);
+			
+			return vo;
+			
 		} catch (Exception e) {
 			System.out.println(e);
+			OcrVO vo = new OcrVO();
+			System.out.println("실패했을때 vo >> " +vo);
+			return vo;
 		}
-			return "fail";
 	}
 	
 	
