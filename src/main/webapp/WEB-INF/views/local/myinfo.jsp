@@ -51,17 +51,18 @@
 		<hr style="width: 300px">
 		<form action="delete">
 		
-		<input type="submit" id="b2" class="btn btn-danger" style="width: 300px;" value="탈퇴하기">
+		<input type="submit" id="b2" class="btn btn-danger" style="width: 300px; height: 38px;" value="탈퇴하기">
+		<hr style="width: 300px">
 		<!-- <button onclick="findcode()" id="b2" class="btn btn-danger" style="width: 300px;">탈퇴하기</button> -->
 		</form>
-	</div>
-	</div>
 	
 	<div>
 		<form action="ocr" method="post" enctype="multipart/form-data">
-			신분증 사진 찾기 <input type="file" name="file"> <br>
-			<button>서버로 파일 업로드</button>
+			<h2>신분증 사진 찾기</h2> <input type="file" name="file" > <br>
+			<button class="btn btn-warning" style="width: 300px;">서버로 파일 업로드</button>
 		</form>
+	</div>
+	</div>
 	</div>
 	
 	<script type="text/javascript">

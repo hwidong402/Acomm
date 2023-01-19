@@ -1,68 +1,119 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
+<title>A-Comm 로그인</title>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="resources/css/login.css">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BXH0MBY7NR"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 111 -->
 
-  gtag('config', 'G-BXH0MBY7NR');
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<!-- Google tag (gtag.js) -->
+<script async
+	src="https://www.googletagmanager.com/gtag/js?id=G-BXH0MBY7NR"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag() {
+		dataLayer.push(arguments);
+	}
+	gtag('js', new Date());
+
+	gtag('config', 'G-BXH0MBY7NR');
 </script>
+
+<!-- 111 -->
+<!--===============================================================================================-->
+<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="resources/css/login/bootstrap.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="resources/css/login/font-awesome.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="resources/css/login/icon-font.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="resources/css/login/animate.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="resources/css/login/hamburgers.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="resources/css/login/animsition.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="resources/css/login/select2.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="resources/css/login/daterangepicker.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="resources/css/login/util.css">
+<link rel="stylesheet" type="text/css"
+	href="resources/css/login/main.css">
+<!--===============================================================================================-->
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 </head>
-<body>
-<div id="div">
-    <div id="acomm">
-        <h1>A-Comm</h1> <br>
-        <span><img src="resources/img/acomm.png" width="100" height="40"></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>독창적인 </span>
-        <span style="color: red; font-weight: bold;"> 아파트 커뮤니티</span>
-        <span>를 시작해보세요.</span>    
-    <div id="form">
-        <form action="m_login" style="display: inline-block;" method="post" onsubmit="return loginf();">
-            <table>
-                <tr>
-                    <td><input type="text" id="member_id" name="member_id" class="member_id" placeholder="아이디" size="50"></td>
-                </tr>
-                <tr>
-                    <td><input type="password" id="member_pw" name="member_pw" class="member_pw" placeholder="비밀번호" size="50"></td>
-                </tr>
-                <tr>
-                    <td><button class="btn btn-primary" style="width:490px;">로그인</button></td>
-                </tr>
-            </table>
-        </form>
-    </div>
-        <div id="mem">
-            <span style="color: gray;"> 아컴이 처음이신가요? </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-            <a href="enroll.jsp"><button class="btn btn-danger" style="width:100px;"> 회원가입 </button></a>
-        </div>
-    </div>
-</div>
-<script type="text/javascript">
-function loginf() {
-    var member_id = $('.member_id').val();
-    var member_pw = $('.member_pw').val();
-    
-    if(member_id == ""){
-        alert("아이디를 입력해주세요.");
-        return false;
-    }else if(member_pw == ""){
-    	alert("비밀번호를 입력해주세요.")
-    	return false;
-    }else{
-        return true;
-    }
-}
-</script>
+<body style="background-color: #666666;">
+
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<form class="login100-form validate-form" action="m_login"
+					style="display: inline-block;" method="post"
+					onsubmit="return loginf();">
+					<span class="login100-form-title p-b-43"> Login to A-COMM </span>
+
+					<div class="wrap-input100 validate-input"
+						data-validate="아이디를 입력해주세요">
+						<input class="input100" type="text" id="member_id"
+							name="member_id" class="member_id">
+						<span class="focus-input100"></span> <span class="label-input100">아이디</span>
+					</div>
+
+
+					<div class="wrap-input100 validate-input"
+						data-validate="비밀번호를 입력해주세요">
+						<input class="input100" type="password" id="member_pw"
+							name="member_pw" class="member_pw"> <span
+							class="focus-input100"></span> <span class="label-input100">비밀번호</span>
+					</div>
+
+					<br>
+
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">로그인</button>
+					</div>
+					<br>
+
+
+					<div>
+						<a href="enroll.jsp"> <input type="button" value="회원가입"
+							class="enroll100-form-btn">
+						</a>
+
+					</div>
+
+
+				</form>
+
+				<div class="login100-more"
+					style="background-image: url('resources/img/A11.jpg');"></div>
+			</div>
+		</div>
+	</div>
+
+	<script src="resources/js/main.js"></script>
+	<script src="resources/js/jquery-3.2.1.min.js"></script>
 </body>
 </html>
