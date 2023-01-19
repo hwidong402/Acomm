@@ -20,6 +20,26 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>${city.apt_name}부동산</title>
+<style type="text/css">
+body{
+ -ms-overflow-style: none;
+ }
+ 
+::-webkit-scrollbar {
+  display: none;
+}
+
+/*특정 부분 스크롤바 없애기*/
+
+.box{
+   -ms-overflow-style: none;
+}
+.box::-webkit-scrollbar{
+  display:none;
+}
+
+
+</style>
 <!-- Google tag (gtag.js) -->
 <%@ include file="../common/innerHead.jsp" %>
 
@@ -36,7 +56,7 @@
                 data : {
                     url : "http://rss.edaily.co.kr/realestate_news.xml",
                     api_key : "ejxvkemry0qjivbotntyvygzajjtuawoqoituggy",
-                    count : 20
+                    count : 4
                 },                      
                 success : function(x) {
                     list = x.items
@@ -55,7 +75,7 @@
                 data : {
                     url : "https://www.mbn.co.kr/rss/estate/",
                     api_key : "ejxvkemry0qjivbotntyvygzajjtuawoqoituggy",
-                    count : 20
+                    count : 4
                 },                      
                 success : function(x) {
                     list = x.items
@@ -74,7 +94,7 @@
                 data : {
                     url : "http://biz.heraldcorp.com/common_prog/rssdisp.php?ct=010300000000.xml",
                     api_key : "ejxvkemry0qjivbotntyvygzajjtuawoqoituggy",
-                    count : 20
+                    count : 4
                 },                      
                 success : function(x) {
                     list = x.items
@@ -93,7 +113,7 @@
                 data : {
                     url : "http://news.mk.co.kr/rss/land.xml",
                     api_key : "ejxvkemry0qjivbotntyvygzajjtuawoqoituggy",
-                    count : 20
+                    count : 4
                 },                      
                 success : function(x) {
                     list = x.items
@@ -112,7 +132,7 @@
                 data : {
                     url : "http://www.drapt.com/index/drapt_rss2.0.xml",
                     api_key : "ejxvkemry0qjivbotntyvygzajjtuawoqoituggy",
-                    count : 20
+                    count : 4
                 },                      
                 success : function(x) {
                     list = x.items
@@ -184,10 +204,10 @@
 }
     %>
 <!-- 부동산 api가져오고 parsing -->
-<div> <!-- 부동산 자료 전체 -->
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3"> <!-- 부동산 자료 전체 -->
 <div id="chart" style="float: left; width: 50%; height: 700px;"> <!-- 구글차트 들어갈 div 1열 1행-->
 <hr color="green">
-${city.apt_city} ${city.apt_town} ${city.apt_village} 아파트 차트
+${city.apt_city} ${city.apt_town} ${city.apt_village} 아파트 월별 차트
 <hr color="green">
 <div id="curve_chart" style="width: 100%; height: 80%;"></div> <!-- js로 그린 구글차트 들어갈 div -->
 </div> <!-- 구글차트 들어갈 div 1열 1행-->
@@ -587,45 +607,50 @@ if(avgppp11 == 0){
 <hr color="blue">
 
 <div id="news"> <!-- 부동산 뉴스 전체 div -->
-<div id="totalnews" style=" float: left; width: 45%;"> <!-- rss로 가져온 뉴스 div -->
+<div id="totalnews" style=" float: left; width: 45%; padding-bottom: 100px;"> <!-- rss로 가져온 뉴스 div -->
 <hr color="green">
 <span style="color: red; font-size: 50px;">전국부동산뉴스</span>
-<div id="rsstable" style="height: 1000px; overflow: auto;"> <!-- rss로 가져온 뉴스를 table로 만듬 -->
+<div id="rsstable" style="height: 500px; overflow: auto;"> <!-- rss로 가져온 뉴스를 table로 만듬 -->
 <table>
-<tr>
+<!-- <tr>
 	<th> <h2>e데일리 <a href=#none id="news1" onclick="if(result1.style.display=='none') {result1.style.display='';news1.innerText='접기'}
 	else {result1.style.display='none';news1.innerText='펼치기'}">펼치기</a></h2></th>
-</tr>
+</tr> -->
 <tr>
-	<td><div id="result1" style="display: none;"></div></td>
+	<!-- <td><div id="result1" style="display: none;"></div></td> -->
+	<td><div id="result1"></div></td>
 </tr>
-<tr>
+<!-- <tr>
 	<th><h2>mbn <a href=#none id="news2" onclick="if(result2.style.display=='none') {result2.style.display='';news2.innerText='접기'}
 	else {result2.style.display='none';news2.innerText='펼치기'}">펼치기</a></h2></th>
-</tr>
+</tr> -->
 <tr>
-    <td><div id="result2" style="display: none;"></div></td>
+    <!-- <td><div id="result2" style="display: none;"></div></td> -->
+    <td><div id="result2"></div></td>
 </tr>
-<tr>
+<!-- <tr>
 	<th><h2>헤럴드경제 <a href=#none id="news3" onclick="if(result3.style.display=='none') {result3.style.display='';news3.innerText='접기'}
 	else {result3.style.display='none';news3.innerText='펼치기'}">펼치기</a></h2></th>
-</tr>
+</tr> -->
 <tr>
-    <td><div id="result3" style="display: none;"></div></td>
+<!--     <td><div id="result3" style="display: none;"></div></td> -->
+    <td><div id="result3"></div></td>
 </tr>
-<tr>
+<!-- <tr>
 	<th><h2>매일경제 <a href=#none id="news4" onclick="if(result4.style.display=='none') {result4.style.display='';news4.innerText='접기'}
 	else {result4.style.display='none';news4.innerText='펼치기'}">펼치기</a></h2></th>
-</tr>
+</tr> -->
 <tr>
-    <td><div id="result4" style="display: none;"></div></td>
+<!--     <td><div id="result4" style="display: none;"></div></td> -->
+    <td><div id="result4"></div></td>
 </tr>
-<tr>
+<!-- <tr>
 	<th><h2>닥터아파트 <a href=#none id="news5" onclick="if(result5.style.display=='none') {result5.style.display='';news5.innerText='접기'}
 	else {result5.style.display='none';news5.innerText='펼치기'}">펼치기</a></h2></th>
-</tr>
+</tr> -->
 <tr>
-   <td> <div id="result5" style="display: none;"></div></td>
+<!--    <td> <div id="result5" style="display: none;"></div></td> -->
+   <td> <div id="result5"></div></td>
 </tr>
 </table>
 </div> <!-- rss로 가져온 뉴스를 table로 만듬 -->
@@ -636,6 +661,7 @@ if(avgppp11 == 0){
 <div id="subnews" style=" float: right; width: 50%;"> <!-- 크롤링으로 가져온 지역뉴스 div -->
 <hr color="green">
 <span style="color: red; font-size: 50px;">${city.apt_city} 부동산 뉴스</span> <br>
+<div style="overflow: auto; height: 500px;"> <!-- 지역뉴스 개별-->
 				<c:choose>
 					<c:when test="${city.apt_city eq '부산광역시'}">
 						<%
@@ -825,6 +851,7 @@ if(avgppp11 == 0){
 						%>
 					</c:when>
 				</c:choose>
+				</div><!-- 지역뉴스 개별-->
 			</div> <!-- 크롤링으로 가져온 지역뉴스 div -->
 </div> <!-- 부동산 뉴스 전체 div -->
 </div> <!-- 부동산 페이지 전체 div -->
