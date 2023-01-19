@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <title>A-Comm 회원가입</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 111 -->
+
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -12,15 +15,52 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BXH0MBY7NR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BXH0MBY7NR');
+</script>
+
+<!-- 111 -->
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="resources/css/login/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="resources/css/login/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="resources/css/login/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="resources/css/login/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="resources/css/login/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="resources/css/login/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="resources/css/login/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="resources/css/login/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="resources/css/login/util.css">
+	<link rel="stylesheet" type="text/css" href="resources/css/login/enrol.css">
+<!--===============================================================================================-->
 </head>
-<body>
-	<div id="header">
-		<a href="index.jsp"> <img alt="이미지오류"
-			src="resources/img/acomm.png" width="300" height="100"></a> <br>
-	</div>
-	<div id="enrollform">
-		<form action="m_create" method="post" onsubmit="return submitf();">
-			<h2>닉네임</h2>
+<body style="background-color: #666666;">
+	
+	<div class="limiter">
+		<div class="container-login100">
+			
+			<div class="wrap-login100">
+				<form class="login100-form validate-form" action="m_create" method="post" onsubmit="return submitf();">
+					<span class="login100-form-title p-b-43" style="font: 고딕;font-weight: bold; font-size: 24px;">
+						A-COMM 회원가입
+					</span>
+					<h2>닉네임</h2>
 			<input type="text" name="member_nick" class="member_nick"> <br>
 			<span class="must0" style="color: red;">필수정보입니다.</span> 
 			<span class="length0" style="color: red; display: none">닉네임은 최소2자입니다.</span> 
@@ -53,20 +93,26 @@
 			maxlength="13" placeholder="숫자만 입력 가능 합니다."> <br> 
 			<span class="must6">필수정보입니다.</span>
 			<h2>아파트이름</h2>
-			<input id="apt_name" name="apt_name" class="apt_name"> <br>
+			<input id="apt_name" name="apt_name" class="apt_name" placeholder="아파트를 검색하시고 찾아주세요."> <br>
 			<span class="must7">필수정보입니다.</span>
 			<!--결과 값 출력하는 곳 -->
 			<div id="result" class="apt_code"></div>
 			<h2>상세주소</h2>
 			<input type="text" name="sub_addr" class="sub_addr"> <br>
 			<span class="must5">필수정보입니다.</span>
-			<hr>
+			<hr style="width: 300px;">
 			<!-- <input type="submit" value="가입하기" > -->
-			<button type="submit" class="btn btn-success" style="width: 300px;">가입하기</button>
+			<button type="submit" class="go100-form-btn" style="width: 300px;">가입하기</button>
 			<br>
-		</form>
+				
+					
+				</form>
+				
+				<div class="login100-more" style="background-image: url('resources/img/A11.jpg');">
+				</div>
+			</div>
+		</div>
 	</div>
-
 	<script type="text/javascript">
     //아파트이름 검색 시 아파트이름과 아파트코드 불러오는 ajax
         $('.apt_name').on("propertychange change keyup paste input", function() {
@@ -361,5 +407,7 @@ member_tel.onkeyup = function(){
             }
         }
     </script>
+<script src="resources/js/main.js"></script>
+<script src="resources/js/jquery-3.2.1.min.js"></script>
 </body>
 </html>
