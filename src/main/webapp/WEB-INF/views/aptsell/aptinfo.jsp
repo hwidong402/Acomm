@@ -21,13 +21,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>${city.apt_name}부동산</title>
 <style type="text/css">
-body{
+/* body{
  -ms-overflow-style: none;
  }
  
 ::-webkit-scrollbar {
   display: none;
-}
+} */
 
 /*특정 부분 스크롤바 없애기*/
 
@@ -207,13 +207,13 @@ body{
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3"> <!-- 부동산 자료 전체 -->
 <div id="chart" style="float: left; width: 50%; height: 700px;"> <!-- 구글차트 들어갈 div 1열 1행-->
 <hr color="green">
-${city.apt_city} ${city.apt_town} ${city.apt_village} 아파트 월별 차트
+<h3 style="font-weight: bold;"> ${city.apt_city} ${city.apt_town} ${city.apt_village} 아파트 월별 차트</h3>
 <hr color="green">
 <div id="curve_chart" style="width: 100%; height: 80%;"></div> <!-- js로 그린 구글차트 들어갈 div -->
 </div> <!-- 구글차트 들어갈 div 1열 1행-->
 <div id="apistart" style="height: 700px; overflow: auto; float: left; width: 50%;"> <!-- api테이블 상위 div -->
 <hr color="green">
-${city.apt_city} ${city.apt_town} ${city.apt_village} 아파트 월별 실거래가
+<h3 style="font-weight: bold;"> ${city.apt_city} ${city.apt_town} ${city.apt_village} 아파트 월별 실거래가 </h3>
 <hr color="green">
 <div id="api" style="height: 600px; overflow: auto;"> <!-- api로 가져온 데이터 테이블로 -->
 <div id="jan"> <!-- 1월 부동산 자료 -->
@@ -609,7 +609,8 @@ if(avgppp11 == 0){
 <div id="news"> <!-- 부동산 뉴스 전체 div -->
 <div id="totalnews" style=" float: left; width: 45%; padding-bottom: 100px;"> <!-- rss로 가져온 뉴스 div -->
 <hr color="green">
-<span style="color: red; font-size: 50px;">전국부동산뉴스</span>
+<h3 style="font-weight: bold;"> 전국 부동산 뉴스 </h3>
+<hr>
 <div id="rsstable" style="height: 500px; overflow: auto;"> <!-- rss로 가져온 뉴스를 table로 만듬 -->
 <table>
 <!-- <tr>
@@ -660,7 +661,8 @@ if(avgppp11 == 0){
 
 <div id="subnews" style=" float: right; width: 50%;"> <!-- 크롤링으로 가져온 지역뉴스 div -->
 <hr color="green">
-<span style="color: red; font-size: 50px;">${city.apt_city} 부동산 뉴스</span> <br>
+<h3 style="font-weight: bold;"> ${city.apt_city} 부동산 뉴스 </h3> 
+<hr>
 <div style="overflow: auto; height: 500px;"> <!-- 지역뉴스 개별-->
 				<c:choose>
 					<c:when test="${city.apt_city eq '부산광역시'}">
