@@ -17,7 +17,7 @@ import com.jav4.acomm.member.MemberVO;
 public class RestaurantController {
 
 	@Autowired
-	RestaurantService service;
+	RestaurantServiceInterface service;
 
 	// 상가 페이지 관련 맵핑
 
