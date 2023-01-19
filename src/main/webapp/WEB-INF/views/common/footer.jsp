@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!-- FOOTER -->
-<footer class="text-muted py-5">
+<footer class="text-muted py-5" style="bottom:0px;">
   <div class="container">
     <!-- 위로가기 끝에 folat -->
     <h1 class="float-end mb-1">
