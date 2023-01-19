@@ -12,6 +12,7 @@ public class MemberVO {
     private int member_cls; // 관리자인지 아닌지 판단 
     private Date member_date; // 회원가입일자
     private String stop_id; // 정류장 코드
+    private String member_authe; // OCR 멤버 인증
     
     public String getMember_nick() {
 		return member_nick;
@@ -79,12 +80,18 @@ public class MemberVO {
     public void setStop_id(String stop_id) {
         this.stop_id = stop_id;
     }
+    public String getMember_authe() {
+		return member_authe;
+	}
+    public void setMember_authe(String member_authe) {
+		this.member_authe = member_authe;
+	}
     
 	@Override
 	public String toString() {
 		return "MemberVO [member_code=" + member_code + ", member_nick=" + member_nick + ", member_id=" + member_id
 				+ ", member_pw=" + member_pw + ", member_name=" + member_name + ", member_tel=" + member_tel
 				+ ", apt_code=" + apt_code + ", sub_addr=" + sub_addr + ", member_cls=" + member_cls + ", member_date="
-				+ member_date + ", stop_id=" + stop_id + "]";
+				+ member_date + ", stop_id=" + stop_id + ", member_authe=" + member_authe + "]";
 	}
 }

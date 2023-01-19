@@ -24,5 +24,15 @@ public class OcrDAO implements OcrDAOInter  {
 		}
 	}
 	
+	@Override
+	public int ocrup(OcrVO vo) {
+		int up = my.update("bbs.ocrup", vo);
+		if (up == 1) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+	
 	
 }

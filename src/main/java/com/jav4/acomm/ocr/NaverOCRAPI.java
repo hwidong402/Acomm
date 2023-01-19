@@ -9,6 +9,9 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -144,6 +147,15 @@ public class NaverOCRAPI {
 			vo.setMember_name(name);
 			System.out.println("성공했을때 vo >> " + vo);
 			
+			// 파일 삭제
+			Path imagepath = Paths.get(imageFile);
+			try {
+				Files.deleteIfExists(imagepath);
+				System.out.println("파일이 정상적으로 삭제 되었습니다.");
+			} catch (Exception e) {
+				System.out.println("파일 삭제 중 발생 에러 >> " + e);
+			}
+			
 			return vo;
 			
 		} catch (Exception e) {
@@ -152,6 +164,7 @@ public class NaverOCRAPI {
 			System.out.println("실패했을때 vo >> " +vo);
 			return vo;
 		}
+		
 	}
 	
 	

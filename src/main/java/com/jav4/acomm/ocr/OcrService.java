@@ -14,7 +14,14 @@ public class OcrService implements OcrServiceinter {
 	// 사진으로 온 값 추출해서 DB와 비교
 	@Override
 	public boolean ocrlist(OcrVO vo) {
-		return dao.ocrlist(vo);
+		boolean rs = dao.ocrlist(vo);
+		if (rs) {
+			int result = dao.ocrup(vo);
+			return true;
+		} else {
+			return false;
+		}
 	}
+	
 	
 }

@@ -154,10 +154,16 @@
 		where hotall.bbs_count >= 100 and hotall.bbs_like_count > 3 and apt_code = #{apt_code} order by bbs_id desc
 	</select>
 	
+	<!-- ocr 하기 -->
 	<select id="ocr" parameterType="ocrVO" resultType="ocrVO">
-		select apt.apt_subaddr, member.member_name from apt, member where replace (apt_subaddr, ' ', '') = #{apt_subaddr} and member.member_name = #{member_name}
+		select apt.apt_subaddr, member.member_name from apt, member where replace (apt_subaddr, ' ', '') = #{apt_subaddr}
+		and member.member_name = #{member_name} and member.member_code = #{member_code}
 		<!-- select * from apt, member where replace (apt_subaddr, ' ', '') = #{apt_subaddr} and member.member_name = #{member_name} -->
 	</select>
 	
+	<!-- ocr 인증시 업데이트 -->
+	<update id="ocrup" parameterType="int">
+		update member set member_authe = 1 where member_code = #{member_code}
+	</update>
 	
 </mapper>

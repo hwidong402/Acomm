@@ -24,7 +24,7 @@ public class OCRController {
 	
 	// ocr
 	@RequestMapping("ocr")
-	public String uploadForm(HttpServletRequest request, MultipartFile file, Model model) throws Exception {
+	public String uploadForm(HttpServletRequest request, MultipartFile file, Model model, HttpSession session) throws Exception {
 		String savedName = file.getOriginalFilename();
 //		String uploadPath = request.getSession().getServletContext().getRealPath("resources/img");
 		File target = new File("D:\\Hwidong\\back-end_edu\\final-workspace\\Acomm\\src\\main\\webapp\\resources\\img\\" + savedName);
@@ -32,7 +32,7 @@ public class OCRController {
 		
 		NaverOCRAPI ocr = new NaverOCRAPI();
 		OcrVO vo = ocr.ocr(savedName);
-		
+		vo.setMember_code((Integer)session.getAttribute("member_code"));
 		boolean result = service.ocrlist(vo); 
 		
 		System.out.println("컨트롤러의 vo >> " + vo);

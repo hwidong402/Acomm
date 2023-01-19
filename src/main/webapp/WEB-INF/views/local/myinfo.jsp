@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +14,7 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript">
-
+	
 
 </script>
 </head>
@@ -55,13 +56,25 @@
 		<hr style="width: 300px">
 		<!-- <button onclick="findcode()" id="b2" class="btn btn-danger" style="width: 300px;">탈퇴하기</button> -->
 		</form>
-	
-	<div>
+		
+	<!-- 인증이 안된 회원일 경우 보임 -->
+	<c:if test="${one.member_authe ne '1'}">
+	<div id="ocrdiv">
 		<form action="ocr" method="post" enctype="multipart/form-data">
-			<h2>신분증 사진 찾기</h2> <input type="file" name="file" > <br>
+			<h2>인증용 신분증 사진 찾기</h2> <input type="file" name="file" > <br>
 			<button class="btn btn-warning" style="width: 300px;">서버로 파일 업로드</button>
 		</form>
 	</div>
+	</c:if>
+	
+	<!-- 인증된 회원일 경우 보임 -->
+	<c:if test="${one.member_authe eq '1'}">
+	<div>
+			<h2>인증이 완료된 회원입니다.</h2>
+	</div>
+	</c:if>
+	
+	
 	</div>
 	</div>
 	
@@ -218,6 +231,8 @@
         	return true;
     	}
 	}
+	
+	
 </script>
 </body>
 </html>
