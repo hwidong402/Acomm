@@ -5,9 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>${rest.rest_name}상세정보</title>
-<!-- 상가 정보 띄우기용 부트스트랩  -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<!-- innerHead -->
+<%@ include file="../common/innerHead.jsp" %>
 <!-- jquery -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
@@ -110,29 +109,47 @@ marker.setMap(map);
 </script>
 </head>
 <body>
-<%@ include file="../common/navbar.jsp" %>
-<div class="container-md" style="text-align: center;">
-<h2 id="restlavel">${rest.rest_name}</h2>
-<div id="score"></div>
-<br>
-</div>
-<div id="reply"class="container-md" style="text-align: center;">
-<h3>후기</h3>
-<div id= "myreply">나의 후기가 없습니다.<a href="replywrite.rest?rest_id=${rest.rest_id}"><button class="btn btn-primary">후기작성</button></a></div>
-<br>
-<div>
-<div style="float: left; width: 50%;">
-<h4>긍정적인 후기</h4>
-<div id="posreply">긍정적 후기가 없습니다.</div>
-</div>
-<div style="float: right; width: 50%;">
-<h4>부정적인 후기</h4>
-<div id="negreply">부정적 후기가 없습니다.</div>
-</div>
-</div>
-</div>
-<br>
-<div class="container-md" id="map" style="width:100%;height:350px;"></div>
-
+	<!-- 네비게이션 --> 
+	<%@ include file="../common/navbar.jsp" %>
+	<!-- main -->
+ 	<main class="container">
+	
+		<div style="text-align: center;">
+			<h2 id="restlavel">${rest.rest_name}</h2>
+			<div id="score"></div>
+			<br>
+		</div>
+		<!-- 나의 후기 --> 
+		<div id="reply" style="text-align: center;">
+			<h3>후기</h3>
+			<div id= "myreply">
+				나의 후기가 없습니다.<a href="replywrite.rest?rest_id=${rest.rest_id}"><button class="btn btn-primary">후기작성</button></a>
+			</div>
+		</div>
+		<br>
+		
+		<!-- 긍부정 -->
+		<div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3" style="text-align: center;">
+			<div>
+				<h4>긍정적인 후기</h4>
+				<div id="posreply">
+					긍정적 후기가 없습니다.
+				</div>
+			</div>	
+			<div>
+				<h4>부정적인 후기</h4>
+				<div id="negreply">
+					부정적 후기가 없습니다.
+				</div>
+			</div>
+		</div>
+		
+		<br>
+		<!-- 지도  -->
+		<div id="map" style="width:100%;height:350px;"></div>
+		
+	</main>
+	 <!-- footer -->
+    <%@ include file="../common/footer.jsp" %>
 </body>
 </html>

@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,8 +7,11 @@
 <style type="text/css">
 .child-one{
 position: relative;
-top: 50px; left:90%;
-z-index: 2;
+bottom : 750px;
+/* top: 50px; */ 
+left:90%;
+z-index: 3;
+width : 10%;
 }
 </style>
 <!-- Google tag (gtag.js) -->
@@ -230,26 +232,33 @@ if(${member.member_cls}==1){
 </script>
 </head>
 <body>
-<%@ include file="../common/navbar.jsp" %>
-<div class="parent" >
-<div id="insert" class="child-one"></div>
-<div id="map" style="width:100%;height:800px; z-indx:1;"></div>
-</div>
-<!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-  Button with data-bs-target
-</button> -->
-
-<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasExampleLabel">제목</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body" id="restinfo" style="overflow:auto">
-    <span id="avescore"></span>
-    <span id="restone"></span>
-    <div id="myreply"></div>
-    <div id="replylist"></div>
-  </div>
-</div>
+	<%@ include file="../common/navbar.jsp" %>
+	<!-- main -->
+	
+	<main class="container">
+		<div class="parent" >
+			<div id="map" style="width:100%;height:800px; z-indx:1;"></div>
+			<div id="insert" class="child-one"></div>
+		</div>
+		<!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+		  Button with data-bs-target
+		</button> -->
+		
+		<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+		  <div class="offcanvas-header">
+		    <h5 class="offcanvas-title" id="offcanvasExampleLabel">제목</h5>
+		    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+		  </div>
+		  <div class="offcanvas-body" id="restinfo" style="overflow:auto">
+		    <span id="avescore"></span>
+		    <span id="restone"></span>
+		    <div id="myreply"></div>
+		    <div id="replylist"></div>
+		  </div>
+		</div>
+	</main>
+	
+	 <!-- footer -->
+	 <%@ include file="../common/footer.jsp" %>
 </body>
 </html>
