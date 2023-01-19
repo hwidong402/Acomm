@@ -1,13 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<title>A-Comm 회원가입</title>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- 111 -->
-
+<title>A-Comm 회원가입</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -15,52 +12,15 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BXH0MBY7NR"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-BXH0MBY7NR');
-</script>
-
-<!-- 111 -->
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="resources/css/login/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="resources/css/login/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="resources/css/login/icon-font.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="resources/css/login/animate.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="resources/css/login/hamburgers.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="resources/css/login/animsition.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="resources/css/login/select2.min.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="resources/css/login/daterangepicker.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="resources/css/login/util.css">
-	<link rel="stylesheet" type="text/css" href="resources/css/login/enrol.css">
-<!--===============================================================================================-->
 </head>
-<body style="background-color: #666666;">
-	
-	<div class="limiter">
-		<div class="container-login100">
-			
-			<div class="wrap-login100">
-				<form class="login100-form validate-form" action="m_create" method="post" onsubmit="return submitf();">
-					<span class="login100-form-title p-b-43" style="font: 고딕;font-weight: bold; font-size: 24px;">
-						A-COMM 회원가입
-					</span>
-					<h2>닉네임</h2>
+<body>
+	<div id="header">
+		<a href="index.jsp"> <img alt="이미지오류"
+			src="resources/img/acomm.png" width="300" height="100"></a> <br>
+	</div>
+	<div id="enrollform">
+		<form action="m_create" method="post" onsubmit="return submitf();">
+			<h2>닉네임</h2>
 			<input type="text" name="member_nick" class="member_nick"> <br>
 			<span class="must0" style="color: red;">필수정보입니다.</span> 
 			<span class="length0" style="color: red; display: none">닉네임은 최소2자입니다.</span> 
@@ -73,7 +33,7 @@
 			<!-- <span id="idck1"></span>  -->
 			<span class="must1">필수정보입니다.</span> 
 			<span class="length" style="color: red; display: none">아이디는 최소 4자입니다.</span> 
-			<span class="idck1" style="color: green; display: none;">사용가능한 아이디입니다.</span> 
+			<span class="idck1">사용가능한 아이디입니다.</span> 
 			<span class="idck2">중복된 아이디입니다.</span>
 			<h2>비밀번호</h2>
 			<input type="password" name="member_pw" class="member_pw"> <br>
@@ -90,7 +50,7 @@
 			<span class="must4">필수정보입니다.</span>
 			<h2>전화번호</h2>
 			<input type="text" id="member_tel" name="member_tel" class="member_tel" 
-			maxlength="13" placeholder="숫자만 입력 가능 합니다."> <br> 
+			maxlength="13" placeholder="숫자만 입력 가능 합니다.">	<br> 
 			<span class="must6">필수정보입니다.</span>
 			<h2>아파트이름</h2>
 			<input id="apt_name" name="apt_name" class="apt_name" value="${apt_name}" disabled="disabled"> <br> 
@@ -98,21 +58,15 @@
 			<h2>상세주소</h2>
 			<input type="text" name="sub_addr" class="sub_addr"> <br>
 			<span class="must5">필수정보입니다.</span>
-			<hr style="width: 300px;">
+			<hr>
 			<!-- <input type="submit" value="가입하기" > -->
-			<button type="submit" class="go100-form-btn" style="width: 300px;">가입하기</button>
+			<button type="submit" class="btn btn-success" style="width: 300px;">가입하기</button>
 			<br>
-				
-					
-				</form>
-				
-				<div class="login100-more" style="background-image: url('resources/img/A11.jpg');">
-				</div>
-			</div>
-		</div>
+		</form>
 	</div>
+
 	<script type="text/javascript">
-    //아파트이름 검색 시 아파트이름과 아파트코드 불러오는 ajax
+	//아파트이름 검색 시 아파트이름과 아파트코드 불러오는 ajax
         $('.apt_name').on("propertychange change keyup paste input", function() {
             $.ajax({                    //ajax를 이용해서 화면넘기지 않을거임
                 url : 'apt/apt_code',   //views아래 apt폴더에 파일이 있음
@@ -158,23 +112,24 @@
                 $('.length0').css('display', 'none');
             }
                 
-            //닉네임 중복 검사        
+          //닉네임 중복 검사 
             $.ajax({
                 type: "get",
                 url: 'nickok', //views아래에 위치
                 data: {member_nick, member_nick},
                 success: function(x) {
+                    
                 
                             if (x == 'no' && member_nick.length > 1){
                             $('.nickck1').css('display','block');
                             $('.nickck2').css('display','none');
-                            //console.log("닉네임 사용가능")
                             nickckv = true;
+                            //console.log("닉네임 사용가능")
                             }else if (x != 'no'){
                             $('.nickck1').css('display','none');
                             $('.nickck2').css('display','block');
-                            //console.log("닉네임 중복")
                             nickckv = false;
+                            //console.log("닉네임 중복")
                         }
                         if (member_nick == ""){
                             $('.nickck1').css('display','none');
@@ -183,19 +138,19 @@
                     
                 },
                 error: function() {
-                	//alert('닉네임 중복 검사 ajax 에러')
+                    //alert('닉네임 중복 검사 ajax 에러')
                 }
             })
             
         });
     
-        //아이디에는 영어와 숫자만 가능하도록 제한
+      //아이디에는 영어와 숫자만 가능하도록 제한
             window.chkCharCode = function(event) {
         const regExp = /[^0-9a-zA-Z]/g;
         const ele = event.target;
         if (regExp.test(ele.value)) {ele.value = ele.value.replace(regExp, '');}};
     
-        //아이디 입력 및 길이 제한
+        //아이디
         $('.member_id').on("propertychange change keyup paste input", function() {
             
             var member_id = $('.member_id').val();
@@ -217,6 +172,7 @@
                 data: {member_id, member_id},
                 success: function(x) {
                     
+                
                             if (x == 'no' && member_id.length > 3){
                             $('.idck1').css('display','block');
                             $('.idck2').css('display','none');
@@ -235,7 +191,7 @@
                     
                 },
                 error: function() {
-                    //alert('아이디 중복 검사 ajax 에러')
+                    //alert('아이디 중복 검사 ajax에러')
                 }
             })
             
@@ -335,7 +291,6 @@ var member_tel = document.getElementById('member_tel');
 member_tel.onkeyup = function(){
   this.value = autoHypenPhone( this.value ) ;  
 }
-        
 
         //회원가입 유효성 검증
         function submitf() {
@@ -349,7 +304,7 @@ member_tel.onkeyup = function(){
             var apt_name = $('.apt_name').val();
             var apt_code = $('.apt_code').val();
             
-            if(member_nick == "" || member_id == "" || member_pw == "" || pwck == "" || member_name == "" || sub_addr == "" || member_tel == "" || apt_name == ""){
+            if(member_nick == "" || member_id == "" || member_pw == "" || pwck == "" || member_name == "" || sub_addr == "" || member_tel == ""){
                 alert("필수정보를 입력해주세요");
                 return false;
             }
@@ -397,7 +352,5 @@ member_tel.onkeyup = function(){
             }
         }
     </script>
-<script src="resources/js/main.js"></script>
-<script src="resources/js/jquery-3.2.1.min.js"></script>
 </body>
 </html>
