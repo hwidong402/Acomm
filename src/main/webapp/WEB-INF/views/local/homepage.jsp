@@ -155,10 +155,10 @@ li {
 </div> <!-- 공지사항 -->
 
 </div> <!-- 전체화면 -->
-<%--  <!-- footer -->
- <div>
+
+ <!-- footer -->
  <%@ include file="../common/footer.jsp" %>
- </div> --%>
+ 
 
 </body>
 </html>
