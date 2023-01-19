@@ -32,7 +32,7 @@ public class NaverOCRAPI {
 //		String imageFile = "id_hwi.jpg";
 //		String imageFile = "id_woo.jpg";
 //		String imageFile = "id2.jpg";
-		String imageFile = "D:\\Hwidong\\back-end_edu\\final-workspace\\Acomm\\src\\main\\webapp\\resources\\img\\" + savedName;
+		String imageFile = "/var/lib/tomcat9/webapps/Acomm/resources/img" + savedName;
 		System.out.println("받아온 파일 >> " + savedName);
 		try {
 			URL url = new URL(apiURL);
