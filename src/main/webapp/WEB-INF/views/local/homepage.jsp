@@ -4,19 +4,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- Google tag (gtag.js) -->
-<%@ include file="../common/innerHead.jsp" %>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-BXH0MBY7NR');
-</script>
 <meta charset="UTF-8">
 <title>${apt.apt_name}에오신것을환영합니다!</title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<!-- innerHead -->
+<%@ include file="../common/innerHead.jsp" %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript">
 	var key = "0QABlWOjjNUTH6AflytlfpxXTM2vig%2FbrTph8sbBtvWn80oDTHnmpv%2FzKgQOReCP6x%2BEWLnHq%2B6Pg4SsOYhopQ%3D%3D";//인증키
 	var bstopid=${member.stop_id}+"";
@@ -74,13 +66,7 @@
 	/* } */
 </script>
 
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-	rel="stylesheet">
-	<link rel="stylesheet" href="resources/css/style.css">
-	
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="resources/css/style.css">
 <style type="text/css">
 div{
 /* border: 1px solid blue; */
@@ -160,25 +146,19 @@ li {
 </div> <!-- infobus -->
 
 <div id="noti" style="float: right; width: 70%;"> <!-- 공지사항 -->
-<div class="position-relative text-center bg-light">
-      <h3 class="fw-normal">바로 여기!</h3>
-      <p class="lead fw-normal">당신이 보고있는 지금 이 자리에 광고하세요</p>
- 	</div>
+
+<!-- 슬라이드 광고 -->
+<%@ include file="../common/slideAD.jsp" %>
+
 <div id="notiList"></div>
 
 </div> <!-- 공지사항 -->
 
 </div> <!-- 전체화면 -->
+<%--  <!-- footer -->
+ <div>
+ <%@ include file="../common/footer.jsp" %>
+ </div> --%>
 
-
-		
-	
-	
-	
-	<%-- <div>
-	<img id="apt_img" src="resources/img/lobby_entrance.jpg"
-			<img id="apt_img" src="resources/img/${member.apt_code}.jpg"
-				height="370" width="600">
-				</div> --%>
 </body>
 </html>

@@ -1,0 +1,132 @@
+@charset "UTF-8";
+
+/* Prevent scroll on narrow devices */
+/* html,body {
+  overflow-x: hidden; 
+} */
+
+body{
+ 	/* background-color: #333D51; */
+}
+.container{
+  margin:0 auto;
+}
+
+a{
+  text-decoration: none;
+  color: #343a40;
+  font-weight: 500;
+}
+a:hover {
+  color: #aa4848;
+}
+
+
+.bg-purple {
+  background-color: #6f42c1;
+}
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+/* @media (min-width: 1600px)
+.container{
+    max-width: 1400px;
+}
+@media (min-width: 1400px)
+.container{
+    max-width: 1320px;
+}
+@media (min-width: 1200px)
+.container{
+    max-width: 1140px;
+} */
+
+
+/* responsive nav */
+@media (max-width: 991.98px) {
+  .offcanvas-collapse {
+    position: fixed;
+    top: 100px; /* Height of navbar */
+    bottom: 0;
+    left: 100%;
+    width: 100%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    overflow-y: auto;
+    visibility: hidden;
+    background-color: #f5f5f5;
+    transition: transform .3s ease-in-out, visibility .3s ease-in-out;
+  }
+  .offcanvas-collapse.open {
+    visibility: visible;
+    transform: translateX(-100%);
+  }
+}
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+/* CUSTOMIZE THE NAV
+-------------------------------------------------- */
+/* nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 20px;
+} */
+.navbar{
+  z-index: 3;
+}
+#navbarsExampleDefault{
+	z-index :5;
+}
+/* .nav-link {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  font-size: .875rem;
+  color: #000000;
+}
+
+.nav-link:hover {
+  color: #aa4848;
+}
+
+.active {
+  font-weight: 500;
+  color: #343a40;
+} */
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+  margin-top: 30px;
+  margin-bottom:30px;
+}
+
+/* Since positioning the image, we need to help out the caption */
+/* .carousel-caption {
+  bottom: 3rem;
+  z-index: 10;
+} */
+
+/* Declare heights because of positioning of img element */
+/* .carousel-item {
+  height: 32rem;
+} */
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.radiusShadow {
+  border-radius: 10px;
+  box-shadow: rgb(0 0 0 / 30%) 0px 0px 8px;
+}
