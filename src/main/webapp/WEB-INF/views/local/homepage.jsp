@@ -73,10 +73,10 @@ div{
 }
 * {
 	/* text-align: center; /* 가로가운데 정렬 */
-	vertical-align: middle; /* 세로가운데 정렬 */ */
+	/* vertical-align: middle;  *//* 세로가운데 정렬 */ */
 }
 
-#header {
+/* #header {
 	margin-top: 20px;
 }
 
@@ -92,73 +92,65 @@ li {
 #my_box, #apt_img, #apt_img_logo, #apt_name {
 	display: inline-block;
 	margin: 20px;
-}
+} */
 </style>
 </head>
 <body>
-<!-- nav -->
-<%@ include file="../common/navbar.jsp" %>
-<div id="full" style="padding-left: 3%; padding-right: 3%"> <!-- 홈페이지 전체화면 -->
-<div id="header"> <!-- 아파트이름 -->
-	<h2 id="apt_name">${apt.apt_name}</h2>
-</div> <!-- 아파트이름 -->
-<div id=infobus" style="float: left; width: 20%">
-<div id="content" style="width: 100%;"> <!-- 내정보 -->
-
-
-<table id="my_box">
-				<tr>
-					<td colspan="2">
-					<img src="resources/img/sim.jpg" class="circle">
-					
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<p style="font-size: 17px;">
-							반갑습니다.${member.member_name}님<br> 내가 사는 곳이 중심이 되는 곳 A-Comm에
-							오신 걸 환영합니다.
-						</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-					<c:choose>
-							<c:when test="${member.member_cls==0}">
-								<a href="myinfo"><button
-										class="btn btn-outline-primary" style="width: 200px;">내정보</button></a>
-							</c:when>
-							<c:when test="${member.member_cls==1}">
-								<a href="everyinfo"><button
-										class="btn btn-outline-primary" style="width: 200px;">회원관리</button></a>
-							</c:when>
-					</c:choose>
-						 <a href="m_logout"><button class="btn btn-outline-danger"
-								style="width: 200px;">로그아웃</button></a></td>
-				</tr>
-
-			</table>
-</div> <!-- 내정보 -->
-<div id="buslogic" style="width: 100%;"> <!-- 버스정류장 -->
-<!-- 도착정보 결과 -->
-<div id="bus" style="width: 100%; height: 350px; overflow: auto;"></div>
-</div> <!-- 버스정류장 -->
-</div> <!-- infobus -->
-
-<div id="noti" style="float: right; width: 70%;"> <!-- 공지사항 -->
-
-<!-- 슬라이드 광고 -->
-<%@ include file="../common/slideAD.jsp" %>
-
-<div id="notiList"></div>
-
-</div> <!-- 공지사항 -->
-
-</div> <!-- 전체화면 -->
-
- <!-- footer -->
- <%@ include file="../common/footer.jsp" %>
- 
-
+	<!-- 최상단 nav -->
+	<%@ include file="../common/navbar.jsp" %>	
+ 	<!-- main -->
+ 	<main class="container">
+		<div id="header"> <!-- 아파트이름 -->
+			<h2 id="apt_name">${apt.apt_name}</h2>
+		</div> <!-- 아파트이름 -->
+		
+		<div id="infobus" style="float: left; width: 20%">
+			<div id="content" style="width: 100%;"> <!-- 내정보 -->
+				<table id="my_box">
+					<tr>
+						<td colspan="2">
+						<img src="resources/img/sim.jpg" class="circle">
+						
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<p style="font-size: 17px;">
+								반갑습니다.${member.member_name}님<br> 내가 사는 곳이 중심이 되는 곳 A-Comm에
+								오신 걸 환영합니다.
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						<c:choose>
+								<c:when test="${member.member_cls==0}">
+									<a href="myinfo"><button
+											class="btn btn-outline-primary" style="width: 200px;">내정보</button></a>
+								</c:when>
+								<c:when test="${member.member_cls==1}">
+									<a href="everyinfo"><button
+											class="btn btn-outline-primary" style="width: 200px;">회원관리</button></a>
+								</c:when>
+						</c:choose>
+							 <a href="m_logout"><button class="btn btn-outline-danger" style="width: 200px;">로그아웃</button></a></td>
+					</tr>
+				</table>
+			</div> <!-- 내정보 -->
+			<div id="buslogic" style="width: 100%;"> <!-- 버스정류장 -->
+			<!-- 도착정보 결과 -->
+				<div id="bus" style="width: 100%; height: 350px; overflow: auto;"></div>
+			</div> <!-- 버스정류장 -->
+		</div> <!-- infobus -->
+		
+		
+		<div id="noti" style="float: right; width: 70%;"> <!-- 공지사항 -->
+			<!-- 슬라이드 광고 -->
+			<%@ include file="../common/slideAD.jsp" %>
+			<div id="notiList"></div>
+		</div> <!-- 공지사항 -->
+	</main>
+	<!-- footer -->
+	<%@ include file="../common/footer.jsp" %>
 </body>
 </html>

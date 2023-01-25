@@ -49,7 +49,7 @@
 	<!-- 최상단 nav -->
 	<%@ include file="../common/navbar.jsp" %>	
  	<!-- main -->
- 	<main class="container">
+ 	<main id='wrapper' class="container">
  	<!-- 슬라이드 광고 -->
 	<%@ include file="../common/slideAD.jsp" %>
  	
