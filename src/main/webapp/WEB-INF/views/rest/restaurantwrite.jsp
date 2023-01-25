@@ -69,5 +69,6 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
 <a href="matjip"><button class="btn btn-danger">뒤로가기</button></a>
 </div>
 </main>
+<%@ include file="../common/footer.jsp" %>
 </body>
 </html>
