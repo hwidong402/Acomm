@@ -17,7 +17,7 @@
               <li><a class="dropdown-item" href="openBbs">게시판</a></li>
 	          	<li><hr class="dropdown-divider"></li>
 	            <li><a class="dropdown-item" href="openBbsCate?bbs_cate=noti">공지사항</a></li>
-	            <li><a class="dropdown-item" href="openBbsCate?bbs_cate=hot">인기게시판</a></li>
+	            <li><a class="dropdown-item" href="bbslistall">인기게시판</a></li>
 	            <li><a class="dropdown-item" href="openBbsCate?bbs_cate=free">자유게시판</a></li>
 	            <li><a class="dropdown-item" href="openBbsCate?bbs_cate=market">장터게시판</a></li>
 	            <li><a class="dropdown-item" href="openBbsCate?bbs_cate=sugg">건의사항</a></li>
