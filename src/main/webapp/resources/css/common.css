@@ -1,111 +1,102 @@
 @charset "UTF-8";
 
-/* Prevent scroll on narrow devices */
-/* html,body {
-  overflow-x: hidden; 
-} */
+/* TAGS */
+/* -------------------------------------------------- */
 
-body{
- 	/* background-color: #333D51; */
-}
-.container{
-  margin:0 auto;
+
+body {
+	background-color: #f5f5f7;
 }
 
-a{
-  text-decoration: none;
-  color: #343a40;
-  font-weight: 500;
+a {
+	text-decoration: none;
+	color: #343a40;
+	font-weight: 500;
 }
+
 a:hover {
-  color: #aa4848;
+	color: #aa4848;
 }
 
+h1, h2, h3, h4, h5, h6 {
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+}
+
+/* CLASS */
+/* -------------------------------------------------- */
+.container {
+	margin: 0 auto;
+}
 
 .bg-purple {
-  background-color: #6f42c1;
+	background-color: #6f42c1;
 }
 
-/* RESPONSIVE CSS
--------------------------------------------------- */
-/* @media (min-width: 1600px)
-.container{
-    max-width: 1400px;
-}
-@media (min-width: 1400px)
-.container{
-    max-width: 1320px;
-}
-@media (min-width: 1200px)
-.container{
-    max-width: 1140px;
-} */
-
-
-/* responsive nav */
-@media (max-width: 991.98px) {
-  .offcanvas-collapse {
-    position: fixed;
-    top: 100px; /* Height of navbar */
-    bottom: 0;
-    left: 100%;
-    width: 100%;
-    padding-right: 1rem;
-    padding-left: 1rem;
-    overflow-y: auto;
-    visibility: hidden;
-    background-color: #f5f5f5;
-    transition: transform .3s ease-in-out, visibility .3s ease-in-out;
-  }
-  .offcanvas-collapse.open {
-    visibility: visible;
-    transform: translateX(-100%);
-  }
-}
-@media (min-width: 768px) {
-  .bd-placeholder-img-lg {
-    font-size: 3.5rem;
-  }
+/* 둥글게 + 그림자 */
+.radiusShadow {
+	border-radius: 10px;
+	box-shadow: rgb(0 0 0/ 30%) 0px 0px 8px;
 }
 
-/* CUSTOMIZE THE NAV
--------------------------------------------------- */
-/* nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin: 20px;
-} */
-.navbar{
-  z-index: 3;
-}
-#navbarsExampleDefault{
-	z-index :5;
-}
-/* .nav-link {
-  padding-top: .75rem;
-  padding-bottom: .75rem;
-  font-size: .875rem;
-  color: #000000;
+/* 말줄임 */
+.ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
 }
 
-.nav-link:hover {
-  color: #aa4848;
+.bd-placeholder-img {
+	font-size: 1.125rem;
+	text-anchor: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
 }
 
-.active {
-  font-weight: 500;
-  color: #343a40;
-} */
+.txtR {
+	text-align: right;
+}
 
-/* CUSTOMIZE THE CAROUSEL
--------------------------------------------------- */
+/* ID */
+/* -------------------------------------------------- */
 
-/* Carousel base class */
+
+/* FOOTER 하단고정 */
+/* -------------------------------------------------- */
+html, body {
+	height: 100%;
+}
+main {
+	height: auto;
+	min-height: 100%;
+	padding-bottom: 150px; /* footer높이 */
+}
+footer {
+	height: 150px; /* footer높이 */
+	position: relative;
+	transform: translateY(-100%);
+}
+
+
+/* CUSTOMIZE THE NAV */
+/* -------------------------------------------------- */
+.navbar {
+	z-index: 3;
+	background-color: #ffffff;
+}
+
+#navbarsExampleDefault {
+	z-index: 5;
+}
+
+/* CUSTOMIZE THE CAROUSEL */
+/* -------------------------------------------------- */
 .carousel {
-  margin-top: 30px;
-  margin-bottom:30px;
+	margin-top: 30px;
+	margin-bottom: 30px;
 }
 
 /* Since positioning the image, we need to help out the caption */
@@ -118,15 +109,31 @@ a:hover {
 /* .carousel-item {
   height: 32rem;
 } */
-.bd-placeholder-img {
-  font-size: 1.125rem;
-  text-anchor: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
+
+/* RESPONSIVE CSS */
+/* -------------------------------------------------- */
+@media ( max-width : 991.98px) {
+	.offcanvas-collapse {
+		position: fixed;
+		top: 100px; /* Height of navbar */
+		bottom: 0;
+		left: 100%;
+		width: 100%;
+		padding-right: 1rem;
+		padding-left: 1rem;
+		overflow-y: auto;
+		visibility: hidden;
+		background-color: #f5f5f5;
+		transition: transform .3s ease-in-out, visibility .3s ease-in-out;
+	}
+	.offcanvas-collapse.open {
+		visibility: visible;
+		transform: translateX(-100%);
+	}
 }
 
-.radiusShadow {
-  border-radius: 10px;
-  box-shadow: rgb(0 0 0 / 30%) 0px 0px 8px;
+@media ( min-width : 768px) {
+	.bd-placeholder-img-lg {
+		font-size: 3.5rem;
+	}
 }

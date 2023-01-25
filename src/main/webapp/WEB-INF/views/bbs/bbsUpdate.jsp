@@ -4,29 +4,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-	rel="stylesheet">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-
-<style type="text/css">
-.back {
-	text-align: center;
-}
-</style>
+<title>update bbs ${post.bbs_id}</title>
+<!-- innerHead -->
+<%@ include file="../common/innerHead.jsp" %>
 </head>
 <body>
 	<!-- 최상단 nav -->
-	<%@ include file="../common/navbar.jsp" %>
+	<%@ include file="../common/navbar.jsp" %>	
+ 	<!-- main -->
+ 	<main class="container">
 
 	<!-- 헤더? -->
 	<div class="container p-3 my-3 text-center">
 		<h1>게시글 수정</h1>
 	</div>
 
-	<hr>
 	<!-- 버튼 -->
 	<div class="container">
 		<div class="row">
@@ -51,7 +43,7 @@
 				<label class="form-label">본문</label>
 				<textarea name="bbs_content" class="form-control"rows="10">${post.bbs_content}</textarea>
 			</div>
-			<div >
+			<div hidden="hidden">
 				<span>닉네임</span> 
 				<input name="member_nick" value="${post.member_nick}" readonly="readonly"
 					style=" border: none;&:focus {outline: none;}">
@@ -94,5 +86,9 @@
 			<button type="submit" class="btn btn-primary">수정완료</button>
 		</form>
 	</div>
+	</main>
+
+    <!-- footer -->
+    <%@ include file="../common/footer.jsp" %>
 </body>
 </html>
