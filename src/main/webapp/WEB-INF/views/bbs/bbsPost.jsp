@@ -249,9 +249,9 @@
 	</div>
 	
 	<!-- 댓글 목록 영역 -->
-	<div id="bbsReply" class="container mt-5 text-center"></div>
+	<!-- <div id="bbsReply" class="container mt-5 text-center"></div>
 	
-	<!-- 댓글작성 영역 -->
+	댓글작성 영역
 	<div class="container mt-5 text-center">
 		<div class="mb-3">
 			<textarea name="reply_content" id="reply_content" placeholder="댓글" class="form-control" rows="2"></textarea>
@@ -260,7 +260,7 @@
 			<button id="insertBbsReply" class="btn btn-primary">등록</button>
 			<br>
 		</div>
-	</div>
+	</div> -->
 	
 	
 	</main>
