@@ -43,13 +43,13 @@ gtag('config', 'G-BXH0MBY7NR');
 	};
 	}, true);
 </script>
-        
+ <title>Accom</title>
     </head>
     <body>
           <!-- Navigation-->
           <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
-                <a class="navbar-brand" href="index2.jsp">Accom</a>
+                <a class="navbar-brand" href="index.jsp">Accom</a>
                 <a class="btn btn-primary" href="login.jsp">Login</a>
             </div>
         </nav>
@@ -144,15 +144,9 @@ gtag('config', 'G-BXH0MBY7NR');
                 <div class="row">
                     <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
                         <ul class="list-inline mb-2">
-                            <li class="list-inline-item"></li>
-                            <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item"></li>
-                            <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item"></li>
-                            <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item"></li>
+                          
                         </ul>
-                        <p class="text-muted small mb-4 mb-lg-0">&copy; 휘동 채윤 원영 찬우 태섭</p>
+                        <p class="text-muted small mb-4 mb-lg-0">&copy; Jav4 Team :휘동 채윤 원영 찬우 태섭</p>
                     </div>
                    
                 </div>
