@@ -72,4 +72,4 @@
 </select>
 <br>
 
-<input type="hidden" value="우리아파트 회원가입" id="b2">
+<input type="hidden" value="우리아파트 회원가입" id="b2" class="btn btn-primary btn-lg">
