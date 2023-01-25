@@ -11,7 +11,7 @@ if(replylist.size()!=0){
 <div class="container mt-5 text-center">
 		<table class="table">
 <c:forEach var="rereply" items="${reply}">
-			<tr><td colspan='3'>${rereply.rere_writer }</td><td>평점 : ${rereply.rere_score }</td></tr><tr><td colspan='4'>${rereply.rere_content }</td></tr>
+			<tr style='background: #d3d3d3;'><td colspan='3'>${rereply.rere_writer }</td><td>평점 : ${rereply.rere_score }</td></tr><tr><td colspan='4'>${rereply.rere_content }</td></tr>
 		</c:forEach>
 </table>
 </div>

@@ -246,13 +246,16 @@ if(${member.member_cls}==1){
 		
 		<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
 		  <div class="offcanvas-header">
-		    <h5 class="offcanvas-title" id="offcanvasExampleLabel">제목</h5>
+		    <h5 class="offcanvas-title" id="offcanvasExampleLabel" style='font-weight:bolder;'>제목</h5>
 		    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 		  </div>
 		  <div class="offcanvas-body" id="restinfo" style="overflow:auto">
+		    <div>
 		    <span id="avescore"></span>
 		    <span id="restone"></span>
-		    <div id="myreply"></div>
+		    </div>
+		    <br>
+		    <div id="myreply" style='border: solid 1px;'></div>
 		    <div id="replylist"></div>
 		  </div>
 		</div>
