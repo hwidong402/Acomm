@@ -94,13 +94,25 @@
 		}); //click
 	}); // function
 	
+	// likebtn 생성
 	$(function() {
-		$('#b1').click(function() {
 			var bbsid = $('#bbsid').val();
 			var bbsmembercode = $('#bbsmembercode').val();
-			// 여기 조건이냐
+			
 			if ((bbsid == "") && (bbsmembercode == "")) {
-				$('#b1').css({'background-color' : 'yellow'});
+				$('#likebtn').html("<button id='b1' class='btn btn-outline-danger'>좋아요</button>");
+			} //if
+			if ((bbsid != "") && (bbsmembercode != "")) {
+				$('#likebtn').html("<button id='b1' class='btn btn-danger'>좋아요</button>");
+			} // 두 번째 if 끝
+	}) // body 
+	
+	// likebtn 클릭
+	$(function() {
+		 $('#b1').click(function() {
+			var bbsid = $('#bbsid').val();
+			var bbsmembercode = $('#bbsmembercode').val();
+			if ((bbsid == "") && (bbsmembercode == "")) {
 				$.ajax({
 					url : "bbs/bbshotlike?bbs_id=${post.bbs_id}",
 					success : function(data) {
@@ -110,8 +122,6 @@
 				}); // 1 ajax
 			} //if
 			if ((bbsid != "") && (bbsmembercode != "")) {
-				$('#b1').css({'background-color' : 'pink'});
-				//$('#b1').click(function() {
 					$.ajax({
 						url : "bbs/bbslikedel?bbs_id=${post.bbs_id}",
 						success : function(data) {
@@ -119,9 +129,8 @@
 							document.location.href = document.location.href;
 						}
 					}); // ajax 끝
-				//}) // 삭제 b1
 			} // 두 번째 if 끝
-		}) // b1 click 
+		 }) // b1 click 
 	}) // body 
 	
 		
@@ -181,6 +190,23 @@
 		<div class="container mt-5">
 			${post.bbs_content}
 		</div>
+		
+		<!-- 히든으로 보이지 않음 -->
+	<table class="table">
+	<!-- 검색 한 값을 대조를 위해 hidden 속성으로 넘겨 줌 -->
+		<tr style="border: 1px solid blue" hidden="hidden">
+			<td>bbslike like_id</td>
+			<td>bbslike bbs_id</td>
+			<td>bbslike member_code</td>
+		</tr>
+	<%-- <c:forEach var="vo2" items="${vo2}"> --%>
+		<tr style="border: 1px solid blue" hidden="hidden">
+			<td>${post2.like_id}</td>
+			<td><input id="bbsid" value="${post2.bbs_like_id}"></td>
+			<td><input id="bbsmembercode" value="${post2.member_code}"></td>
+		</tr>
+	<%-- </c:forEach> --%>
+	</table>
 	
 		<div class="container mt-5">
 			<!-- 조회수 -->
@@ -203,7 +229,7 @@
 				</defs>
 			</svg>
 			<span>&nbsp;&nbsp;</span>
-			<button id="b1" class="btn btn-primary">좋아요</button>
+			<span id="likebtn"> </span>
 		</div>
 		
 		<!-- 댓글 목록 영역 from bbsReply -->
@@ -220,21 +246,6 @@
 			</div>
 		</div>
 		
-		<!-- hidden info -->
-		<table class="table">
-			<tr style="border: 1px solid blue" hidden="hidden">
-				<td>bbslike like_id</td>
-				<td>bbslike bbs_id</td>
-				<td>bbslike member_code</td>
-			</tr>
-		<%-- <c:forEach var="vo2" items="${vo2}"> --%>
-			<tr style="border: 1px solid blue" hidden="hidden">
-				<td>${post2.like_id}</td>
-				<td><input id="bbsid" value="${post2.bbs_like_id}"></td>
-				<td><input id="bbsmembercode" value="${post2.member_code}"></td>
-			</tr>
-		<%-- </c:forEach> --%>
-		</table>
 	</div>
 	
 	<!-- 댓글 목록 영역 -->
@@ -251,21 +262,7 @@
 		</div>
 	</div>
 	
-	<table class="table">
-	<!-- 검색 한 값을 대조를 위해 hidden 속성으로 넘겨 줌 -->
-		<tr style="border: 1px solid blue" hidden="hidden">
-			<td>bbslike like_id</td>
-			<td>bbslike bbs_id</td>
-			<td>bbslike member_code</td>
-		</tr>
-	<%-- <c:forEach var="vo2" items="${vo2}"> --%>
-		<tr style="border: 1px solid blue" hidden="hidden">
-			<td>${post2.like_id}</td>
-			<td><input id="bbsid" value="${post2.bbs_like_id}"></td>
-			<td><input id="bbsmembercode" value="${post2.member_code}"></td>
-		</tr>
-	<%-- </c:forEach> --%>
-	</table>
+	
 	</main>
 
     <!-- footer -->
