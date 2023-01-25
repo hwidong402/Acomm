@@ -104,7 +104,6 @@
 
 					</div>
 
-
 				</form>
 
 				<div class="login100-more"
