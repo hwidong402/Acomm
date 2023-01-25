@@ -71,7 +71,7 @@
 				<form class="login100-form validate-form" action="m_login"
 					style="display: inline-block;" method="post"
 					onsubmit="return loginf();">
-					<span class="login100-form-title p-b-43"> Login to A-COMM </span>
+					<span class="login100-form-title p-b-43" style="font-size: 42px;"> Login to A-COMM </span>
 
 					<div class="wrap-input100 validate-input"
 						data-validate="아이디를 입력해주세요">
@@ -92,14 +92,14 @@
 
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">로그인</button>
+						<button class="login100-form-btn" style="font-size: 24px">로그인</button>
 					</div>
 					<br>
 
 
 					<div>
 						<a href="enroll.jsp"> <input type="button" value="회원가입"
-							class="enroll100-form-btn">
+							class="enroll100-form-btn" style="font-size: 24px">
 						</a>
 
 					</div>

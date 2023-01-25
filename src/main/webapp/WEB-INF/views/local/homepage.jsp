@@ -10,7 +10,8 @@
 <%@ include file="../common/innerHead.jsp" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript">
-	var key = "0QABlWOjjNUTH6AflytlfpxXTM2vig%2FbrTph8sbBtvWn80oDTHnmpv%2FzKgQOReCP6x%2BEWLnHq%2B6Pg4SsOYhopQ%3D%3D";//인증키
+	//var key = "0QABlWOjjNUTH6AflytlfpxXTM2vig%2FbrTph8sbBtvWn80oDTHnmpv%2FzKgQOReCP6x%2BEWLnHq%2B6Pg4SsOYhopQ%3D%3D";//인증키
+	var key = "KYz4a7bdo60awWOrCRJVLCc8CBx2lX1r0aiohUQ%2FHk2cCcnePEh1hr8T6B9oNFfoqINkgMEFQRpEtuu7ZChX4Q%3D%3D";//인증키
 	var bstopid=${member.stop_id}+"";
 	
 	//정류장 즐겨찾기 미등록 id
@@ -121,7 +122,7 @@ li {
 					<tr>
 						<td colspan="2">
 							<p style="font-size: 17px;">
-								반갑습니다.${member.member_name}님<br> 내가 사는 곳이 중심이 되는 곳 A-Comm에
+								반갑습니다.${member.member_name}님<br> A-Comm에
 								오신 걸 환영합니다.
 							</p>
 						</td>

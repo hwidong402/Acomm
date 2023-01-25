@@ -43,13 +43,13 @@ gtag('config', 'G-BXH0MBY7NR');
 	};
 	}, true);
 </script>
- <title>Accom</title>
+ <title>내가 사는 곳이 중심이 되는 곳 A-Comm</title>
     </head>
     <body>
           <!-- Navigation-->
           <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
-                <a class="navbar-brand" href="index.jsp">Accom</a>
+                <a class="navbar-brand" href="index.jsp">A-Comm</a>
                 <a class="btn btn-primary" href="login.jsp">Login</a>
             </div>
         </nav>
@@ -61,7 +61,7 @@ gtag('config', 'G-BXH0MBY7NR');
                         <div class="text-center text-white">
                             <!-- Page heading-->
                             <span><h1 class="mb-5">사람들과 소통하는 공간</h1></span>
-                            <span><h2 class="mb-5">Accom</h2></span><br>
+                            <span><h2 class="mb-5">A-Comm</h2></span><br>
                                                     
                             <!-- Signup form-->
                             <!-- * * * * * * * * * * * * * * *-->
@@ -75,7 +75,7 @@ gtag('config', 'G-BXH0MBY7NR');
 						<ul class="actions special">
 						<!--RDB에서 아파트를 검색할거야! -->
 						<form action="enrolldirect">
-						<input id="apt_name" class="apt_name" name="apt_name" 
+						<input id="apt_name" class="apt_name" name="apt_name"
 						style="width: 500px; height: 50px;" placeholder="우리 아파트를 검색해보세요.">
 						<!--결과 값 출력하는 곳  -->
 						<div id="result"></div>
@@ -115,21 +115,21 @@ gtag('config', 'G-BXH0MBY7NR');
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                            <img class="img-fluid rounded-circle mb-3" src="resources/indexassets/img/testimonials-1.jpg" alt="..." />
+                            <img class="img-fluid rounded-circle mb-3" src="resources/indexassets/img/cmnty.jpg" alt="..." />
                             <h5>커뮤니티</h5>
                             <p class="font-weight-light mb-0">다양한 게시판에서 우리 아파트 사람들과 소통할 수 있어요</p>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                            <img class="img-fluid rounded-circle mb-3" src="resources/indexassets/img/testimonials-2.jpg" alt="..." />
+                            <img class="img-fluid rounded-circle mb-3" src="resources/indexassets/img/bood.jpg" alt="..." />
                             <h5>부동산</h5>
                             <p class="font-weight-light mb-0">우리 아파트 주변 집값은 어느정도인지 <br>확인할 수 있어요</p>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                            <img class="img-fluid rounded-circle mb-3" src="resources/indexassets/img/testimonials-3.jpg" alt="..." />
+                            <img class="img-fluid rounded-circle mb-3" src="resources/indexassets/img/town.PNG" alt="..." />
                             <h5>지역정보</h5>
                             <p class="font-weight-light mb-0">우리 동네 주변맛집은 무엇이 있는지 <br>찾아볼 수 있어요</p>
                         </div>
