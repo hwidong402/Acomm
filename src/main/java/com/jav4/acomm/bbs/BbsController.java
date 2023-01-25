@@ -19,10 +19,10 @@ import com.jav4.acomm.member.MemberVO;
 public class BbsController {
 	
 	@Autowired
-	BbsServiceTInter serviceT; // list5 & paging
+	BbsServiceInter serviceT; // list5 & paging
 	
 	@Autowired
-	BbsServiceInter service; // hot & like
+	BbshotServiceInter service; // hot & like
 	
 	
 	// ▽▽▽▽▽ Read Zone ▽▽▽▽▽

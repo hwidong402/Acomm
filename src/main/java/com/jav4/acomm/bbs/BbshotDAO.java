@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BbshotDAO implements BbsHotDAOInter {
+public class BbshotDAO implements BbshotDAOInter {
 
 	@Autowired
 	SqlSessionTemplate my;

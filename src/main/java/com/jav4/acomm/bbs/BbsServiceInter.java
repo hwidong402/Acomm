@@ -2,30 +2,36 @@ package com.jav4.acomm.bbs;
 
 import java.util.List;
 
+import com.jav4.acomm.apt.AptVO;
+import com.jav4.acomm.member.MemberVO;
+
 public interface BbsServiceInter {
 
-	// 인기게시글 5개만 검색
-	List<BbsVO> list(BbsVO vo);
+	// apt * by apt_code
+	AptVO aptAll(AptVO avo);
 
-	// 인기게시글 전체 검색
-	List<BbsVO> listAll(BbsVO vo);
+	// member * by member_code
+	MemberVO memberAll(MemberVO mvo);
 
-	// 조회수
-	void bbsCount(int bbs_id);
+	// bbs의 전체 게시판 보기
+	List<BbsVO> getList5(BbsVO vo);
 
-	// 하나 상세 검색
-	BbsVO one(BbsVO vo);
+	// cate별로 상세 게시판 보기
+	List<BbsVO> getListCate(BbsVO bvo);
 
-	// 통합 테이블 좋아요 추가
-	void bbslike(BbslikeVO vo);
+	//
+	MemberVO id2cls(MemberVO mvo);
 
-	// 통합 테이블 좋아요 취소
-	void bbslikedel(BbslikeVO vo);
+	//
+	BbsVO getBbsPost(BbsVO vo);
 
-	// bbs_id와 member_code가 일치하는 테이블 전체검색
-	List<BbslikeVO> hotlist(BbslikeVO vo);
+	//
+	void insertPost(BbsVO vo);
 
-	// bbs_id와 member_code가 일치하는 테이블 하나검색
-	BbslikeVO bbslikeone(BbslikeVO vo);
+	//
+	void updatePost(BbsVO vo);
+
+	//
+	void deletePost(BbsVO vo);
 
 }
