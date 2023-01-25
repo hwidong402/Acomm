@@ -27,7 +27,7 @@ public class OCRController {
 	public String uploadForm(HttpServletRequest request, MultipartFile file, Model model, HttpSession session) throws Exception {
 		String savedName = file.getOriginalFilename();
 //		String uploadPath = request.getSession().getServletContext().getRealPath("resources/img");
-		File target = new File("/var/lib/tomcat9/webapps/Acomm/resources/img" + savedName);
+		File target = new File("/var/lib/tomcat9/webapps/Acomm/resources/img/" + savedName);
 		file.transferTo(target);
 		
 		NaverOCRAPI ocr = new NaverOCRAPI();

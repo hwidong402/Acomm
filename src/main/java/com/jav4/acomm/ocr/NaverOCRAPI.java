@@ -27,12 +27,7 @@ public class NaverOCRAPI {
 	public OcrVO ocr(String savedName) {
 		String apiURL = NaverVISIONAPI.OCR_URL;
 		String secretKey = NaverVISIONAPI.SECRECT_KEY;
-//		String imageFile = "id_card.jpg";
-//		String imageFile = "dl_hwi.jpg";
-//		String imageFile = "id_hwi.jpg";
-//		String imageFile = "id_woo.jpg";
-//		String imageFile = "id2.jpg";
-		String imageFile = "/var/lib/tomcat9/webapps/Acomm/resources/img" + savedName;
+		String imageFile = "/var/lib/tomcat9/webapps/Acomm/resources/img/" + savedName;
 		System.out.println("받아온 파일 >> " + savedName);
 		try {
 			URL url = new URL(apiURL);
@@ -98,13 +93,7 @@ public class NaverOCRAPI {
 				org.json.simple.JSONObject fields_one = (org.json.simple.JSONObject) fields.get(i);
 				String inferText = (String) fields_one.get("inferText");
 				System.out.println(inferText + " ");
-//				String inferText2 = inferText.replaceAll("[^0-9]", ""); //숫자 0-9을 제외한 문자는 공백으로 대체
-//				String inferText2 = inferText.substring(inferText.indexOf(",")); // , 밑으로 문자열 제거
-//				String inferText2 = inferText.substring(0, inferText.indexOf(",") + 1);
-//				System.out.println("추출된 인덱스는 " + inferText2);
-//				if (inferText2.length() > 3 && inferText2.length() < 6) {
 				list.add(inferText);
-//				}
 			}
 			
 			String name = list.get(0);

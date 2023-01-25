@@ -236,6 +236,36 @@
 		<%-- </c:forEach> --%>
 		</table>
 	</div>
+	
+	<!-- 댓글 목록 영역 -->
+	<div id="bbsReply" class="container mt-5 text-center"></div>
+	
+	<!-- 댓글작성 영역 -->
+	<div class="container mt-5 text-center">
+		<div class="mb-3">
+			<textarea name="reply_content" id="reply_content" placeholder="댓글" class="form-control" rows="2"></textarea>
+		</div>
+		<div>
+			<button id="insertBbsReply" class="btn btn-primary">등록</button>
+			<br>
+		</div>
+	</div>
+	
+	<table class="table">
+	<!-- 검색 한 값을 대조를 위해 hidden 속성으로 넘겨 줌 -->
+		<tr style="border: 1px solid blue" hidden="hidden">
+			<td>bbslike like_id</td>
+			<td>bbslike bbs_id</td>
+			<td>bbslike member_code</td>
+		</tr>
+	<%-- <c:forEach var="vo2" items="${vo2}"> --%>
+		<tr style="border: 1px solid blue" hidden="hidden">
+			<td>${post2.like_id}</td>
+			<td><input id="bbsid" value="${post2.bbs_like_id}"></td>
+			<td><input id="bbsmembercode" value="${post2.member_code}"></td>
+		</tr>
+	<%-- </c:forEach> --%>
+	</table>
 	</main>
 
     <!-- footer -->
