@@ -5,6 +5,7 @@
 <head>
     <meta charset="utf-8">
     <title>여러개 마커에 인포윈도우 등록하기</title>
+    <%@ include file="../common/innerHead.jsp" %>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4611b2688b283a9862933471078a1361"></script>
@@ -77,12 +78,11 @@ function makeClickListener(map, marker, infowindow ) {
 			stopname=x.stop_name;	
 			}
 		})
-		
     	//버스 정류장 도착정보 불러오기
     	$.ajax({
 			url : "http://apis.data.go.kr/6260000/BusanBIMS/stopArrByBstopid?serviceKey="+key+"&bstopid="+bstopid,
 					success : function(x) {
-				var title = "<h3>"+stopname+"</h3>"+"<a href=upstop.bus?stop_id="+bstopid+" id='upstop'><button onclick='findcode()'>즐겨찾기 등록</button></a>";
+				var title = "<h3>"+stopname+"</h3>"+"<a href=upstop.bus?stop_id="+bstopid+" id='upstop'><button onclick='findcode()' class='btn btn-success'>즐겨찾기 등록</button></a>";
 				var table = "<table class="+"table table-dark table-striped"+"><tr><td style='width:80px;'>버스번호</td><td style='width:80px;'>남은 시간</td><td style='width:100px;'>남은 정류장</td></tr>"; // table 만드는 기능
 				$(x).find("item").each(function () {
 					var no=$(this).find("lineno").text();
@@ -95,10 +95,8 @@ function makeClickListener(map, marker, infowindow ) {
 				//클릭한 마커의 정류장 관련 정보를 인포윈도우에 담기 
 					infowindow.setContent(title+table);
 			}
-		  })
-		  //ㅈ
+		  }) //ㅈ
         infowindow.open(map, marker);
-    	
     };
 }
 /* $('#upstop').click(function () {
@@ -117,6 +115,9 @@ function makeClickListener(map, marker, infowindow ) {
     
 </head>
 <body>
+<%@ include file="../common/navbar.jsp" %>
+<main class="container">
 <div id="map" style="width:100%;height:800px;"></div>
+</main>
 </body>
 </html>

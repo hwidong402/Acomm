@@ -15,29 +15,13 @@
 <script>
 
 $(function() {
-	//버튼 클릭시 확인 창 추가 로직
-	/* function findcode() {
-		deletereply.onclick = function() {
-			if (confirm("후기를 삭제하시겠습니까")) {
-				alert("후기삭제");
-				return true;
-			} else {
-				alert("삭제취소");
-				return false;
-			}
-		}
-	} */
- //click
  	//후기목록 들고오기
 	$.ajax({
 		url : "list.reply",
 		data : {rest_id : ${rest.rest_id }},
 				success : function(x) {
-				
-					var other=false;
 				var sum = 0;
 				if(x.length>0){
-					
 			for (var i = 0; i <x.length; i++) {
 				sum+= x[i].rere_score;	// 작성한 평점
 			}
@@ -121,9 +105,9 @@ marker.setMap(map);
 		</div>
 		<!-- 나의 후기 --> 
 		<div id="reply" style="text-align: center;">
-			<h3>후기</h3>
+			<h3 style="background:#0DCAF0">후기</h3>
 			<div id= "myreply">
-				나의 후기가 없습니다.<a href="replywrite.rest?rest_id=${rest.rest_id}"><button class="btn btn-primary">후기작성</button></a>
+				나의 후기가 없습니다.<a href="replywrite.rest?rest_id=${rest.rest_id}"><button class="btn btn-success">후기작성</button></a>
 			</div>
 		</div>
 		<br>
@@ -131,13 +115,17 @@ marker.setMap(map);
 		<!-- 긍부정 -->
 		<div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3" style="text-align: center;">
 			<div>
-				<h4>긍정적인 후기</h4>
+				<div style="background: #44f028">
+					<h4>긍정적인 후기</h4>
+				</div>
 				<div id="posreply">
 					긍정적 후기가 없습니다.
 				</div>
 			</div>	
 			<div>
-				<h4>부정적인 후기</h4>
+				<div style="background: #ff4500">
+					<h4>부정적인 후기</h4>
+				</div>
 				<div id="negreply">
 					부정적 후기가 없습니다.
 				</div>

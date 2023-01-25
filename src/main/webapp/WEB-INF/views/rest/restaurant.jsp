@@ -69,7 +69,7 @@ function makeClickListener(map, marker, infowindow ) {
     	// 레스토랑 이름 변수 
     	var restname="";
 	restid=marker.getTitle();
-	var onebutton = "<a href=restone.rest?rest_id="+restid+"><button>상세보기</button></a>";
+	var onebutton = "<a href=restone.rest?rest_id="+restid+"><button class='btn btn-primary'>상세보기</button></a>";
 	
 	$('#restone').html(onebutton);
 	$.ajax({
@@ -90,18 +90,18 @@ var incontent="<div style='white-space: nowrap;'><a class=btn btn-primary data-b
 		data : {rest_id:restid},
 				success : function(x) {
 					$('#avescore').html("");
-					$('#myreply').html("나의 후기가 없습니다."+"<a href=replywrite2.rest?rest_id="+restid+"><button>후기작성</button></a>");
+					$('#myreply').html("나의 후기가 없습니다."+"<a href=replywrite2.rest?rest_id="+restid+"><button class='btn btn-success'>후기작성</button></a>");
 					$('#replylist').html("다른 사람들의 후기가 없습니다.");
 				//var other=false;
 				var sumscore=0;
 				var review="<table class=table><tr><td colspan='4'>후기</td></tr>";
 			for (var i = 0; i <x.length; i++) {
+				sumscore+=x[i].rere_score;
 				/* var writer=	x[i].rere_writer;//작성자 닉네임		
 				var aptcode= x[i].apt_code;//작성자 apt 코드		
 				var membercode= x[i].member_code;// 작성자 멤버 코드		
 				var rerecontent= x[i].rere_content;//작성한 내용
 				var rerescore= x[i].rere_score;	// 작성한 평점 */
-				sumscore+=x[i].rere_score;
 				 /* if(${member_code }==membercode){
 				var myreview = "<table class=table><tr><td colspan='4'>나의 후기</td></tr><tr><td colspan='2'>"+writer+"</td><td>"+rerescore+"</td><td><button>리뷰삭제</button></td></tr><tr><td colspan='4'>"+rerecontent+"</td></tr></table>";
 					$('#myreply').html(myreview);
@@ -137,7 +137,7 @@ var incontent="<div style='white-space: nowrap;'><a class=btn btn-primary data-b
 					data:{rere_id:rereid},
 					success : function(x){
 						//viewretry();
-						$('#myreply').html("나의 후기가 없습니다."+"<a href=replywrite2.rest?rest_id="+restid+"><button>후기작성</button></a>");
+						$('#myreply').html("나의 후기가 없습니다."+"<a href=replywrite2.rest?rest_id="+restid+"><button class='btn btn-success'>후기작성</button></a>");
 					}
 				})//ajax end
 			
