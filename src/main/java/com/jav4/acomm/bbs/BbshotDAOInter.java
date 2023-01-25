@@ -2,7 +2,7 @@ package com.jav4.acomm.bbs;
 
 import java.util.List;
 
-public interface BbsHotDAOInter {
+public interface BbshotDAOInter {
 
 	// 인기 게시글 리스트 내용 5개만 들고오기
 	List<BbsVO> list(BbsVO vo);

@@ -16,7 +16,7 @@ public class BbshotController {
 	//OcrDAO dao;
 	
 	@Autowired
-	BbsServiceInter service;
+	BbshotServiceInter service;
 	
 	// 인기 게시글 5개만 가져오기
 	@RequestMapping("bbs/bbshotall")
