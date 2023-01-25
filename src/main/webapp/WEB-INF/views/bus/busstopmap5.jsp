@@ -82,7 +82,7 @@ function makeClickListener(map, marker, infowindow ) {
     	$.ajax({
 			url : "http://apis.data.go.kr/6260000/BusanBIMS/stopArrByBstopid?serviceKey="+key+"&bstopid="+bstopid,
 					success : function(x) {
-				var title = "<h3>"+stopname+"</h3>"+"<a href=upstop.bus?stop_id="+bstopid+" id='upstop'><button onclick='findcode()' class='btn btn-success'>즐겨찾기 등록</button></a>";
+				var title = "<h3 style='white-space:nowrap;'>"+stopname+"</h3>"+"<a href=upstop.bus?stop_id="+bstopid+" id='upstop'><button onclick='findcode()' class='btn btn-success'>즐겨찾기 등록</button></a>";
 				var table = "<table class="+"table table-dark table-striped"+"><tr><td style='width:80px;'>버스번호</td><td style='width:80px;'>남은 시간</td><td style='width:100px;'>남은 정류장</td></tr>"; // table 만드는 기능
 				$(x).find("item").each(function () {
 					var no=$(this).find("lineno").text();
@@ -119,5 +119,7 @@ function makeClickListener(map, marker, infowindow ) {
 <main class="container">
 <div id="map" style="width:100%;height:800px;"></div>
 </main>
+ <!-- footer -->
+    <%@ include file="../common/footer.jsp" %>
 </body>
 </html>

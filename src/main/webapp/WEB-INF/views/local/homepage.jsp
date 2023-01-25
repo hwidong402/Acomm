@@ -17,7 +17,7 @@
 	$(function() {
 	if(bstopid==""){
 		$('#bus').append(
-		"<a href=busstopmap5.bus?apt_lat=${apt.apt_lat}&apt_lon=${apt.apt_lon}><button>즐겨찾는 정류장을 등록해주세요!</button></a>"
+		"<a href=busstopmap5.bus?apt_lat=${apt.apt_lat}&apt_lon=${apt.apt_lon}><button class='btn btn-primary'>즐겨찾는 정류장을 등록해주세요!</button></a>"
 				);
 	}//if null end
 	else{
@@ -34,7 +34,10 @@
 					url : "http://apis.data.go.kr/6260000/BusanBIMS/stopArrByBstopid?serviceKey="
 							+ key + "&bstopid="+bstopid,
 					success : function(x) {
-						var table = "<table class="+"table table-dark table-striped"+"><tr><td>버스번호</td><td>남은 시간</td><td>남은 정류장</td></tr>"; // table 만드는 기능
+						$('#bus').append(
+								"<a href=busstopmap5.bus?apt_lat=${apt.apt_lat}&apt_lon=${apt.apt_lon}><button class='btn btn-secondary'>즐겨찾는 정류장 변경하기</button></a>"
+										);
+						var table = "<table class="+"table table-dark table-striped"+"><tr><td style='white-space:nowrap;'>버스번호</td><td style='white-space:nowrap;'>남은 시간</td><td style='white-space:nowrap;'>남은 정류장</td></tr>"; // table 만드는 기능
 						$(x).find("item").each(
 								function() {
 									var no = $(this).find("lineno").text();
@@ -47,9 +50,7 @@
 									table += info;
 								})
 						$('#bus').append(table + "</table>");//테이블 입력
-				$('#bus').append(
-						"<a href=busstopmap5.bus?apt_lat=${apt.apt_lat}&apt_lon=${apt.apt_lon}><button>즐겨찾는 정류장 변경하기</button></a>"
-								);
+				
 					}
 				})//도착정보 ajax end
 	}//if notnull end
@@ -100,16 +101,20 @@ li {
 	<%@ include file="../common/navbar.jsp" %>	
  	<!-- main -->
  	<main class="container">
-		<div id="header"> <!-- 아파트이름 -->
-			<h2 id="apt_name">${apt.apt_name}</h2>
-		</div> <!-- 아파트이름 -->
-		
-		<div id="infobus" style="float: left; width: 20%">
+	 	<br>
+	 	<br>
+	 	<div id="header" class='radiusShadow' style="text-align: center;  background: white;" > <!-- 아파트이름 -->
+			<br>
+			<h1 id="apt_name" style="font-weight: bold;">${apt.apt_name}</h1>
+			<br>
+		</div> <!-- 아파트이름 --> 
+		<br>
+		<div id="infobus" style="float: left; width: 25%">
 			<div id="content" style="width: 100%;"> <!-- 내정보 -->
 				<table id="my_box">
 					<tr>
 						<td colspan="2">
-						<img src="resources/img/sim.jpg" class="circle">
+						<img src="resources/img/picture.png" class="circle">
 						
 						</td>
 					</tr>

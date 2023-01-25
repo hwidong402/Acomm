@@ -47,6 +47,7 @@
 </form>
 <a href="matjip"><button class ="btn btn-danger">맛집 홈으로</button></a>
 </div>
-
+ <!-- footer -->
+    <%@ include file="../common/footer.jsp" %>
 </body>
 </html>
