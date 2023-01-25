@@ -130,6 +130,7 @@ public class RestaurantController {
 	}
 
 	// 상가 후기 작성 페이지 이동 
+	
 	//restaurantone 페이지용
 	@RequestMapping("replywrite.rest")
 	public String replywrite(MemberVO vo, RestaurantVO vo3, HttpSession session, Model model) {
@@ -146,6 +147,7 @@ public class RestaurantController {
 		model.addAttribute("rest", vo3);
 		return "rest/restreplywrite";
 	}
+	
 	//restaurant 페이지용 작성페이지
 	@RequestMapping("replywrite2.rest")
 	public String replywrite2(MemberVO vo, RestaurantVO vo3, HttpSession session, Model model) {
@@ -186,8 +188,10 @@ public class RestaurantController {
 		// 페이지 로드용 정보
 
 		return "redirect:matjip";
-	}// 먹통페이지로 연결하여 맛집 url을 불러와야 함.
-
+	}
+	// 먹통페이지로 연결하여 맛집 url을 불러와야 함.
+	
+	//상세보기 페이지 삭제기능
 	@RequestMapping("replydelete.rest")
 	public String replydelete(MemberVO vo, RestaurantVO vo3, RestReplyVO vo4, HttpSession session, Model model) {
 		vo.setMember_code((int) session.getAttribute("member_code"));
@@ -197,16 +201,16 @@ public class RestaurantController {
 		System.out.println(vo4);
 		service.delete(vo4);
 		// 페이지 로드용 정보
-
 		// 멤버
 		model.addAttribute("member", vo);
 		// 아파트
 		model.addAttribute("apt", vo2);
 		// 레스토랑 id
 		model.addAttribute("rest", vo3);
-		return "rest/restaurantone";
+		return "redirect:restone.rest?rest_id=" + vo3.getRest_id();
 	}
-
+	
+	//맛집페이지 삭제 기능 맵핑
 	@RequestMapping("replydelete2.rest")
 	public String replydelete2(RestReplyVO vo4) {
 

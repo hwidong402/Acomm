@@ -37,28 +37,24 @@ marker.setMap(map);
 // 지도에 클릭 이벤트를 등록합니다
 // 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
 kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
-    
     // 클릭한 위도, 경도 정보를 가져옵니다 
     var latlng = mouseEvent.latLng; 
-    
     // 마커 위치를 클릭한 위치로 옮깁니다
     marker.setPosition(latlng);
-    
     //클릭한 위치를 input value로 설정합니다.
     $('#rest_lat').attr("value",latlng.getLat())
     $('#rest_lon').attr("value",latlng.getLng())
     var message = '클릭한 위치의 위도는 ' + latlng.getLat() + ' 이고, ';
     message += '경도는 ' + latlng.getLng() + ' 입니다';
-    
     var resultDiv = document.getElementById('clickLatlng'); 
     resultDiv.innerHTML = message;
-    
 });
 })//document end
 </script>
 </head>
 <body>
 <%@ include file="../common/navbar.jsp" %>
+<main class="container">
 <div id="map" style="width:100%;height:350px;"></div>
 
 <div id="insertform" class="container mt-5 text-center">
@@ -72,5 +68,6 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
 </form>
 <a href="matjip"><button class="btn btn-danger">뒤로가기</button></a>
 </div>
+</main>
 </body>
 </html>

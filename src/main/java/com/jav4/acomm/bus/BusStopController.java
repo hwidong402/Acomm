@@ -44,6 +44,7 @@ public class BusStopController {
 		model.addAttribute("vo",vo);
 		return "bus/busstopmap4";
 	}
+	//버스지도맵핑
 	@RequestMapping("busstopmap5.bus")
 	public String mapinfo5(MemberVO vo, Model model,HttpSession session) {
 		vo.setMember_code((int)session.getAttribute("member_code"));
@@ -55,12 +56,16 @@ public class BusStopController {
 		
 		return "bus/busstopmap5";
 	}
+	
+	//버스 정류장 목록 
 	@RequestMapping("list.bus")
 	@ResponseBody
 	public List<BusStopVO> mapinfo5( ) {
 		
 		return service.all();
 	}
+	
+	//정류장 즐겨찾기 등록
 	@RequestMapping("upstop.bus")
 	public String upstop(MemberVO vo, HttpSession session,Model model ) {
 		vo.setMember_code((int)session.getAttribute("member_code"));
@@ -71,7 +76,9 @@ public class BusStopController {
 		model.addAttribute("member", vo2);
         model.addAttribute("apt", vo3);
         return "local/homepage";
-	}	
+	}
+	
+	//버스 정류장정보 하나 검색
 	@RequestMapping("stopsearch.bus")
 	@ResponseBody
 	public BusStopVO stopsearch(BusStopVO vo ) {
