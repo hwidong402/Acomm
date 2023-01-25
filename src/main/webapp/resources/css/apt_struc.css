@@ -1,5 +1,10 @@
 @charset "UTF-8";
-
+h3 {
+	font-size: 100%;
+}
+td {
+	font-size: 80%;
+}
 .container {
   max-width: 1200px;
 }
@@ -11,6 +16,14 @@ th{
 td{
 	white-space: nowrap;
 }
+
+
+#show12, #show11, #show10, #show1{
+	font-weight: bold;
+	color: purple;
+}
+
+
 
 
 a{

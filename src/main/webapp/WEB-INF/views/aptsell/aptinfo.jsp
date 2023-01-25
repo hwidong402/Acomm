@@ -20,14 +20,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>${city.apt_name}부동산</title>
-<style type="text/css">
-h3 {
-	font-size: 100%;
-}
-td {
-	font-size: 80%;
-}
-</style>
 <!-- Google tag (gtag.js) -->
 <%@ include file="../common/innerHead.jsp"%>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
@@ -183,10 +175,7 @@ td {
 	double avgppp1 = 0.0;
 	%>
 	<!-- main -->
-	<main class="container"> <!-- 슬라이드 광고 -->
-	<%@ include	file="../common/slideAD.jsp"%> <!-- 앨범 스타일 메인 -->
-	<div id="all" class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-2">
-		<!-- 부동산 페이지 전체 div -->
+	<!-- 부동산 페이지 전체 div -->
 
 		<!-- 부동산 api가져오고 parsing -->
 		<%!public String getTagValue(String tag, org.w3c.dom.Element eElement) {
@@ -206,21 +195,31 @@ td {
 	return result;
 }%>
 		<!-- 부동산 api가져오고 parsing -->
-
-		<div id="chart">
+	
+	<main class="container"> <!-- 슬라이드 광고 -->
+	<%@ include	file="../common/slideAD.jsp"%> <!-- 앨범 스타일 메인 -->
+	<div id="all" class="row row-cols-1 row-cols-sm-3 row-cols-md-2 g-3">
+	<div class=“col“>
+	 <div class="card radiusShadow">
+	  <div class=“card-body”>
+			<div id="chart" style="height: 670px;">
 			<!-- 구글차트 들어갈 div 1열 1행-->
-			<hr color="green">
-			<h3 style="font-weight: bold; font-size: 120%;">${city.apt_city} ${city.apt_town} ${city.apt_village} 아파트 월별 차트</h3>
-			<hr color="green">
-			<div id="curve_chart" style="width: 100%; height: 80%;"></div>
+			<h3 style="font-weight: bold; font-size: 120%; text-align: center;">${city.apt_city} ${city.apt_town} ${city.apt_village} 아파트 월별 차트</h3>
+			<hr>
+			<div id="curve_chart" style=" height: 80%;"></div>
 			<!-- js로 그린 구글차트 들어갈 div -->
-		</div>
-
-		<div id="apistart">
-			<!-- api테이블 상위 div -->
-			<hr color="green">
-			<h3 style="font-weight: bold; font-size: 120%;">${city.apt_city} ${city.apt_town} ${city.apt_village} 아파트 월별 실거래가</h3>
-			<hr color="green">
+			</div>
+	  </div>
+	 </div>
+	</div>
+	
+	<div class=“col“>
+	 <div class="card radiusShadow">
+	  <div class=“card-body”>
+	  <div style="height: 670px;">
+						<!-- api테이블 상위 div -->
+			<h3 style="font-weight: bold; font-size: 120%; text-align: center;">${city.apt_city} ${city.apt_town} ${city.apt_village} 아파트 월별 실거래가</h3>
+			<hr>
 			<div id="api" style="height: 600px; overflow: auto;">
 				<!-- api로 가져온 데이터 테이블로 -->
 				<div id="jan">
@@ -260,7 +259,7 @@ td {
 								<!-- <th width="100px" height="15px" style="text-align: left;">거래일</th> -->
 								<th width="80px" height="15px" style="text-align: left;">층</th>
 								<th width="100px" height="15px" style="text-align: left;">동</th>
-								<th height="15px" style="text-align: left;">전용면적</th>
+								<th width="100px" height="15px" style="text-align: left;">전용면적</th>
 							</tr>
 							<%
 								for (int temp = 0; temp < nList.getLength(); temp++) {
@@ -353,7 +352,7 @@ td {
 								<!-- <th width="100px" height="15px" style="text-align: left;">거래일</th> -->
 								<th width="60px" height="15px" style="text-align: left;">층</th>
 								<th width="100px" height="15px" style="text-align: left;">동</th>
-								<th height="15px" style="text-align: left;">전용면적</th>
+								<th width="100px" height="15px" style="text-align: left;">전용면적</th>
 							</tr>
 
 							<%
@@ -447,7 +446,7 @@ td {
 								<!-- <th width="100px" height="15px" style="text-align: left;">거래일</th> -->
 								<th width="60px" height="15px" style="text-align: left;">층</th>
 								<th width="100px" height="15px" style="text-align: left;">동</th>
-								<th height="15px" style="text-align: left;">전용면적</th>
+								<th width="100px" height="15px" style="text-align: left;">전용면적</th>
 							</tr>
 
 							<%
@@ -541,7 +540,7 @@ td {
 								<!-- <th width="100px" height="15px" style="text-align: left;">거래일</th> -->
 								<th width="60px" height="15px" style="text-align: left;">층</th>
 								<th width="100px" height="15px" style="text-align: left;">동</th>
-								<th height="15px" style="text-align: left;">전용면적</th>
+								<th width="100px"height="15px" style="text-align: left;">전용면적</th>
 							</tr>
 
 							<%
@@ -603,9 +602,7 @@ td {
 				<!-- 10월 부동산 자료 -->
 			</div>
 			<!-- api로 가져온 데이터 테이블로 -->
-		</div>
-		<!-- api테이블 상위 div -->
-		<%
+			<%
 			if (avg1 == 0) {
 			avg1 = avg12;
 		}
@@ -625,12 +622,16 @@ td {
 			avgppp11 = avgppp10;
 		}
 		%>
-
-
-		<div id="totalnews">
-			<!-- rss로 가져온 뉴스 div -->
-			<hr color="green">
-			<h3 style="font-weight: bold; font-size: 120%;">전국 부동산 뉴스</h3>
+		</div>
+	  </div>
+	 </div>
+	</div>
+	
+	<div class=“col“>
+	 <div class="card radiusShadow">
+	  <div class=“card-body”>
+						<!-- rss로 가져온 뉴스 div -->
+			<h3 style="font-weight: bold; font-size: 120%; text-align: center;">전국 부동산 뉴스</h3>
 			<hr>
 			<div id="rsstable" style="height: 500px; overflow: auto;">
 				<!-- rss로 가져온 뉴스를 table로 만듬 -->
@@ -680,15 +681,15 @@ td {
 				</table>
 			</div>
 			<!-- rss로 가져온 뉴스를 table로 만듬 -->
-
-		</div>
-		<!-- rss로 가져온 뉴스 div -->
-
-
-		<div id="subnews">
-			<!-- 크롤링으로 가져온 지역뉴스 div -->
-			<hr color="green">
-			<h3 style="font-weight: bold; font-size: 120%;">${city.apt_city} 부동산 뉴스</h3>
+	  </div>
+	 </div>
+	</div>
+	
+	<div class=“col“>
+	 <div class="card radiusShadow">
+	  <div class=“card-body”>
+						<!-- 크롤링으로 가져온 지역뉴스 div -->
+			<h3 style="font-weight: bold; font-size: 120%; text-align: center;">${city.apt_city} 부동산 뉴스</h3>
 			<hr>
 			<div style="overflow: auto; height: 500px;">
 				<!-- 지역뉴스 개별-->
@@ -883,6 +884,31 @@ td {
 				</c:choose>
 			</div>
 			<!-- 지역뉴스 개별-->
+	  </div>
+	 </div>
+	</div>
+		
+		<div id="chart">
+		
+			
+		</div>
+
+		<div id="apistart">
+
+		</div>
+		<!-- api테이블 상위 div -->
+		
+
+
+		<div id="totalnews">
+
+
+		</div>
+		<!-- rss로 가져온 뉴스 div -->
+
+
+		<div id="subnews">
+
 		</div>
 		<!-- 크롤링으로 가져온 지역뉴스 div -->
 	</div>
